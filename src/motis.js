@@ -28,6 +28,8 @@ import GLib from 'gi://GLib';
 import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
+import {Arrival} from './transit/arrival.js';
+import {Departure} from './transit/departure.js';
 import * as Epaf from './epaf.js';
 import * as HVT from './transit/hvt.js';
 import {Itinerary} from './transit/itinerary.js';
@@ -87,10 +89,47 @@ export class Motis {
         this._fetch(true);
     }
 
+    fetchStoptimes(place, arrival, routeType, callback) {
+        const query = this._getStoptimesQuery(place, arrival, routeType);
+        const request = Soup.Message.new('GET', this._baseUrl +
+                                                '/api/v5/stoptimes?' +
+                                                query.toString());
+
+        request.request_headers.replace('Content-Type', 'application/json');
+
+        this._requestCancellable = new Gio.Cancellable();
+
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT,
+                                          this._requestCancellable,
+                                          (source, res) => {
+            try {
+                if (request.get_status() != Soup.Status.OK) {
+                    Utils.debug('Failed stoptimes: ' +
+                                request.get_status());
+
+                    callback(null);
+                } else {
+                    const buffer = this._session.send_and_read_finish(res).get_data();
+                    const result = JSON.parse(Utils.getBufferText(buffer));
+                    Utils.debug('result: ' + JSON.stringify(result, null, 2));
+
+                    callback(this._parseStoptimes(result, arrival));
+                }
+            } catch (error) {
+                if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                    Utils.debug('Failed to send request: ' + error.msg + ', ' + error.stack);
+                    callback(null);
+                }
+            }
+        });
+    }
+
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
         const request = Soup.Message.new('GET', this._baseUrl + '/api/v5/plan?' +
                                          query.toString());
+
+        log(`url: ${this._baseUrl + '/api/v5/plan?' + query.toString()}`);
 
         // if trying to extend trips, and there was no page cursor, show no results
         const pageCursor =
@@ -376,6 +415,56 @@ export class Motis {
         return [startTurnpoint, ...intermediateTurnpoints, endTurnpoint];
     }
 
+    _parseStoptimes(result, isArrival) {
+        return result.stopTimes.map(stopTime =>
+                                    this._parseStopTime(stopTime, isArrival));
+    }
+
+    _parseStopTime(stopTime, isArrival) {
+        const route = new Route({ displayName:   stopTime.displayName,
+                                  tripShortName: stopTime.tripShortName,
+                                  routeType:     stopTime.routeType ??
+-                                                this._getRouteType(stopTime),
+                                  agencyName:    stopTime.agencyName,
+                                  agencyUrl:     stopTime.agencyUrl,
+                                  color:         this._parseHexColorString(stopTime.routeColor),
+                                  textColor:     this._parseHexColorString(stopTime.routeTextColor),
+                                  realtime:      stopTime.realtime });
+        const designation = isArrival ? stopTime.tripFrom.name : stopTime.headsign;
+        const track = stopTime.place.track;
+        const scheduledTrack = stopTime.place.scheduledTrack;
+        const location = new Location({ latitude:  stopTime.place.lat,
+                                        longitude: stopTime.place.lon });
+        const place = new TransitPlace({ location: location,
+                                         name:     stopTime.place.name,
+                                         id:       stopTime.place.stopId,
+                                         modes:    new Set(stopTime.place.modes) });
+        const tz = GLib.TimeZone.new_identifier(stopTime.place.tz);
+        const time = Time.parseDateTime(isArrival ? stopTime.place.arrival :
+                                                    stopTime.place.departure,
+                                        tz);
+        const scheduledTime =
+            Time.parseDateTime(isArrival ? stopTime.place.scheduledArrival :
+                                           stopTime.place.scheduledDeparture,
+                               tz);
+
+        return isArrival ? new Arrival({ route:          route,
+                                         place:          place,
+                                         designation:    designation,
+                                         time:           time,
+                                         scheduledTime:  scheduledTime,
+                                         track:          track,
+                                         scheduledTrack: scheduledTrack }) :
+                           new Departure({ route:          route,
+                                           place:          place,
+                                           designation:    designation,
+                                           time:           time,
+                                           scheduledTime:  scheduledTime,
+                                           track:          track,
+                                           scheduledTrack: scheduledTrack });
+
+    }
+
     _getTurnpointTypeAndInstruction(step) {
         switch (step.relativeDirection) {
             case 'DEPART':
@@ -533,6 +622,34 @@ export class Motis {
         return new Query(params);
     }
 
+    _getStoptimesQuery(place, arrival, routeType) {
+        const params = { n:        20,
+                         radius:   200,
+                         language: Utils.getLanguages().toString() };
+
+        if (place instanceof TransitPlace)
+            params.stopId = place.id;
+        else
+            params.center = this._getPlaceParamFromLocation(place);
+
+        if (routeType !== undefined)
+            params.mode = this._getTransitModeParam(routeType);
+
+        if (arrival) {
+            params.arriveBy = true;
+            params.direction = 'LATER';
+            /* avoid using sub-second resoultion when using
+             * GLib.DateTime.new_now_utc().format_iso8601()
+             * causing MOTIS to give incorrect responses, convert the resolution
+             * to even seconds
+             */
+            params.tims = GLib.DateTime.new_from_unix_utc(GLib.get_real_time() /
+                                                          1_000_000);
+        }
+
+        return new Query(params);
+    }
+
     _getTimeParam() {
         const filledPoints = this._query.filledPoints;
         const loc = this._query.arriveBy ? filledPoints.last().place.location :
@@ -546,24 +663,28 @@ export class Motis {
         return dateTime.to_utc().format_iso8601();
     }
 
+    _getTransitModeParam(type) {
+        switch (type) {
+            case RouteType.BUS:
+                return 'BUS,COACH';
+            case RouteType.TRAM:
+                return 'TRAM'
+            case RouteType.TRAIN:
+                return 'HIGHSPEED_RAIL,LONG_DISTANCE,NIGHT_RAIL,REGIONAL_RAIL,REGIONAL_FAST_RAIL,SUBURBAN';
+            case RouteType.SUBWAY:
+                return 'SUBWAY';
+            case RouteType.FERRY:
+                return 'FERRY';
+            case HVT.AIR_SERVICE:
+                return 'AIRPLANE';
+            default:
+                throw 'unkown transit type: ' + type;
+        }
+    }
+
     _getTransitModesParam() {
-         return this._query.transitOptions.transitTypes.map((type) => {
-            switch (type) {
-                case RouteType.BUS:
-                    return 'BUS,COACH';
-                case RouteType.TRAM:
-                    return 'TRAM'
-                case RouteType.TRAIN:
-                    return 'HIGHSPEED_RAIL,LONG_DISTANCE,NIGHT_RAIL,REGIONAL_RAIL,REGIONAL_FAST_RAIL';
-                case RouteType.SUBWAY:
-                    return 'METRO,SUBWAY';
-                case RouteType.FERRY:
-                    return 'FERRY';
-                case HVT.AIR_SERVICE:
-                    return 'AIRPLANE';
-                default:
-                    throw 'unkown transit type: ' + type;
-            }
+        return this._query.transitOptions.transitTypes.map((type) => {
+            return this._getTransitModeParam(type);
         }).flat().join(',');
     }
 }
