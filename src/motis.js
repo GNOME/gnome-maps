@@ -83,6 +83,41 @@ export class Motis {
         this._fetch(true);
     }
 
+    fetchStoptimes(place, callback) {
+        const query = this._getStoptimesQuery(place);
+        const request = Soup.Message.new('GET', this._baseUrl +
+                                                '/api/v5/stoptimes?' +
+                                                query.toString());
+
+        request.request_headers.replace('Content-Type', 'application/json');
+
+        this._requestCancellable = new Gio.Cancellable();
+
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT,
+                                          this._requestCancellable,
+                                          (source, res) => {
+            try {
+                if (request.get_status() != Soup.Status.OK) {
+                    Utils.debug('Failed stoptimes: ' +
+                                request.get_status());
+
+                    callback(null);
+                } else {
+                    const buffer = this._session.send_and_read_finish(res).get_data();
+                    const result = JSON.parse(Utils.getBufferText(buffer));
+                    Utils.debug('result: ' + JSON.stringify(result, null, 2));
+
+                    callback(this._parseStoptimes(result));
+                }
+            } catch (error) {
+                if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                    Utils.debug('Failed to send request: ' + error.msg + ', ' + error.stack);
+                    callback(null);
+                }
+            }
+        });
+    }
+
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
         const request = Soup.Message.new('GET', this._baseUrl + '/api/v5/plan?' +
@@ -354,6 +389,15 @@ export class Motis {
         return [startTurnpoint, ...intermediateTurnpoints, endTurnpoint];
     }
 
+    _parseStoptimes(result) {
+        return result.stopTimes.map(place =>
+                                    this._parseDepartureArrivalPlace(place));
+    }
+
+    _parseDepartureArrivalPlace(place) {
+        return {}; // TODO: return departure/arrival object
+    }
+
     _getTurnpointTypeAndInstruction(step) {
         switch (step.relativeDirection) {
             case 'DEPART':
@@ -520,6 +564,19 @@ export class Motis {
             params.pageCursor =
                 this._query.arriveBy ? this._previousCursor : this._nextCursor;
         }
+
+        return new Query(params);
+    }
+
+    _getStoptimesQuery(place) {
+        const params = { n:        20,
+                         radius:   200,
+                         language: Utils.getLanguages().toString() };
+
+        if (place instanceof TransitPlace)
+            params.stopId = place.id;
+        else
+            params.center = this._getPlaceParamFromLocation(place);
 
         return new Query(params);
     }
