@@ -44,6 +44,10 @@ export class RoutingDelegator {
         return this._graphHopper;
     }
 
+    get transitous() {
+        return this._transitous;
+    }
+
     get route() {
         return this._route;
     }
