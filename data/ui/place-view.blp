@@ -118,13 +118,14 @@ template $Gjs_PlaceView: Box {
       ScrolledWindow {
         propagate-natural-height: true;
         vexpand: true;
+        //valign: baseline_fill;
 
         Box {
           orientation: vertical;
 
           Grid content {}
 
-          Separator thumbnailSeparator {
+          Separator infoSeparator {
             visible: false;
 
             styles [
@@ -132,10 +133,106 @@ template $Gjs_PlaceView: Box {
             ]
           }
 
-          $Gjs_PlaceViewImage thumbnail {
+          Adw.ToggleGroup infoToggles {
             visible: false;
-            can-focus: false;
+            halign: fill;
+            homogeneous: true;
+            margin-start: 12;
+            margin-end: 12;
+            margin-top: 12;
+            margin-bottom: 12;
+
+            Adw.Toggle departuresToggle {
+              name: "departures";
+              label: _("Departures");
+            }
+            Adw.Toggle arrivalsToggle {
+              name: "arrivals";
+              label: _("Arrivals");
+            }
+            Adw.Toggle infoToggle {
+              name: "information";
+              label: _("Information");
+            }
           }
+
+          Adw.ToggleGroup transitModeToggles {
+            visible: false;
+            halign: start;
+            margin-start: 12;
+            margin-bottom: 12;
+
+            styles [
+              "flat",
+            ]
+          }
+
+          Separator infoStackSeparator {
+            visible: false;
+
+            styles [
+              "no-margin-separator",
+            ]
+          }
+
+          Stack infoStack {
+            visible-child: info;
+            transition-type: crossfade;
+
+            ListBox departuresArrivals {
+              vexpand: true;
+              show-separators: true;
+              selection-mode: none;
+            }
+
+            Adw.Spinner departuresArrivalsSpinner {
+              valign: fill;
+              halign: fill;
+            }
+
+            Label noDeparturesArrivalsLabel {
+              styles [
+                "dimmed",
+              ]
+            }
+
+            Box info {
+              orientation: vertical;
+              margin-top: 12;
+
+              Label wikipediaLabel {
+                use-markup: true;
+                max-width-chars: 30;
+                wrap: true;
+                xalign: 0;
+                hexpand: true;
+                halign: fill;
+                margin-start: 12;
+                margin-end: 12;
+                margin-bottom: 18;
+                visible: false;
+              }
+
+              Separator thumbnailSeparator {
+                visible: false;
+
+                styles [
+                  "no-margin-separator",
+                ]
+              }
+
+              $Gjs_PlaceViewImage thumbnail {
+                visible: false;
+                can-focus: false;
+              }
+            }
+          }
+        }
+      }
+      Revealer attributionRevealer {
+        reveal-child: false;
+        LinkButton attributionButton {
+          uri: "https://transitous.org";
         }
       }
     }

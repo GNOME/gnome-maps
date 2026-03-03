@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Adw from 'gi://Adw';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -32,6 +33,7 @@ const Format = imports.format;
 
 import {Application} from './application.js';
 import * as Gfx from './gfx.js';
+import * as HVT from './transit/hvt.js';
 import {Overpass} from './overpass.js';
 import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
@@ -39,6 +41,10 @@ import {PlaceViewImage} from './placeViewImage.js';
 import {PlaceButtons} from './placeButtons.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
+import {RouteType} from './transit/routeType.js';
+import * as Transit from './transit/utils.js';
+import {TransitJunctureRow} from './transitJunctureRow.js';
+import {TransitMoreRow} from './transitMoreRow.js';
 import * as Translations from './translations.js';
 import * as Utils from './utils.js';
 import * as Wikipedia from './wikipedia.js';
@@ -141,6 +147,48 @@ export class PlaceView extends Gtk.Box {
         this.updatePlaceDetails();
 
         this._place.connect('notify::location', () => this._updateLocation());
+        this._infoToggles.connect('notify::active',
+                                  () => this._onInfoToggleChanged());
+        this._departuresArrivals.connect('row-activated', (listBox, row) => {
+            this._onJunctureRowActivated(row);
+        });
+    }
+
+    _getRouteTypeForSelectedToggle() {
+        const activeRouteTypeToggle = this._transitModeToggles.active;
+
+        return !this._transitModeToggles.visible ||
+               activeRouteTypeToggle === 0 ? undefined :
+               this._uniqueRouteTypes[activeRouteTypeToggle - 1];
+    }
+
+    _onInfoToggleChanged() {
+        if (this._infoToggles.active_name === 'information') {
+            this._infoStack.visible_child = this._info;
+            this._transitModeToggles.visible = false;
+            this._hideTransitousAttribution();
+        } else {
+            const arrival = this._infoToggles.active_name === 'arrivals';
+            const routeType = this._getRouteTypeForSelectedToggle();
+
+            this._infoStack.visible_child = this._departuresArrivals;
+            this._loadTransitStopTimes(arrival, false, routeType);
+            this._showTransitousAttribution(arrival);
+
+            // show transit mode toggles if there's multiple modes served
+            if (this._uniqueRouteTypes.length > 1)
+                this._transitModeToggles.visible = true;
+        }
+    }
+
+    _onJunctureRowActivated(row) {
+        if (row instanceof TransitMoreRow) {
+            const arrival = this._infoToggles.active_name === 'arrivals';
+            const routeType = this._getRouteTypeForSelectedToggle();
+
+            row.startLoading();
+            this._loadTransitStopTimes(arrival, true, routeType);
+        }
     }
 
     get place() {
@@ -314,6 +362,206 @@ export class PlaceView extends Gtk.Box {
             this._sourceBox.visible = true;
         } else {
             this._sourceBox.visible = false;
+        }
+    }
+
+    _showTransitousAttribution(arrivals = false) {
+        this._attributionButton.label = arrivals ?
+                                        _("Arrival information provided by Transitous") :
+                                        _("Departure information provided by Transitous");
+        this._attributionRevealer.reveal_child = true;
+    }
+
+    _hideTransitousAttribution() {
+        this._attributionRevealer.reveal_child = false;
+    }
+
+    _getStoptimesSearchRadius() {
+        if (this._place.osmTags['railway'] === 'tram_stop' ||
+            this._place.osmTags['highway'] === 'bus_stop')
+            return 200;
+        else if (this._place.osmTags['aeroway'] === 'aerodrome')
+            return 1000;
+        else
+            return 300;
+    }
+
+    _loadTransitStopTimes(arrivals = false, extendPrevious = false, routeType) {
+        const transitous = Application.routingDelegator.transitous;
+
+        if (!extendPrevious)
+            this._infoStack.visible_child = this._departuresArrivalsSpinner;
+
+        transitous.fetchStoptimes(this._place, arrivals, extendPrevious,
+                                  this._getStoptimesSearchRadius(), routeType,
+                                  (junctures) => {
+            if (!extendPrevious)
+                this._departuresArrivals.remove_all();
+
+            if (junctures?.length > 0) {
+                this._infoStack.visible_child = this._departuresArrivals;
+
+                if (!this._transitModesSet)
+                    this._initTransitModes(junctures);
+
+                this._populateStopTimes(junctures, arrivals, extendPrevious);
+            } else {
+                if (extendPrevious) {
+                    this._loadMoreDeparturesArrivalsRow.showNoMore();
+                } else {
+                    this._noDeparturesArrivalsLabel.label =
+                        arrivals ? _("No arrivals found") :
+                                   _("No departures found");
+                    this._infoStack.visible_child =
+                        this._noDeparturesArrivalsLabel;
+                }
+            }
+        });
+    }
+
+    _populateStopTimes(junctures, arrivals, extendPrevious) {
+        if (extendPrevious)
+            this._departuresArrivals.remove(this._loadMoreDeparturesArrivalsRow);
+
+        for (const juncture of junctures) {
+            const row = new TransitJunctureRow({ juncture: juncture,
+                                                 place:    this.place });
+
+            this._departuresArrivals.append(row);
+        }
+
+        const moreRow = new TransitMoreRow({ earlier: false });
+
+        this._loadMoreDeparturesArrivalsRow = moreRow;
+        this._departuresArrivals.append(moreRow);
+    }
+
+    _getTooltipForRouteType(routeType) {
+        switch(routeType) {
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for airline flights
+             */
+            case HVT.AIR_SERVICE:     return _("Flights");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for trains
+             */
+            case RouteType.TRAIN:     return _("Trains");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for ferries
+             */
+            case RouteType.FERRY:     return _("Ferries");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for gondola (also known as aerial trams or telecabins)
+             */
+            case RouteType.GONDOLA:   return _("Gondola");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for funicular railway trains
+             */
+            case RouteType.FUNICULAR: return _("Funicular");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for subway (also known as metro or underground rail)
+             */
+            case RouteType.SUBWAY:    return _("Subway");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for trams
+             */
+            case RouteType.TRAM:      return _("Trams");
+            /* Translators: this is a tooltip for a toggle to show departures/
+             * arrivals for buses
+             */
+            case RouteType.BUS:       return _("Buses");
+            default:                  return null;
+        }
+    }
+
+    _initTransitModes(junctures) {
+        const order = function(type) {
+            switch(type) {
+                case HVT.AIR_SERVICE:     return 0;
+                case RouteType.TRAIN:     return 1;
+                case RouteType.FERRY:     return 2;
+                case RouteType.GONDOLA:   return 3;
+                case RouteType.FUNICULAR: return 4;
+                case RouteType.SUBWAY:    return 5;
+                case RouteType.TRAM:      return 6
+                case RouteType.BUS:       return 7;
+                default:                  return 8;
+            }
+        };
+
+        const modes = Array.from(junctures.map(j => j.place.modes)
+                                          .reduce((s1,s2) => s1.union(s2)));
+        const routeTypes = modes.map(m => this._getRouteTypeFromMode(m))
+                                .filter(m => m !== undefined);
+
+        this._uniqueRouteTypes = Array.from(new Set(routeTypes)).sort((a, b) =>
+                                                  { return order(a) - order(b); });
+        this._transitModesSet = true;
+
+        // if there are multiple transit mode options, show the filter toggles
+        if (this._uniqueRouteTypes.length > 1) {
+            this._transitModeToggles.visible = true;
+            // add "All" toggle
+            this._transitModeToggles.add(this._createTransitModeToggle());
+
+            for (const routeType of this._uniqueRouteTypes) {
+                this._transitModeToggles.add(this._createTransitModeToggle(routeType));
+            }
+
+            this._transitModeToggles.connect('notify::active', () => {
+                const routeType = this._getRouteTypeForSelectedToggle();
+                const arrival = this._infoToggles.active_name === 'arrivals';
+
+                this._loadTransitStopTimes(arrival, false, routeType);
+            });
+        }
+    }
+
+    _createTransitModeToggle(routeType) {
+        let toggle;
+
+        if (routeType !== undefined) {
+            const iconName = Transit.getIconNameForRouteType(routeType);
+
+            toggle = new Adw.Toggle({ icon_name: iconName,
+                                      tooltip:   this._getTooltipForRouteType(routeType) });
+        } else {
+            /* Translators: this refers to showing departures or arrivals
+             * for all available public transit modes in a station/stop
+             */
+            toggle = new Adw.Toggle({ label: _("All") });
+        }
+
+        return toggle;
+    }
+
+    _getRouteTypeFromMode(mode) {
+        switch (mode) {
+            case 'TRAM':
+                return RouteType.TRAM;
+            case 'SUBWAY':
+                return RouteType.SUBWAY;
+            case 'AIRPLANE':
+                return HVT.AIR_SERVICE;
+            case 'BUS':
+            case 'COACH':
+            case 'ODM':
+                return RouteType.BUS;
+            case 'HIGHSPEED_RAIL':
+            case 'LONG_DISTANCE':
+            case 'NIGHT_RAIL':
+            case 'REGIONAL_RAIL':
+            case 'SUBURBAN':
+                return RouteType.TRAIN;
+            case 'FUNICULAR':
+                return RouteType.FUNICULAR;
+            case 'AERIAL_LIFT':
+                return RouteType.GONDOLA;
+            case 'FERRY':
+                return RouteType.FERRY;
+            default:
+                return undefined;
+
         }
     }
 
@@ -743,6 +991,7 @@ export class PlaceView extends Gtk.Box {
 
         let content = this._createContent(place);
         this._attachContent(content);
+        this._infoToggle.enabled = false;
 
         if (place.description) {
             const box = this._addBox();
@@ -771,6 +1020,24 @@ export class PlaceView extends Gtk.Box {
         }
 
         this.updatePlaceDetails();
+
+        if (place.isTransitStop) {
+            /* show departures/arrival/information toggle group
+             * and show the loading spinner for the departues/arrival board
+             * view in the stack
+             */
+            this._infoToggles.visible = true;
+            this._infoSeparator.visible = true;
+            this._infoStackSeparator.visible = true;
+            this._infoStack.visible_child = this._departuresArrivalsSpinner;
+            this._loadTransitStopTimes();
+            this._showTransitousAttribution();
+        } else {
+            this._infoToggles.visible = false;
+            this._infoSeparator.visible = false;
+            this._infoStack.visible_child = this._info;
+        }
+
         this.loading = false;
     }
 
@@ -808,41 +1075,35 @@ export class PlaceView extends Gtk.Box {
         this._thumbnail.margin_top = margin ? 6 : 0;
         this._thumbnail.margin_bottom = margin ? 6 : 0;
         this.thumbnail = thumbnail;
+        this._infoStackSeparator.visible = true;
+        this._infoToggle.enabled = true;
     }
 
     _onWikiMetadataComplete(wiki, metadata) {
         if (metadata.extract) {
-            let box = this._addBox();
-            let wikipediaLabel = new Gtk.Label({ use_markup: true,
-                                                 max_width_chars: 30,
-                                                 wrap: true,
-                                                 xalign: 0,
-                                                 hexpand: true,
-                                                 halign: Gtk.Align.FILL });
+            const text = GLib.markup_escape_text(metadata.extract, -1);
+            const link = this._formatWikiLink(wiki);
 
-            let text = GLib.markup_escape_text(metadata.extract, -1);
-            let link = this._formatWikiLink(wiki);
-
-            let uri = GLib.markup_escape_text(link, -1);
+            const uri = GLib.markup_escape_text(link, -1);
             /* double-escape the tooltip text, as GTK treats it as markup */
-            let tooltipText = GLib.markup_escape_text(uri, -1);
+            const tooltipText = GLib.markup_escape_text(uri, -1);
 
-            let label = _formatWikiLabel(
+            const label = _formatWikiLabel(
                 Application.application.adaptive_mode,
                 text,
                 uri,
                 tooltipText
             );
             Application.application.connect('notify::adaptive-mode', () => {
-                wikipediaLabel.label = _formatWikiLabel(
+                this._wikipediaLabel.label = _formatWikiLabel(
                     Application.application.adaptive_mode, text, uri, tooltipText
                 );
             });
 
-            wikipediaLabel.label = label;
-            box.marginTop = 12;
-            box.marginBottom = 18;
-            box.append(wikipediaLabel);
+            this._wikipediaLabel.label = label;
+            this._wikipediaLabel.visible = true;
+            this._infoStack.visible = true;
+            this._infoToggle.enabled = true;
         }
     }
 
@@ -889,6 +1150,19 @@ GObject.registerClass({
         'content',
         'placeButtons',
         'sendToButtonAlt',
-        'titleBox'
+        'titleBox',
+        'infoStack',
+        'wikipediaLabel',
+        'infoSeparator',
+        'infoStackSeparator',
+        'infoToggles',
+        'infoToggle',
+        'departuresArrivals',
+        'info',
+        'departuresArrivalsSpinner',
+        'noDeparturesArrivalsLabel',
+        'transitModeToggles',
+        'attributionRevealer',
+        'attributionButton'
     ],
 }, PlaceView);
