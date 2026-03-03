@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Adw from 'gi://Adw';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -32,6 +33,7 @@ const Format = imports.format;
 
 import {Application} from './application.js';
 import * as Gfx from './gfx.js';
+import * as HVT from './transit/hvt.js';
 import {Overpass} from './overpass.js';
 import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
@@ -39,6 +41,9 @@ import {PlaceViewImage} from './placeViewImage.js';
 import {PlaceButtons} from './placeButtons.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
+import {RouteType} from './transit/routeType.js';
+import * as Transit from './transit/utils.js';
+import {TransitJunctureRow} from './transitJunctureRow.js';
 import * as Translations from './translations.js';
 import * as Utils from './utils.js';
 import * as Wikipedia from './wikipedia.js';
@@ -141,6 +146,27 @@ export class PlaceView extends Gtk.Box {
         this.updatePlaceDetails();
 
         this._place.connect('notify::location', () => this._updateLocation());
+        this._infoToggles.connect('notify::active',
+                                  () => this._onInfoToggleChanged());
+    }
+
+    _onInfoToggleChanged() {
+        if (this._infoToggles.active_name === 'information') {
+            this._infoStack.visible_child = this._info;
+            this._transitModeToggles.visible = false;
+        } else {
+            const arrival = this._infoToggles.active_name === 'arrivals';
+            const activeRouteTypeToggle = this._transitModeToggles.active;
+            const routeType = activeRouteTypeToggle === 0 ? undefined :
+                this._uniqueRouteTypes[activeRouteTypeToggle - 1];
+
+            this._infoStack.visible_child = this._departuresArrivals;
+            this._loadTransitStopTimes(arrival, routeType);
+
+            // show transit mode toggles if there's multiple modes served
+            if (this._uniqueRouteTypes.length > 1)
+                this._transitModeToggles.visible = true;
+        }
     }
 
     get place() {
@@ -314,6 +340,115 @@ export class PlaceView extends Gtk.Box {
             this._sourceBox.visible = true;
         } else {
             this._sourceBox.visible = false;
+        }
+    }
+
+    _loadTransitStopTimes(arrivals = false, routeType) {
+        const transitous = Application.routingDelegator.transitous;
+
+        transitous.fetchStoptimes(this._place, arrivals, routeType, (junctures) => {
+            this._departuresArrivals.remove_all();
+
+            if (!this._transitModesSet)
+                this._initTransitModes(junctures);
+
+            for (const juncture of junctures) {
+                const row = new TransitJunctureRow({ juncture: juncture,
+                                                     place:    this.place });
+
+                this._departuresArrivals.append(row);
+            }
+        });
+    }
+
+    _initTransitModes(junctures) {
+        const order = function(type) {
+            switch(type) {
+                case HVT.AIR_SERVICE:     return 0;
+                case RouteType.TRAIN:     return 1;
+                case RouteType.FERRY:     return 2;
+                case RouteType.GONDOLA:   return 3;
+                case RouteType.FUNICULAR: return 4;
+                case RouteType.SUBWAY:    return 5;
+                case RouteType.TRAM:      return 6
+                case RouteType.BUS:       return 7;
+                default:                  return 8;
+            }
+        };
+
+        const modes =
+            Array.from(new Set(...junctures.map(j => j.place.modes)));
+        const routeTypes = modes.map(m => this._getRouteTypeFromMode(m))
+                                .filter(m => m !== undefined);
+        this._uniqueRouteTypes = Array.from(new Set(routeTypes)).sort((a, b) =>
+                                                  { return order(a) - order(b); });
+        this._transitModesSet = true;
+
+        // if there are multiple transit mode options, show the filter toggles
+        if (this._uniqueRouteTypes.length > 1) {
+            this._transitModeToggles.visible = true;
+            // add "All" toggle
+            this._transitModeToggles.add(this._createTransitModeToggle());
+
+            for (const routeType of this._uniqueRouteTypes) {
+                this._transitModeToggles.add(this._createTransitModeToggle(routeType));
+            }
+
+            this._transitModeToggles.connect('notify::active', () => {
+                log(`active: ${this._transitModeToggles.active}`);
+                const typeIndex = this._transitModeToggles.active - 1;
+                const arrival = this._infoToggles.active_name === 'arrivals';
+                this._loadTransitStopTimes(arrival,
+                                           this._uniqueRouteTypes[typeIndex]);
+            });
+        }
+    }
+
+
+
+    _createTransitModeToggle(routeType) {
+        let toggle;
+
+        if (routeType !== undefined) {
+            const iconName = Transit.getIconNameForRouteType(routeType);
+
+            // TODO: tooltip
+            toggle = new Adw.Toggle({ icon_name: iconName });
+        } else {
+            /* Translators: this refers to showing departures or arrivals
+             * for all available public transit modes in a station/stop
+             */
+            toggle = new Adw.Toggle({ label: _("All") });
+        }
+
+        return toggle;
+    }
+
+    _getRouteTypeFromMode(mode) {
+        switch (mode) {
+            case 'TRAM':
+                return RouteType.TRAM;
+            case 'SUBWAY':
+                return RouteType.SUBWAY;
+            case 'AIRPLANE':
+                return HVT.AIR_SERVICE;
+            case 'BUS':
+            case 'COACH':
+            case 'ODM':
+                return RouteType.BUS;
+            case 'HIGHSPEED_RAIL':
+            case 'LONG_DISTANCE':
+            case 'NIGHT_RAIL':
+            case 'REGIONAL_RAIL':
+            case 'SUBURBAN':
+                return RouteType.TRAIN;
+            case 'FUNICULAR':
+                return RouteType.FUNICULAR;
+            case 'AERIAL_LIFT':
+                return RouteType.GONDOLA;
+            default:
+                return undefined;
+
         }
     }
 
@@ -757,20 +892,41 @@ export class PlaceView extends Gtk.Box {
             box.marginTop = 12;
             box.marginBottom = 18;
             box.append(descriptionLabel);
+            this._infoToggle.enabled = false;
         } else if (place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
             let defaultArticle =
                 place.wiki && Wikipedia.isValidWikipedia(place.wiki) ?
                 place.wiki : null;
 
             this._requestWikidata(place.wikidata, defaultArticle);
+            this._infoToggle.enabled = true;
         } else if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
             this._requestWikipedia(place.wiki);
+            this._infoToggle.enabled = true;
         } else if (place.brandWikidata &&
                    Wikipedia.isValidWikidata(place.brandWikidata)) {
             this._requestWikidataLogo(place.brandWikidata);
+            this._infoToggle.enabled = true;
+        } else {
+            this._infoToggle.enabled = false;
         }
 
         this.updatePlaceDetails();
+
+        if (place.isTransitStop) {
+            /* show departures/arrival/information toggle group
+             * and show the departues/arrival board view in the stack
+             */
+            this._infoToggles.visible = true;
+            this._infoSeparator.visible = true;
+            this._infoStack.visible_child = this._departuresArrivals;
+            this._loadTransitStopTimes();
+        } else {
+            this._infoToggles.visible = false;
+            this._infoSeparator.visible = false;
+            this._infoStack.visible_child = this._info;
+        }
+
         this.loading = false;
     }
 
@@ -812,37 +968,29 @@ export class PlaceView extends Gtk.Box {
 
     _onWikiMetadataComplete(wiki, metadata) {
         if (metadata.extract) {
-            let box = this._addBox();
-            let wikipediaLabel = new Gtk.Label({ use_markup: true,
-                                                 max_width_chars: 30,
-                                                 wrap: true,
-                                                 xalign: 0,
-                                                 hexpand: true,
-                                                 halign: Gtk.Align.FILL });
+            const text = GLib.markup_escape_text(metadata.extract, -1);
+            const link = this._formatWikiLink(wiki);
 
-            let text = GLib.markup_escape_text(metadata.extract, -1);
-            let link = this._formatWikiLink(wiki);
-
-            let uri = GLib.markup_escape_text(link, -1);
+            const uri = GLib.markup_escape_text(link, -1);
             /* double-escape the tooltip text, as GTK treats it as markup */
-            let tooltipText = GLib.markup_escape_text(uri, -1);
+            const tooltipText = GLib.markup_escape_text(uri, -1);
 
-            let label = _formatWikiLabel(
+            const label = _formatWikiLabel(
                 Application.application.adaptive_mode,
                 text,
                 uri,
                 tooltipText
             );
             Application.application.connect('notify::adaptive-mode', () => {
-                wikipediaLabel.label = _formatWikiLabel(
+                this._wikipediaLabel.label = _formatWikiLabel(
                     Application.application.adaptive_mode, text, uri, tooltipText
                 );
             });
 
-            wikipediaLabel.label = label;
-            box.marginTop = 12;
-            box.marginBottom = 18;
-            box.append(wikipediaLabel);
+            this._wikipediaLabel.label = label;
+            this._wikipediaLabel.visible = true;
+            this._infoStack.visible = true;
+            this._infoSeparator.visible = true;
         }
     }
 
@@ -889,6 +1037,14 @@ GObject.registerClass({
         'content',
         'placeButtons',
         'sendToButtonAlt',
-        'titleBox'
+        'titleBox',
+        'infoStack',
+        'wikipediaLabel',
+        'infoSeparator',
+        'infoToggles',
+        'infoToggle',
+        'departuresArrivals',
+        'info',
+        'transitModeToggles'
     ],
 }, PlaceView);
