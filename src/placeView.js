@@ -325,6 +325,14 @@ export class PlaceView extends Gtk.Box {
         }
     }
 
+    _loadTransitStopTimes() {
+        const transitous = Application.routingDelegator.transitous;
+
+        transitous.fetchStoptimes(this._place, (result) => {
+
+        });
+    }
+
     _onOverpass(success) {
         this._populate(this.place);
 
@@ -783,6 +791,10 @@ export class PlaceView extends Gtk.Box {
         }
 
         this.updatePlaceDetails();
+
+        if (place.isTransitStop)
+            this._loadTransitStopTimes();
+
         this.loading = false;
     }
 
