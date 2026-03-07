@@ -75,23 +75,24 @@ export class Overpass {
 
         this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
                                           (source, res) => {
-            if (request.get_status() !== Soup.Status.OK) {
-                Utils.debug('Failed to fetch Overpass result: ' +
-                            request.get_status());
-                callback(false);
-                return;
-            }
             try {
-                let buffer = this._session.send_and_read_finish(res).get_data();
-                let jsonObj = JSON.parse(Utils.getBufferText(buffer));
-                let element = jsonObj?.elements?.[0];
-
-                if (element) {
-                    place.osmTags = {...place.osmTags, ...element.tags};
-                    callback(true);
-                } else {
-                    Utils.debug('No element in Overpass result');
+                if (request.get_status() !== Soup.Status.OK) {
+                    Utils.debug('Failed to fetch Overpass result: ' +
+                                request.get_status());
                     callback(false);
+                    return;
+                } else {
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let jsonObj = JSON.parse(Utils.getBufferText(buffer));
+                    let element = jsonObj?.elements?.[0];
+
+                    if (element) {
+                        place.osmTags = {...place.osmTags, ...element.tags};
+                        callback(true);
+                    } else {
+                        Utils.debug('No element in Overpass result');
+                        callback(false);
+                    }
                 }
             } catch(e) {
                 Utils.debug('Failed to parse Overpass result');
