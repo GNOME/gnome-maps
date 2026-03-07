@@ -671,6 +671,11 @@ export class MapView extends Gtk.Overlay {
         if (mainTag) {
             osmTags[mainTag] = symbol.get_tag("subtag") ?? symbol.get_tag("subclass");
         }
+
+        // set station tag from OMT subclass for railway station types
+        if (osmTags?.['railway'] === 'station')
+            osmTags['station'] = symbol.get_tag('subclass');
+
         place.osmTags = osmTags;
 
         this.showPlace(place, false, true);
