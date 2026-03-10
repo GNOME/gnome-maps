@@ -3,24 +3,24 @@
 # This file is distributed under the same licence as the gnome-maps package.
 # Philip Withnall <philip@tecnocode.co.uk>, 2013.
 # Zander Brown <zbrown@gnome.org>, 2019-2021.
-# Bruce Cowan <bruce@bcowan.me.uk>, 2017-2024.
 # Andi Chandler <andi@gowling.com>, 2024-2025.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2017-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-08-13 20:14+0000\n"
-"PO-Revision-Date: 2025-08-26 12:31+0100\n"
+"POT-Creation-Date: 2026-03-07 21:29+0000\n"
+"PO-Revision-Date: 2026-03-09 11:13+0000\n"
 "Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
-"Language-Team: English - United Kingdom <en@li.org>\n"
+"Language-Team: British English <en@li.org>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -30,7 +30,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.ui:49 src/application.js:62 src/mainWindow.js:118
+#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
 msgid "Maps"
 msgstr "Maps"
 
@@ -173,6 +173,14 @@ msgstr ""
 "How to show measurements. ('system' uses default for system locale, 'metric' "
 "always show Metric units, 'imperial' always show Imperial units)."
 
+#: data/org.gnome.Maps.gschema.xml:90
+msgid "Show location marker"
+msgstr "Show location marker"
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Whether to show the user location marker (when location is known)."
+msgstr "Whether to show the user location marker (when location is known)."
+
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Find places around the world"
@@ -195,239 +203,271 @@ msgstr ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 
+#: data/org.gnome.Maps.metainfo.xml.in.in:25
+#: data/org.gnome.Maps.metainfo.xml.in.in:41
+msgid "Map view"
+msgstr "Map view"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:29
+#: data/org.gnome.Maps.metainfo.xml.in.in:45
+msgid "Pedestrian route instructions"
+msgstr "Pedestrian route instructions"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:33
+#: data/org.gnome.Maps.metainfo.xml.in.in:49
+msgid "Information on a selected place"
+msgstr "Information on a selected place"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:37
+#: data/org.gnome.Maps.metainfo.xml.in.in:53
+msgid "Public transit itinerary"
+msgstr "Public transit itinerary"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:559
+#: data/org.gnome.Maps.metainfo.xml.in.in:631
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
-#: data/ui/context-menu.ui:6
+#: data/ui/context-menu.blp:6
 msgid "Route from Here"
 msgstr "Route from Here"
 
-#: data/ui/context-menu.ui:10
+#: data/ui/context-menu.blp:11
 msgid "Add Intermediate Destination"
 msgstr "Add Intermediate Destination"
 
-#: data/ui/context-menu.ui:14
+#: data/ui/context-menu.blp:16
 msgid "Route to Here"
 msgstr "Route to Here"
 
-#: data/ui/context-menu.ui:18
+#: data/ui/context-menu.blp:21
 msgid "Clear Current Route"
 msgstr "Clear Current Route"
 
-#: data/ui/context-menu.ui:24
+#: data/ui/context-menu.blp:28
 msgid "Copy Location"
 msgstr "Copy Location"
 
-#: data/ui/context-menu.ui:28
+#: data/ui/context-menu.blp:33
 msgid "Add to OpenStreetMap…"
 msgstr "Add to OpenStreetMap…"
 
 #. Translators: This is the title of the dialog for expoting the map view content to an image file
-#: data/ui/export-view-dialog.ui:7
+#: data/ui/export-view-dialog.blp:8
 msgid "Export View"
 msgstr "Export View"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
-#: data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
+#: data/ui/send-to-dialog.blp:15
 msgid "_Cancel"
 msgstr "_Cancel"
 
-#: data/ui/export-view-dialog.ui:26
+#: data/ui/export-view-dialog.blp:29
 msgid "_Export"
 msgstr "_Export"
 
 #. Translators: This is a tooltip
-#: data/ui/favorite-list-row.ui:72
+#: data/ui/favorite-list-row.blp:71
 msgid "Remove Favorite"
 msgstr "Remove Favourite"
 
-#: data/ui/favorites-popover.ui:11
+#: data/ui/favorites-popover.blp:10
 msgid "No Favorites"
 msgstr "No Favourites"
 
-#: data/ui/favorites-popover.ui:12
+#: data/ui/favorites-popover.blp:11
 msgid "Add places to your favorites to get them listed here"
 msgstr "Add places to your favourites to get them listed here"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
+#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
 msgid "Current Location"
 msgstr "Current Location"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:19
+#: data/ui/headerbar-left.blp:19
 msgid "Layers"
 msgstr "Layers"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:11
-msgid "Print Route"
-msgstr "Print Route"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:21
+#: data/ui/headerbar-right.blp:10
 msgid "Favorites"
 msgstr "Favourites"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:30
+#: data/ui/headerbar-right.blp:19
 msgid "Route Planner"
 msgstr "Route Planner"
 
-#: data/ui/layers-popover.ui:7
+#: data/ui/layers-popover.blp:6
 msgid "Show Scale"
 msgstr "Show Scale"
 
+#: data/ui/layers-popover.blp:11
+msgid "Show Location Marker"
+msgstr "Show Location Marker"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:16
+#: data/ui/layers-popover.blp:23
 msgid "Open Shape Layer…"
 msgstr "Open Shape Layer…"
 
-#: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account…"
-msgstr "Set up OpenStreetMap Account…"
+#: data/ui/main-window.blp:8
+msgid "_Set up OpenStreetMap Account…"
+msgstr "_Set up OpenStreetMap Account…"
 
-#: data/ui/main-window.ui:12
-msgid "Export as Image…"
-msgstr "Export as Image…"
+#: data/ui/main-window.blp:13
+msgid "_Export as Image…"
+msgstr "_Export as Image…"
 
 #. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.ui:17
+#: data/ui/main-window.blp:20
 msgid "Measurement Units"
 msgstr "Measurement Units"
 
 #. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.ui:20
+#: data/ui/main-window.blp:25
 msgid "_System Default"
 msgstr "_System Default"
 
 #. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.ui:25
+#: data/ui/main-window.blp:32
 msgid "_Metric"
 msgstr "_Metric"
 
 #. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.ui:30
+#: data/ui/main-window.blp:39
 msgid "_Imperial"
 msgstr "_Imperial"
 
-#: data/ui/main-window.ui:39
+#: data/ui/main-window.blp:49
 msgid "_Keyboard Shortcuts"
 msgstr "_Keyboard Shortcuts"
 
-#: data/ui/main-window.ui:44
-msgid "About Maps"
-msgstr "About Maps"
+#: data/ui/main-window.blp:55
+msgid "_About Maps"
+msgstr "_About Maps"
 
-#: data/ui/main-window.ui:70
+#: data/ui/main-window.blp:125
 msgid "Main Menu"
 msgstr "Main Menu"
 
-#: data/ui/osm-account-dialog.ui:5
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:169 src/mainWindow.js:629
+msgid "View Place Information"
+msgstr "View Place Information"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:178
+msgid "Print Route"
+msgstr "Print Route"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:188
+msgid "Close Sidebar"
+msgstr "Close Sidebar"
+
+#: data/ui/osm-account-dialog.blp:5
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap Account"
 
-#: data/ui/osm-account-dialog.ui:31
+#: data/ui/osm-account-dialog.blp:22
 msgid "Sign In To Edit Maps"
 msgstr "Sign In To Edit Maps"
 
-#: data/ui/osm-account-dialog.ui:32
+#: data/ui/osm-account-dialog.blp:23
 msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "Help to improve the map, using an OpenStreetMap account."
 
-#: data/ui/osm-account-dialog.ui:36
+#: data/ui/osm-account-dialog.blp:26
 msgid "_Sign In"
 msgstr "_Sign In"
 
-#: data/ui/osm-account-dialog.ui:60
+#: data/ui/osm-account-dialog.blp:43
 msgid "Verification"
 msgstr "Verification"
 
-#: data/ui/osm-account-dialog.ui:61
+#: data/ui/osm-account-dialog.blp:44
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr ""
 "Copy the verification code shown when authorising access in the browser."
 
-#: data/ui/osm-account-dialog.ui:70
+#: data/ui/osm-account-dialog.blp:51
 msgid "Verification Code"
 msgstr "Verification Code"
 
-#: data/ui/osm-account-dialog.ui:76
+#: data/ui/osm-account-dialog.blp:55
 msgid "_Verify"
 msgstr "_Verify"
 
-#: data/ui/osm-account-dialog.ui:112
+#: data/ui/osm-account-dialog.blp:81
 msgid "Signed In"
 msgstr "Signed In"
 
-#: data/ui/osm-account-dialog.ui:113
+#: data/ui/osm-account-dialog.blp:82
 msgid "Your OpenStreetMap account is active."
 msgstr "Your OpenStreetMap account is active."
 
-#: data/ui/osm-account-dialog.ui:131
+#: data/ui/osm-account-dialog.blp:96
 msgid "_Sign Out"
 msgstr "_Sign Out"
 
-#: data/ui/osm-discard-dialog.ui:5
+#: data/ui/osm-discard-dialog.blp:5
 msgid "Discard Changes?"
 msgstr "Discard Changes?"
 
-#: data/ui/osm-discard-dialog.ui:6
+#: data/ui/osm-discard-dialog.blp:6
 msgid "Your current changes to the map will be lost"
 msgstr "Your current changes to the map will be lost"
 
-#: data/ui/osm-discard-dialog.ui:13
+#: data/ui/osm-discard-dialog.blp:12
 msgid "_Discard"
 msgstr "_Discard"
 
-#: data/ui/osm-edit-dialog.ui:5
+#: data/ui/osm-edit-dialog.blp:5
 msgctxt "dialog title"
 msgid "Edit Location"
 msgstr "Edit Location"
 
-#: data/ui/osm-edit-dialog.ui:25
+#: data/ui/osm-edit-dialog.blp:19
 msgid "Loading…"
 msgstr "Loading…"
 
-#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.blp:26 data/ui/osm-edit-dialog.blp:37
 msgid "Edit Location"
 msgstr "Edit Location"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.blp:38
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Edit an existing location in OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
-#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
-#: src/transitplugins/openTripPlanner2.js:271
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:736 src/motis.js:369
 msgid "Continue"
 msgstr "Continue"
 
-#: data/ui/osm-edit-dialog.ui:89
+#: data/ui/osm-edit-dialog.blp:63
 msgid "Location Type"
 msgstr "Location Type"
 
 #. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.ui:236
+#: data/ui/osm-edit-dialog.blp:172
 msgid "Search types"
 msgstr "Search types"
 
-#: data/ui/osm-edit-dialog.ui:250
+#: data/ui/osm-edit-dialog.blp:184
 msgid "Recently Used Types"
 msgstr "Recently Used Types"
 
-#: data/ui/osm-edit-dialog.ui:273
+#: data/ui/osm-edit-dialog.blp:195
 msgid "Edit Map"
 msgstr "Edit Map"
 
-#: data/ui/osm-edit-dialog.ui:292
+#: data/ui/osm-edit-dialog.blp:209
 msgid "Almost There!"
 msgstr "Almost There!"
 
-#: data/ui/osm-edit-dialog.ui:293
+#: data/ui/osm-edit-dialog.blp:211
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
@@ -435,173 +475,65 @@ msgstr ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
 
-#: data/ui/osm-edit-dialog.ui:339
+#: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
 msgstr "Submit"
 
-#: data/ui/osm-edit-dialog.ui:366 src/osmEditDialog.js:238
+#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238
 #: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "None"
 
-#: data/ui/place-popover.ui:25 src/searchBar.js:69
+#: data/ui/place-popover.blp:29 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Explore Nearby Places"
 
-#: data/ui/place-popover.ui:82 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:294
 msgid "No results found"
 msgstr "No results found"
 
-#: data/ui/place-popover.ui:92 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:272
 msgid "An error has occurred"
 msgstr "An error has occurred"
 
 #. Translators: This is a tooltip
-#: data/ui/route-entry.ui:12
+#: data/ui/route-entry.blp:12
 msgid "Change Route Order"
 msgstr "Change Route Order"
 
-#: data/ui/send-to-dialog.ui:7
-msgid "Open Location"
-msgstr "Open Location"
-
-#: data/ui/send-to-dialog.ui:64
-msgid "C_opy"
-msgstr "C_opy"
-
-#: data/ui/send-to-dialog.ui:71
-msgid "_Send To…"
-msgstr "_Send To…"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:32
-msgid "Toggle visible"
-msgstr "Toggle visible"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:44
-msgid "Remove Shape Layer"
-msgstr "Remove Shape Layer"
-
-#: data/ui/shortcuts-dialog.ui:6
-msgctxt "shortcut window"
-msgid "General"
-msgstr "General"
-
-#: data/ui/shortcuts-dialog.ui:9
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Show Shortcuts"
-
-#: data/ui/shortcuts-dialog.ui:15
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "Search"
-
-#: data/ui/shortcuts-dialog.ui:21
-msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "Explore points-of-interest"
-
-#: data/ui/shortcuts-dialog.ui:27
-msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "Show last search results"
-
-#: data/ui/shortcuts-dialog.ui:33
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "Toggle route planner"
-
-#: data/ui/shortcuts-dialog.ui:39
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "Print route"
-
-#: data/ui/shortcuts-dialog.ui:45
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Quit"
-
-#: data/ui/shortcuts-dialog.ui:51
-msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "Open main menu"
-
-#: data/ui/shortcuts-dialog.ui:59
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "Map View"
-
-#: data/ui/shortcuts-dialog.ui:62
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Zoom in"
-
-#: data/ui/shortcuts-dialog.ui:68
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Zoom out"
-
-#: data/ui/shortcuts-dialog.ui:74
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
-
-#: data/ui/shortcuts-dialog.ui:80
-msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "Rotate anti-clockwise"
-
-#: data/ui/shortcuts-dialog.ui:86
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Reset rotation"
-
-#: data/ui/shortcuts-dialog.ui:92
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Toggle scale"
-
-#: data/ui/shortcuts-dialog.ui:98
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "Go to current location"
-
-#: data/ui/shortcuts-dialog.ui:104
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "Open shape layer"
-
 #. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
-#: data/ui/sidebar.ui:29
+#: data/ui/route-view.blp:15
 msgid "Walking"
 msgstr "Walking"
 
 #. Translators: This is the tooltip text for the button selecting the cycling routing mode
-#: data/ui/sidebar.ui:36
+#: data/ui/route-view.blp:22
 msgid "Cycling"
 msgstr "Cycling"
 
 #. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
-#: data/ui/sidebar.ui:43
+#: data/ui/route-view.blp:29
 msgid "Driving"
 msgstr "Driving"
 
 #. Translators: This is the tooltip text for the button selecting the public transit routing mode
-#: data/ui/sidebar.ui:50
+#: data/ui/route-view.blp:36
 msgid "Public Transit"
 msgstr "Public Transit"
 
-#: data/ui/sidebar.ui:184
+#: data/ui/route-view.blp:154
 msgid "Route search by GraphHopper"
 msgstr "Route search by GraphHopper"
 
-#: data/ui/sidebar.ui:217
+#: data/ui/route-view.blp:172
+msgid "Itineraries provided by Transitous"
+msgstr "Itineraries provided by Transitous"
+
+#: data/ui/route-view.blp:190
 msgid "More Information"
 msgstr "More Information"
 
-#: data/ui/sidebar.ui:250
+#: data/ui/route-view.blp:221
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -625,114 +557,229 @@ msgstr ""
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 
-#: data/ui/sidebar.ui:274
+#: data/ui/route-view.blp:239
 msgid "Back"
 msgstr "Back"
 
-#. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:99
-msgid "Hide intermediate stops and information"
-msgstr "Hide intermediate stops and information"
+#: data/ui/send-to-dialog.blp:5
+msgid "Open Location"
+msgstr "Open Location"
+
+#: data/ui/send-to-dialog.blp:62
+msgid "C_opy"
+msgstr "C_opy"
+
+#: data/ui/send-to-dialog.blp:68
+msgid "_Send To…"
+msgstr "_Send To…"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:157
-msgid "Show intermediate stops and information"
-msgstr "Show intermediate stops and information"
+#: data/ui/shape-layer-row.blp:33
+msgid "Toggle visible"
+msgstr "Toggle visible"
 
-#. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:17
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.blp:46
+msgid "Remove Shape Layer"
+msgstr "Remove Shape Layer"
+
+#: data/ui/shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/ui/shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Show Shortcuts"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Search"
+
+#: data/ui/shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Explore points-of-interest"
+
+#: data/ui/shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Show last search results"
+
+#: data/ui/shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Show route planner"
+msgstr "Show route planner"
+
+#: data/ui/shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Print route"
+
+#: data/ui/shortcuts-dialog.blp:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quit"
+
+#: data/ui/shortcuts-dialog.blp:44
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Open main menu"
+
+#: data/ui/shortcuts-dialog.blp:50
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Map View"
+
+#: data/ui/shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Zoom in"
+
+#: data/ui/shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Zoom out"
+
+#: data/ui/shortcuts-dialog.blp:63
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Rotate clockwise"
+
+#: data/ui/shortcuts-dialog.blp:68
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Rotate anti-clockwise"
+
+#: data/ui/shortcuts-dialog.blp:73
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Reset rotation"
+
+#: data/ui/shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Toggle scale"
+
+#: data/ui/shortcuts-dialog.blp:83
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Go to current location"
+
+#: data/ui/shortcuts-dialog.blp:88
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Open shape layer"
+
+#: data/ui/shortcuts-dialog.blp:93
+msgctxt "shortcut window"
+msgid "Toggle location marker"
+msgstr "Toggle location marker"
+
+#. Translators: Indicates searching for the next available itineraries
+#: data/ui/transit-options-panel.blp:18
 msgid "Leave Now"
 msgstr "Leave Now"
 
-#. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:18
+#. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
+#: data/ui/transit-options-panel.blp:20
 msgid "Leave By"
 msgstr "Leave By"
 
-#. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:19
+#. Translators: Indicates searching for itineraries arriving no later than the specified time
+#: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
 msgstr "Arrive By"
 
-#: data/ui/transit-options-panel.ui:59
+#: data/ui/transit-options-panel.blp:61
 msgid "View More"
 msgstr "View More"
 
-#. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:91
+#: data/ui/transit-options-panel.blp:123
+msgid "AM"
+msgstr "AM"
+
+#: data/ui/transit-options-panel.blp:128
+msgid "PM"
+msgstr "PM"
+
+#. Translators: Header indicating selected modes of transit
+#: data/ui/transit-options-panel.blp:149
 msgid "Show"
 msgstr "Show"
 
-#: data/ui/transit-options-panel.ui:101
+#: data/ui/transit-options-panel.blp:159
 msgid "_Buses"
 msgstr "_Buses"
 
-#: data/ui/transit-options-panel.ui:108
+#: data/ui/transit-options-panel.blp:165
 msgid "_Trams"
 msgstr "_Trams"
 
-#: data/ui/transit-options-panel.ui:115
+#: data/ui/transit-options-panel.blp:171
 msgid "T_rains"
 msgstr "T_rains"
 
-#: data/ui/transit-options-panel.ui:122
+#: data/ui/transit-options-panel.blp:177
 msgid "_Subway"
 msgstr "_Subway"
 
-#: data/ui/transit-options-panel.ui:129
+#: data/ui/transit-options-panel.blp:183
 msgid "_Ferries"
 msgstr "_Ferries"
 
-#: data/ui/transit-options-panel.ui:136
+#: data/ui/transit-options-panel.blp:189
 msgid "_Airplanes"
 msgstr "_Aeroplanes"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
-msgid "Share Location"
-msgstr "Share Location"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:11
+#: data/ui/place-buttons.blp:12
 msgid "Add to new route"
 msgstr "Add to new route"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.ui:15
+#: data/ui/place-buttons.blp:17
 msgid "_Directions"
 msgstr "_Directions"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:37
+#: data/ui/place-buttons.blp:30
+msgid "Share Location"
+msgstr "Share Location"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.blp:39
 msgid "Mark as Favorite"
 msgstr "Mark as Favourite"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:48
+#: data/ui/place-buttons.blp:51
 msgid "Edit on OpenStreetMap"
 msgstr "Edit on OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:66
+#: data/ui/place-view.blp:64
 msgid "Share location"
 msgstr "Share location"
 
-#: data/ui/poi-category-goback-row.ui:22
+#: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Back to Main Categories"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:19
+#: data/ui/zoom-and-rotate-controls.blp:19
 msgid "Reset Rotation"
 msgstr "Reset Rotation"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:32
+#: data/ui/zoom-and-rotate-controls.blp:32
 msgid "Zoom Out"
 msgstr "Zoom Out"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1325
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1327
 msgid "Zoom In"
 msgstr "Zoom In"
 
@@ -815,35 +862,39 @@ msgstr "parse error"
 msgid "unknown geometry"
 msgstr "unknown geometry"
 
-#: src/graphHopper.js:116 src/transitPlan.js:177
+#: src/graphHopper.js:116 src/transitPlan.js:169
 msgid "Route request failed."
 msgstr "Route request failed."
 
-#: src/graphHopper.js:123 src/transitPlan.js:169
+#: src/graphHopper.js:123 src/transitPlan.js:165
 msgid "No route found."
 msgstr "No route found."
 
-#: src/graphHopper.js:210 src/transitplugins/openTripPlanner.js:1166
+#: src/graphHopper.js:210
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:476
+#: src/mainWindow.js:531
 msgid "Failed to connect to location service"
 msgstr "Failed to connect to location service"
 
-#: src/mainWindow.js:481
+#: src/mainWindow.js:536
 msgid "Turn on location services"
 msgstr "Turn on location services"
 
-#: src/mainWindow.js:482
+#: src/mainWindow.js:537
 msgid "Location Settings"
 msgstr "Location Settings"
 
-#: src/mainWindow.js:586
-msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:648
+msgid "Show Route Planner"
+msgstr "Show Route Planner"
 
-#: src/mainWindow.js:587
+#: src/mainWindow.js:663
+msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
+
+#: src/mainWindow.js:664
 msgid "translator-credits"
 msgstr ""
 "Philip Withnall <philip@tecnocode.co.uk>\n"
@@ -852,16 +903,16 @@ msgstr ""
 "Zander Brown <zbrown@gnome.org>\n"
 "Andi Chandler <andi@gowling.com>"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:671
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Map data by %s and contributors"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:672
 msgid "Map Data Provider"
 msgstr "Map Data Provider"
 
-#: src/mainWindow.js:598
+#: src/mainWindow.js:675
 msgid "Map Tile Provider"
 msgstr "Map Tile Provider"
 
@@ -870,37 +921,37 @@ msgstr "Map Tile Provider"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:606
+#: src/mainWindow.js:683
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Map tiles provided by %s"
 
-#: src/mainWindow.js:635
+#: src/mainWindow.js:712
 msgid "Search Provider"
 msgstr "Search Provider"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:715
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Search provided by %s using %s"
 
-#: src/mainWindow.js:647
+#: src/mainWindow.js:724
 msgid "All Layer Files"
 msgstr "All Layer Files"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:737
 msgid "Open Shape Layers"
 msgstr "Open Shape Layers"
 
-#: src/mapView.js:689 src/mapView.js:751
+#: src/mapView.js:711 src/mapView.js:773
 msgid "Failed to open layer"
 msgstr "Failed to open layer"
 
-#: src/mapView.js:706
+#: src/mapView.js:728
 msgid "Do you want to continue?"
 msgstr "Do you want to continue?"
 
-#: src/mapView.js:707
+#: src/mapView.js:729
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -909,25 +960,142 @@ msgstr ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 
-#: src/mapView.js:713
+#: src/mapView.js:735
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/mapView.js:745
+#: src/mapView.js:767
 msgid "File type is not supported"
 msgstr "File type is not supported"
 
-#: src/mapView.js:787
+#: src/mapView.js:806
 msgid "Failed to open GeoURI"
 msgstr "Failed to open GeoURI"
 
-#: src/mapView.js:1324
+#: src/mapView.js:1326
 msgid "Zoom in to add location"
 msgstr "Zoom in to add location"
 
-#: src/mapView.js:1342
+#: src/mapView.js:1344
 msgid "Location was added in OpenStreetMap"
 msgstr "Location was added in OpenStreetMap"
+
+#: src/motis.js:332 src/transit.js:33 src/transit.js:85
+msgid "Start"
+msgstr "Start"
+
+#: src/motis.js:351 src/transit.js:41 src/transit.js:71
+msgid "Arrive"
+msgstr "Arrive"
+
+#: src/motis.js:363
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "Take the stairs to level %s"
+
+#: src/motis.js:364
+msgid "Take the stairs"
+msgstr "Take the stairs"
+
+#: src/motis.js:368
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Continue on %s"
+
+#: src/motis.js:373
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Turn left on %s"
+
+#: src/motis.js:374
+msgid "Turn left"
+msgstr "Turn left"
+
+#: src/motis.js:378
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Turn slightly left on %s"
+
+#: src/motis.js:379
+msgid "Turn slightly left"
+msgstr "Turn slightly left"
+
+#: src/motis.js:383
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Turn sharp left on %s"
+
+#: src/motis.js:384
+msgid "Turn sharp left"
+msgstr "Turn sharp left"
+
+#: src/motis.js:388
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Turn right on %s"
+
+#: src/motis.js:389
+msgid "Turn right"
+msgstr "Turn right"
+
+#: src/motis.js:393
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Turn slightly right on %s"
+
+#: src/motis.js:394
+msgid "Turn slightly right"
+msgstr "Turn slightly right"
+
+#: src/motis.js:398
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Turn sharp right on %s"
+
+#: src/motis.js:399
+msgid "Turn sharp right"
+msgstr "Turn sharp right"
+
+#: src/motis.js:406
+#, javascript-format
+msgid "At the roundabout, take exit %s"
+msgstr "At the roundabout, take exit %s"
+
+#: src/motis.js:409
+#, javascript-format
+msgid "At the roundabout, take exit to %s"
+msgstr "At the roundabout, take exit to %s"
+
+#: src/motis.js:411
+msgid "Take the roundabout"
+msgstr "Take the roundabout"
+
+#: src/motis.js:419
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Take the lift and get off at %s"
+
+#: src/motis.js:420
+msgid "Take the elevator"
+msgstr "Take the lift"
+
+#: src/motis.js:424
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Make a left u-turn onto %s"
+
+#: src/motis.js:425
+msgid "Make a left u-turn"
+msgstr "Make a left u-turn"
+
+#: src/motis.js:429
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Make a right u-turn onto %s"
+
+#: src/motis.js:430
+msgid "Make a right u-turn"
+msgstr "Make a right u-turn"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
@@ -993,11 +1161,11 @@ msgstr "Opening Hours"
 msgid "Phone"
 msgstr "Phone"
 
-#: src/osmEditDialog.js:151 src/placeView.js:416
+#: src/osmEditDialog.js:151 src/placeView.js:395
 msgid "Email"
 msgstr "Email"
 
-#: src/osmEditDialog.js:158 src/placeView.js:383
+#: src/osmEditDialog.js:158 src/placeView.js:362
 msgid "Website"
 msgstr "Website"
 
@@ -1054,7 +1222,7 @@ msgstr "Miscellaneous"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:871
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1064,11 +1232,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:617
+#: src/osmEditDialog.js:204 src/placeView.js:596
 msgid "Population"
 msgstr "Population"
 
-#: src/osmEditDialog.js:209 src/placeView.js:646
+#: src/osmEditDialog.js:209 src/placeView.js:625
 msgid "Altitude"
 msgstr "Altitude"
 
@@ -1236,144 +1404,143 @@ msgstr "Couldn't find Wikidata tag for article"
 #. Translators: This represents the title for places tagged with the
 #. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
 #.
-#: src/osmTypes.js:45
+#: src/osmTypes.js:46
 msgid "Aerialway"
 msgstr "Aerialway"
 
 #. Translators: This represents the title for places tagged with the
 #. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
 #.
-#: src/osmTypes.js:49
+#: src/osmTypes.js:50
 msgid "Aeroway"
 msgstr "Aeroway"
 
 #. Translators: This represents the title for places tagged with the
 #. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
 #.
-#: src/osmTypes.js:53
+#: src/osmTypes.js:54
 msgid "Amenity"
 msgstr "Amenity"
 
 #. Translators: This represents the title for places tagged with the
 #. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
 #.
-#: src/osmTypes.js:57
+#: src/osmTypes.js:58
 msgid "Barrier"
 msgstr "Barrier"
 
 #. Translators: This represents the title for places tagged with the
 #. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
 #.
-#: src/osmTypes.js:61
+#: src/osmTypes.js:62
 msgid "Road"
 msgstr "Road"
 
 #. Translators: This represents the title for places tagged with the
 #. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
 #.
-#: src/osmTypes.js:65
+#: src/osmTypes.js:66
 msgid "Historic"
 msgstr "Historic"
 
 #. Translators: This represents the title for places tagged with the
 #. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
 #.
-#: src/osmTypes.js:69
+#: src/osmTypes.js:70
 msgid "Leisure"
 msgstr "Leisure"
 
 #. Translators: This represents the title for places tagged with the
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
 #.
-#: src/osmTypes.js:73
+#: src/osmTypes.js:74
 msgid "Office"
 msgstr "Office"
 
 #. Translators: This represents the title for places tagged with the
 #. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
 #.
-#: src/osmTypes.js:77
+#: src/osmTypes.js:78
 msgid "Place"
 msgstr "Place"
 
 #. Translators: This represents the title for places tagged with the
 #. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
 #.
-#: src/osmTypes.js:81
+#: src/osmTypes.js:82
 msgid "Railway"
 msgstr "Railway"
 
 #. Translators: This represents the title for places tagged with the
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
 #.
-#: src/osmTypes.js:85
+#: src/osmTypes.js:86
 msgid "Shop"
 msgstr "Shop"
 
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "Tourism"
 
 #. Translators: "Other" refers to points-of-interest where we don't have
 #. * a known title corresponding to the raw OpenStreetMap tag
 #.
-#: src/osmTypes.js:101
+#: src/osmTypes.js:102
 msgid "Other"
 msgstr "Other"
 
-#: src/osmTypes.js:209
+#: src/osmTypes.js:210
 msgid "Funicular station"
 msgstr "Funicular station"
 
-#: src/osmTypes.js:211
+#: src/osmTypes.js:212
 msgid "Light rail stop"
 msgstr "Light rail stop"
 
-#: src/osmTypes.js:213
-#| msgid "More Information"
+#: src/osmTypes.js:214
 msgid "Monorail station"
 msgstr "Monorail station"
 
-#: src/osmTypes.js:215 src/osmTypes.js:225
-#| msgid "Railway"
+#: src/osmTypes.js:216 src/osmTypes.js:226
 msgid "Railway station"
 msgstr "Railway station"
 
-#: src/osmTypes.js:217
-#| msgid "Train & Subway Stations"
+#: src/osmTypes.js:218
 msgid "Subway station"
 msgstr "Subway station"
 
-#: src/osmTypes.js:221
-#| msgid "Railway"
+#: src/osmTypes.js:222
 msgid "Railway halt"
 msgstr "Railway halt"
 
-#: src/osmTypes.js:223
-#| msgid "_Trams"
+#: src/osmTypes.js:224
 msgid "Tram stop"
 msgstr "Tram stop"
+
+#: src/osmTypes.js:233 src/osmTypes.js:242
+msgid "Public transportation stop"
+msgstr "Public transportation stop"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
 msgstr "Unnamed place"
 
-#: src/placeEntry.js:150
+#: src/placeEntry.js:148
 msgid "Clear Entry"
 msgstr "Clear Entry"
 
-#: src/placeEntry.js:321
+#: src/placeEntry.js:319
 msgid "Failed to parse Geo URI"
 msgstr "Failed to parse Geo URI"
 
-#: src/placeEntry.js:334
+#: src/placeEntry.js:332
 msgid "Failed to parse Maps URI"
 msgstr "Failed to parse Maps URI"
 
-#: src/placeFormatter.js:57 src/placeView.js:243 src/placeView.js:369
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
 msgid "Coordinates"
 msgstr "Coordinates"
 
@@ -1391,12 +1558,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:375
+#: src/placeView.js:354
 msgid "Accuracy"
 msgstr "Accuracy"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:378
+#: src/placeView.js:357
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Accuracy: %s"
@@ -1407,7 +1574,7 @@ msgstr "Accuracy: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:397
+#: src/placeView.js:376
 msgid "Phone number"
 msgstr "Phone number"
 
@@ -1418,16 +1585,16 @@ msgstr "Phone number"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:431 src/placeView.js:470
+#: src/placeView.js:410 src/placeView.js:449
 msgid "Floor"
 msgstr "Floor"
 
-#: src/placeView.js:433
+#: src/placeView.js:412
 #, javascript-format
 msgid "Floor %s"
 msgstr "Floor %s"
 
-#: src/placeView.js:445
+#: src/placeView.js:424
 msgid "At ground level"
 msgstr "At ground level"
 
@@ -1436,7 +1603,7 @@ msgstr "At ground level"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:454
+#: src/placeView.js:433
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1448,7 +1615,7 @@ msgstr[1] "%s floors above ground level"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:465
+#: src/placeView.js:444
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1459,7 +1626,7 @@ msgstr[1] "%s floors below ground level"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:483
+#: src/placeView.js:462
 msgid "Offers takeout"
 msgstr "Offers takeaway"
 
@@ -1467,7 +1634,7 @@ msgstr "Offers takeaway"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:491
+#: src/placeView.js:470
 msgid "Does not offer takeout"
 msgstr "Does not offer takeaway"
 
@@ -1476,18 +1643,18 @@ msgstr "Does not offer takeaway"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:500
+#: src/placeView.js:479
 msgid "Only offers takeout"
 msgstr "Only offers takeaway"
 
-#: src/placeView.js:507
+#: src/placeView.js:486
 msgid "Opening hours"
 msgstr "Opening hours"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:517
+#: src/placeView.js:496
 msgid "Public internet access"
 msgstr "Public internet access"
 
@@ -1495,50 +1662,50 @@ msgstr "Public internet access"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:526
+#: src/placeView.js:505
 msgid "No internet access"
 msgstr "No internet access"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:534
+#: src/placeView.js:513
 msgid "Public Wi-Fi"
 msgstr "Public Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:542
+#: src/placeView.js:521
 msgid "Wired internet access"
 msgstr "Wired internet access"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:550
+#: src/placeView.js:529
 msgid "Computers available for use"
 msgstr "Computers available for use"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:558
+#: src/placeView.js:537
 msgid "Internet assistance available"
 msgstr "Internet assistance available"
 
-#: src/placeView.js:564
+#: src/placeView.js:543
 msgid "No toilets available"
 msgstr "No toilets available"
 
-#: src/placeView.js:567
+#: src/placeView.js:546
 msgid "Toilets available"
 msgstr "Toilets available"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:576
+#: src/placeView.js:555
 msgid "Wheelchair accessible"
 msgstr "Wheelchair accessible"
 
@@ -1547,7 +1714,7 @@ msgstr "Wheelchair accessible"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:586
+#: src/placeView.js:565
 msgid "Limited wheelchair accessibility"
 msgstr "Limited wheelchair accessibility"
 
@@ -1555,7 +1722,7 @@ msgstr "Limited wheelchair accessibility"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:595
+#: src/placeView.js:574
 msgid "Not wheelchair accessible"
 msgstr "Not wheelchair accessible"
 
@@ -1564,7 +1731,7 @@ msgstr "Not wheelchair accessible"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:605
+#: src/placeView.js:584
 msgid "Designated for wheelchair users"
 msgstr "Designated for wheelchair users"
 
@@ -1573,7 +1740,7 @@ msgstr "Designated for wheelchair users"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:636
+#: src/placeView.js:615
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s below sea level"
@@ -1582,16 +1749,16 @@ msgstr "%s below sea level"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:643
+#: src/placeView.js:622
 msgid "At sea level"
 msgstr "At sea level"
 
-#: src/placeView.js:655
+#: src/placeView.js:634
 msgid "Religion:"
 msgstr "Religion:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:660
+#: src/placeView.js:639
 #, javascript-format
 msgid "Exit %s"
 msgstr "Exit %s"
@@ -1605,15 +1772,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:664
+#: src/place.js:670
 msgid "Place not found in OpenStreetMap"
 msgstr "Place not found in OpenStreetMap"
 
-#: src/place.js:671
+#: src/place.js:677
 msgid "Coordinates in URL are not valid"
 msgstr "Coordinates in URL are not valid"
 
-#: src/place.js:680
+#: src/place.js:686
 msgid "URL is not supported"
 msgstr "URL is not supported"
 
@@ -1889,7 +2056,7 @@ msgstr "Outdoor Gyms"
 msgid "Golf Courses"
 msgstr "Golf Courses"
 
-#: src/printLayout.js:222
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "From %s to %s"
@@ -1933,22 +2100,28 @@ msgstr "Reverse route"
 msgid "To"
 msgstr "To"
 
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: src/routeView.js:341
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Estimated time: %s"
+
 #: src/searchBar.js:42
 msgid "Search"
 msgstr "Search"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:88
+#: src/sendToDialog.js:83
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Add %s to %s"
 
-#: src/sendToDialog.js:187
+#: src/sendToDialog.js:182
 msgid "Failed to open URI"
 msgstr "Failed to open URI"
 
-#: src/sendToDialog.js:252
+#: src/sendToDialog.js:247
 #, javascript-format
 msgid "Open with %s"
 msgstr "Open with %s"
@@ -1957,38 +2130,10 @@ msgstr "Open with %s"
 msgid "failed to load file"
 msgstr "failed to load file"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:343
-#, javascript-format
-msgid "Estimated time: %s"
-msgstr "Estimated time: %s"
-
-#: src/sidebar.js:413
-#, javascript-format
-msgid "Itineraries provided by %s"
-msgstr "Itineraries provided by %s"
-
-#. Translators: this is a format string indicating instructions
-#. * starting a journey at the address given as the parameter
-#.
-#: src/transit.js:39
-#, javascript-format
-msgid "Start at %s"
-msgstr "Start at %s"
-
-#. Translators: this indicates starting a journey at a location
-#. * with no set name (such as when the user started routing from
-#. * an arbitrary point on the map)
-#.
-#: src/transit.js:45 src/transitplugins/motis2.js:330
-#: src/transitplugins/openTripPlanner2.js:240
-msgid "Start"
-msgstr "Start"
-
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:63
+#: src/transit.js:55
 #, javascript-format
 msgid "Walk %s"
 msgstr "Walk %s"
@@ -1996,24 +2141,34 @@ msgstr "Walk %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:77
+#: src/transit.js:69
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Arrive at %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:349
-#: src/transitplugins/openTripPlanner.js:1179
-#: src/transitplugins/openTripPlanner2.js:259
-msgid "Arrive"
-msgstr "Arrive"
+#. Translators: this a format string indicating departing from the
+#. * destination of journey with the departure address and transit
+#. * stop as the format parameter
+#: src/transit.js:83
+#, javascript-format
+msgid "Start at %s"
+msgstr "Start at %s"
 
-#: src/transitLegRow.js:70
-msgid "Show walking instructions"
-msgstr "Show walking instructions"
+#: src/transitLegHeader.js:100
+msgid "Hide intermediate stops and information"
+msgstr "Hide intermediate stops and information"
 
-#: src/transitLegRow.js:71
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Hide walking instructions"
+
+#: src/transitLegHeader.js:103
+msgid "Show intermediate stops and information"
+msgstr "Show intermediate stops and information"
+
+#: src/transitLegHeader.js:104
+msgid "Show walking instructions"
+msgstr "Show walking instructions"
 
 #: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
@@ -2035,25 +2190,17 @@ msgstr "No later alternatives found."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:208
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
-
-#: src/transitPlan.js:173
-msgid "No timetable data found for this route."
-msgstr "No timetable data found for this route."
-
-#: src/transitPlan.js:181
-msgid "No provider found for this route."
-msgstr "No provider found for this route."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:302
+#: src/transitPlan.js:241
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -2062,7 +2209,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:337
+#: src/transitPlan.js:267
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2073,7 +2220,7 @@ msgstr[1] "%s minutes"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:349
+#: src/transitPlan.js:279
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -2084,7 +2231,7 @@ msgstr[1] "%s hours"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:357
+#: src/transitPlan.js:287
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -2097,7 +2244,7 @@ msgstr[1] "%s:%s hours"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:758
+#: src/transitPlan.js:598
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2197,19 +2344,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:269
+#: src/utils.js:262
 msgid "Unknown"
 msgstr "Unknown"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:272
+#: src/utils.js:265
 msgid "Exact"
 msgstr "Exact"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:328
+#: src/utils.js:321
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2218,7 +2365,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:327
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2229,7 +2376,7 @@ msgstr[1] "%s h %s mins"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:341
+#: src/utils.js:334
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2240,7 +2387,7 @@ msgstr[1] "%s mins"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:347
+#: src/utils.js:340
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2248,640 +2395,25 @@ msgstr[0] "%s s"
 msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:359
+#: src/utils.js:352
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:362
+#: src/utils.js:355
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:370
+#: src/utils.js:363
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:373
+#: src/utils.js:366
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
-
-#: src/transitplugins/motis2.js:361
-#, javascript-format
-msgid "Take the stairs to level %s"
-msgstr "Take the stairs to level %s"
-
-#: src/transitplugins/motis2.js:362
-msgid "Take the stairs"
-msgstr "Take the stairs"
-
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
-#: src/transitplugins/openTripPlanner2.js:270
-#, javascript-format
-msgid "Continue on %s"
-msgstr "Continue on %s"
-
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
-#: src/transitplugins/openTripPlanner2.js:274
-#, javascript-format
-msgid "Turn left on %s"
-msgstr "Turn left on %s"
-
-#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
-#: src/transitplugins/openTripPlanner2.js:275
-msgid "Turn left"
-msgstr "Turn left"
-
-#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
-#: src/transitplugins/openTripPlanner2.js:279
-#, javascript-format
-msgid "Turn slightly left on %s"
-msgstr "Turn slightly left on %s"
-
-#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
-#: src/transitplugins/openTripPlanner2.js:280
-msgid "Turn slightly left"
-msgstr "Turn slightly left"
-
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
-#: src/transitplugins/openTripPlanner2.js:284
-#, javascript-format
-msgid "Turn sharp left on %s"
-msgstr "Turn sharp left on %s"
-
-#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
-#: src/transitplugins/openTripPlanner2.js:285
-msgid "Turn sharp left"
-msgstr "Turn sharp left"
-
-#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
-#: src/transitplugins/openTripPlanner2.js:288
-#, javascript-format
-msgid "Turn right on %s"
-msgstr "Turn right on %s"
-
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
-#: src/transitplugins/openTripPlanner2.js:289
-msgid "Turn right"
-msgstr "Turn right"
-
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
-#: src/transitplugins/openTripPlanner2.js:293
-#, javascript-format
-msgid "Turn slightly right on %s"
-msgstr "Turn slightly right on %s"
-
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
-#: src/transitplugins/openTripPlanner2.js:294
-msgid "Turn slightly right"
-msgstr "Turn slightly right"
-
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
-#: src/transitplugins/openTripPlanner2.js:298
-#, javascript-format
-msgid "Turn sharp right on %s"
-msgstr "Turn sharp right on %s"
-
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
-#: src/transitplugins/openTripPlanner2.js:299
-msgid "Turn sharp right"
-msgstr "Turn sharp right"
-
-#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
-#: src/transitplugins/openTripPlanner2.js:306
-#, javascript-format
-msgid "At the roundabout, take exit %s"
-msgstr "At the roundabout, take exit %s"
-
-#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
-#: src/transitplugins/openTripPlanner2.js:309
-#, javascript-format
-msgid "At the roundabout, take exit to %s"
-msgstr "At the roundabout, take exit to %s"
-
-#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
-#: src/transitplugins/openTripPlanner2.js:311
-msgid "Take the roundabout"
-msgstr "Take the roundabout"
-
-#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
-#: src/transitplugins/openTripPlanner2.js:319
-#, javascript-format
-msgid "Take the elevator and get off at %s"
-msgstr "Take the lift and get off at %s"
-
-#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
-#: src/transitplugins/openTripPlanner2.js:320
-msgid "Take the elevator"
-msgstr "Take the lift"
-
-#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
-#: src/transitplugins/openTripPlanner2.js:324
-#, javascript-format
-msgid "Make a left u-turn onto %s"
-msgstr "Make a left u-turn onto %s"
-
-#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
-#: src/transitplugins/openTripPlanner2.js:325
-msgid "Make a left u-turn"
-msgstr "Make a left u-turn"
-
-#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
-#: src/transitplugins/openTripPlanner2.js:329
-#, javascript-format
-msgid "Make a right u-turn onto %s"
-msgstr "Make a right u-turn onto %s"
-
-#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
-#: src/transitplugins/openTripPlanner2.js:330
-msgid "Make a right u-turn"
-msgstr "Make a right u-turn"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to street view"
-#~ msgstr "Switch to street view"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to aerial view"
-#~ msgstr "Switch to aerial view"
-
-#~ msgid "Could not find user element"
-#~ msgstr "Could not find user element"
-
-#~ msgid "Add Location"
-#~ msgstr "Add Location"
-
-#~ msgid "Pedestrian"
-#~ msgstr "Pedestrian"
-
-#~ msgid "Bike"
-#~ msgstr "Bike"
-
-#~ msgid "Car"
-#~ msgstr "Car"
-
-#~ msgid "Postal code"
-#~ msgstr "Postal code"
-
-#~ msgctxt "dialog title"
-#~ msgid "Edit on OpenStreetMap"
-#~ msgstr "Edit on OpenStreetMap"
-
-#~| msgid "Add Field"
-#~ msgid "_Add Field"
-#~ msgstr "_Add Field"
-
-#~ msgid "Comment"
-#~ msgstr "Comment"
-
-#~| msgid "Next"
-#~ msgid "_Next"
-#~ msgstr "_Next"
-
-#~ msgid "Article"
-#~ msgstr "Article"
-
-#~ msgid "The official name. This is typically what appears on signs."
-#~ msgstr "The official name. This is typically what appears on signs."
-
-#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
-#~ msgstr "This is not a valid URL. Make sure to include http:// or https://."
-
-#~ msgid ""
-#~ "The official website. Try to use the most basic form of a URL i.e. http://"
-#~ "example.com instead of http://example.com/index.html."
-#~ msgstr ""
-#~ "The official website. Try to use the most basic form of a URL i.e. http://"
-#~ "example.com instead of http://example.com/index.html."
-
-#~ msgid ""
-#~ "Phone number. Use the international format, starting with a + sign. "
-#~ "Beware of local privacy laws, especially for private phone numbers."
-#~ msgstr ""
-#~ "Phone number. Use the international format, starting with a + sign. "
-#~ "Beware of local privacy laws, especially for private phone numbers."
-
-#~ msgid ""
-#~ "This is not a valid email address. Make sure to not include the mailto: "
-#~ "protocol prefix."
-#~ msgstr ""
-#~ "This is not a valid email address. Make sure to not include the mailto: "
-#~ "protocol prefix."
-
-#~ msgid ""
-#~ "Contact email address for inquiries. Add only email addresses that are "
-#~ "intended to be publicly used."
-#~ msgstr ""
-#~ "Contact email address for inquiries. Only add email addresses that are "
-#~ "intended to be publicly used."
-
-#~ msgid "See the link in the label for help on format."
-#~ msgstr "See the link in the label for help on format."
-
-#~ msgid ""
-#~ "Information used to inform other mappers about non-obvious information "
-#~ "about an element, the author’s intent when creating it, or hints for "
-#~ "further improvement."
-#~ msgstr ""
-#~ "Information used to inform other mappers about non-obvious information "
-#~ "about an element, the author’s intent when creating it, or hints for "
-#~ "further improvement."
-
-#~ msgid "Select Type"
-#~ msgstr "Select Type"
-
-#~| msgid "Done"
-#~ msgid "_Done"
-#~ msgstr "_Done"
-
-#~ msgid "Next"
-#~ msgstr "Next"
-
-#~ msgid "Remove"
-#~ msgstr "Remove"
-
-#~ msgid ""
-#~ "The format used should include the language code and the article title "
-#~ "like “en:Article title”."
-#~ msgstr ""
-#~ "The format used should include the language code and the article title "
-#~ "like “en:Article title”."
-
-#~ msgid ""
-#~ "Use the reload button to load the Wikidata tag for the selected article"
-#~ msgstr ""
-#~ "Use the reload button to load the Wikidata tag for the selected article"
-
-#~ msgid "Copy"
-#~ msgstr "Copy"
-
-#~ msgid "_Open"
-#~ msgstr "_Open"
-
-#~ msgid "This plugin doesn't support latest arrival"
-#~ msgstr "This plug-in doesn't support latest arrival"
-
-#~ msgid "What's Here?"
-#~ msgstr "What's Here?"
-
-#~ msgid "Enable Experimental Map"
-#~ msgstr "Enable Experimental Map"
-
-#~ msgid "Nothing found here!"
-#~ msgstr "Nothing found here!"
-
-#~ msgid "E-mail"
-#~ msgstr "E-mail"
-
-#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-#~ msgstr "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-
-#~ msgid ""
-#~ "Sign in to authorize access in a web browser.\n"
-#~ "Then fill in the obtained verification code here in the next step."
-#~ msgstr ""
-#~ "Sign in to authorise access in a web browser.\n"
-#~ "Then fill in the obtained verification code here in the next step."
-
-#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-#~ msgstr "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-
-#~ msgid "Sign up"
-#~ msgstr "Sign up"
-
-#~ msgid "Filesystem is read only"
-#~ msgstr "Filesystem is read only"
-
-#~ msgid "You do not have permission to save there"
-#~ msgstr "You do not have permission to save there"
-
-#~ msgid "The directory does not exist"
-#~ msgstr "The directory does not exist"
-
-#~ msgid ""
-#~ "Location was added to the map, note that it may take a while before it "
-#~ "shows on the map and in search results."
-#~ msgstr ""
-#~ "Location was added to the map, note that it may take a while before it "
-#~ "shows on the map and in search results."
-
-#~ msgid "Takeaway"
-#~ msgstr "Takeaway"
-
-#~ msgid "GNOME Maps"
-#~ msgstr "GNOME Maps"
-
-#~ msgid "Foursquare check-in privacy setting"
-#~ msgstr "Foursquare check-in privacy setting"
-
-#~ msgid ""
-#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
-#~ "public, followers or private."
-#~ msgstr ""
-#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
-#~ "public, followers or private."
-
-#~ msgid "Foursquare check-in Facebook broadcasting"
-#~ msgstr "Foursquare check-in Facebook broadcasting"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
-#~ "Facebook account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
-#~ "Facebook account associated with the Foursquare account."
-
-#~ msgid "Foursquare check-in Twitter broadcasting"
-#~ msgstr "Foursquare check-in Twitter broadcasting"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
-#~ "Twitter account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
-#~ "Twitter account associated with the Foursquare account."
-
-#~ msgid "Night mode"
-#~ msgstr "Night mode"
-
-#~ msgid "Whether the application is in night mode."
-#~ msgstr "Whether the application is in night mode."
-
-#~ msgid "Use hybrid aerial tiles"
-#~ msgstr "Use hybrid aerial tiles"
-
-#~ msgid "Whether aerial tiles should use hybrid style (with labels)."
-#~ msgstr "Whether aerial tiles should use hybrid style (with labels)."
-
-#~ msgid "Post on Facebook"
-#~ msgstr "Post on Facebook"
-
-#~ msgid "Post on Twitter"
-#~ msgstr "Post on Twitter"
-
-#~ msgid "C_heck in"
-#~ msgstr "C_heck in"
-
-#~ msgid "Public"
-#~ msgstr "Public"
-
-#~ msgid "Private"
-#~ msgstr "Private"
-
-#~ msgid "Include route and markers"
-#~ msgstr "Include route and markers"
-
-#~ msgid "Go to current location"
-#~ msgstr "Go to current location"
-
-#~ msgid "Choose map type"
-#~ msgstr "Choose map type"
-
-#~ msgid "Zoom in"
-#~ msgstr "Zoom in"
-
-#~ msgid "Night Mode"
-#~ msgstr "Night Mode"
-
-#~ msgid "Maps is offline!"
-#~ msgstr "Maps is offline!"
-
-#~ msgid ""
-#~ "Maps need an active internet connection to function properly, but one "
-#~ "can’t be found."
-#~ msgstr ""
-#~ "Maps need an active internet connection to function properly, but one "
-#~ "can’t be found."
-
-#~ msgid "Check your connection and proxy settings."
-#~ msgstr "Check your connection and proxy settings."
-
-#~ msgid "Password"
-#~ msgstr "Password"
-
-#~ msgid ""
-#~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
-#~ "password\">OpenStreetMap</a> to reset your password."
-#~ msgstr ""
-#~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
-#~ "password\">OpenStreetMap</a> to reset your password."
-
-#~ msgid "Drag to change order of the route"
-#~ msgstr "Drag to change order of the route"
-
-#~ msgid "Check In…"
-#~ msgstr "Check In…"
-
-#~ msgid "Ignore network availability"
-#~ msgstr "Ignore network availability"
-
-#~ msgid "Select an account"
-#~ msgstr "Select an account"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Foursquare. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Maps cannot find the place to check in to with Foursquare. Please select "
-#~ "one from this list."
-
-#, javascript-format
-#~ msgid "Check in to %s"
-#~ msgstr "Check in to %s"
-
-#, javascript-format
-#~ msgid "Write an optional message to check in to %s."
-#~ msgstr "Write an optional message to check in to %s."
-
-#, javascript-format
-#~ msgid "Cannot find “%s” in the social service"
-#~ msgstr "Cannot find “%s” in the social service"
-
-#~ msgid "Cannot find a suitable place to check-in in this location"
-#~ msgstr "Cannot find a suitable place to check-in in this location"
-
-#~ msgid ""
-#~ "Credentials have expired, please open Online Accounts to sign in and "
-#~ "enable this account"
-#~ msgstr ""
-#~ "Credentials have expired, please open Online Accounts to sign in and "
-#~ "enable this account"
-
-#~ msgid "A map application for GNOME"
-#~ msgstr "A map application for GNOME"
-
-#~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near "
-#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-#~ msgstr ""
-#~ "You can even search for specific types of locations, such as “Pubs near "
-#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-
-#~ msgid "Facebook check-in privacy setting"
-#~ msgstr "Facebook check-in privacy setting"
-
-#~ msgid ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: "
-#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-#~ msgstr ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: "
-#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-
-#~ msgid "Everyone"
-#~ msgstr "Everyone"
-
-#~ msgid "Friends of friends"
-#~ msgstr "Friends of friends"
-
-#~ msgid "Just friends"
-#~ msgstr "Just friends"
-
-#~ msgid "Just me"
-#~ msgstr "Just me"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select "
-#~ "one from this list."
-
-#~ msgid "Find a Route"
-#~ msgstr "Find a Route"
-
-#~ msgid "Check in here"
-#~ msgstr "Check in here"
-
-#~ msgid "Population:"
-#~ msgstr "Population:"
-
-#~ msgid "Altitude:"
-#~ msgstr "Altitude:"
-
-#~ msgid "Opening hours:"
-#~ msgstr "Opening hours:"
-
-#~ msgid "Internet access:"
-#~ msgstr "Internet access:"
-
-#~ msgid "Toilets:"
-#~ msgstr "Toilets:"
-
-#~ msgid "Wheelchair access:"
-#~ msgstr "Wheelchair access:"
-
-#~ msgid "Phone:"
-#~ msgstr "Phone:"
-
-#~ msgid "yes"
-#~ msgstr "yes"
-
-#~ msgid "limited"
-#~ msgstr "limited"
-
-#~ msgid "no"
-#~ msgstr "no"
-
-#~ msgid "designated"
-#~ msgstr "designated"
-
-#~ msgid "OpenStreetMap URL is not valid"
-#~ msgstr "OpenStreetMap URL is not valid"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s %s"
-#~ msgstr "%s %s %s"
-
-#~ msgctxt "time range component"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgid "wired"
-#~ msgstr "wired"
-
-#~ msgid "terminal"
-#~ msgstr "terminal"
-
-#~ msgid "service"
-#~ msgstr "service"
-
-#~ msgid "Primary menu"
-#~ msgstr "Primary menu"
-
-#~ msgid "Don’t have an account?"
-#~ msgstr "Don’t have an account?"
-
-#~ msgid "%f h"
-#~ msgstr "%f h"
-
-#~ msgid "%f min"
-#~ msgstr "%f min"
-
-#~ msgid "%f s"
-#~ msgstr "%f s"
-
-#~ msgid "Add destination"
-#~ msgstr "Add destination"
-
-#~ msgid "Route search by OpenTripPlanner"
-#~ msgstr "Route search by OpenTripPlanner"
-
-#~ msgid "Quit"
-#~ msgstr "Quit"
-
-#~ msgid "Load Map Layer"
-#~ msgstr "Load Map Layer"
-
-#~ msgid "Open with another application"
-#~ msgstr "Open with another application"
-
-#~ msgid "Press enter to search"
-#~ msgstr "Press enter to search"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "%f km"
-#~ msgstr "%f km"
-
-#~ msgid "%f m"
-#~ msgstr "%f m"
-
-#~ msgid "%f mi"
-#~ msgstr "%f mi"
-
-#~ msgid "%f ft"
-#~ msgstr "%f ft"
-
-#~ msgid "Last known location and accuracy"
-#~ msgstr "Last known location and accuracy"
-
-#~ msgid ""
-#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
-#~ "meters)."
-#~ msgstr ""
-#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
-#~ "metres)."
-
-#~ msgid "Description of last known location of user."
-#~ msgstr "Description of last known location of user."
-
-#~ msgid "Last known location was set manually by user."
-#~ msgstr "Whether the last known location was set manually by the user."
-
-#~ msgid "Satellite"
-#~ msgstr "Satellite"
-
-#~ msgid " km²"
-#~ msgstr " km²"
