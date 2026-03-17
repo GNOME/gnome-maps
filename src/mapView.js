@@ -676,6 +676,10 @@ export class MapView extends Gtk.Overlay {
         if (osmTags?.['railway'] === 'station')
             osmTags['station'] = symbol.get_tag('subclass');
 
+        // set highway tag from symbol, for symbols from the transportation layer
+        if (layerName === 'transportation_name')
+            osmTags['highway'] = className;
+
         place.osmTags = osmTags;
 
         this.showPlace(place, false, true);
