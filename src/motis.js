@@ -30,13 +30,16 @@ import Soup from 'gi://Soup';
 
 import * as Epaf from './epaf.js';
 import * as HVT from './hvt.js';
+import {Itinerary} from './transit/itinerary.js';
+import {Leg} from './transit/leg.js';
 import {Location} from './location.js';
 import {Place} from './place.js';
 import {Query} from './http.js';
+import {RouteType} from './transit/routeType.js';
 import {TransitPlace} from './transitPlace.js';
 import {TurnPoint} from './route.js';
 import * as Time from './time.js';
-import {Itinerary, Leg, RouteType, Stop} from './transitPlan.js';
+import {Stop} from './transit/stop.js';
 import * as Utils from './utils.js';
 
 const _ = gettext.gettext;

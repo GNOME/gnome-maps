@@ -25,9 +25,9 @@ import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
 import * as HVT from './hvt.js';
+import {RouteType} from './transit/routeType.js';
 import * as Time from './time.js';
 import {TransitOptions} from './transitOptions.js';
-import * as TransitPlan from './transitPlan.js';
 
 const _timeFormat12 = new Intl.DateTimeFormat([], { hour:     '2-digit',
                                                   minute:   '2-digit',
@@ -244,15 +244,15 @@ export class TransitOptionsPanel extends Gtk.Grid {
             options.showAllTransitTypes = true;
         } else {
             if (busSelected)
-                options.addTransitType(TransitPlan.RouteType.BUS);
+                options.addTransitType(RouteType.BUS);
             if (tramSelected)
-                options.addTransitType(TransitPlan.RouteType.TRAM);
+                options.addTransitType(RouteType.TRAM);
             if (trainSelected)
-                options.addTransitType(TransitPlan.RouteType.TRAIN);
+                options.addTransitType(RouteType.TRAIN);
             if (subwaySelected)
-                options.addTransitType(TransitPlan.RouteType.SUBWAY);
+                options.addTransitType(RouteType.SUBWAY);
             if (ferrySelected)
-                options.addTransitType(TransitPlan.RouteType.FERRY);
+                options.addTransitType(RouteType.FERRY);
             if (airplaneSelected)
                 options.addTransitType(HVT.AIR_SERVICE);
         }

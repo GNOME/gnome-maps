@@ -29,7 +29,7 @@ import * as Color from './color.js';
 import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
 import {Place} from './place.js';
-import * as TransitPlan from './transitPlan.js';
+import * as Constants from './transit/constants.js';
 import * as Utils from './utils.js';
 
 const ICON_SIZE = 16;
@@ -88,11 +88,11 @@ export class CircleIconMarker extends IconMarker {
         try {
             const bgColor = this._color ??
                             (this._styleManager.dark ?
-                             TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
-                             TransitPlan.DEFAULT_ROUTE_COLOR);
+                             Constants.DEFAULT_DARK_ROUTE_COLOR :
+                             Constants.DEFAULT_ROUTE_COLOR);
             const defaultTextColor =
-                this._styleManager.dark ? TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                                          TransitPlan.DEFAULT_ROUTE_TEXT_COLOR;
+                this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                          Constants.DEFAULT_ROUTE_TEXT_COLOR;
             const fgColor =
                 Color.getContrastingForegroundColor(bgColor, this._textColor ??
                                                              defaultTextColor);

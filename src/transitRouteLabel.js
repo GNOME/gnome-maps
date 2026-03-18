@@ -28,7 +28,7 @@ import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
 
 import * as Color from './color.js';
-import * as TransitPlan from './transitPlan.js';
+import * as Constants from './transit/constants.js';
 
 /* threshold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
@@ -117,12 +117,12 @@ export class TransitRouteLabel extends Gtk.Box {
 
         const usingDarkTheme = this._styleManager.dark;
         let color = this._leg.color ?? (usingDarkTheme ?
-                                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
-                                        TransitPlan.DEFAULT_ROUTE_COLOR);
+                                        Constants.DEFAULT_DARK_ROUTE_COLOR :
+                                        Constants.DEFAULT_ROUTE_COLOR);
         let textColor =
             this._leg.textColor ?? (usingDarkTheme ?
-                             TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                             TransitPlan.DEFAULT_ROUTE_TEXT_COLOR);
+                             Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                             Constants.DEFAULT_ROUTE_TEXT_COLOR);
 
         const usingHighContrastTheme =
             this._settings.gtk_theme_name === 'HighContrast' ||

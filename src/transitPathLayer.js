@@ -25,7 +25,7 @@ import GObject from 'gi://GObject';
 import Shumate from 'gi://Shumate';
 
 import * as Color from './color.js';
-import * as TransitPlan from './transitPlan.js';
+import * as Constants from './transit/constants.js';
 
 // line width for route lines
 const LINE_WIDTH = 5;
@@ -68,11 +68,11 @@ export class TransitPathLayer extends Shumate.PathLayer {
 
     _updateStyle() {
         const defaultColor =
-            this._styleManager.dark ? TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
-                                      TransitPlan.DEFAULT_ROUTE_COLOR;
+            this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_COLOR :
+                                      Constants.DEFAULT_ROUTE_COLOR;
         const defaultTextColor =
-            this._styleManager.dark ? TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                                      TransitPlan.DEFAULT_ROUTE_TEXT_COLOR;
+            this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                      Constants.DEFAULT_ROUTE_TEXT_COLOR;
         const color = this._leg.color ?? defaultColor;
         const outlineColor =
             Color.getContrastingForegroundColor(color,

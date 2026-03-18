@@ -28,7 +28,7 @@ import Gsk from 'gi://Gsk';
 import Pango from 'gi://Pango';
 
 import {InstructionRow} from './instructionRow.js';
-import { Stop } from './transitPlan.js';
+import {Stop} from './transit/stop.js';
 import {TransitStopRow} from './transitStopRow.js';
 import { TransitLegHeader } from './transitLegHeader.js';
 import { TransitRowTrackSegment } from './transitRowTrackSegment.js';

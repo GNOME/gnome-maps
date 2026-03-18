@@ -25,7 +25,7 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
-import * as Transit from './transit.js';
+import * as Transit from './transit/utils.js';
 import {TransitRouteLabel} from './transitRouteLabel.js';
 
 const _ = gettext.gettext;

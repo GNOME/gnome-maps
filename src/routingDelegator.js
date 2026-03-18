@@ -21,7 +21,7 @@
 
 import {GraphHopper} from './graphHopper.js';
 import {Transitous} from './transitous.js';
-import {Plan} from './transitPlan.js';
+import {Plan} from './transit/plan.js';
 import { Route } from './route.js';
 import { StoredRoute } from './storedRoute.js';
 

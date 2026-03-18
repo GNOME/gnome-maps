@@ -23,7 +23,7 @@ import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
-import * as Transit from './transit.js';
+import * as Transit from './transit/utils.js';
 
 export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
 

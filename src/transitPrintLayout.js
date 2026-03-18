@@ -27,10 +27,10 @@ import * as Color from './color.js';
 import * as Gfx from './gfx.js';
 import * as MapSource from './mapSource.js';
 import {PrintLayout} from './printLayout.js';
-import * as Transit from './transit.js';
+import * as Transit from './transit/utils.js';
 import {TransitArrivalMarker} from './transitArrivalMarker.js';
 import {TransitBoardMarker} from './transitBoardMarker.js';
-import * as TransitPlan from './transitPlan.js';
+import * as Constants from './transit/constants.js';
 import {TransitWalkMarker} from './transitWalkMarker.js';
 
 // All following constants are ratios of surface size to page size
@@ -102,8 +102,8 @@ export class TransitPrintLayout extends PrintLayout {
                        width - height - timeWidth, height / 2, Pango.Alignment.LEFT);
 
         if (leg.transit) {
-            let color = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
-            let textColor = leg.textColor ?? TransitPlan.DEFAULT_ROUTE_TEXT_COLOR;
+            let color = leg.color ?? Constants.DEFAULT_ROUTE_COLOR;
+            let textColor = leg.textColor ?? Constants.DEFAULT_ROUTE_TEXT_COLOR;
             let hasOutline = Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD;
             let routeText =
                 this._createTextLayout(cr, leg.route, width - height - timeWidth,
