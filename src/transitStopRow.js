@@ -24,6 +24,8 @@ import gettext from 'gettext';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
+
+import * as Time from './time.js';
 import { TransitRowTrackSegment } from './transitRowTrackSegment.js';
 
 const _ = gettext.gettext;
@@ -31,12 +33,21 @@ const _ = gettext.gettext;
 export class TransitStopRow extends Gtk.ListBoxRow {
 
     constructor({stop, final, colors, isHead, isTail, ...params}) {
+        const time = final ? stop.arrival : stop.departure;
+        const scheduledTime =
+            final ? stop.scheduledArrival : stop.scheduledDeparture;
+
         super(params);
 
-        this.stop = stop;
-        this._nameLabel.label = this.stop.name;
-        this._timeLabel.label = this.stop.prettyPrint({ isFinal: final });
-        
+        this._nameLabel.label = stop.name;
+        this._timeLabel.label = Time.formatDateTime(time);
+
+        if (!time.equal(scheduledTime)) {
+            this._scheduledTimeLabel.visible = true;
+            this._scheduledTimeLabel.label =
+                `<s>${Time.formatDateTime(scheduledTime)}</s>`;
+        }
+
         // Bold name of head and tail stops
         if (isHead || isTail) {
             let attrs = new Pango.AttrList();
@@ -60,5 +71,6 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',
     InternalChildren: [ 'trackSegmentContainer',
                         'nameLabel',
-                        'timeLabel' ]
+                        'timeLabel',
+                        'scheduledTimeLabel' ]
 }, TransitStopRow);

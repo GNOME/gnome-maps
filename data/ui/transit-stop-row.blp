@@ -30,16 +30,34 @@ template $Gjs_TransitStopRow: ListBoxRow {
       }
     }
 
-    Label timeLabel {
-      halign: end;
-      margin-top: 6;
-      margin-bottom: 6;
-      margin-end: 12;
+    Box {
+      orientation: horizontal;
 
-      styles [
-        "dimmed",
-        "numeric",
-      ]
+      Label scheduledTimeLabel {
+        visible: false;
+        halign: end;
+        margin-top: 6;
+        margin-bottom: 6;
+        margin-end: 6;
+        use-markup: true;
+
+        styles [
+          "dimmed",
+          "numeric",
+        ]
+      }
+
+      Label timeLabel {
+        halign: end;
+        margin-top: 6;
+        margin-bottom: 6;
+        margin-end: 12;
+
+        styles [
+          "dimmed",
+          "numeric",
+        ]
+      }
 
       layout {
         column: 2;
