@@ -26,19 +26,30 @@ import {TransitPlace} from '../transitPlace.js';
 
 export class Stop extends TransitPlace {
 
-    constructor({ arrival, departure, ...params }) {
+    constructor({ arrival, scheduledArrival,
+                  departure, scheduledDeparture, ...params }) {
         super(params);
 
         this._arrival = arrival;
+        this._scheduledArrival = scheduledArrival;
         this._departure = departure;
+        this._scheduledDeparture = scheduledDeparture;
     }
 
     get arrival() {
         return this._arrival;
     }
 
+    get scheduledArrival() {
+        return this._scheduledArrival;
+    }
+
     get departure() {
         return this._departure;
+    }
+
+    get scheduledDeparture() {
+        return this._scheduledDeparture;
     }
 
     prettyPrint(params) {
