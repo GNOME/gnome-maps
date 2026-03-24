@@ -56,6 +56,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             const fromStop = new Stop({
                 name: this._leg.from.name,
                 departure: this._leg.departure,
+                scheduledDeparture: this._leg.scheduledDeparture,
                 location: this._leg.from.location,
                 id: this._leg.from.id,
                 modes: this._leg.from.modes
@@ -75,6 +76,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             const toStop = new Stop({
                 name: this._leg.to.name,
                 arrival: this._leg.arrival,
+                scheduledArrival: this._leg.scheduledArrival,
                 location: this._leg.to.location,
                 id: this._leg.to.id,
                 modes: this._leg.to.modes
