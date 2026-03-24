@@ -61,32 +61,16 @@ export class Leg {
         return this._route;
     }
 
-    set route(route) {
-        this._route = route;
-    }
-
     get routeType() {
         return this._routeType;
-    }
-
-    set routeType(routeType) {
-        this._routeType = routeType;
     }
 
     get departure() {
         return this._departure;
     }
 
-    set departure(departure) {
-        this._departure = departure;
-    }
-
     get arrival() {
         return this._arrival;
-    }
-
-    set arrival(arrival) {
-        this._arrival = arrival;
     }
 
     get polyline() {
@@ -94,10 +78,6 @@ export class Leg {
             this._createPolyline();
 
         return this._polyline;
-    }
-
-    set polyline(polyline) {
-        this._polyline = polyline;
     }
 
     get fromCoordinate() {
@@ -120,10 +100,6 @@ export class Leg {
         return this._intermediateStops;
     }
 
-    set intermediateStops(intermediateStops) {
-        this._intermediateStops = intermediateStops;
-    }
-
     get headsign() {
         return this._headsign;
     }
@@ -134,10 +110,6 @@ export class Leg {
 
     get distance() {
         return this._distance;
-    }
-
-    set distance(distance) {
-        this._distance = distance;
     }
 
     get duration() {
@@ -156,16 +128,8 @@ export class Leg {
         return this._color;
     }
 
-    set color(color) {
-        this._color = color;
-    }
-
     get textColor() {
         return this._textColor;
-    }
-
-    set textColor(textColor) {
-        this._textColor = textColor;
     }
 
     get tripShortName() {
@@ -285,10 +249,6 @@ export class Leg {
 
     get walkingInstructions() {
         return this._walkingInstructions;
-    }
-
-    set walkingInstructions(walkingInstructions) {
-        this._walkingInstructions = walkingInstructions;
     }
 
     /* Pretty print timing for a transit leg, set params.isStart: true when
