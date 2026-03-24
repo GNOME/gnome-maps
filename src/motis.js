@@ -228,7 +228,10 @@ export class Motis {
                      GLib.TimeZone.new_identifier(toTzId) :
                      this._getTimezone(to.lat, to.lon);
         const departure = Time.parseDateTime(leg.startTime, fromTz);
+        const scheduledDeparture =
+            Time.parseDateTime(leg.scheduledStartTime, fromTz);
         const arrival = Time.parseDateTime(leg.endTime, toTz);
+        const scheduledArrival = Time.parseDateTime(leg.scheduledEndTime, toTz);
         const fromName = isFirst && !isTransit ? startPlace.name : leg.from.name;
         const toName = isLast && !isTransit ? destinationPlace.name : leg.to.name;
 
@@ -272,7 +275,10 @@ export class Motis {
                          duration:                leg.duration,
                          distance:                distance,
                          departure:               departure,
+                         scheduledDeparture:      scheduledDeparture,
                          arrival:                 arrival,
+                         scheduledArrival:        scheduledArrival,
+                         realtime:                leg.realTime,
                          from:                    fromPlace,
                          to:                      toPlace,
                          headsign:                leg.headsign,
@@ -316,13 +322,19 @@ export class Motis {
     _parseStop(stop) {
         const tz = GLib.TimeZone.new_identifier(stop.tz);
         const departure = Time.parseDateTime(stop.departure, tz);
+        const scheduledDeparture =
+            Time.parseDateTime(stop.scheduledDeparture, tz);
         const arrival = Time.parseDateTime(stop.arrival, tz);
+        const scheduledArrival =
+            Time.parseDateTime(stop.scheduledArrival, tz);
         const location = new Location({ latitude: stop.lat,
                                         longitude: stop.lon });
 
         return new Stop({ name:                 stop.name,
                           arrival:              arrival,
+                          scheduledArrival:     scheduledArrival,
                           departure:            departure,
+                          scheduledDeparture:   scheduledDeparture,
                           location:             location,
                           id:                   stop.stopId,
                           modes:                new Set(stop.modes) });
