@@ -32,14 +32,18 @@ const _ = gettext.gettext;
 
 export class Leg {
 
-    constructor({ route, routeType, departure, arrival, polyline,
+    constructor({ route, routeType, departure, scheduledDeparture,
+                  arrival, scheduledArrival, realtime, polyline,
                   from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
                   agencyName, agencyUrl, color, textColor, tripShortName }) {
         this._route = route;
         this._routeType = routeType;
         this._departure = departure;
+        this._scheduledDeparture = scheduledDeparture;
         this._arrival = arrival;
+        this._scheduledArrival = scheduledArrival;
+        this._realtime = realtime;
         this._polyline = polyline;
         this._from = from;
         this._to = to;
@@ -69,8 +73,20 @@ export class Leg {
         return this._departure;
     }
 
+    get scheduledDeparture() {
+        return this._scheduledDeparture;
+    }
+
     get arrival() {
         return this._arrival;
+    }
+
+    get scheduledArrival() {
+        return this._scheduledArrival;
+    }
+
+    get realtime() {
+        return this._realtime;
     }
 
     get polyline() {
