@@ -23,7 +23,7 @@ import gettext from 'gettext';
 
 import Shumate from 'gi://Shumate';
 
-import * as HVT from '../hvt.js';
+import * as HVT from './hvt.js';
 import {BoundingBox} from '../boundingBox.js';
 import {RouteType} from './routeType.js';
 import * as Time from '../time.js';

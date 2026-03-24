@@ -24,7 +24,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
-import * as HVT from './hvt.js';
+import * as HVT from './transit/hvt.js';
 import {RouteType} from './transit/routeType.js';
 import * as Time from './time.js';
 import {TransitOptions} from './transitOptions.js';

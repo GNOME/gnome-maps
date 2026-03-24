@@ -29,7 +29,7 @@ import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import * as Epaf from './epaf.js';
-import * as HVT from './hvt.js';
+import * as HVT from './transit/hvt.js';
 import {Itinerary} from './transit/itinerary.js';
 import {Leg} from './transit/leg.js';
 import {Location} from './location.js';
