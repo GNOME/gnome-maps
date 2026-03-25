@@ -21,7 +21,6 @@
 
 import GObject from 'gi://GObject';
 
-import * as Time from '../time.js';
 import {TransitPlace} from '../transitPlace.js';
 
 export class Stop extends TransitPlace {
@@ -50,11 +49,6 @@ export class Stop extends TransitPlace {
 
     get scheduledDeparture() {
         return this._scheduledDeparture;
-    }
-
-    prettyPrint(params) {
-        return Time.formatDateTime(params.isFinal ?
-                                   this._arrival : this._departure);
     }
 }
 GObject.registerClass(Stop);
