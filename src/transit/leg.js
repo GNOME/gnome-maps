@@ -36,7 +36,9 @@ export class Leg {
                   arrival, scheduledArrival, realtime, polyline,
                   from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
-                  agencyName, agencyUrl, color, textColor, tripShortName }) {
+                  agencyName, agencyUrl, color, textColor, tripShortName,
+                  departureTrack, scheduledDepartureTrack,
+                  arrivalTrack, scheduledArrivalTrack }) {
         this._route = route;
         this._routeType = routeType;
         this._departure = departure;
@@ -58,6 +60,10 @@ export class Leg {
         this._color = color;
         this._textColor = textColor;
         this._tripShortName = tripShortName;
+        this._departureTrack = departureTrack;
+        this._scheduledDepartureTrack = scheduledDepartureTrack;
+        this._arrivalTrack = arrivalTrack;
+        this._scheduledArrivalTrack = scheduledArrivalTrack;
         this.bbox = this._createBBox();
     }
 
@@ -150,6 +156,22 @@ export class Leg {
 
     get tripShortName() {
         return this._tripShortName;
+    }
+
+    get departureTrack() {
+        return this._departureTrack;
+    }
+
+    get scheduledDepartureTrack() {
+        return this._scheduledDepartureTrack;
+    }
+
+    get arrivalTrack() {
+        return this._arrivalTrack;
+    }
+
+    get scheduledArrivalTrack() {
+        return this._scheduledArrivalTrack;
     }
 
     // create polyline from intermediate stops, or start and arrival coordinates
