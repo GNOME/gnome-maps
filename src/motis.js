@@ -294,7 +294,11 @@ export class Motis {
                          agencyUrl:               leg.agencyUrl,
                          polyline:                polyline,
                          intermediateStops:       intermediateStops,
-                         walkingInstructions:     steps });
+                         walkingInstructions:     steps ,
+                         departureTrack:          from.track,
+                         scheduledDepartureTrack: from.scheduledTrack,
+                         arrivalTrack:            to.track,
+                         scheduledArrivalTrack:   to.scheduledTrack });
     }
 
     _getStraightDistance(from, to) {
@@ -337,6 +341,8 @@ export class Motis {
                           scheduledDeparture:   scheduledDeparture,
                           location:             location,
                           id:                   stop.stopId,
+                          track:                stop.track,
+                          scheduledTrack:       stop.scheduledTrack,
                           modes:                new Set(stop.modes) });
     }
 
