@@ -26,13 +26,16 @@ import {TransitPlace} from '../transitPlace.js';
 export class Stop extends TransitPlace {
 
     constructor({ arrival, scheduledArrival,
-                  departure, scheduledDeparture, ...params }) {
+                  departure, scheduledDeparture,
+                  track, scheduledTrack, ...params }) {
         super(params);
 
         this._arrival = arrival;
         this._scheduledArrival = scheduledArrival;
         this._departure = departure;
         this._scheduledDeparture = scheduledDeparture;
+        this._track = track;
+        this._scheduledTrack = scheduledTrack;
     }
 
     get arrival() {
@@ -49,6 +52,14 @@ export class Stop extends TransitPlace {
 
     get scheduledDeparture() {
         return this._scheduledDeparture;
+    }
+
+    get track() {
+        return this._track;
+    }
+
+    get scheduledTrack() {
+        return this._scheduledTrack;
     }
 }
 GObject.registerClass(Stop);
