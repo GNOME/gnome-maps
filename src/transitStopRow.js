@@ -39,6 +39,7 @@ export class TransitStopRow extends Gtk.ListBoxRow {
 
         super(params);
 
+        this.stop = stop;
         this._nameLabel.label = stop.name;
         this._timeLabel.label = Time.formatDateTime(time);
 
