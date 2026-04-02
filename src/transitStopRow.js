@@ -27,12 +27,14 @@ import Pango from 'gi://Pango';
 
 import * as Time from './time.js';
 import { TransitRowTrackSegment } from './transitRowTrackSegment.js';
+import * as Utils from './transit/utils.js';
 
 const _ = gettext.gettext;
 
 export class TransitStopRow extends Gtk.ListBoxRow {
 
-    constructor({stop, final, colors, isHead, isTail, ...params}) {
+    constructor({stop, final, intermediate, colors, isHead, isTail, routeType,
+                 ...params}) {
         const time = final ? stop.arrival : stop.departure;
         const scheduledTime =
             final ? stop.scheduledArrival : stop.scheduledDeparture;
@@ -42,6 +44,20 @@ export class TransitStopRow extends Gtk.ListBoxRow {
         this.stop = stop;
         this._nameLabel.label = stop.name;
         this._timeLabel.label = Time.formatDateTime(time);
+
+        if (!intermediate && stop.track) {
+            if (stop.track !== stop.scheduledTrack) {
+                const attrs = new Pango.AttrList();
+                const attr = Pango.attr_style_new(Pango.Style.ITALIC);
+
+                attrs.insert(attr);
+                this._trackLabel.set_attributes(attrs);
+            }
+
+            this._trackLabel.visible = true;
+            this._trackLabel.label =
+                Utils.getTrackIndication(stop.track, routeType);
+        }
 
         if (!time.equal(scheduledTime)) {
             this._scheduledTimeLabel.visible = true;
@@ -72,6 +88,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',
     InternalChildren: [ 'trackSegmentContainer',
                         'nameLabel',
+                        'trackLabel',
                         'timeLabel',
                         'scheduledTimeLabel' ]
 }, TransitStopRow);

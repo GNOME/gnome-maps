@@ -59,6 +59,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 scheduledDeparture: this._leg.scheduledDeparture,
                 location: this._leg.from.location,
                 id: this._leg.from.id,
+                track: this._leg.departureTrack,
+                scheduledTrack: this._leg.scheduledDepartureTrack,
                 modes: this._leg.from.modes
             });
             const fromStopRow = new TransitStopRow({
@@ -68,7 +70,9 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                     line: this._leg.color,
                     stop: this._leg.textColor
                 },
-                final: false
+                final: false,
+                intermediate: false,
+                routeType: this._leg.routeType
             });
             this._beforeInstructionList.append(fromStopRow);
 
@@ -79,6 +83,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 scheduledArrival: this._leg.scheduledArrival,
                 location: this._leg.to.location,
                 id: this._leg.to.id,
+                track: this._leg.arrivalTrack,
+                scheduledTrack: this._leg.scheduledArrivalTrack,
                 modes: this._leg.to.modes
             });
             const toStopRow = new TransitStopRow({
@@ -89,6 +95,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                     stop: this._leg.textColor
                 },
                 final: true,
+                intermediate: false,
+                routeType: this._leg.routeType,
                 marginBottom: 12
             });
             this._afterInstructionList.append(toStopRow);
@@ -191,15 +199,16 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         if (this._leg.transit) {
             if (this._leg.intermediateStops) {
                 let stops = this._leg.intermediateStops;
-                for (let index = 0; index < stops.length; index++) {
-                    let stop = stops[index];
+                for (const stop of stops) {
                     let row = new TransitStopRow({ 
                         stop: stop,
                         colors: {
                             line: this._leg.color,
                             stop: this._leg.textColor
                         },
-                        final: index === stops.length - 1 
+                        final: false,
+                        intermediate: true,
+                        routeType: this._leg.routeType
                     });
                     this._instructionList.insert(row, -1);
                 }
