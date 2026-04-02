@@ -15,14 +15,32 @@ template $Gjs_TransitStopRow: ListBoxRow {
       }
     }
 
-    Label nameLabel {
-      hexpand: true;
-      halign: start;
-      margin-top: 6;
-      margin-bottom: 6;
-      ellipsize: end;
-      wrap: true;
-      lines: 2;
+    Box {
+      orientation: vertical;
+
+      Label nameLabel {
+        hexpand: true;
+        halign: start;
+        margin-top: 6;
+        margin-bottom: 6;
+        ellipsize: end;
+        wrap: true;
+        lines: 2;
+      }
+
+      Label subtitleLabel {
+        visible: false;
+        hexpand: true;
+        halign: start;
+        margin-bottom: 6;
+        ellipsize: end;
+        wrap: true;
+
+        styles [
+          "dimmed",
+          "caption",
+        ]
+      }
 
       layout {
         column: 1;

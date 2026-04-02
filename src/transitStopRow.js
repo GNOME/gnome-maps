@@ -32,7 +32,7 @@ const _ = gettext.gettext;
 
 export class TransitStopRow extends Gtk.ListBoxRow {
 
-    constructor({stop, final, colors, isHead, isTail, ...params}) {
+    constructor({stop, final, intermediate, colors, isHead, isTail, ...params}) {
         const time = final ? stop.arrival : stop.departure;
         const scheduledTime =
             final ? stop.scheduledArrival : stop.scheduledDeparture;
@@ -42,6 +42,16 @@ export class TransitStopRow extends Gtk.ListBoxRow {
         this.stop = stop;
         this._nameLabel.label = stop.name;
         this._timeLabel.label = Time.formatDateTime(time);
+
+        if (!intermediate && stop.track) {
+            this._subtitleLabel.visible = true;
+            this._subtitleLabel.label =
+                stop.track === stop.scheduledTrack ?
+                (final ? _("Arriving to track %s") :
+                         _("Departing from track %s")).format(stop.track) :
+                (final ? _("Changed to arrive at track %s") :
+                         _("Changed to depart from track %s")).format(stop.track);
+        }
 
         if (!time.equal(scheduledTime)) {
             this._scheduledTimeLabel.visible = true;
@@ -72,6 +82,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',
     InternalChildren: [ 'trackSegmentContainer',
                         'nameLabel',
+                        'subtitleLabel',
                         'timeLabel',
                         'scheduledTimeLabel' ]
 }, TransitStopRow);
