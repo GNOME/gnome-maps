@@ -307,6 +307,12 @@ const POI_CATEGORIES = [
                 icon:                'package-x-generic-symbolic',
                 keyValues:           [['shop=gift']],
                 initialSearchRadius: 3000
+             },
+             {
+                label:               _("Bicycles"),
+                icon:                'cycling-symbolic',
+                keyValues:           [['shop=bicycle']],
+                initialSearchRadius: 3000
              }
         ]
     },
