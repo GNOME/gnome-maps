@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-01-25 20:29+0000\n"
-"PO-Revision-Date: 2026-01-27 16:56+0300\n"
+"POT-Creation-Date: 2026-03-17 21:16+0000\n"
+"PO-Revision-Date: 2026-03-26 20:59+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -209,8 +209,28 @@ msgstr ""
 "Карты используют базу данных OpenStreetMap, созданную сотнями тысяч людей по "
 "всеми миру."
 
+#: data/org.gnome.Maps.metainfo.xml.in.in:25
+#: data/org.gnome.Maps.metainfo.xml.in.in:41
+msgid "Map view"
+msgstr "Просмотр карты"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:29
+#: data/org.gnome.Maps.metainfo.xml.in.in:45
+msgid "Pedestrian route instructions"
+msgstr "Информация по пешеходному маршруту"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:33
+#: data/org.gnome.Maps.metainfo.xml.in.in:49
+msgid "Information on a selected place"
+msgstr "Информация о выбранном месте"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:37
+#: data/org.gnome.Maps.metainfo.xml.in.in:53
+msgid "Public transit itinerary"
+msgstr "Маршрут общественного транспорта"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:623
+#: data/org.gnome.Maps.metainfo.xml.in.in:675
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -428,7 +448,7 @@ msgstr "Редактировать местоположение"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Изменить существующее местоположение на OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:369
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -766,7 +786,7 @@ msgid "Zoom Out"
 msgstr "Отдалить"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Приблизить"
 
@@ -932,15 +952,15 @@ msgstr "Все файлы слоёв"
 msgid "Open Shape Layers"
 msgstr "Открыть слои фигур"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -949,140 +969,140 @@ msgstr ""
 "Вы собираетесь открыть файлы общим размером %s МБ. Загрузка может занять "
 "некоторое время"
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Приблизьте, чтобы добавить местоположение"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Местоположение было добавлено в OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:332 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Отправление"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:351 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Прибытие"
 
-#: src/motis.js:360
+#: src/motis.js:363
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Поднимитесь по лестнице на %s этаж"
 
-#: src/motis.js:361
+#: src/motis.js:364
 msgid "Take the stairs"
 msgstr "Поднимитесь по лестнице"
 
-#: src/motis.js:365
+#: src/motis.js:368
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продолжайте %s"
 
-#: src/motis.js:370
+#: src/motis.js:373
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверните налево на %s"
 
-#: src/motis.js:371
+#: src/motis.js:374
 msgid "Turn left"
 msgstr "Поверните налево"
 
-#: src/motis.js:375
+#: src/motis.js:378
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверните немного налево на %s"
 
-#: src/motis.js:376
+#: src/motis.js:379
 msgid "Turn slightly left"
 msgstr "Повернитесь немного влево"
 
-#: src/motis.js:380
+#: src/motis.js:383
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверните резко налево на %s"
 
-#: src/motis.js:381
+#: src/motis.js:384
 msgid "Turn sharp left"
 msgstr "Повернитесь резко налево"
 
-#: src/motis.js:385
+#: src/motis.js:388
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверните направо на %s"
 
-#: src/motis.js:386
+#: src/motis.js:389
 msgid "Turn right"
 msgstr "Поверните направо"
 
-#: src/motis.js:390
+#: src/motis.js:393
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверните немного направо на %s"
 
-#: src/motis.js:391
+#: src/motis.js:394
 msgid "Turn slightly right"
 msgstr "Поверните немного направо"
 
-#: src/motis.js:395
+#: src/motis.js:398
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Поверните резко направо на %s"
 
-#: src/motis.js:396
+#: src/motis.js:399
 msgid "Turn sharp right"
 msgstr "Повернитесь резко направо"
 
-#: src/motis.js:403
+#: src/motis.js:406
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На кольцевой развязке сверните на съезд %s"
 
-#: src/motis.js:406
+#: src/motis.js:409
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На кольцевой развязке сверните на %s"
 
-#: src/motis.js:408
+#: src/motis.js:411
 msgid "Take the roundabout"
 msgstr "Сверните на кольцевую развязку"
 
-#: src/motis.js:416
+#: src/motis.js:419
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Поднимитесь на лифте и выйдите на %s"
 
-#: src/motis.js:417
+#: src/motis.js:420
 msgid "Take the elevator"
 msgstr "Поднимитесь на лифте"
 
-#: src/motis.js:421
+#: src/motis.js:424
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Выполните левый разворот на %s"
 
-#: src/motis.js:422
+#: src/motis.js:425
 msgid "Make a left u-turn"
 msgstr "Выполните левый разворот"
 
-#: src/motis.js:426
+#: src/motis.js:429
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Выполните правый разворот на %s"
 
-#: src/motis.js:427
+#: src/motis.js:430
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
 
@@ -1481,40 +1501,37 @@ msgstr "Туризм"
 msgid "Other"
 msgstr "Другой"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
 #: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Остановка общественного транспорта"
-
-#: src/osmTypes.js:217
 msgid "Funicular station"
 msgstr "Станция фуникулера"
 
-#: src/osmTypes.js:219
+#: src/osmTypes.js:212
 msgid "Light rail stop"
 msgstr "Остановка легкорельсового транспорта"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:214
 msgid "Monorail station"
 msgstr "Станция монорельса"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:216 src/osmTypes.js:226
 msgid "Railway station"
 msgstr "Железнодорожная станция"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:218
 msgid "Subway station"
 msgstr "Станция метро"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:222
 msgid "Railway halt"
 msgstr "Железнодорожная остановка"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:224
 msgid "Tram stop"
 msgstr "Трамвайная остановка"
+
+#: src/osmTypes.js:233 src/osmTypes.js:242
+msgid "Public transportation stop"
+msgstr "Остановка общественного транспорта"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -2050,7 +2067,7 @@ msgstr "Спортивные площадки"
 msgid "Golf Courses"
 msgstr "Поля для гольфа"
 
-#: src/printLayout.js:222
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Из %s в %s"
@@ -2148,19 +2165,19 @@ msgstr "Прибытие в %s"
 msgid "Start at %s"
 msgstr "Отправление в %s"
 
-#: src/transitLegHeader.js:93
+#: src/transitLegHeader.js:100
 msgid "Hide intermediate stops and information"
 msgstr "Скрывать промежуточные остановки и информацию"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Скрывать информацию для пешего маршрута"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:103
 msgid "Show intermediate stops and information"
 msgstr "Показывать промежуточные остановки и информацию"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:104
 msgid "Show walking instructions"
 msgstr "Показывать информацию для пешего маршрута"
 
@@ -2342,21 +2359,21 @@ msgid "Bahá'í"
 msgstr "Бахаи"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:253
+#: src/utils.js:262
 msgid "Unknown"
 msgstr "Неизвестная"
 
 # Точность: Максимальная
 # точная не подходит, т. к. получается "точность: точная"
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:265
 msgid "Exact"
 msgstr "Максимальная"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:312
+#: src/utils.js:321
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2365,7 +2382,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:318
+#: src/utils.js:327
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2377,7 +2394,7 @@ msgstr[2] "%s ч %s мин"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:325
+#: src/utils.js:334
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2389,7 +2406,7 @@ msgstr[2] "%s мин"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:331
+#: src/utils.js:340
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2398,25 +2415,25 @@ msgstr[1] "%s с"
 msgstr[2] "%s с"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:343
+#: src/utils.js:352
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ми"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:346
+#: src/utils.js:355
 #, javascript-format
 msgid "%s ft"
 msgstr "%s фт"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:354
+#: src/utils.js:363
 #, javascript-format
 msgid "%s km"
 msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:357
+#: src/utils.js:366
 #, javascript-format
 msgid "%s m"
 msgstr "%s м"
