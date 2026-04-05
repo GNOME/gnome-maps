@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-11 20:45+0000\n"
-"PO-Revision-Date: 2026-02-12 12:23+0100\n"
+"POT-Creation-Date: 2026-04-04 20:35+0000\n"
+"PO-Revision-Date: 2026-04-05 15:44+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -228,7 +228,7 @@ msgid "Public transit itinerary"
 msgstr "Itinerar pentru transportul public"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -446,7 +446,7 @@ msgstr "Modifică locul"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Modifică în OpenStreetMap un loc existent"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:384
 msgid "Continue"
 msgstr "Continuă"
 
@@ -781,7 +781,7 @@ msgid "Zoom Out"
 msgstr "Micșorează"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Mărește"
 
@@ -864,11 +864,11 @@ msgstr "eroare de procesare"
 msgid "unknown geometry"
 msgstr "geometrie necunoscută"
 
-#: src/graphHopper.js:116 src/transitPlan.js:169
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Cererea traseului a eșuat."
 
-#: src/graphHopper.js:123 src/transitPlan.js:165
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "Nu s-au găsit trasee."
 
@@ -943,15 +943,15 @@ msgstr "Toate fișierele strat"
 msgid "Open Shape Layers"
 msgstr "Deschide straturi de forme"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Se continuă?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -960,140 +960,140 @@ msgstr ""
 "Vor fi deschise fișiere cu o mărime totală de %s MB. Încărcarea poate dura "
 "ceva timp"
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este acceptat"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Mărește pentru a adăuga locul"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Locul a fost adăugat în OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:347 src/transit/utils.js:33 src/transit/utils.js:85
 msgid "Start"
 msgstr "Începe"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:366 src/transit/utils.js:41 src/transit/utils.js:71
 msgid "Arrive"
 msgstr "Sosire"
 
-#: src/motis.js:360
+#: src/motis.js:378
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Urcă scările până la etajul %s"
 
-#: src/motis.js:361
+#: src/motis.js:379
 msgid "Take the stairs"
 msgstr "Urcă scările"
 
-#: src/motis.js:365
+#: src/motis.js:383
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continuă pe %s"
 
-#: src/motis.js:370
+#: src/motis.js:388
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Virează la stânga pe %s"
 
-#: src/motis.js:371
+#: src/motis.js:389
 msgid "Turn left"
 msgstr "Virează la stânga"
 
-#: src/motis.js:375
+#: src/motis.js:393
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Virează larg la stânga pe %s"
 
-#: src/motis.js:376
+#: src/motis.js:394
 msgid "Turn slightly left"
 msgstr "Virează larg la stânga"
 
-#: src/motis.js:380
+#: src/motis.js:398
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Virează strâns la stânga pe %s"
 
-#: src/motis.js:381
+#: src/motis.js:399
 msgid "Turn sharp left"
 msgstr "Virează strâns la stânga"
 
-#: src/motis.js:385
+#: src/motis.js:403
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Virează la dreapta pe %s"
 
-#: src/motis.js:386
+#: src/motis.js:404
 msgid "Turn right"
 msgstr "Virează la dreapta"
 
-#: src/motis.js:390
+#: src/motis.js:408
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Virează larg la dreapta pe %s"
 
-#: src/motis.js:391
+#: src/motis.js:409
 msgid "Turn slightly right"
 msgstr "Virează larg la dreapta"
 
-#: src/motis.js:395
+#: src/motis.js:413
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Virează strâns la dreapta pe %s"
 
-#: src/motis.js:396
+#: src/motis.js:414
 msgid "Turn sharp right"
 msgstr "Virează strâns la dreapta"
 
-#: src/motis.js:403
+#: src/motis.js:421
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "La sensul giratoriu, virează la ieșirea %s"
 
-#: src/motis.js:406
+#: src/motis.js:424
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "La sensul giratoriu, virează la ieșirea spre %s"
 
-#: src/motis.js:408
+#: src/motis.js:426
 msgid "Take the roundabout"
 msgstr "Intră în sensul giratoriu"
 
-#: src/motis.js:416
+#: src/motis.js:434
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Intră în lift și ieși la %s"
 
-#: src/motis.js:417
+#: src/motis.js:435
 msgid "Take the elevator"
 msgstr "Intră în lift"
 
-#: src/motis.js:421
+#: src/motis.js:439
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Întoarce prin stânga pe %s"
 
-#: src/motis.js:422
+#: src/motis.js:440
 msgid "Make a left u-turn"
 msgstr "Întoarce prin stânga"
 
-#: src/motis.js:426
+#: src/motis.js:444
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Întoarce prin dreapta pe %s"
 
-#: src/motis.js:427
+#: src/motis.js:445
 msgid "Make a right u-turn"
 msgstr "Întoarce prin dreapta"
 
@@ -1481,7 +1481,7 @@ msgstr "Magazin"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:90 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "Turism"
 
@@ -1492,40 +1492,37 @@ msgstr "Turism"
 msgid "Other"
 msgstr "Altele"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
 #: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Stație de transport public"
-
-#: src/osmTypes.js:217
 msgid "Funicular station"
 msgstr "Stație de funicular"
 
-#: src/osmTypes.js:219
+#: src/osmTypes.js:212
 msgid "Light rail stop"
 msgstr "Stație de metrou ușor"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:214
 msgid "Monorail station"
 msgstr "Stație de monoșină"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:216 src/osmTypes.js:226
 msgid "Railway station"
 msgstr "Gară"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:218
 msgid "Subway station"
 msgstr "Stație de metrou"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:222
 msgid "Railway halt"
 msgstr "Haltă feroviară"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:224
 msgid "Tram stop"
 msgstr "Stație de tramvai"
+
+#: src/osmTypes.js:233 src/osmTypes.js:242
+msgid "Public transportation stop"
+msgstr "Stație de transport public"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -1917,151 +1914,155 @@ msgstr "Flori"
 msgid "Gifts"
 msgstr "Cadouri"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+msgid "Bicycles"
+msgstr "Biciclete"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "Transport"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "Stații de autobuz și tramvai"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "Stații de tren și metrou"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "Bilete"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "Parcare"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "Parcare pentru biciclete"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "Închirieri biciclete"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "Închirieri auto"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "Combustibil"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "Încărcare vehicule electrice"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "Sănătate"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "Clinici"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "Spitale"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "Stomatologi"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "Cazare"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "Hoteluri"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "Pensiuni"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "Cazare si mic dejun"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "Campinguri"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "Recreere"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "Parcuri"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "Locuri de joacă"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "Plaje"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "Rezervații naturale"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "Parcuri tematice"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "Teatre"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "Cinematografe"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "Cluburi de noapte"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "Muzee"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "Atracții"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "Opere de artă"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "Informații turistice"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
 msgstr "Sport"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "Săli de sport"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "Săli de sport în aer liber"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "Terenuri de golf"
 
-#: src/printLayout.js:222
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "De la %s la %s"
@@ -2135,10 +2136,67 @@ msgstr "Deschide cu %s"
 msgid "failed to load file"
 msgstr "nu s-a putut încărca fișierul"
 
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/itinerary.js:82
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minut"
+msgstr[1] "%s minute"
+msgstr[2] "%s de minute"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s oră"
+msgstr[1] "%s ore"
+msgstr[2] "%s de ore"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s oră"
+msgstr[1] "%s:%s ore"
+msgstr[2] "%s:%s de ore"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:286
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:55
+#: src/transit/utils.js:55
 #, javascript-format
 msgid "Walk %s"
 msgstr "Mers pe jos %s"
@@ -2146,7 +2204,7 @@ msgstr "Mers pe jos %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:69
+#: src/transit/utils.js:69
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Sosire la %s"
@@ -2154,24 +2212,24 @@ msgstr "Sosire la %s"
 #. Translators: this a format string indicating departing from the
 #. * destination of journey with the departure address and transit
 #. * stop as the format parameter
-#: src/transit.js:83
+#: src/transit/utils.js:83
 #, javascript-format
 msgid "Start at %s"
-msgstr "Începe la %s"
+msgstr "Plecare din %s"
 
-#: src/transitLegHeader.js:93
+#: src/transitLegHeader.js:100
 msgid "Hide intermediate stops and information"
 msgstr "Ascunde informațiile și opririle intermediare"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Ascunde instrucțiunile de mers pe jos"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:103
 msgid "Show intermediate stops and information"
 msgstr "Arată informațiile și opririle intermediare"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:104
 msgid "Show walking instructions"
 msgstr "Arată instrucțiunile de mers pe jos"
 
@@ -2199,63 +2257,6 @@ msgstr "Nu s-au găsit alternativele următoare."
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:241
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:267
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s minut"
-msgstr[1] "%s minute"
-msgstr[2] "%s de minute"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:279
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s oră"
-msgstr[1] "%s ore"
-msgstr[2] "%s de ore"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:287
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s oră"
-msgstr[1] "%s:%s ore"
-msgstr[2] "%s:%s de ore"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:598
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2352,19 +2353,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:253
+#: src/utils.js:262
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:265
 msgid "Exact"
 msgstr "Exact"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:312
+#: src/utils.js:321
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2373,7 +2374,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:318
+#: src/utils.js:327
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2385,7 +2386,7 @@ msgstr[2] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:325
+#: src/utils.js:334
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2397,7 +2398,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:331
+#: src/utils.js:340
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2406,25 +2407,25 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:343
+#: src/utils.js:352
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:346
+#: src/utils.js:355
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:354
+#: src/utils.js:363
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:357
+#: src/utils.js:366
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
