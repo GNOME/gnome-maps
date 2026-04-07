@@ -21,6 +21,8 @@
 
 import gettext from 'gettext';
 
+import * as HVT from './hvt.js';
+import {RouteType} from './routeType.js';
 import * as Utils from '../utils.js';
 
 const _ = gettext.gettext;
@@ -83,5 +85,98 @@ export function getDepartureLabel(firstLeg) {
         return _("Start at %s").format(firstLeg.from.name);
     } else {
         return _("Start");
+    }
+}
+
+// stop position types (rail track, bus stop, ferry quay, airport gate)
+const TrackType = {
+    TRACK: 0,
+    POSITION:  1,
+    QUAY:  2,
+    GATE:  3
+};
+
+function getTrackTypeFromRouteType(routeType) {
+    const hvtSupertype = HVT.supertypeOf(routeType);
+    const type = hvtSupertype !== -1 ? hvtSupertype : routeType;
+
+    switch (type) {
+        case RouteType.BUS:
+        case HVT.BUS_SERVICE:
+        case HVT.COACH_SERVICE:
+        case RouteType.TROLLEYBUS:
+        case HVT.TROLLEYBUS_SERVICE:
+        case HVT.TAXI_SERVICE:
+        case RouteType.GONDOLA:
+        case HVT.TELECABIN_SERVICE:
+            return TrackType.POSITION;
+
+        case RouteType.FERRY:
+        case HVT.WATER_TRANSPORT_SERVICE:
+        case HVT.FERRY_SERVICE:
+            return TrackType.QUAY;
+
+        case HVT.AIR_SERVICE:
+            return TrackType.GATE;
+
+        default:
+            return TrackType.TRACK;
+    }
+}
+
+/**
+ * Get description for track/stop/stand indication-
+ * track: Track/stop number/name
+ * routeType: the route type of the transit leg
+ */
+export function getTrackIndication(track, routeType) {
+    switch (getTrackTypeFromRouteType(routeType)) {
+        case TrackType.TRACK:
+            /* Translators: this is an indication of a departure or arrival
+             * track for a journey leg of public transit leg that is rail-based
+             */
+            return _("Track %s").format(track);
+        case TrackType.POSITION:
+            return track;
+        case TrackType.QUAY:
+            /* Translators: this is an indication of a departure or arrival
+             * track for a journey leg of public transit leg that is a ferry
+             * quay
+             */
+            return _("Quay %s").format(track);
+        case TrackType.GATE:
+            /* Translators: this is an indication of a departure or arrival
+             * track for a journey leg of public transit leg that is an airport
+             * gate
+             */
+            return _("Gate %s").format(track);
+    }
+}
+
+export function getTrackChangeDesciption(routeType) {
+    switch (getTrackTypeFromRouteType(routeType)) {
+        case TrackType.TRACK:
+            /* Translators: this is an indication of a track/stop position
+             * change for a journey leg of public transit leg that is rail-based
+             */
+            return _("Departure track changed");
+        case TrackType.POSITION:
+            /* Translators: this is an indication of a track/stop position
+             * change for a journey leg of public transit leg that e.g. a bus stop
+             * "stop position"
+             */
+            return _("Departure stop position changed");
+        case TrackType.QUAY:
+            /* Translators: this is an indication of a track/stop position
+             * change for a journey leg of public transit leg that is a ferry
+             * quay
+             */
+            return _("Departure quay changed");
+        case TrackType.GATE:
+            /* Translators: this is an indication of a track/stop position
+             * change for a journey leg of public transit leg that is an airport
+             * gate
+             */
+            return _("Departure gate changed");
     }
 }
