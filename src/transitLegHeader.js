@@ -64,7 +64,23 @@ export class TransitLegHeader extends Gtk.Grid {
                 ? `<span size="small">${label} • ${this._leg.tripShortName}</span>`
                 : `<span size="small">${label}</span>`;
         }
-        
+
+        /* Show information about track change for transit legs where
+         * the actual track differs from the scheduled track.
+         * Don't consider legs from added trips (which will lack a scheduled
+         * track).
+         */
+        if (this._leg.transit && this._leg.scheduledDepartureTrack &&
+            this._leg.departureTrack &&
+            this._leg.departureTrack !== this._leg.scheduledDepartureTrack) {
+            const description =
+                Transit.getTrackChangeDesciption(this._leg.routeType);
+
+            this._informationLabel.label =
+                `<span size="small">${description}</span>`;
+            this._informationBox.visible = true;
+        }
+
         this._updateExpandArrow();
 
         this._buttonPressGesture = new Gtk.GestureSingle();
@@ -125,6 +141,9 @@ GObject.registerClass({
                         'route',
                         'headsignImage',
                         'headsignLabel',
+                        'informationBox',
+                        'informationImage',
+                        'informationLabel',
                         'expandArrow',
                         ]
 }, TransitLegHeader);

@@ -71,6 +71,39 @@ template $Gjs_TransitLegHeader: Grid {
       ]
     }
 
+    Box informationBox {
+      visible: false;
+      orientation: horizontal;
+      spacing: 3;
+      halign: start;
+      hexpand: true;
+
+      Image informationImage {
+        pixel-size: 16;
+        icon-name: "info-outline-symbolic";
+
+        styles [
+          "sidebar-icon",
+        ]
+      }
+
+      Label informationLabel {
+        halign: start;
+        hexpand: true;
+        ellipsize: end;
+        use-markup: true;
+      }
+
+      layout {
+        row: 2;
+        column: 0;
+      }
+
+      styles [
+        "dimmed",
+      ]
+    }
+
     layout {
       row: 0;
       column: 1;
