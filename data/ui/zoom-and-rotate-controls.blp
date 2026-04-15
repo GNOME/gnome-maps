@@ -27,6 +27,18 @@ template $Gjs_ZoomAndRotateControls: Box {
   }
 
   Button {
+    action-name: "win.goto-user-location";
+    // Translators: This is a tooltip
+    tooltip-text: _("Current Location");
+    icon-name: "find-location-symbolic";
+
+    styles [
+      "card",
+      "circular",
+    ]
+  }
+
+  Button {
     action-name: "win.zoom-out";
     // Translators: This is a tooltip
     tooltip-text: _("Zoom Out");
