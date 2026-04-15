@@ -739,7 +739,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         fileDialog.open_multiple(this, null, (fileDialog, result) => {
             try {
                 this._mapView.openShapeLayers(fileDialog.open_multiple_finish(result));
-                this._headerBarLeft.popdownLayersPopover();
+                this._headerBarRight.popdownLayersPopover();
                 this._actionBarLeft.popdownLayersPopover();
             } catch {
                 // do nothing if the file dialog is dismissed

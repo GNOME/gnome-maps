@@ -30,9 +30,20 @@ import {MapView} from './mapView.js';
 export class HeaderBarLeft extends Gtk.Box {
     constructor({mapView, ...params}) {
         super(params);
+    }
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/headerbar-left.ui'
+}, HeaderBarLeft);
+
+export class HeaderBarRight extends Gtk.Box {
+    constructor({mapView, ...params}) {
+        super(params);
 
         this._layersPopover = new LayersPopover({ mapView: mapView });
         this._layersButton.popover = this._layersPopover;
+        this._favoritesButton.popover = new FavoritesPopover({ mapView: mapView });
     }
 
     popdownLayersPopover() {
@@ -41,22 +52,7 @@ export class HeaderBarLeft extends Gtk.Box {
 }
 
 GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/headerbar-left.ui',
-    InternalChildren: [ 'layersButton' ]
-}, HeaderBarLeft);
-
-export class HeaderBarRight extends Gtk.Box {
-    constructor(params) {
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        super(params);
-
-        this._favoritesButton.popover = new FavoritesPopover({ mapView: mapView });
-    }
-}
-
-GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/headerbar-right.ui',
-    InternalChildren: [ 'favoritesButton' ]
+    InternalChildren: [ 'layersButton',
+                        'favoritesButton' ]
 }, HeaderBarRight);

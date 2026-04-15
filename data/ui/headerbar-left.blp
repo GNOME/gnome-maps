@@ -3,20 +3,12 @@ using Gtk 4.0;
 template $Gjs_HeaderBarLeft: Box {
   spacing: 6;
 
-  Button gotoUserLocationButton {
+  Button showRoutingButton {
     focusable: true;
     valign: center;
-    action-name: "win.goto-user-location";
+    action-name: "win.show-routing";
     // Translators: This is a tooltip
-    tooltip-text: _("Current Location");
-    icon-name: "find-location-symbolic";
-  }
-
-  MenuButton layersButton {
-    focusable: true;
-    valign: center;
-    // Translators: This is a tooltip
-    tooltip-text: _("Layers");
-    icon-name: "layers-button-symbolic";
+    tooltip-text: _("Route Planner");
+    icon-name: "route-button-symbolic";
   }
 }
