@@ -1,5 +1,8 @@
-Maps is a map application for the GNOME desktop powered by OpenStreetMap. Find places from all over the globe.
-More information is available at https://apps.gnome.org/Maps/
+Maps is a map application for the GNOME desktop powered by [OpenStreetMap](https://www.openstreetmap.org/about).
+Find places from all over the globe.
+
+More information is available at <https://apps.gnome.org/Maps/>.
+
 This application is written in Javascript.
 
 # License
