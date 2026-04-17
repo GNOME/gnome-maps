@@ -35,11 +35,14 @@ export class FavoriteListRow extends PlaceListRow {
 
         this._placeItem = placeItem;
         this._filter = filter;
+        this._place = placeItem.place;
     }
 
     _onRemoveClicked() {
+        // Translators: a place has been unstarred and %s is its name
+        const title = _("“%s” unstarred").format(this._place.name);
         const undoToast =
-            new Adw.Toast({ title:        _("Favorite removed"),
+            new Adw.Toast({ title:        title,
                             button_label: _("_Undo") });
 
         undoToast.connect('button-clicked', () => {
