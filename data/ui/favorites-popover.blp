@@ -7,8 +7,9 @@ template $Gjs_FavoritesPopover: Popover {
   child: Stack stack {
     Adw.StatusPage empty {
       icon-name: "starred-symbolic";
-      title: _("No Favorites");
-      description: _("Add places to your favorites to get them listed here");
+      title: _("No Starred Places");
+      // Translators: This referres to the action of "starring" places
+      description: _("Star places to get them listed here");
 
       styles [
         "compact",
