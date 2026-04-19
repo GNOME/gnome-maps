@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-04-14 21:08+0000\n"
-"PO-Revision-Date: 2026-04-16 16:28+0200\n"
+"POT-Creation-Date: 2026-04-16 21:14+0000\n"
+"PO-Revision-Date: 2026-04-19 08:48+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -282,24 +282,19 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "Za izpis na tem mestu, dodajte mesta med priljubljene"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Trenutno mesto"
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Načrtovanje poti"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Plasti"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
+#: data/ui/headerbar-right.blp:18
 msgid "Favorites"
 msgstr "Priljubljene poti"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Načrtovanje poti"
 
 #: data/ui/layers-popover.blp:6
 msgid "Show Scale"
@@ -772,12 +767,17 @@ msgid "Reset Rotation"
 msgstr "Ponastavi vrtenje"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Trenutno mesto"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.blp:44
 msgid "Zoom Out"
 msgstr "Oddalji"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Približaj"
 
@@ -2223,7 +2223,7 @@ msgstr "Začnite na %s"
 #. * track for a journey leg of public transit leg that is rail-based
 #.
 #: src/transit/utils.js:138
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Track %s"
 msgstr "Tir %s"
 
@@ -2232,7 +2232,7 @@ msgstr "Tir %s"
 #. * quay
 #.
 #: src/transit/utils.js:146
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Quay %s"
 msgstr "Pomol %s"
 
@@ -2241,15 +2241,14 @@ msgstr "Pomol %s"
 #. * gate
 #.
 #: src/transit/utils.js:152
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Gate %s"
-msgstr "Vrata %s"
+msgstr "Izhod %s"
 
 #. Translators: this is an indication of a track/stop position
 #. * change for a journey leg of public transit leg that is rail-based
 #.
 #: src/transit/utils.js:162
-#, fuzzy
 msgid "Departure track changed"
 msgstr "Odhodni tir spremenjen"
 
@@ -2258,7 +2257,6 @@ msgstr "Odhodni tir spremenjen"
 #. * "stop position"
 #.
 #: src/transit/utils.js:168
-#, fuzzy
 msgid "Departure stop position changed"
 msgstr "Odhodno postajališče spremenjeno"
 
@@ -2267,7 +2265,6 @@ msgstr "Odhodno postajališče spremenjeno"
 #. * quay
 #.
 #: src/transit/utils.js:174
-#, fuzzy
 msgid "Departure quay changed"
 msgstr "Odhodni pomol spremenjen"
 
@@ -2276,9 +2273,8 @@ msgstr "Odhodni pomol spremenjen"
 #. * gate
 #.
 #: src/transit/utils.js:180
-#, fuzzy
 msgid "Departure gate changed"
-msgstr "Odhodna vrata spremenjena"
+msgstr "Odhodni izhod spremenjen"
 
 #: src/transitLegHeader.js:116
 msgid "Hide intermediate stops and information"
