@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Romanian translation for gnome-maps.
+# Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER.
+# This file is distributed under the same license as the gnome-maps package.
 # Mada-Gabriela <ciber_ady@yahoo.com>, 2018.
 # Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2018.
 # Antonio Marin <gnmer.6qxyg@slmail.me>, 2025-2026.
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-04-14 21:08+0000\n"
-"PO-Revision-Date: 2026-04-15 11:58+0200\n"
+"POT-Creation-Date: 2026-04-20 20:04+0000\n"
+"PO-Revision-Date: 2026-04-22 10:55+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -273,35 +273,31 @@ msgstr "_Exportă"
 #. Translators: This is a tooltip
 #: data/ui/favorite-list-row.blp:71
 msgid "Remove Favorite"
-msgstr "Elimină preferatul"
+msgstr "Șterge din preferate"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Niciun preferat"
+msgid "No Starred Places"
+msgstr "Niciun loc preferat"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Adaugă locuri în Preferate, ca să apară aici"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Poziția actuală"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "Adaugă locuri preferate ca să apară aici"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Planificator de traseu"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Straturi"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "Preferate"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Planificator de traseu"
+#: data/ui/headerbar-right.blp:18
+msgid "Starred Places"
+msgstr "Locuri preferate"
 
 #: data/ui/layers-popover.blp:6
 msgid "Show Scale"
@@ -776,12 +772,17 @@ msgid "Reset Rotation"
 msgstr "Restabilește rotația"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Poziția actuală"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.blp:44
 msgid "Zoom Out"
 msgstr "Micșorează"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Mărește"
 
@@ -844,11 +845,13 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "Nu s-a putut exporta partea vizibilă"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Preferat eliminat"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "„%s” a fost șters din preferate"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_Anulează"
 
@@ -982,7 +985,7 @@ msgstr "Locul a fost adăugat în OpenStreetMap"
 
 #: src/motis.js:353 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
-msgstr "Începe"
+msgstr "Plecare"
 
 #: src/motis.js:372 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
