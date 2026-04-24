@@ -8,6 +8,7 @@ template $Gjs_PlaceButtons: Box {
     name: "bubble-route-button";
     visible: false;
     focusable: true;
+    margin-end: 6;
     // Translators: This is a tooltip
     tooltip-text: _("Add to new route");
 
@@ -20,35 +21,48 @@ template $Gjs_PlaceButtons: Box {
 
     styles [
       "suggested-action",
+      "pill",
     ]
   }
 
   Button sendToButton {
     name: "bubble-send-to-button";
     focusable: true;
+    valign: center;
     // Translators: This is a tooltip
     tooltip-text: _("Share Location");
     icon-name: "share-symbolic";
+
+    styles [
+      "circular",
+    ]
   }
 
   Button favoriteButton {
     name: "bubble-favorite-button";
     visible: false;
     focusable: true;
+    valign: center;
     // Translators: This is a tooltip
     tooltip-text: _("Mark as Favorite");
     icon-name: "favorite-symbolic";
 
     styles [
       "favorite",
+      "circular",
     ]
   }
 
   Button editButton {
     visible: false;
     focusable: true;
+    valign: center;
     // Translators: This is a tooltip
     tooltip-text: _("Edit on OpenStreetMap");
     icon-name: "document-edit-symbolic";
+
+    styles [
+      "circular",
+    ]
   }
 }
