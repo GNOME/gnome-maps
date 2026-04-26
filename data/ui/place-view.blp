@@ -6,19 +6,6 @@ template $Gjs_PlaceView: Box {
     Box mainBox {
       orientation: vertical;
 
-      $Gjs_PlaceViewImage thumbnail {
-        visible: false;
-        can-focus: false;
-      }
-
-      Separator thumbnailSeparator {
-        visible: false;
-
-        styles [
-          "no-margin-separator",
-        ]
-      }
-
       Box titleBox {
         orientation: vertical;
         margin-start: 12;
@@ -130,8 +117,26 @@ template $Gjs_PlaceView: Box {
 
       ScrolledWindow {
         propagate-natural-height: true;
+        vexpand: true;
 
-        Grid content {}
+        Box {
+          orientation: vertical;
+
+          Grid content {}
+
+          Separator thumbnailSeparator {
+            visible: false;
+
+            styles [
+              "no-margin-separator",
+            ]
+          }
+
+          $Gjs_PlaceViewImage thumbnail {
+            visible: false;
+            can-focus: false;
+          }
+        }
       }
     }
 
