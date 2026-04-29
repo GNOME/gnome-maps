@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-04-16 21:14+0000\n"
-"PO-Revision-Date: 2026-04-19 08:48+0200\n"
+"POT-Creation-Date: 2026-04-22 19:42+0000\n"
+"PO-Revision-Date: 2026-04-29 16:40+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -274,12 +274,13 @@ msgid "Remove Favorite"
 msgstr "Odstrani iz priljubljenih"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Ni priljubljenih"
+msgid "No Starred Places"
+msgstr "Nič ni označeno z zvezdicami"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Za izpis na tem mestu, dodajte mesta med priljubljene"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "Za izpis na tem mestu dodajte mestom zvezdico"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.blp:11
@@ -293,8 +294,8 @@ msgstr "Plasti"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.blp:18
-msgid "Favorites"
-msgstr "Priljubljene poti"
+msgid "Starred Places"
+msgstr "Mesta z zvezdicami"
 
 #: data/ui/layers-popover.blp:6
 msgid "Show Scale"
@@ -840,11 +841,13 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "Ni mogoče izvoziti pogleda"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Priljubljeno mesto je odstranjeno"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "»%s« je odstranjena oznaka z zvezdico"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_Razveljavi"
 
@@ -1489,35 +1492,35 @@ msgstr "Turizem"
 msgid "Other"
 msgstr "Drugo"
 
-#: src/osmTypes.js:210
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Postaja vzpenjače"
 
-#: src/osmTypes.js:212
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Postajališče lahke železnice"
 
-#: src/osmTypes.js:214
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Postajališče enotirne železnice"
 
-#: src/osmTypes.js:216 src/osmTypes.js:226
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Železniška postaja"
 
-#: src/osmTypes.js:218
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Postaja podzemne železnice"
 
-#: src/osmTypes.js:222
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Železniški postanek"
 
-#: src/osmTypes.js:224
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Tramvajska postaja"
 
-#: src/osmTypes.js:233 src/osmTypes.js:242
+#: src/osmTypes.js:257 src/osmTypes.js:266
 msgid "Public transportation stop"
 msgstr "Postaja javnega prevoza"
 
