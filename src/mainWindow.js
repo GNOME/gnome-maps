@@ -331,7 +331,9 @@ export class MainWindow extends Adw.ApplicationWindow {
          */
         this.splitView.connect('notify::show-sidebar', () => {
             if (this.splitView.show_sidebar) {
-                this._auxillaryView.focusStartEntry();
+                // focus routing start entry if the aux showing route planner
+                if (this._auxillaryView.stack.visible_chile_name === 'routeView')
+                    this._auxillaryView.focusStartEntry();
             } else {
                 this._bottomSheet.open = false;
                 this._auxillaryView.showRouting();
@@ -341,7 +343,9 @@ export class MainWindow extends Adw.ApplicationWindow {
         });
         this._bottomSheet.connect('notify::open', () => {
             if (this._bottomSheet.open) {
-                this._auxillaryView.focusStartEntry();
+                // focus routing start entry if the aux showing route planner
+                if (this._auxillaryView.stack.visible_chile_name === 'routeView')
+                    this._auxillaryView.focusStartEntry();
             } else {
                 this.splitView.show_sidebar = false;
                 this._auxillaryView.showRouting();
