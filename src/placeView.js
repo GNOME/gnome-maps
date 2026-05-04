@@ -70,14 +70,10 @@ function _formatWikiLabel(isAdaptive, text, uri, tooltipText) {
 
 export class PlaceView extends Gtk.Box {
 
-    constructor({place, mapView, inlineMode, ...params}) {
-        /* inlineMode is used in PlaceBar for inline current location details.
-           It hides the title box and decreases the start margin on the rows. */
-
+    constructor({place, mapView, ...params}) {
         super(params);
 
         this._place = place;
-        this._inlineMode = !!inlineMode;
 
         let placeButtons = new PlaceButtons({ place: this._place,
                                               mapView: mapView });
@@ -140,10 +136,6 @@ export class PlaceView extends Gtk.Box {
             } else {
                 this._populate(this.place);
             }
-        }
-
-        if (this._inlineMode) {
-            this._titleBox.hide();
         }
 
         this.updatePlaceDetails();
@@ -659,10 +651,6 @@ export class PlaceView extends Gtk.Box {
                                 marginTop: 6,
                                 marginBottom: 6,
                                 spacing: 12 });
-
-        if (this._inlineMode) {
-            box.marginStart = 6;
-        }
 
         this._placeDetails.append(box);
 
