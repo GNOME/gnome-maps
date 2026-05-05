@@ -150,3 +150,21 @@ button.card.circular {
 .transit-leg-row-revealer-list {
   background-color: transparent;
 }
+
+@keyframes rotate_expand {
+  from { -gtk-icon-transform: rotate(180deg); }
+  to {}
+}
+
+@keyframes rotate_retract {
+  from { -gtk-icon-transform: rotate(-180deg); }
+  to {}
+}
+
+.expander.expand {
+  animation: rotate_expand 0.4s ease;
+}
+
+.expander.retract {
+  animation: rotate_retract 0.4s ease;
+}
