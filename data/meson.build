@@ -70,11 +70,6 @@ data_gresource = gnome.compile_resources(
 	dependencies: [metainfo_file, blueprints]
 )
 
-install_data(
-	'maps-service.json',
-	install_dir: pkgdatadir
-)
-
 desktop = app_id + '.desktop'
 desktop_config = configuration_data()
 desktop_config.set('app-id', app_id)
