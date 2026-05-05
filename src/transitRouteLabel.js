@@ -95,7 +95,7 @@ export class TransitRouteLabel extends Gtk.Box {
 
     _createLayout() {
         const fontDescription = Pango.FontDescription.from_string('sans');
-        const label = this._leg.route;
+        const label = this._leg.displayName;
 
         fontDescription.set_absolute_size(FONT_SIZE * Pango.SCALE);
         fontDescription.set_weight(Pango.Weight.MEDIUM);
@@ -134,7 +134,7 @@ export class TransitRouteLabel extends Gtk.Box {
          * hight-contrasting colors, if no label, assume the route color is
          * more relevant and keep it also for high contrast
          */
-        if (usingHighContrastTheme && this._leg.route) {
+        if (usingHighContrastTheme && this._leg.displayName) {
             color = usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR;
             textColor = usingDarkTheme ? HIGH_CONTRAST_COLOR : HIGH_CONTRAST_TEXT_COLOR;
         }

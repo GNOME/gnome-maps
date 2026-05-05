@@ -32,14 +32,14 @@ const _ = gettext.gettext;
 
 export class Leg {
 
-    constructor({ route, routeType, departure, scheduledDeparture,
+    constructor({ displayName, routeType, departure, scheduledDeparture,
                   arrival, scheduledArrival, realtime, polyline,
                   from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
                   agencyName, agencyUrl, color, textColor, tripShortName,
                   departureTrack, scheduledDepartureTrack,
                   arrivalTrack, scheduledArrivalTrack }) {
-        this._route = route;
+        this._displayName = displayName;
         this._routeType = routeType;
         this._departure = departure;
         this._scheduledDeparture = scheduledDeparture;
@@ -67,8 +67,8 @@ export class Leg {
         this.bbox = this._createBBox();
     }
 
-    get route() {
-        return this._route;
+    get displayName() {
+        return this._displayName;
     }
 
     get routeType() {

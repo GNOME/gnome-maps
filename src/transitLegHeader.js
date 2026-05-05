@@ -60,7 +60,7 @@ export class TransitLegHeader extends Gtk.Grid {
              */
             this._headsignLabel.label =
                 this._leg.tripShortName &&
-                this._leg.tripShortName !== this._leg.route
+                this._leg.tripShortName !== this._leg.displayName
                 ? `<span size="small">${label} • ${this._leg.tripShortName}</span>`
                 : `<span size="small">${label}</span>`;
         }
