@@ -284,7 +284,7 @@ export class Motis {
                          headsign:                leg.headsign,
                          color:                   this._parseHexColorString(leg.routeColor),
                          textColor:               this._parseHexColorString(leg.routeTextColor),
-                         route:                   this._getRoute(leg),
+                         displayName:             leg.displayName,
                          tripShortName:           leg.tripShortName,
                          routeType:               isTransit ?
                                                   leg.routeType ??
@@ -452,19 +452,6 @@ export class Motis {
             default:
                 throw 'unknown direction ' + step.relativeDirection;
         }
-    }
-
-    _getRoute(leg) {
-        /* if display name and route short name are defined, and the route short
-         * name is not already a part of the display name, use the display name
-         * with the route short suffix as the full route name
-         */
-        const longName =
-            !leg.routeShortName && leg.displayName && leg.routeShortName &&
-            leg.displayName.indexOf(leg.routeShortName) == -1 ?
-            `${leg.displayName} ${leg.routeShortName}` : leg.displayName;
-
-        return longName ?? leg.routeShortName;
     }
 
     _getRouteType(leg) {
