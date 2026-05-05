@@ -110,6 +110,15 @@ export class TransitLegHeader extends Gtk.Grid {
             ? 'go-up-symbolic'
             : 'go-down-symbolic'
 
+        // show expand/retract animation
+        if (this.expanded) {
+            this._expandArrow.remove_css_class('retract');
+            this._expandArrow.add_css_class('expand');
+        } else {
+            this._expandArrow.remove_css_class('expand');
+            this._expandArrow.add_css_class('retract');
+        }
+
         // Translators: This is a tooltip
         this._expandArrow.tooltip_text =
             this.expanded ? (this._leg.transit ?
