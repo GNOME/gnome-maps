@@ -23,29 +23,23 @@ import gettext from 'gettext';
 
 import Shumate from 'gi://Shumate';
 
-import * as HVT from './hvt.js';
 import {BoundingBox} from '../boundingBox.js';
-import {RouteType} from './routeType.js';
 import * as Time from '../time.js';
 
 const _ = gettext.gettext;
 
 export class Leg {
 
-    constructor({ displayName, routeType, departure, scheduledDeparture,
-                  arrival, scheduledArrival, realtime, polyline,
-                  from, to, intermediateStops,
+    constructor({ route, departure, scheduledDeparture, arrival,
+                  scheduledArrival, polyline, from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
-                  agencyName, agencyUrl, color, textColor, tripShortName,
                   departureTrack, scheduledDepartureTrack,
                   arrivalTrack, scheduledArrivalTrack }) {
-        this._displayName = displayName;
-        this._routeType = routeType;
+        this._route = route;
         this._departure = departure;
         this._scheduledDeparture = scheduledDeparture;
         this._arrival = arrival;
         this._scheduledArrival = scheduledArrival;
-        this._realtime = realtime;
         this._polyline = polyline;
         this._from = from;
         this._to = to;
@@ -55,11 +49,6 @@ export class Leg {
         this._walkingInstructions = walkingInstructions;
         this._distance = distance;
         this._duration = duration;
-        this._agencyName = agencyName;
-        this._agencyUrl = agencyUrl;
-        this._color = color;
-        this._textColor = textColor;
-        this._tripShortName = tripShortName;
         this._departureTrack = departureTrack;
         this._scheduledDepartureTrack = scheduledDepartureTrack;
         this._arrivalTrack = arrivalTrack;
@@ -67,12 +56,8 @@ export class Leg {
         this.bbox = this._createBBox();
     }
 
-    get displayName() {
-        return this._displayName;
-    }
-
-    get routeType() {
-        return this._routeType;
+    get route() {
+        return this._route;
     }
 
     get departure() {
@@ -89,10 +74,6 @@ export class Leg {
 
     get scheduledArrival() {
         return this._scheduledArrival;
-    }
-
-    get realtime() {
-        return this._realtime;
     }
 
     get polyline() {
@@ -136,26 +117,6 @@ export class Leg {
 
     get duration() {
         return this._duration;
-    }
-
-    get agencyName() {
-        return this._agencyName;
-    }
-
-    get agencyUrl() {
-        return this._agencyUrl;
-    }
-
-    get color() {
-        return this._color;
-    }
-
-    get textColor() {
-        return this._textColor;
-    }
-
-    get tripShortName() {
-        return this._tripShortName;
     }
 
     get departureTrack() {
@@ -206,83 +167,7 @@ export class Leg {
     }
 
     get iconName() {
-        if (this._isTransit) {
-            let type = this._routeType;
-            switch (type) {
-                /* special case HVT codes */
-                case HVT.CABLE_CAR:
-                    return 'cablecar-symbolic';
-                case HVT.HORSE_DRAWN_CARRIAGE:
-                    return 'horse-symbolic';
-                case HVT.MONORAIL:
-                    return 'monorail-symbolic';
-                case HVT.TOURIST_RAILWAY_SERVICE:
-                    return 'steam-train-symbolic';
-                default:
-                    let hvtSupertype = HVT.supertypeOf(type);
-
-                    if (hvtSupertype !== -1)
-                        type = hvtSupertype;
-
-                    switch (type) {
-                        case RouteType.TRAM:
-                        case HVT.TRAM_SERVICE:
-                            return 'tram-symbolic';
-
-                        case RouteType.SUBWAY:
-                        case HVT.METRO_SERVICE:
-                        case HVT.URBAN_RAILWAY_SERVICE:
-                        case HVT.UNDERGROUND_SERVICE:
-                            return 'subway-symbolic';
-
-                        case RouteType.TRAIN:
-                        case HVT.RAILWAY_SERVICE:
-                        case HVT.SUBURBAN_RAILWAY_SERVICE:
-                            return 'train-symbolic';
-
-                        case RouteType.BUS:
-                        case HVT.BUS_SERVICE:
-                        case HVT.COACH_SERVICE:
-                            return 'bus-symbolic';
-
-                        case RouteType.TROLLEYBUS:
-                        case HVT.TROLLEYBUS_SERVICE:
-                            return 'trolley-bus-symbolic';
-
-                        case RouteType.FERRY:
-                        case HVT.WATER_TRANSPORT_SERVICE:
-                        case HVT.FERRY_SERVICE:
-                            return 'ferry-symbolic';
-
-                        case RouteType.CABLE_CAR:
-                            return 'cablecar-symbolic';
-
-                        case RouteType.GONDOLA:
-                        case HVT.TELECABIN_SERVICE:
-                            return 'gondola-symbolic';
-
-                        case RouteType.FUNICULAR:
-                        case HVT.FUNICULAR_SERVICE:
-                            return 'funicular-symbolic';
-
-                        case HVT.TAXI_SERVICE:
-                            return 'taxi-symbolic';
-
-                        case HVT.AIR_SERVICE:
-                            return 'flying-symbolic';
-
-                        case RouteType.MONORAIL:
-                            return 'monorail-symbolic';
-
-                        default:
-                            /* use a fallback question mark icon in case of some future,
-                             * for now unknown mode appears */
-                            return 'dialog-question-symbolic';
-                    }
-            }
-        } else {
-            return 'walking-symbolic';
-        }
+        return this._route?.iconName ?? 'walking-symbolic';
     }
 
     get walkingInstructions() {

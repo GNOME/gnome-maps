@@ -45,7 +45,7 @@ export class TransitLegHeader extends Gtk.Grid {
 
         // Route label
         if (this._leg.transit) {
-            const routeLabel = new TransitRouteLabel({ leg: this._leg });
+            const routeLabel = new TransitRouteLabel({ route: this._leg.route });
             this._route.set_child(routeLabel);
         }
 
@@ -59,9 +59,9 @@ export class TransitLegHeader extends Gtk.Grid {
              * otherwise just show the headsign
              */
             this._headsignLabel.label =
-                this._leg.tripShortName &&
-                this._leg.tripShortName !== this._leg.displayName
-                ? `<span size="small">${label} • ${this._leg.tripShortName}</span>`
+                this._leg.route?.tripShortName &&
+                this._leg.route.tripShortName !== this._leg.route.displayName
+                ? `<span size="small">${label} • ${this._leg.route.tripShortName}</span>`
                 : `<span size="small">${label}</span>`;
         }
 
@@ -74,7 +74,7 @@ export class TransitLegHeader extends Gtk.Grid {
             this._leg.departureTrack &&
             this._leg.departureTrack !== this._leg.scheduledDepartureTrack) {
             const description =
-                Transit.getTrackChangeDesciption(this._leg.routeType);
+                Transit.getTrackChangeDesciption(this._leg.route.routeType);
 
             this._informationLabel.label =
                 `<span size="small">${description}</span>`;
