@@ -1,0 +1,138 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitJunctureRow: ListBoxRow {
+  Box {
+    orientation: horizontal;
+    spacing: 12;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    Image modeImage {
+      halign: start;
+      valign: start;
+      margin-start: 12;
+      width-request: 16;
+      height-request: 24;
+
+      styles [
+        "sidebar-icon",
+      ]
+    }
+
+    Box {
+      orientation: vertical;
+      spacing: 3;
+
+      Adw.Bin route {
+        halign: start;
+        hexpand: false;
+        valign: center;
+      }
+
+      Label stopLabel {
+        visible: false;
+        halign: start;
+        valign: center;
+        hexpand: false;
+        ellipsize: end;
+
+        styles [
+          "dimmed",
+          "caption",
+        ]
+      }
+
+      Box {
+        orientation: horizontal;
+        spacing: 3;
+        halign: start;
+        hexpand: true;
+
+        Image designationImage {
+          pixel-size: 16;
+
+          styles [
+            "sidebar-icon",
+          ]
+        }
+
+        Label designationLabel {
+          halign: start;
+          hexpand: true;
+          ellipsize: end;
+          use-markup: true;
+
+          styles [
+            "dimmed",
+            "caption",
+          ]
+        }
+      }
+
+      Revealer agencyRevealer {
+        Label agencyLabel {
+          visible: false;
+          margin-end: 12;
+          margin-top: 6;
+          margin-bottom: 6;
+          use-markup: true;
+          halign: start;
+          hexpand: true;
+          ellipsize: end;
+        }
+      }
+    }
+
+    Box {
+      orientation: vertical;
+      spacing: 6;
+
+      Box {
+        orientation: horizontal;
+
+        Label scheduledTimeLabel {
+          visible: false;
+          halign: end;
+          valign: start;
+          hexpand: true;
+          margin-end: 6;
+          use-markup: true;
+
+          styles [
+            "dimmed",
+            "numeric",
+          ]
+        }
+
+        Label timeLabel {
+          halign: end;
+          valign: start;
+          hexpand: true;
+          margin-end: 12;
+
+          styles [
+            "dimmed",
+            "numeric",
+          ]
+        }
+      }
+
+      Image expandArrow {
+        halign: end;
+        valign: start;
+        width-request: 16;
+        height-request: 24;
+        icon-name: "go-down-symbolic";
+        tooltip-text: _("Show information");
+        accessible-role: presentation;
+        margin-end: 12;
+
+        styles [
+          "expander",
+          "dimmed",
+        ]
+      }
+    }
+  }
+}
