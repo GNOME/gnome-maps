@@ -19,23 +19,24 @@
  * Author: Marcus Lundblad <ml@dfupdate.se>
  */
 
-import {Route} from './route.js';
-
 /**
  * Representing a departure or arrival (a route departing or arriving at a place
  * on a specific time).
  */
-export class Juncture extends Route {
-    constructor({ place, designation, time, scheduledTime, track, scheduledTrack,
-                  ...params }) {
-        super(params);
-
+export class Juncture {
+    constructor({ route, place, designation, time, scheduledTime, track,
+                  scheduledTrack }) {
+        this._route = route;
         this._place = place;
         this._designation = designation;
         this._time = time;
         this._scheduledTime = time;
         this._track = track;
         this._scheduledTrack = scheduledTrack;
+    }
+
+    get route() {
+        return this._route;
     }
 
     get place() {
