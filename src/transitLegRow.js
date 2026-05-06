@@ -67,8 +67,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 stop: fromStop, 
                 isHead: true,
                 colors: {
-                    line: this._leg.color,
-                    stop: this._leg.textColor
+                    line: this._leg.route.color,
+                    stop: this._leg.route.textColor
                 },
                 final: false,
                 intermediate: false,
@@ -91,8 +91,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 stop: toStop, 
                 isTail: true,
                 colors: {
-                    line: this._leg.color,
-                    stop: this._leg.textColor
+                    line: this._leg.route.color,
+                    stop: this._leg.route.textColor
                 },
                 final: true,
                 intermediate: false,
@@ -102,12 +102,13 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             this._afterInstructionList.append(toStopRow);
 
             // Agency link
-            const agencyName = GLib.markup_escape_text(this._leg.agencyName, -1);
+            const agencyName =
+                GLib.markup_escape_text(this._leg.route.agencyName, -1);
             if (agencyName) {
                 this._agencyLabel.visible = true;
             }
-            if (this._leg.agencyUrl) {
-                let url = GLib.markup_escape_text(this._leg.agencyUrl, -1);
+            if (this._leg.route.agencyUrl) {
+                let url = GLib.markup_escape_text(this._leg.route.agencyUrl, -1);
                 /* we need to double-escape the tooltip text, as GTK+ treats it as
                  * markup
                  */
@@ -203,8 +204,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                     let row = new TransitStopRow({ 
                         stop: stop,
                         colors: {
-                            line: this._leg.color,
-                            stop: this._leg.textColor
+                            line: this._leg.route.color,
+                            stop: this._leg.route.textColor
                         },
                         final: false,
                         intermediate: true,

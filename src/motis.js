@@ -35,6 +35,7 @@ import {Leg} from './transit/leg.js';
 import {Location} from './location.js';
 import {Place} from './place.js';
 import {Query} from './http.js';
+import {Route} from './transit/route.js';
 import {RouteType} from './transit/routeType.js';
 import {TransitPlace} from './transitPlace.js';
 import {TurnPoint} from './route.js';
@@ -270,6 +271,16 @@ export class Motis {
             new Place({ name:     toName,
                         location: toLocation,
                         store:    false });
+        const route = isTransit ? new Route({ displayName:   leg.displayName,
+                                              tripShortName: leg.tripShortName,
+                                              routeType:     leg.routeType ??
+-                                                            this._getRouteType(leg),
+                                              agencyName:    leg.agencyName,
+                                              agencyUrl:     leg.agencyUrl,
+                                              color:         this._parseHexColorString(leg.routeColor),
+                                              textColor:     this._parseHexColorString(leg.routeTextColor),
+                                              realtime:      leg.realTime }) :
+                                   undefined;
 
         return new Leg({ isTransit:               isTransit,
                          duration:                leg.duration,
@@ -278,20 +289,10 @@ export class Motis {
                          scheduledDeparture:      scheduledDeparture,
                          arrival:                 arrival,
                          scheduledArrival:        scheduledArrival,
-                         realtime:                leg.realTime,
                          from:                    fromPlace,
                          to:                      toPlace,
                          headsign:                leg.headsign,
-                         color:                   this._parseHexColorString(leg.routeColor),
-                         textColor:               this._parseHexColorString(leg.routeTextColor),
-                         displayName:             leg.displayName,
-                         tripShortName:           leg.tripShortName,
-                         routeType:               isTransit ?
-                                                  leg.routeType ??
-                                                  this._getRouteType(leg) :
-                                                  undefined,
-                         agencyName:              leg.agencyName,
-                         agencyUrl:               leg.agencyUrl,
+                         route:                   route,
                          polyline:                polyline,
                          intermediateStops:       intermediateStops,
                          walkingInstructions:     steps ,

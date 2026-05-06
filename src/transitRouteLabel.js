@@ -56,10 +56,10 @@ const FONT_SIZE = 13;
 
 export class TransitRouteLabel extends Gtk.Box {
 
-    constructor({leg, ...params}) {
+    constructor({route, ...params}) {
         super(params);
 
-        this._leg = leg;
+        this._route = route;
         this._styleManager = Adw.StyleManager.get_default();
         this._settings = this.get_settings();
         this._createLayout();
@@ -95,7 +95,7 @@ export class TransitRouteLabel extends Gtk.Box {
 
     _createLayout() {
         const fontDescription = Pango.FontDescription.from_string('sans');
-        const label = this._leg.displayName;
+        const label = this._route.displayName;
 
         fontDescription.set_absolute_size(FONT_SIZE * Pango.SCALE);
         fontDescription.set_weight(Pango.Weight.MEDIUM);
@@ -116,13 +116,13 @@ export class TransitRouteLabel extends Gtk.Box {
         bounds.init(0, 0, width, height);
 
         const usingDarkTheme = this._styleManager.dark;
-        let color = this._leg.color ?? (usingDarkTheme ?
-                                        Constants.DEFAULT_DARK_ROUTE_COLOR :
-                                        Constants.DEFAULT_ROUTE_COLOR);
+        let color = this._route.color ?? (usingDarkTheme ?
+                                          Constants.DEFAULT_DARK_ROUTE_COLOR :
+                                          Constants.DEFAULT_ROUTE_COLOR);
         let textColor =
-            this._leg.textColor ?? (usingDarkTheme ?
-                             Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                             Constants.DEFAULT_ROUTE_TEXT_COLOR);
+            this._route.textColor ?? (usingDarkTheme ?
+                                      Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                      Constants.DEFAULT_ROUTE_TEXT_COLOR);
 
         const usingHighContrastTheme =
             this._settings.gtk_theme_name === 'HighContrast' ||
@@ -134,7 +134,7 @@ export class TransitRouteLabel extends Gtk.Box {
          * hight-contrasting colors, if no label, assume the route color is
          * more relevant and keep it also for high contrast
          */
-        if (usingHighContrastTheme && this._leg.displayName) {
+        if (usingHighContrastTheme && this._route.displayName) {
             color = usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR;
             textColor = usingDarkTheme ? HIGH_CONTRAST_COLOR : HIGH_CONTRAST_TEXT_COLOR;
         }
