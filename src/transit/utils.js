@@ -180,3 +180,78 @@ export function getTrackChangeDesciption(routeType) {
             return _("Departure gate changed");
     }
 }
+
+export function getIconNameForRouteType(type) {
+    switch (type) {
+        /* special case HVT codes */
+        case HVT.CABLE_CAR:
+            return 'cablecar-symbolic';
+        case HVT.HORSE_DRAWN_CARRIAGE:
+            return 'horse-symbolic';
+        case HVT.MONORAIL:
+            return 'monorail-symbolic';
+        case HVT.TOURIST_RAILWAY_SERVICE:
+            return 'steam-train-symbolic';
+        default:
+            let hvtSupertype = HVT.supertypeOf(type);
+
+            if (hvtSupertype !== -1)
+                type = hvtSupertype;
+
+            switch (type) {
+                case RouteType.TRAM:
+                case HVT.TRAM_SERVICE:
+                    return 'tram-symbolic';
+
+                case RouteType.SUBWAY:
+                case HVT.METRO_SERVICE:
+                case HVT.URBAN_RAILWAY_SERVICE:
+                case HVT.UNDERGROUND_SERVICE:
+                    return 'subway-symbolic';
+
+                case RouteType.TRAIN:
+                case HVT.RAILWAY_SERVICE:
+                case HVT.SUBURBAN_RAILWAY_SERVICE:
+                    return 'train-symbolic';
+
+                case RouteType.BUS:
+                case HVT.BUS_SERVICE:
+                case HVT.COACH_SERVICE:
+                    return 'bus-symbolic';
+
+                case RouteType.TROLLEYBUS:
+                case HVT.TROLLEYBUS_SERVICE:
+                    return 'trolley-bus-symbolic';
+
+                case RouteType.FERRY:
+                case HVT.WATER_TRANSPORT_SERVICE:
+                case HVT.FERRY_SERVICE:
+                    return 'ferry-symbolic';
+
+                case RouteType.CABLE_CAR:
+                    return 'cablecar-symbolic';
+
+                case RouteType.GONDOLA:
+                case HVT.TELECABIN_SERVICE:
+                    return 'gondola-symbolic';
+
+                case RouteType.FUNICULAR:
+                case HVT.FUNICULAR_SERVICE:
+                    return 'funicular-symbolic';
+
+                case HVT.TAXI_SERVICE:
+                    return 'taxi-symbolic';
+
+                case HVT.AIR_SERVICE:
+                    return 'flying-symbolic';
+
+                case RouteType.MONORAIL:
+                    return 'monorail-symbolic';
+
+                default:
+                    /* use a fallback question mark icon in case of some future,
+                     * for now unknown mode appears */
+                    return 'dialog-question-symbolic';
+            }
+    }
+}
