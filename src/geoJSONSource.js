@@ -57,11 +57,12 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
         return this._bbox;
     }
 
-    vfunc_fill_tile(tile) {
-        if (tile.get_state() === Shumate.State.DONE)
-            return;
+    vfunc_fill_tile(tile, task) {
+        if (tile.get_state() !== Shumate.State.DONE) {
+            this._renderTile(tile);
+        }
 
-        this._renderTile(tile);
+        task.return_boolean(true);
     }
 
     _validate([lon, lat]) {

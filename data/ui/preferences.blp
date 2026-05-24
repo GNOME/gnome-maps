@@ -1,0 +1,11 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_PreferencesDialog: Adw.PreferencesDialog {
+  search-enabled: false;
+
+  content-width: 640;
+  content-height: 480;
+
+  $Gjs_PreferencesDownloads {}
+}

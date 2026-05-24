@@ -25,7 +25,8 @@ import GnomeMaps from 'gi://GnomeMaps';
 
 import {Application} from './application.js';
 import * as Utils from './utils.js';
-import { generateMapStyle } from './mapStyle/mapStyle.js';
+import { DEFAULT_TILE_URL_PATTERN, generateMapStyle } from './mapStyle/mapStyle.js';
+import { OfflineDataSource } from "./offlineDataSource.js";
 
 let lightStyle = null;
 let darkStyle = null;
@@ -42,7 +43,7 @@ export function createVectorSource() {
             colorScheme: colorScheme,
             language: Utils.getLanguage(),
             textScale: Adw.LengthUnit.to_px(Adw.LengthUnit.SP, 1, null),
-            tileUrlPattern: Application.settings.get('vector-tile-source-url-pattern'),
+            tileUrlPattern: Application.settings.get('vector-tile-source-url-pattern') ?? DEFAULT_TILE_URL_PATTERN,
         };
     let style;
 
@@ -59,6 +60,12 @@ export function createVectorSource() {
     Utils.debug(`Map style generated in ${(end - start) / 1000} ms.`);
 
     const source = Shumate.VectorRenderer.new("vector-tiles", style);
+    const tileDownloader = Shumate.TileDownloader.new(styleParams.tileUrlPattern);
+    tileDownloader.max_zoom_level = 14;
+    source.set_data_source(
+        "vector-tiles",
+        new OfflineDataSource(Application.downloads, tileDownloader)
+    );
     source.set_license("© OpenMapTiles © OpenStreetMap contributors");
     source.set_license_uri("https://www.openstreetmap.org/copyright");
 

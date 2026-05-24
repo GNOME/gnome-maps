@@ -54,6 +54,7 @@ libmaps_deps = [
 	dependency('librsvg-2.0'),
 	dependency('json-glib-1.0'),
 	cc.find_library('m', required: true),
+	dependency('sqlite3'),
 ]
 
 msgfmt = find_program('msgfmt')

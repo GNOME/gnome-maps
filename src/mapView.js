@@ -458,6 +458,12 @@ export class MapView extends Gtk.Overlay {
         }
     }
 
+    _onMapLoaded(_mapLayer) {
+        if (_mapLayer === this._mapLayer) {
+            this.emit("map-loaded");
+        }
+    }
+
     setMapType(mapType, forceReload = false) {
         if (this._mapType && this._mapType === mapType && !forceReload)
             return;
@@ -507,6 +513,7 @@ export class MapView extends Gtk.Overlay {
 
         this._mapLayer = mapLayer;
         mapLayer.connect("symbol-clicked", this._onSymbolClicked.bind(this));
+        mapLayer.connect("map-loaded", this._onMapLoaded.bind(this));
 
         this.map.viewport.set_reference_map_source(mapSource);
 
@@ -1371,6 +1378,7 @@ GObject.registerClass({
     Signals: {
         'user-location-changed': {},
         'marker-selected': { param_types: [Shumate.Marker] },
-        'map-type-changed': { param_types: [GObject.TYPE_STRING] }
+        'map-type-changed': { param_types: [GObject.TYPE_STRING] },
+        'map-loaded': {},
     },
 }, MapView);

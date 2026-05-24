@@ -39,6 +39,7 @@ import {Settings} from './settings.js';
 import * as Utils from './utils.js';
 import * as URIS from './uris.js';
 import { Place } from './place.js';
+import { DownloadManager } from './downloads.js';
 
 const Format = imports.format;
 
@@ -46,6 +47,8 @@ export class Application extends Adw.Application {
 
     // used globally
     static application = null;
+    /** @type {DownloadManager} */
+    static downloads = null;
     static settings = null;
     /** @type {PlaceStore} */
     static placeStore = null;
@@ -174,6 +177,8 @@ export class Application extends Adw.Application {
         Application.routingDelegator = new RoutingDelegator({ query: Application.routeQuery });
         Application.geoclue = new Geoclue();
         Application.osmEdit = new OSMEdit();
+        Application.downloads = new DownloadManager();
+        Application.downloads.load();
     }
 
     _createWindow() {
@@ -382,6 +387,8 @@ export class Application extends Adw.Application {
             this._mainWindow.searchBar.popover.unparent();
             this._mainWindow.auxillaryView.unparentSearchPopovers();
         }
+
+        Application.downloads.saveOnQuit();
 
         super.vfunc_shutdown();
     }

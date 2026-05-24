@@ -49,9 +49,8 @@ typedef struct _MapsSyncMapSourceClass MapsSyncMapSourceClass;
 /**
  * MapsSyncMapSource:
  *
- * Wrapper of ShumateMapSource encapsulating fill_tile_async and
- * fill_tile_finish into a synchronous file_tile vfunc as work-around for
- * https://gitlab.gnome.org/GNOME/gjs/-/issues/72
+ * Wrapper of ShumateMapSource that creates a GTask for fill_tile_async
+ * as a work-around for https://gitlab.gnome.org/GNOME/gjs/-/issues/72
  *
  * The #MapsSyncMapSource structure contains only private data
  * and should be accessed using the provided API
@@ -69,7 +68,8 @@ struct _MapsSyncMapSourceClass
   ShumateMapSourceClass parent_class;
 
   void (*fill_tile)  (MapsSyncMapSource     *self,
-                      ShumateTile           *tile);
+                      ShumateTile           *tile,
+                      GTask                 *task);
 };
 
 GType maps_sync_map_source_get_type (void);

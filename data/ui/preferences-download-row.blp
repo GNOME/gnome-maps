@@ -1,0 +1,43 @@
+using Gtk 4.0;
+using Adw 1;
+using Shumate 1.0;
+
+template $Gjs_PreferencesDownloadRow: Adw.ExpanderRow {
+  notify::expanded => $updateMap();
+
+  [suffix]
+  Button {
+    icon-name: "user-trash-symbolic";
+    valign: center;
+    clicked => $delete();
+    tooltip-text: _("Delete Download");
+  }
+
+  Adw.EntryRow nameEntry {
+    title: _("Name");
+    changed => $updateName();
+  }
+
+  Adw.PreferencesRow mapRow {
+    styles [
+      "preferences-map-row",
+    ]
+
+    overflow: hidden;
+
+    Overlay overlay {
+      $Gjs_PreferencesDownloadRowMapWrapper {
+        Shumate.Map map {
+          height-request: 200;
+          can-target: false;
+        }
+      }
+
+      [overlay]
+      Shumate.License license {
+        halign: end;
+        valign: end;
+      }
+    }
+  }
+}

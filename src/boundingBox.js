@@ -22,6 +22,7 @@
 import * as Constants from './constants.js';
 
 export class BoundingBox {
+    /** @param {{left: number, right: number, bottom: number, top: number}} params */
     constructor(params) {
         /* default to a bounding box the "opposite" of covering the whole
          * visible world, this way extending with a coordinate will ensure
@@ -134,5 +135,14 @@ export class BoundingBox {
     covers(latitude, longitude) {
         return (latitude >= this.bottom && latitude <= this.top) &&
                (longitude >= this.left && longitude <= this.right);
+    }
+
+    toJSON() {
+        return {
+            left: this.left,
+            right: this.right,
+            bottom: this.bottom,
+            top: this.top
+        };
     }
 }

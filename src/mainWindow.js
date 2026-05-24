@@ -42,6 +42,8 @@ import {SearchBar} from './searchBar.js';
 import {ShapeLayer} from './shapeLayer.js';
 import * as Utils from './utils.js';
 import {ZoomAndRotateControls} from './zoomAndRotateControls.js';
+import {PreferencesDownloads} from './preferencesDownloads.js';
+import {PreferencesDialog} from './preferences.js';
 
 const _ = gettext.gettext;
 
@@ -117,6 +119,13 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         this._mapView.bind_property('routeShowing', this._printRouteButton,
                                     'visible', GObject.BindingFlags.DEFAULT);
+
+        /* Wait for the map view to be loaded, then check for updates
+           to offline maps */
+        const mapLoadedId = this.mapView.connect('map-loaded', () => {
+            Application.downloads.processQueue();
+            this.mapView.disconnect(mapLoadedId);
+        });
     }
 
     showToast(message) {
@@ -291,6 +300,10 @@ export class MainWindow extends Adw.ApplicationWindow {
             },
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
+            },
+            'show-preferences': {
+                accels: ['<Primary>comma'],
+                onActivate: () => this._showPreferences(),
             },
             'set-measurement-system': {
                 setting: 'measurement-system'
@@ -749,6 +762,11 @@ export class MainWindow extends Adw.ApplicationWindow {
                 // do nothing if the file dialog is dismissed
             }
         });
+    }
+
+    _showPreferences() {
+        const win = new PreferencesDialog();
+        win.present(this);
     }
 }
 

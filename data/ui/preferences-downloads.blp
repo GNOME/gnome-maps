@@ -1,0 +1,80 @@
+using Gtk 4.0;
+using Adw 1;
+using Gio 2.0;
+
+template $Gjs_PreferencesDownloads: Adw.PreferencesPage {
+  title: _("Downloads");
+  description: _(
+    "Download maps for offline use.\n\nDownloaded areas can be viewed when no internet connection is available. Not all features are available offline."
+  );
+
+  banner: Adw.Banner {
+    title: bind $pauseReasonsText(template.downloads as <$Gjs_DownloadManager>.pause-reasons);
+    button-label: _("Resume");
+    revealed: bind template.downloads as <$Gjs_DownloadManager>.paused;
+    button-clicked => $downloadAnyway();
+  };
+
+  Adw.PreferencesGroup progress {
+    visible: false;
+
+    Adw.Bin {
+      ProgressBar progressBar {
+        show-text: true;
+      }
+    }
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Downloaded Areas");
+
+    [header-suffix]
+    Button {
+      styles [
+        "flat",
+      ]
+
+      clicked => $showAddPage();
+
+      Box {
+        spacing: 6;
+
+        Image {
+          accessible-role: presentation;
+          icon-name: "list-add-symbolic";
+        }
+
+        Label {
+          label: _("Add");
+        }
+      }
+    }
+
+    Stack {
+      visible-child-name: bind $visibleChild(
+        template.downloads as <$Gjs_DownloadManager>.areas as <Gio.ListStore>.n-items
+        );
+      vhomogeneous: false;
+
+      StackPage {
+        name: "noDownloads";
+
+        child: Adw.StatusPage noDownloads {
+          title: _("No Downloads");
+        };
+      }
+
+      StackPage {
+        name: "downloads";
+
+        child: ListBox downloadsAreasBox {
+          styles [
+            "boxed-list",
+          ]
+
+          selection-mode: none;
+        };
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@
 
 import Gio from 'gi://Gio';
 
-import * as Utils from "./utils.js";
+import * as Utils from './utils.js';
 
 /**
  * Stores a JSON object to disk. Designed to be swapped out for a

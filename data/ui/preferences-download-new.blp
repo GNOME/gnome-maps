@@ -1,0 +1,115 @@
+using Gtk 4.0;
+using Adw 1;
+using Shumate 1.0;
+
+template $Gjs_PreferencesDownloadNew: Adw.NavigationPage {
+  title: _("Select Download Area");
+
+  child: Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      [end]
+      Button downloadButton {
+        styles [
+          "suggested-action",
+        ]
+
+        label: _("Download");
+        clicked => $createDownload();
+      }
+    }
+
+    Overlay {
+      hexpand: true;
+      vexpand: true;
+      height-request: 200;
+
+      Shumate.Map map {
+        hexpand: true;
+        vexpand: true;
+      }
+
+      [overlay]
+      Shumate.License license {
+        halign: end;
+        valign: end;
+      }
+
+      [overlay]
+      $Gjs_AreaSelectOverlay selectOverlay {
+        valign: "fill";
+        halign: "fill";
+        notify::bounds => $onBoundsChanged();
+      }
+
+      [overlay]
+      Box {
+        styles [
+          "linked",
+        ]
+
+        halign: start;
+        valign: start;
+        margin-top: 6;
+        margin-start: 6;
+
+        Button {
+          styles [
+            "osd",
+          ]
+
+          icon-name: "value-increase-symbolic";
+          clicked => $zoomIn();
+          tooltip-text: _("Zoom In");
+        }
+
+        Button {
+          styles [
+            "osd",
+          ]
+
+          icon-name: "value-decrease-symbolic";
+          clicked => $zoomOut();
+          tooltip-text: _("Zoom Out");
+        }
+      }
+
+      [overlay]
+      Adw.Bin {
+        styles [
+          "osd",
+          "toolbar",
+        ]
+
+        halign: end;
+        valign: start;
+        margin-top: 6;
+        margin-end: 6;
+
+        Stack estimationStack {
+          hhomogeneous: false;
+
+          Spinner estimationSpinner {}
+
+          Label estimationLabel {}
+
+          Box estimationTooLarge {
+            spacing: 6;
+
+            styles ["warning"]
+
+            Image {
+              accessible-role: presentation;
+              icon-name: "warning-symbolic";
+            }
+
+            Label {
+              label: _("Area is too large");
+            }
+          }
+        }
+      }
+    }
+  };
+}

@@ -38,6 +38,8 @@ import { housenumbers } from "./housenumbers.js";
 import { places } from "./places.js";
 import { pois } from "./pois.js";
 
+export const DEFAULT_TILE_URL_PATTERN = 'https://tileserver.gnome.org/data/v3/{z}/{x}/{y}.pbf';
+
 /**
  * Generates the map style using the given options.
  * @param {import("./utils.js").MapStyleConfigParams} options
@@ -45,8 +47,7 @@ import { pois } from "./pois.js";
  */
 export function generateMapStyle(options) {
     const config = new MapStyleConfig(options);
-    const tileUrlPattern = options.tileUrlPattern ??
-                           'https://tileserver.gnome.org/data/v3/{z}/{x}/{y}.pbf';
+    const tileUrlPattern = options.tileUrlPattern ?? DEFAULT_TILE_URL_PATTERN;
 
     const layeredLayers = [];
     for (let layerNum = DEFS.minLayer; layerNum <= DEFS.maxLayer; layerNum++) {

@@ -29,6 +29,7 @@ import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import GWeather from 'gi://GWeather';
+import Soup from 'gi://Soup';
 
 import {Settings} from './settings.js';
 

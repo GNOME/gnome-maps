@@ -1,4 +1,5 @@
 headers_private = files(
+	'maps-download-store.h',
 	'maps-file-data-source.h',
 	'maps-osm.h',
 	'maps-osm-changeset.h',
@@ -12,6 +13,7 @@ headers_private = files(
 )
 
 sources = files(
+	'maps-download-store.c',
 	'maps-file-data-source.c',
 	'maps-osm.c',
 	'maps-osm-changeset.c',

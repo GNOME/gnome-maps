@@ -67,14 +67,11 @@ fill_tile_async (ShumateMapSource     *source,
 
   g_autoptr(GTask) task = NULL;
 
- // TODO: this gives a null gobject cast runtime error...
-  MAPS_SYNC_MAP_SOURCE_GET_CLASS (self)->fill_tile (self, tile);
-
   task = g_task_new (source, cancellable, callback, user_data);
   g_task_set_source_tag (task, fill_tile_async);
 
-
-  g_task_return_boolean (task, TRUE);
+  // TODO: this gives a null gobject cast runtime error...
+  MAPS_SYNC_MAP_SOURCE_GET_CLASS (self)->fill_tile (self, tile, task);
 }
 
 static gboolean
