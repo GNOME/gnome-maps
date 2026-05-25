@@ -417,7 +417,10 @@ export class RouteView extends Gtk.Box {
             this._transitOverviewListBox.insert(row, -1);
         });
         /* add the "load more" row */
-        this._transitOverviewListBox.insert(new TransitMoreRow(), -1);
+        const arriveBy = Application.routeQuery.arriveBy;
+        const moreRow = new TransitMoreRow({ earlier: arriveBy });
+
+        this._transitOverviewListBox.insert(moreRow, -1);
     }
 
     _onItineraryActivated(itinerary) {

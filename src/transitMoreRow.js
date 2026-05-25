@@ -24,16 +24,16 @@ import gettext from 'gettext';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
-import {Application} from './application.js';
-
 const _ = gettext.gettext;
 
 export class TransitMoreRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
+    constructor({ earlier, ...params }) {
         super(params);
 
-        if (Application.routeQuery.arriveBy)
+        this._earlier = earlier;
+
+        if (this._earlier)
             this._label.label = _("Load earlier alternatives");
         else
             this._label.label = _("Load later alternatives");
@@ -48,7 +48,7 @@ export class TransitMoreRow extends Gtk.ListBoxRow {
         this._label.get_style_context().add_class('dimmed');
         this._stack.visible_child_name = 'label';
 
-        if (Application.routeQuery.arriveBy)
+        if (this._earlier)
             this._label.label = _("No earlier alternatives found.");
         else
             this._label.label = _("No later alternatives found.");
