@@ -102,11 +102,12 @@ export class TransitPrintLayout extends PrintLayout {
                        width - height - timeWidth, height / 2, Pango.Alignment.LEFT);
 
         if (leg.transit) {
-            let color = leg.color ?? Constants.DEFAULT_ROUTE_COLOR;
-            let textColor = leg.textColor ?? Constants.DEFAULT_ROUTE_TEXT_COLOR;
+            let color = leg.route.color ?? Constants.DEFAULT_ROUTE_COLOR;
+            let textColor = leg.route.textColor ?? Constants.DEFAULT_ROUTE_TEXT_COLOR;
             let hasOutline = Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD;
             let routeText =
-                this._createTextLayout(cr, leg.route, width - height - timeWidth,
+                this._createTextLayout(cr, leg.route.displayName,
+                                       width - height - timeWidth,
                                        height / 2,
                                        this._rtl ? Pango.Alignment.RIGHT :
                                                    Pango.Alignment.LEFT);
