@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-05-05 20:09+0000\n"
-"PO-Revision-Date: 2026-05-22 21:41+0100\n"
+"POT-Creation-Date: 2026-06-12 10:21+0000\n"
+"PO-Revision-Date: 2026-06-15 11:23+0100\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
 "Language-Team: kw\n"
 "Language: kw\n"
@@ -33,7 +33,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
+#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Mappow"
 
@@ -136,7 +136,7 @@ msgstr "Hanow devnydhyer OpenStreetMap po trigva ebost"
 
 #: data/org.gnome.Maps.gschema.xml:67
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr "Sinya mars an devnydhyer re omgelmyas dhe golegi data OpenStreetMap."
+msgstr "Sinya mars an devnydhyer re omgelmi dhe wolegi data OpenStreetMap."
 
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Last used transportation type for routing"
@@ -148,7 +148,7 @@ msgstr "Diskwedhes skeul"
 
 #: data/org.gnome.Maps.gschema.xml:76
 msgid "Whether to show the scale."
-msgstr "Mar diskwedhes an skeul"
+msgstr "Mar tiskwedhes an skeul"
 
 #: data/org.gnome.Maps.gschema.xml:80
 msgid "Map tile URL pattern"
@@ -161,7 +161,7 @@ msgid ""
 "Profile"
 msgstr ""
 "An patron gorgevren rag an devedhyans prileghennow vektor dhe dhevnydhya. "
-"Notyewgh: an gis mappa a fydh war nebes ystynansow gehevelys dhe Brofil "
+"Notyewgh: an gis mappa a fydh war nebes ystynansow kehevelys dhe Brofil "
 "OpenMapiles Planetiler y'n avon a-wartha"
 
 #: data/org.gnome.Maps.gschema.xml:85
@@ -174,8 +174,8 @@ msgid ""
 "always show metric units, 'imperial' always show imperial units)."
 msgstr ""
 "Fatel yllir diskwedhes musuransow. ('system' a dhevnydh defowt rag yeth "
-"system, 'metric' a dhiskwedh unsys metrek pub prys, 'imperial' a dhiskwedh "
-"unsys emperourethek pub prys)."
+"system, 'metric' a dhiskwedh unses metrek pub prys, 'imperial' a dhiskwedh "
+"unses emperourethek pub prys)."
 
 #: data/org.gnome.Maps.gschema.xml:90
 msgid "Show location marker"
@@ -195,7 +195,7 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Mappys a re dhywgh hedhas snell dhe vappys dres oll an bys. Yth a'gas gas "
+"Mappys a re dhywgh hedhas snell dhe vappys dres oll an bys. Yth a'gas gasa "
 "kavos snell an tyller hwilas owgh hwi gans ow hwilas rag cita po stret, po "
 "desedha tyller rag metya koweth."
 
@@ -323,7 +323,7 @@ msgstr "_Esperthi avel Skeusen…"
 #. Translators: This is a submenu for selecting length measurements units
 #: data/ui/main-window.blp:20
 msgid "Measurement Units"
-msgstr "Unsys Musurans"
+msgstr "Unses Musurans"
 
 #. Translators: This is a menu item for showing measurements in units corresponding to the system locale
 #: data/ui/main-window.blp:25
@@ -341,29 +341,33 @@ msgid "_Imperial"
 msgstr "_Emperourethek"
 
 #: data/ui/main-window.blp:49
-msgid "_Keyboard Shortcuts"
-msgstr "_Kesunyansow Vysowek"
+msgid "Preferences"
+msgstr "Dewisyow"
 
-#: data/ui/main-window.blp:55
+#: data/ui/main-window.blp:54
+msgid "_Keyboard Shortcuts"
+msgstr "_Kesunyansow Bysowek"
+
+#: data/ui/main-window.blp:60
 msgid "_About Maps"
 msgstr "_A-dro dhe Vappow"
 
-#: data/ui/main-window.blp:125
+#: data/ui/main-window.blp:130
 msgid "Main Menu"
 msgstr "Pennrol"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:633
+#: data/ui/main-window.blp:174 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Gweles Kedhlow Tyller"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
+#: data/ui/main-window.blp:183
 msgid "Print Route"
 msgstr "Pryntya Fordh"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
+#: data/ui/main-window.blp:193
 msgid "Close Sidebar"
 msgstr "Degea Bordh Lestri"
 
@@ -441,7 +445,7 @@ msgstr "Golegi Tyller"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Golegi tyller yn OpenStreetMap seulabrys"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:390
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:719 src/motis.js:484
 msgid "Continue"
 msgstr "Pesya"
 
@@ -471,8 +475,8 @@ msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
 msgstr ""
-"Deskrifa agas chanjyow dhe'n mappa. Y's a vydh gweladow war oll mappys ow "
-"tevnydhya data OpenStreetMap."
+"Deskrifa agas chanjyow dhe'n mappa. I a vydh gweladow war oll mappys neb a "
+"dhevnydh data OpenStreetMap."
 
 #: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
@@ -487,13 +491,13 @@ msgstr "Vyth"
 msgid "Explore Nearby Places"
 msgstr "Trovya Tylleryow Ogas"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
 msgstr "Sewyansow kevys vyth"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
-msgstr "Yth esa error"
+msgstr "Yth esa kamm"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.blp:12
@@ -503,17 +507,17 @@ msgstr "Chanjya Aray Navigacyon"
 #. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
 #: data/ui/route-view.blp:15
 msgid "Walking"
-msgstr "Ow Kerdhes"
+msgstr "Kerdhes"
 
 #. Translators: This is the tooltip text for the button selecting the cycling routing mode
 #: data/ui/route-view.blp:22
 msgid "Cycling"
-msgstr "Ow Tiwrosa"
+msgstr "Diwrosa"
 
 #. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
 #: data/ui/route-view.blp:29
 msgid "Driving"
-msgstr "Ow Lewya"
+msgstr "Lewya"
 
 #. Translators: This is the tooltip text for the button selecting the public transit routing mode
 #: data/ui/route-view.blp:36
@@ -545,14 +549,14 @@ msgid ""
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
-"Navigacyon karyans poblek yw provys gans gonisyow barti tressa.\n"
-"GNOME ny allas mewghya komposter a'n danvonadow ha termynyow dhiskwedhys.\n"
+"Navigacyon karyans poblek yw provys gans gonisyow parti tressa.\n"
+"GNOME ny allas mewghya komposter a'n danvonadow ha termynyow diskwedhys.\n"
 "Notyewgh nebes provioryon martesen na synsi oll fordhow a garyans kavadow,\n"
 "r.e. provier kenedhlek martesen ny wra synsi ayrlinennow, ha provier leel a "
 "yll\n"
 "fyllel trenow ranndirek.\n"
 "Henwyn ha merkys diskwedhys a kodh tybys avel tradmerkys kovskrifys mar "
-"berthynek."
+"perthynek."
 
 #: data/ui/route-view.blp:239
 msgid "Back"
@@ -588,7 +592,7 @@ msgstr "Ollgemmyn"
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Diskwedhes Kesunyansow Vysowek"
+msgstr "Diskwedhes Kesunyansow Bysowek"
 
 #: data/ui/shortcuts-dialog.blp:14
 msgctxt "shortcut window"
@@ -675,6 +679,10 @@ msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Dewis merkyer GPS"
 
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+msgid "Show information"
+msgstr "Diskwedhes kedhlow"
+
 #. Translators: Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.blp:18
 msgid "Leave Now"
@@ -688,7 +696,7 @@ msgstr "Diberth Kyns"
 #. Translators: Indicates searching for itineraries arriving no later than the specified time
 #: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
-msgstr "Dhrehedhes Kyns"
+msgstr "Drehedhes War-bynn"
 
 #: data/ui/transit-options-panel.blp:61
 msgid "View More"
@@ -761,9 +769,85 @@ msgstr "Golegi war OpenStreetMap"
 msgid "Share location"
 msgstr "Kevrenna tyller"
 
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "Dibarthow"
+
+#: data/ui/place-view.blp:151
+msgid "Arrivals"
+msgstr "Devedhyansow"
+
+#: data/ui/place-view.blp:155
+msgid "Information"
+msgstr "Kedhlow"
+
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Dehweles dhe Bennklassys"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "Dewis Arenebedh Iskarg"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "Iskarga"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:64
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1310
+msgid "Zoom In"
+msgstr "Moghhe"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74
+#: data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "Lehe"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "Arenebedh yw re vras"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "Dilea Iskarg"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "Hanow"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "Iskargow"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not "
+"all features are available offline."
+msgstr ""
+"Iskarga mappys rag devnydh dhywarlinen.\n"
+"\n"
+"Arenebedhow iskargs a yll bos gwelys pan nyns eus junyans kesrosweyth "
+"kavadow. Nyns eus oll nasyow kavadow dhywarlinen."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "Daskemeres"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "Arenebedhow Iskargys"
+
+#: data/ui/preferences-downloads.blp:48
+msgid "Add"
+msgstr "Keworra"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "Iskargow Vyth"
 
 #. Translators: This is a tooltip
 #: data/ui/zoom-and-rotate-controls.blp:19
@@ -775,54 +859,31 @@ msgstr "Dasgorra Rosellans"
 msgid "Current Location"
 msgstr "Tyller A-Lemmyn"
 
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44
-msgid "Zoom Out"
-msgstr "Lehe"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1331
-msgid "Zoom In"
-msgstr "Moghhe"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "Ny yllir kavos kesweyth prileghen yn restrenva"
-
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
 msgstr "Ny yllir redya skrif XML"
 
 #: lib/maps-osm.c:250 lib/maps-osm.c:403
 msgid "Missing required attributes"
-msgstr "Teythiennow a res yw ow fyllel"
+msgstr "Yma teythiennow res a fyll"
 
 #: lib/maps-osm.c:451
 msgid "Could not find OSM element"
 msgstr "Ny yllir kavos elven OSM"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "Tyller dhe gesweyth restrenva brileghennow leel"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Braster prileghen rag restrenva brileghennow leel"
-
-#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "Diskwedhes an dyllans a'n dowlen"
 
-#: src/application.js:90
+#: src/application.js:80
 msgid "Search for places"
 msgstr "Hwilas tylleryow"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[RESTREN…|URI]"
 
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Mappys anewn: URI: %s"
@@ -854,15 +915,15 @@ msgstr "“%s” disterennys"
 msgid "_Undo"
 msgstr "_Digelmi"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "kesordenek anewn"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
-msgstr "error redya"
+msgstr "kamm redya"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "mynsonieth ankoth"
 
@@ -878,40 +939,40 @@ msgstr "Fordh kevys vyth."
 msgid "Start!"
 msgstr "Dalleth!"
 
-#: src/mainWindow.js:535
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "Ny yllir junya dhe wonis GPS"
 
-#: src/mainWindow.js:540
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "Bywhe gonisyow GPS"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "Settyansow GPS"
 
-#: src/mainWindow.js:652
+#: src/mainWindow.js:662
 msgid "Show Route Planner"
 msgstr "Diskwedhes Towlenner Fordh"
 
-#: src/mainWindow.js:667
+#: src/mainWindow.js:677
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Gwirbryntyans © 2011 – 2026 Red Hat, Inc. hag An awtours GNOME Mappys"
 
-#: src/mainWindow.js:668
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr "Flynn"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Data mappa gans %s ha kevriysi"
 
-#: src/mainWindow.js:676
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
 msgstr "Provier Data Mappa"
 
-#: src/mainWindow.js:679
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
 msgstr "Provier Prileghennow Mappa"
 
@@ -920,179 +981,179 @@ msgstr "Provier Prileghennow Mappa"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:687
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Prileghennow mappa provys gans %s"
 
-#: src/mainWindow.js:716
+#: src/mainWindow.js:726
 msgid "Search Provider"
 msgstr "Provier Hwithrans"
 
-#: src/mainWindow.js:719
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Hwithrans provys gans %s ow tevnydhya %s"
 
-#: src/mainWindow.js:728
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "Oll Restrennow Gwiskas"
 
-#: src/mainWindow.js:741
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "Ygeri Gwiskasow Furv"
 
-#: src/mapView.js:715 src/mapView.js:777
+#: src/mapView.js:694 src/mapView.js:756
 msgid "Failed to open layer"
 msgstr "Ny yllir ygeri gwiskas"
 
-#: src/mapView.js:732
+#: src/mapView.js:711
 msgid "Do you want to continue?"
 msgstr "A vynnowgh pesya?"
 
-#: src/mapView.js:733
+#: src/mapView.js:712
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr ""
-"Owth ygeri owgh hwi restrennow gans braster somm a %s MB. Hemm a yll kemeres "
-"nebes termyn dhe garga"
+"Yth esowgh owth ygeri restrennow gans braster kowal a %s MB. Hemm a yll "
+"kemeres nebes termyn dhe garga"
 
-#: src/mapView.js:739
+#: src/mapView.js:718 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Hedhi"
 
-#: src/mapView.js:771
+#: src/mapView.js:750
 msgid "File type is not supported"
 msgstr "Eghen restren nag yw skoodhys"
 
-#: src/mapView.js:810
+#: src/mapView.js:789
 msgid "Failed to open GeoURI"
 msgstr "Ny yllir ygeri GeoURI"
 
-#: src/mapView.js:1330
+#: src/mapView.js:1309
 msgid "Zoom in to add location"
 msgstr "Moghhe rag keworra tyller"
 
-#: src/mapView.js:1348
+#: src/mapView.js:1327
 msgid "Location was added in OpenStreetMap"
 msgstr "Tyller o keworrys yn OpenStreetMap"
 
-#: src/motis.js:353 src/transit/utils.js:35 src/transit/utils.js:87
+#: src/motis.js:397 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Dalleth"
 
-#: src/motis.js:372 src/transit/utils.js:43 src/transit/utils.js:73
+#: src/motis.js:416 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Drehedhes"
 
-#: src/motis.js:384
+#: src/motis.js:478
 #, javascript-format
 msgid "Take the stairs to level %s"
-msgstr "Kemerewgh an risyow dhe leur %s"
+msgstr "Kemerewgh an grisyow dhe leur %s"
 
-#: src/motis.js:385
+#: src/motis.js:479
 msgid "Take the stairs"
-msgstr "Kemerewgh an risyow"
+msgstr "Kemerewgh an grisyow"
 
-#: src/motis.js:389
+#: src/motis.js:483
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Pesyewgh war %s"
 
-#: src/motis.js:394
+#: src/motis.js:488
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Treylyewgh a-gledh war %s"
 
-#: src/motis.js:395
+#: src/motis.js:489
 msgid "Turn left"
 msgstr "Treylyewgh a-gledh"
 
-#: src/motis.js:399
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Treylyewgh boghes a-gledh war %s"
 
-#: src/motis.js:400
+#: src/motis.js:494
 msgid "Turn slightly left"
 msgstr "Treylyewgh boghes a-gledh"
 
-#: src/motis.js:404
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Treylyewgh lymm a-gledh war %s"
 
-#: src/motis.js:405
+#: src/motis.js:499
 msgid "Turn sharp left"
 msgstr "Treylyewgh lymm a-gledh"
 
-#: src/motis.js:409
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Treylyewgh a-dhyghow war %s"
 
-#: src/motis.js:410
+#: src/motis.js:504
 msgid "Turn right"
 msgstr "Treylyewgh a-dhyghow"
 
-#: src/motis.js:414
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Treylyewgh boghes a-dhyghow war %s"
 
-#: src/motis.js:415
+#: src/motis.js:509
 msgid "Turn slightly right"
 msgstr "Treylyewgh boghes a-dhyghow"
 
-#: src/motis.js:419
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Treylyewgh lymm a-dhyghow war %s"
 
-#: src/motis.js:420
+#: src/motis.js:514
 msgid "Turn sharp right"
 msgstr "Treylyewgh lymm a-dhyghow"
 
-#: src/motis.js:427
+#: src/motis.js:521
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Orth an fordh a-dro, kemerewgh mesporth %s"
 
-#: src/motis.js:430
+#: src/motis.js:524
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Orth an fordh a-dro, kemerewgh mesporth dhe %s"
 
-#: src/motis.js:432
+#: src/motis.js:526
 msgid "Take the roundabout"
 msgstr "Kemerewgh an fordh a-dro"
 
-#: src/motis.js:440
+#: src/motis.js:534
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Kemerewgh an yskynnell ha dilestrewgh orth %s"
 
-#: src/motis.js:441
+#: src/motis.js:535
 msgid "Take the elevator"
 msgstr "Kemerewgh an yskynnell"
 
-#: src/motis.js:445
+#: src/motis.js:539
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Gwrewgh treylyans U a-gledh war %s"
 
-#: src/motis.js:446
+#: src/motis.js:540
 msgid "Make a left u-turn"
 msgstr "Gwrewgh treylyans U a-gledh"
 
-#: src/motis.js:450
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Gwrewgh treylyans U a-dhyghow war %s"
 
-#: src/motis.js:451
+#: src/motis.js:545
 msgid "Make a right u-turn"
 msgstr "Gwrewgh treylyans U a-dhyghow"
 
@@ -1100,7 +1161,7 @@ msgstr "Gwrewgh treylyans U a-dhyghow"
 #. that verification failed
 #: src/osmAccountDialog.js:187
 msgid "The verification code didn’t match, please try again."
-msgstr "An kod gwirheans ny omdhesedha, assayewgh arta mar pleg."
+msgstr "An kod gwirheans nag a omdhesedh, assayewgh arta mar pleg."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1136,10 +1197,6 @@ msgstr "Linen po perthynyans a gampol dhe fleghes may na ekistya"
 msgid "General"
 msgstr "Ollgemmyn"
 
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "Hanow"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "Eghen"
@@ -1160,11 +1217,11 @@ msgstr "Euryow Ygeri"
 msgid "Phone"
 msgstr "Niver Fon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:387
+#: src/osmEditDialog.js:151 src/placeView.js:635
 msgid "Email"
 msgstr "Trigva Ebost"
 
-#: src/osmEditDialog.js:158 src/placeView.js:354
+#: src/osmEditDialog.js:158 src/placeView.js:602
 msgid "Website"
 msgstr "Gwiasva"
 
@@ -1221,7 +1278,7 @@ msgstr "Divers"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "Wikipedya"
 
@@ -1231,11 +1288,11 @@ msgstr "Wikipedya"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:588
+#: src/osmEditDialog.js:204 src/placeView.js:836
 msgid "Population"
 msgstr "Poblans"
 
-#: src/osmEditDialog.js:209 src/placeView.js:617
+#: src/osmEditDialog.js:209 src/placeView.js:865
 msgid "Altitude"
 msgstr "Ughelder"
 
@@ -1359,7 +1416,7 @@ msgstr "Keworra tyller nowydh dhe OpenStreetMap"
 
 #: src/osmEditDialog.js:413
 msgid "Changes successfully submitted"
-msgstr "Chanjyow dhanvenys yn sewen"
+msgstr "Chanjyow danvenys yn sewen"
 
 #. Translators: This is the title for a combo box row selected when a
 #. * value is not assigned to one in a list of allowed values.
@@ -1539,7 +1596,7 @@ msgstr "Ny yllir redya URI Geo"
 msgid "Failed to parse Maps URI"
 msgstr "Ny yllir redya URI Mappys"
 
-#: src/placeFormatter.js:57 src/placeView.js:214 src/placeView.js:340
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:588
 msgid "Coordinates"
 msgstr "Kesordenogyon"
 
@@ -1557,12 +1614,91 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:346
+#: src/placeView.js:370
+msgid "Arrival information provided by Transitous"
+msgstr "Kedhlow devedhyansow provys gans Transitous"
+
+#: src/placeView.js:371
+msgid "Departure information provided by Transitous"
+msgstr "Kedhlow dibarthow provys gans Transitous"
+
+#: src/placeView.js:413
+msgid "No arrivals found"
+msgstr "Devedhyansow kevys vyth"
+
+#: src/placeView.js:414
+msgid "No departures found"
+msgstr "Dibarthow kevys vyth"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:444
+msgid "Flights"
+msgstr "Neyjow"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:448
+msgid "Trains"
+msgstr "Trenow"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:452
+msgid "Ferries"
+msgstr "Kowbalow"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:456
+msgid "Gondola"
+msgstr "Gondola"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:460
+msgid "Funicular"
+msgstr "Gorsav hyns horn mena"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:464
+msgid "Subway"
+msgstr "Metro"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:468
+msgid "Trams"
+msgstr "Tramyow"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:472
+msgid "Buses"
+msgstr "Kyttrinyow"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:532
+msgid "All"
+msgstr "Oll"
+
+#: src/placeView.js:594
 msgid "Accuracy"
 msgstr "Kewerder"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:349
+#: src/placeView.js:597
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Kewerder: %s"
@@ -1573,7 +1709,7 @@ msgstr "Kewerder: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:368
+#: src/placeView.js:616
 msgid "Phone number"
 msgstr "Niver fon"
 
@@ -1584,16 +1720,16 @@ msgstr "Niver fon"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:402 src/placeView.js:441
+#: src/placeView.js:650 src/placeView.js:689
 msgid "Floor"
 msgstr "Leur"
 
-#: src/placeView.js:404
+#: src/placeView.js:652
 #, javascript-format
 msgid "Floor %s"
 msgstr "Leur %s"
 
-#: src/placeView.js:416
+#: src/placeView.js:664
 msgid "At ground level"
 msgstr "War leur a-woles"
 
@@ -1602,7 +1738,7 @@ msgstr "War leur a-woles"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:425
+#: src/placeView.js:673
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1614,7 +1750,7 @@ msgstr[1] "%s leuryow a-ugh dhe'n leur a-woles"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:436
+#: src/placeView.js:684
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1625,7 +1761,7 @@ msgstr[1] "%s leuryow a-woles dhe'n leur a-woles"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:454
+#: src/placeView.js:702
 msgid "Offers takeout"
 msgstr "Offra kemeres yn-kerdh"
 
@@ -1633,27 +1769,27 @@ msgstr "Offra kemeres yn-kerdh"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:462
+#: src/placeView.js:710
 msgid "Does not offer takeout"
-msgstr "Na offra kemeres yn-kerdh"
+msgstr "Nag a offer kemeres yn-kerdh"
 
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:471
+#: src/placeView.js:719
 msgid "Only offers takeout"
 msgstr "Offra kemeres yn-kerdh hepken"
 
-#: src/placeView.js:478
+#: src/placeView.js:726
 msgid "Opening hours"
 msgstr "Euryow ygeri"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:488
+#: src/placeView.js:736
 msgid "Public internet access"
 msgstr "Hedhas kesrosweyth poblek"
 
@@ -1661,50 +1797,50 @@ msgstr "Hedhas kesrosweyth poblek"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:497
+#: src/placeView.js:745
 msgid "No internet access"
 msgstr "Hedhas kesrosweyth vyth"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:753
 msgid "Public Wi-Fi"
 msgstr "DiWi Poblek"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:761
 msgid "Wired internet access"
 msgstr "Hedhas kesrosweyth gwivrys"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:769
 msgid "Computers available for use"
 msgstr "Amontyellow kavadow rag devnydh"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:777
 msgid "Internet assistance available"
 msgstr "Gweres kesrosweyth kavadow"
 
-#: src/placeView.js:535
+#: src/placeView.js:783
 msgid "No toilets available"
 msgstr "Privedhyow kavadow vyth"
 
-#: src/placeView.js:538
+#: src/placeView.js:786
 msgid "Toilets available"
 msgstr "Privedhyow kavadow"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:547
+#: src/placeView.js:795
 msgid "Wheelchair accessible"
 msgstr "Hedhadow kador ros"
 
@@ -1713,7 +1849,7 @@ msgstr "Hedhadow kador ros"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:557
+#: src/placeView.js:805
 msgid "Limited wheelchair accessibility"
 msgstr "Hedhadewder kador ros strothys"
 
@@ -1721,7 +1857,7 @@ msgstr "Hedhadewder kador ros strothys"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:566
+#: src/placeView.js:814
 msgid "Not wheelchair accessible"
 msgstr "Na hedhadow gans kador ros"
 
@@ -1730,16 +1866,16 @@ msgstr "Na hedhadow gans kador ros"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:576
+#: src/placeView.js:824
 msgid "Designated for wheelchair users"
-msgstr "Titlys rag devnydhyoryon gador ros"
+msgstr "Titlys rag devnydhyoryon kador ros"
 
 #. *
 #. * Translators: this is a label indicating an altitude below
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:607
+#: src/placeView.js:855
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s a-woles dhe nivel mor"
@@ -1748,16 +1884,16 @@ msgstr "%s a-woles dhe nivel mor"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:614
+#: src/placeView.js:862
 msgid "At sea level"
 msgstr "Orth nivel mor"
 
-#: src/placeView.js:626
+#: src/placeView.js:874
 msgid "Religion:"
 msgstr "Kryjyans:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:631
+#: src/placeView.js:879
 #, javascript-format
 msgid "Exit %s"
 msgstr "Fordh 'mes %s"
@@ -1771,17 +1907,17 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:670
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
 msgstr "Tyller nag o kevys yn OpenStreetMap"
 
-#: src/place.js:677
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "Kesordenogyon yn URL yw anewn"
 
-#: src/place.js:686
+#: src/place.js:698
 msgid "URL is not supported"
-msgstr "URL yw anskoodhys"
+msgstr "URL nag yw skoodhys"
 
 #: src/poiCategories.js:132
 msgid "Amenities"
@@ -1865,7 +2001,7 @@ msgstr "Dehen Rew"
 
 #: src/poiCategories.js:243
 msgid "Food, Snacks, and Beverage Machines"
-msgstr "Jynnys Voos, Temmyn, ha Swynennow"
+msgstr "Jynnys Boos, Temmyn, ha Swynennow"
 
 #: src/poiCategories.js:251
 msgid "Shopping"
@@ -1921,11 +2057,11 @@ msgstr "Karyans"
 
 #: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
-msgstr "Savlaow Gyttirin & Tram"
+msgstr "Savlaow Kyttrin & Tram"
 
 #: src/poiCategories.js:332
 msgid "Train & Subway Stations"
-msgstr "Gorsavow Dren & Metro"
+msgstr "Gorsavow Tren & Metro"
 
 #: src/poiCategories.js:340
 msgid "Tickets"
@@ -2059,6 +2195,42 @@ msgstr "Helyow Sport Yn-Mes"
 msgid "Golf Courses"
 msgstr "Gwelyow Golf"
 
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+msgid "Estimated size: %s"
+msgstr "Braster dysmygrivys: %s"
+
+#: src/preferencesDownloadNew.js:154
+msgid "Failed to estimate size"
+msgstr "Ny yllir dysmygi braster"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr ""
+"Erbyser Batri byw hag yma rosweyth finwethys — iskargow awtomatek powesys"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "Yma rosweyth finwethys — iskargow awtomatek powesys"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr "Erbyser Batri byw — iskargow awtomatek powesys"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "Mappa #%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "Dilea iskarg?"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "Dilea"
+
 #: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
@@ -2070,7 +2242,7 @@ msgstr "Ow karga prileghennow mappa rag ow pryntya"
 
 #: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
-msgstr "Hwi a yll astel ow pryntya mar hemm a gemeres re dermyn"
+msgstr "Hwi a yll astel ow pryntya mar hemm a gemmer re dermyn"
 
 #: src/printOperation.js:50
 msgid "Abort printing"
@@ -2182,7 +2354,7 @@ msgstr[1] "%s:%s euryow"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transit/leg.js:308
+#: src/transit/leg.js:193
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2268,13 +2440,31 @@ msgstr "Kay diberth re janjys"
 msgid "Departure gate changed"
 msgstr "Yet dhiberth re janjys"
 
+#: src/transitJunctureRow.js:78
+msgid "Hide information"
+msgstr "Kudha kedhlow"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with "
+"distance"
+msgid "%1s, %2s (%3s)"
+msgstr "%1s, %2s (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "%1s (%2s)"
+
 #: src/transitLegHeader.js:125
 msgid "Hide intermediate stops and information"
 msgstr "Kudha powesow yn-mysk ha kedhlow"
 
 #: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
-msgstr "Kudha danvonadow ow kerdhes"
+msgstr "Kudha danvonadow kerdhes"
 
 #: src/transitLegHeader.js:128
 msgid "Show intermediate stops and information"
@@ -2282,7 +2472,7 @@ msgstr "Diskwedhes powesow yn-mysk ha kedhlow"
 
 #: src/transitLegHeader.js:129
 msgid "Show walking instructions"
-msgstr "Diskwedhes danvonadow ow kerdhes"
+msgstr "Diskwedhes danvonadow kerdhes"
 
 #: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
@@ -2362,7 +2552,7 @@ msgstr "%s-%s"
 
 #: src/translations.js:179
 msgid "Public holidays"
-msgstr "Dy'golyow boblek"
+msgstr "Dy'golyow poblek"
 
 #: src/translations.js:181
 msgid "School holidays"
@@ -2384,7 +2574,7 @@ msgstr "%s, %s"
 
 #: src/translations.js:235
 msgid "not open"
-msgstr "na ygor"
+msgstr "nyns yw ygor"
 
 #. Translators:
 #. * This is a time interval with a starting and an ending time.
@@ -2404,19 +2594,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:262
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "Ankoth"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:265
+#: src/utils.js:266
 msgid "Exact"
 msgstr "Kewar"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
 msgstr "%s e"
@@ -2425,7 +2615,7 @@ msgstr "%s e"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2436,7 +2626,7 @@ msgstr[1] "%s e %s myn"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2447,7 +2637,7 @@ msgstr[1] "%s myn"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2455,28 +2645,37 @@ msgstr[0] "%s e"
 msgstr[1] "%s e"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:352
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:355
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s th"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:363
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:366
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
+
+#~ msgid "Failed to find tile structure in directory"
+#~ msgstr "Ny yllir kavos kesweyth prileghen yn restrenva"
+
+#~ msgid "A path to a local tiles directory structure"
+#~ msgstr "Tyller dhe gesweyth restrenva brileghennow leel"
+
+#~ msgid "Tile size for local tiles directory"
+#~ msgstr "Braster prileghen rag restrenva brileghennow leel"
 
 #~ msgid "No Favorites"
 #~ msgstr "Drudh Vyth"
