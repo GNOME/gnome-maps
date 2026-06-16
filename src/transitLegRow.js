@@ -72,7 +72,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 },
                 final: false,
                 intermediate: false,
-                routeType: this._leg.routeType
+                routeType: this._leg.route.routeType
             });
             this._beforeInstructionList.append(fromStopRow);
 
@@ -96,7 +96,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 },
                 final: true,
                 intermediate: false,
-                routeType: this._leg.routeType,
+                routeType: this._leg.route.routeType,
                 marginBottom: 12
             });
             this._afterInstructionList.append(toStopRow);
