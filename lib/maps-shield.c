@@ -1706,7 +1706,7 @@ maps_shield_draw (MapsShield *self,
 
   g_return_val_if_fail (MAPS_IS_SHIELD (self), NULL);
 
-  if (self->skip_prefix && g_str_has_prefix (ref, self->skip_prefix))
+  if (self->skip_prefix && ref && g_str_has_prefix (ref, self->skip_prefix))
     ref += strlen (self->skip_prefix);
 
   ctx = (RenderCtx){
