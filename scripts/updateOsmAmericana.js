@@ -147,6 +147,34 @@ function copyShieldsJson(osmAmericanaPath, file) {
         };
     }
 
+    // import overrided shields
+    const overridesPath = 'scripts/shield-overrides';
+    const dir = Gio.File.new_for_path(overridesPath);
+
+    if (dir.query_exists(null)) {
+      const enumerator = dir.enumerate_children(
+          "standard::*",
+          Gio.FileQueryInfoFlags.NONE,
+          null
+      );
+
+      for (const fileInfo of enumerator) {
+        const fileName = fileInfo.get_name();
+
+        if (!fileName.endsWith('.json'))
+          continue;
+
+        const override = Gio.File.new_for_path(overridesPath + '/' + fileName);
+        const [_status, overrideData] = override.load_contents(null);
+        const overrideJson =
+          JSON.parse(new TextDecoder("utf-8").decode(overrideData));
+
+        for (const network of Object.keys(overrideJson)) {
+          shieldsJson.networks[network] = overrideJson[network];
+        }
+      }
+    }
+
     destFile.replace_contents(
         JSON.stringify(shieldsJson, null, 2),
         null,
