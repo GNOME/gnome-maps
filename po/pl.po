@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-03-07 21:29+0000\n"
-"PO-Revision-Date: 2026-03-28 15:46+0100\n"
+"POT-Creation-Date: 2026-04-30 21:00+0000\n"
+"PO-Revision-Date: 2026-06-23 21:25+0200\n"
 "Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -134,12 +134,13 @@ msgstr "Liczba ostatnio odwiedzonych tras do zapamiętania."
 
 #: data/org.gnome.Maps.gschema.xml:66
 msgid "OpenStreetMap username or email address"
-msgstr "Nazwa osoby lub adres email w serwisie OpenStreetMap"
+msgstr "Nazwa użytkownika lub adres email w serwisie OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:67
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
-"Pokazuje czy osoba jest zalogowana, aby móc modyfikować dane OpenStreetMap."
+"Pokazuje czy użytkownik jest zalogowany, aby móc modyfikować dane "
+"OpenStreetMap."
 
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Last used transportation type for routing"
@@ -187,7 +188,8 @@ msgstr "Wyświetlanie znacznika położenia"
 
 #: data/org.gnome.Maps.gschema.xml:91
 msgid "Whether to show the user location marker (when location is known)."
-msgstr "Czy wyświetlać znacznik położenia osoby (gdy położenie jest znane)."
+msgstr ""
+"Czy wyświetlać znacznik położenia użytkownika (gdy położenie jest znane)."
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
@@ -232,7 +234,7 @@ msgid "Public transit itinerary"
 msgstr "Plan podróży transportem publicznym"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:682
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -362,7 +364,7 @@ msgid "Main Menu"
 msgstr "Menu główne"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Wyświetla informacje o miejscu"
 
@@ -452,7 +454,7 @@ msgstr "Modyfikuj położenie"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Modyfikuje istniejące położenie w serwisie OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:736 src/motis.js:369
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:369
 msgid "Continue"
 msgstr "Kontynuuj"
 
@@ -785,7 +787,7 @@ msgid "Zoom Out"
 msgstr "Pomniejsz"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1327
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Powiększ"
 
@@ -880,27 +882,27 @@ msgstr "Nie odnaleziono żadnej trasy."
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Połączenie z usługą położenia się nie powiodło"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Proszę włączyć usługi położenia"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Ustawienia położenia"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Planowanie trasy"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011-2026 Red Hat, Inc. i autorzy Map GNOME"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2013-2025\n"
@@ -909,16 +911,16 @@ msgstr ""
 "Daniel <wbcwknvstb@proton.me>, 2026\n"
 "Victoria Niedzielska <victorian@gnome.org>, 2026"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dane mapy autorstwa %s i współtwórców"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Dostawca danych mapy"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Dostawca mapy"
 
@@ -927,37 +929,37 @@ msgstr "Dostawca mapy"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapa dostarczana przez %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Dostawca funkcji wyszukiwania"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Funkcja wyszukiwania dostarczana przez %s za pomocą %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Wszystkie pliki warstw"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Otwarcie warstw figur"
 
-#: src/mapView.js:711 src/mapView.js:773
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Otwarcie warstwy się nie powiodło"
 
-#: src/mapView.js:728
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Kontynuować?"
 
-#: src/mapView.js:729
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -966,23 +968,23 @@ msgstr ""
 "Zostaną otwarte pliki o całkowitym rozmiarze %s MB. Wczytanie ich może "
 "potrwać trochę czasu."
 
-#: src/mapView.js:735
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/mapView.js:767
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Typ pliku jest nieobsługiwany"
 
-#: src/mapView.js:806
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Otwarcie adresu GeoURI się nie powiodło"
 
-#: src/mapView.js:1326
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Należy powiększyć, aby dodać położenie"
 
-#: src/mapView.js:1344
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Położenie zostało dodane do serwisu OpenStreetMap"
 
@@ -1113,7 +1115,7 @@ msgstr "Kod weryfikacyjny się nie zgadza. Proszę spróbować ponownie."
 #. to always give status IO_ERROR
 #: src/osmConnection.js:376
 msgid "Incorrect user name or password"
-msgstr "Niepoprawna nazwa osoby lub hasło"
+msgstr "Niepoprawna nazwa użytkownika lub hasło"
 
 #: src/osmConnection.js:378
 msgid "Success"
@@ -1498,35 +1500,35 @@ msgstr "Turystyka"
 msgid "Other"
 msgstr "Inne"
 
-#: src/osmTypes.js:210
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Stacja kolei linowo-terenowej"
 
-#: src/osmTypes.js:212
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Przystanek kolei miejskiej"
 
-#: src/osmTypes.js:214
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Stacja kolei jednoszynowej"
 
-#: src/osmTypes.js:216 src/osmTypes.js:226
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Stacja kolejowa"
 
-#: src/osmTypes.js:218
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Stacja metra"
 
-#: src/osmTypes.js:222
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Przystanek kolejowy"
 
-#: src/osmTypes.js:224
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Przystanek tramwajowy"
 
-#: src/osmTypes.js:233 src/osmTypes.js:242
+#: src/osmTypes.js:257 src/osmTypes.js:266
 msgid "Public transportation stop"
 msgstr "Przystanek transportu publicznego"
 
