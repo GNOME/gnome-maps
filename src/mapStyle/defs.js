@@ -346,7 +346,7 @@ export const DEFS = {
                 fire_station: ["firefighter-symbolic", "healthAndSafety", 15],
                 food_court: ["restaurant-symbolic", "food"],
                 fuel: ["fuel-symbolic", "transport"],
-                grave_yard: ["non-religious-cemetary-symbolic", "parks"],
+                grave_yard: ["tomb-symbolic", "parks"],
                 hospital: ["hospital-symbolic", "hospitals", 10],
                 ice_cream: ["icecream-cone-symbolic", "food"],
                 kindergarten: ["school-symbolic", "education"],
@@ -403,7 +403,7 @@ export const DEFS = {
                 _: ["explore-symbolic", "micro"],
             },
             landuse: {
-                cemetery: ["non-religious-cemetary-symbolic", "parks"],
+                cemetery: ["tomb-symbolic", "parks"],
             },
             leisure: {
                 dog_park: ["dog-symbolic", "parks"],
