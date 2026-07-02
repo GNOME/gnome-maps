@@ -1075,7 +1075,6 @@ export class PlaceView extends Gtk.Box {
         this._thumbnail.margin_top = margin ? 6 : 0;
         this._thumbnail.margin_bottom = margin ? 6 : 0;
         this.thumbnail = thumbnail;
-        this._infoStackSeparator.visible = true;
         this._infoToggle.enabled = true;
     }
 
@@ -1102,6 +1101,7 @@ export class PlaceView extends Gtk.Box {
 
             this._wikipediaLabel.label = label;
             this._wikipediaLabel.visible = true;
+            this._infoStackSeparator.visible = true;
             this._infoStack.visible = true;
             this._infoToggle.enabled = true;
         }
