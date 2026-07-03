@@ -377,11 +377,15 @@ export class PlaceView extends Gtk.Box {
     }
 
     _getStoptimesSearchRadius() {
-        if (this._place.osmTags['railway'] === 'tram_stop' ||
-            this._place.osmTags['highway'] === 'bus_stop')
-            return 200;
-        else if (this._place.osmTags['aeroway'] === 'aerodrome')
+        const tags = this._place.osmTags;
+
+        if (tags['railway'] === 'tram_stop' || tags['highway'] === 'bus_stop')
+            return 100;
+        else if (tags['aeroway'] === 'aerodrome')
             return 1000;
+        else if ((tags['railway'] === 'station' || tags['railway'] === 'halt') &&
+                 tags['station'] === 'funicular')
+            return 100;
         else
             return 300;
     }
