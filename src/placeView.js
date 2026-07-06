@@ -427,10 +427,12 @@ export class PlaceView extends Gtk.Box {
         if (extendPrevious)
             this._departuresArrivals.remove(this._loadMoreDeparturesArrivalsRow);
 
+        log(`junctures: ${junctures.length}`);
+        const startTime = new Date().getTime();
+
         for (const juncture of junctures) {
             const row = new TransitJunctureRow({ juncture: juncture,
                                                  place:    this.place });
-
             this._departuresArrivals.append(row);
         }
 
@@ -438,6 +440,7 @@ export class PlaceView extends Gtk.Box {
 
         this._loadMoreDeparturesArrivalsRow = moreRow;
         this._departuresArrivals.append(moreRow);
+        log(`finish: ${new Date().getTime() - startTime} ms`);
     }
 
     _getTooltipForRouteType(routeType) {
