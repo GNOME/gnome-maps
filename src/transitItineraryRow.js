@@ -23,6 +23,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {TransitRouteLabel} from './transitRouteLabel.js';
+import * as Utils from './utils.js';
 
 export class TransitItineraryRow extends Gtk.ListBoxRow {
 
@@ -56,10 +57,22 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
         icon.get_style_context().add_class('sidebar-icon');
         grid.append(icon);
 
-        // Only transit legs get a label */
+        /* For transit legs, show the route label.
+         * For walking legs, show the estimated duration in minutes when the
+         * duration is at least one minute, unless it's a direct connection
+         * (only one walking leg) as in that case the total duration for the
+         * entire itinerary is already displayed.
+         */
         if (leg.transit) {
             let routeLabel = new TransitRouteLabel({ route: leg.route });
             grid.append(routeLabel);
+        } else if (leg.duration >= 60 && this._itinerary.legs.length > 1) {
+            const durationLabel =
+                new Gtk.Label({ label: Utils.prettyTime(leg.duration * 1000) });
+
+            durationLabel.get_style_context().add_class('dimmed');
+            durationLabel.get_style_context().add_class('caption');
+            grid.append(durationLabel);
         }
         
         // If not the last leg, add a separator chevron
