@@ -41,6 +41,12 @@ import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
+
+/* maximum matching distance for plan requests
+ * using the same value as the default in the MOTIS web UI
+ */
+const MAX_MATCHING_DISTANCE = 250;
+
 /**
  * Implements the MOTIS /plan endpoint.
  *
@@ -508,7 +514,8 @@ export class Motis {
         const params = { fromPlace: this._getPlaceParamFromLocation(from),
                          toPlace:   this._getPlaceParamFromLocation(to),
                          arriveBy:  this._query.arriveBy,
-                         language:  Utils.getLanguages().toString() };
+                         language:  Utils.getLanguages().toString(),
+                         maxMatchingDistance: MAX_MATCHING_DISTANCE };
 
         if (this._query.time)
             params.time = this._getTimeParam();
