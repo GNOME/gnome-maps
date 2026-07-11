@@ -85,6 +85,9 @@ const FILE_SIZE_LIMIT_MB = 20;
  */
 const SYMBOL_CLICK_MAX_DISTANCE = 10; // px
 
+// maximum distance to animate go-to location
+const MAX_DISTANCE_ANIMATION = 500_000; // 500 km
+
 export class MapView extends Gtk.Overlay {
 
     static MapType = {
@@ -661,7 +664,7 @@ export class MapView extends Gtk.Overlay {
 
         place.osmTags = osmTags;
 
-        this.showPlace(place, false, true);
+        this.showPlace(place, true);
     }
 
     _onShowScaleChanged() {
@@ -784,7 +787,7 @@ export class MapView extends Gtk.Overlay {
                                     name: location.description,
                                     store: false,
                                     initialZoom: zoom });
-            this.showPlace(place, true, false);
+            this.showPlace(place, false);
         } catch(e) {
             this._mainWindow.showToast(_("Failed to open GeoURI"));
             Utils.debug("failed to open GeoURI: %s".format(e.message));
@@ -794,7 +797,7 @@ export class MapView extends Gtk.Overlay {
     goToHttpURL(url) {
         Place.parseHttpURL(url, (place, error) => {
             if (place) {
-                this.showPlace(place, true, false);
+                this.showPlace(place, false);
             } else {
                 this._mainWindow.showToast(error);
             }
@@ -1014,7 +1017,7 @@ export class MapView extends Gtk.Overlay {
         Application.routingDelegator.replaceRoute(stored);
     }
 
-    showPlace(place, animation, skipGoTo) {
+    showPlace(place, skipGoTo) {
         this._placeLayer.remove_all();
 
         if (place instanceof StoredRoute) {
@@ -1027,8 +1030,21 @@ export class MapView extends Gtk.Overlay {
 
         this._placeLayer.add_marker(placeMarker);
         Application.application.selected_place = place;
-        if (!skipGoTo)
+
+        if (!skipGoTo) {
+            const currentLocation =
+                new Shumate.Coordinate({ latitude:  this.map.viewport.latitude,
+                                         longitude: this.map.viewport.longitude });
+            const placeLocation =
+                new Shumate.Coordinate({ latitude:  place.location.latitude,
+                                         longitude: place.location.longitude });
+
+            // use go-to animation for places within a limited distance
+            const animation =
+                currentLocation.distance(placeLocation) < MAX_DISTANCE_ANIMATION;
+
             placeMarker.goTo(animation);
+        }
     }
 
     showRoute(route) {

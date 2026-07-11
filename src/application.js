@@ -276,7 +276,7 @@ export class Application extends Adw.Application {
                          * zooming in directly on the place
                          */
                         Application.normalStartup = false;
-                        this._mainWindow.mapView.showPlace(places[0], true);
+                        this._mainWindow.mapView.showPlace(places[0]);
                     } else {
                         this._mainWindow.searchBar.grab_focus();
                         this._mainWindow.searchBar.updateResults(places, query,

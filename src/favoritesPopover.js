@@ -48,7 +48,7 @@ export class FavoritesPopover extends Gtk.Popover {
 
         this._list.connect('row-activated', (list, row) => {
             this.hide();
-            mapView.showPlace(row.place, true);
+            mapView.showPlace(row.place);
         });
 
         this._list.set_filter_func((row) => {

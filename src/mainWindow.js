@@ -139,7 +139,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                                         margin_end: _PLACE_ENTRY_MARGIN });
         searchBar.connect('notify::place', () => {
             if (searchBar.place) {
-                this._mapView.showPlace(searchBar.place, true);
+                this._mapView.showPlace(searchBar.place);
             }
         });
 
