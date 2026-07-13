@@ -23,14 +23,42 @@
 import GObject from "gi://GObject";
 import Adw from "gi://Adw";
 
+import {Application} from './application.js';
 import "./preferencesDownloads.js";
 
-export class PreferencesDialog extends Adw.PreferencesDialog {}
+export class PreferencesDialog extends Adw.PreferencesDialog {
+
+    constructor(params) {
+        super(params);
+
+        Application.settings.connect('changed::measurement-system',
+                                     () => this._measurementSystemChanged());
+        this._measurementSystemChanged();
+        this._measurementRow.connect('notify::selected',
+                                     () => this._onMeasurementSystemSelected());
+    }
+
+    _measurementSystemChanged() {
+        const measurementSystem = Application.settings.get('measurement-system');
+
+        this._measurementRow.selected =
+            measurementSystem === 'metric' ? 1 :
+            measurementSystem === 'imperial' ? 2 : 0;
+    }
+
+    _onMeasurementSystemSelected() {
+        const selected = this._measurementRow.selected;
+
+        Application.settings.set('measurement-system',
+                                 selected === 1 ? 'metric' :
+                                 selected === 2 ? 'imperial' : 'system');
+    }
+}
 
 GObject.registerClass(
     {
         Template: "resource:///org/gnome/Maps/ui/preferences.ui",
-        InternalChildren: [],
+        InternalChildren: [ 'measurementRow' ],
     },
     PreferencesDialog
 );

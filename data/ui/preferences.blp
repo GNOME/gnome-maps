@@ -7,5 +7,45 @@ template $Gjs_PreferencesDialog: Adw.PreferencesDialog {
   content-width: 640;
   content-height: 480;
 
-  $Gjs_PreferencesDownloads {}
+  Adw.PreferencesPage {
+    icon-name: "settings-symbolic";
+    title: _("General");
+
+    Adw.PreferencesGroup {
+      title: _("Map View");
+
+      Adw.SwitchRow {
+        title: _("Show Scale");
+        action-name: "win.show-scale";
+      }
+
+      Adw.SwitchRow {
+        title: _("Show Location Marker");
+        action-name: "win.show-location-marker";
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Measurements");
+
+      Adw.ComboRow measurementRow {
+        title: _("Measurement system");
+
+        model: Gtk.StringList {
+          strings [
+            // Translators: This is a menu item for showing measurements in units corresponding to the system locale
+            _("System Default"),
+            // Translators: This a menu item for showing measurements in metric units
+            _("Metric"),
+            // Translators: This is a menu item for showing measurements in imperial units
+            _("Imperial")
+          ]
+        };
+      }
+    }
+  }
+
+  $Gjs_PreferencesDownloads {
+    icon-name: "document-save-symbolic";
+  }
 }
