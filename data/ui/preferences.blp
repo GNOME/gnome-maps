@@ -7,5 +7,42 @@ template $Gjs_PreferencesDialog: Adw.PreferencesDialog {
   content-width: 640;
   content-height: 480;
 
-  $Gjs_PreferencesDownloads {}
+  Adw.PreferencesPage {
+    icon-name: "settings-symbolic";
+    title: _("General");
+
+    Adw.PreferencesGroup {
+      title: _("Map View");
+
+      Adw.SwitchRow {
+        title: _("Show Scale");
+        action-name: "win.show-scale";
+      }
+
+      Adw.SwitchRow {
+        title: _("Show Location Marker");
+        action-name: "win.show-location-marker";
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Measurements");
+
+      Adw.ComboRow measurementRow {
+        title: _("Measurement system");
+
+        model: Gtk.StringList {
+          strings [
+            _("System Default"),
+            _("Metric"),
+            _("Imperial")
+          ]
+        };
+      }
+    }
+  }
+
+  $Gjs_PreferencesDownloads {
+    icon-name: "document-save-symbolic";
+  }
 }
