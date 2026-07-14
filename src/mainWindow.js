@@ -271,7 +271,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                 onActivate: () => { this._mapView.map.viewport.rotation = 0.0; }
             },
             'show-scale': {
-                accels: ['<Primary>S'],
+                accels: ['<Shift><Primary>S'],
                 paramType: 'b',
                 setting: 'show-scale'
             },
