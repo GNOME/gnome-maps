@@ -15,36 +15,6 @@ menu hamburgerMenu {
   }
 
   section {
-    submenu {
-      // Translators: This is a submenu for selecting length measurements units
-      label: _("Measurement Units");
-
-      section {
-        item {
-          // Translators: This is a menu item for showing measurements in units corresponding to the system locale
-          label: _("_System Default");
-          action: "win.measurement-system";
-          target: "system";
-        }
-
-        item {
-          // Translators: This a menu item for showing measurements in metric units
-          label: _("_Metric");
-          action: "win.measurement-system";
-          target: "metric";
-        }
-
-        item {
-          // Translators: This is a menu item for showing measurements in imperial units
-          label: _("_Imperial");
-          action: "win.measurement-system";
-          target: "imperial";
-        }
-      }
-    }
-  }
-
-  section {
     item {
       label: _("Preferences");
       action: "win.show-preferences";
