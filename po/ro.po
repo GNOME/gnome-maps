@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-06-12 10:21+0000\n"
-"PO-Revision-Date: 2026-06-14 10:03+0200\n"
+"POT-Creation-Date: 2026-07-14 19:51+0000\n"
+"PO-Revision-Date: 2026-07-15 18:08+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 50.0\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -446,7 +446,7 @@ msgstr "Modifică locul"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Modifică în OpenStreetMap un loc existent"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:719 src/motis.js:484
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Continuă"
 
@@ -592,90 +592,95 @@ msgstr "Generale"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Arată preferințele"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Arată scurtăturile"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Caută"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "Explorează locurile de interes"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Arată ultimele rezultate de căutare"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Arată planificatorul de traseu"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Tipărește traseul"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Închide"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Deschide opțiunile"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Vizualizare hartă"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Mărește"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Micșorează"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "Rotește în sens orar"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "Rotește în sens anti-orar"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "Restabilește rotația"
 
-#: data/ui/shortcuts-dialog.blp:78
+#: data/ui/shortcuts-dialog.blp:83
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Comută scara"
 
-#: data/ui/shortcuts-dialog.blp:83
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Navighează la locul actual"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Deschide stratul formei"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Arată/Ascunde indicatorul poziției"
@@ -796,7 +801,7 @@ msgstr "Descarcă"
 
 #. Translators: This is a tooltip
 #: data/ui/preferences-download-new.blp:64
-#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1310
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
 msgid "Zoom In"
 msgstr "Mărește"
 
@@ -1008,15 +1013,15 @@ msgstr "Toate fișierele strat"
 msgid "Open Shape Layers"
 msgstr "Deschide straturi de forme"
 
-#: src/mapView.js:694 src/mapView.js:756
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:711
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "Se continuă?"
 
-#: src/mapView.js:712
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -1025,140 +1030,140 @@ msgstr ""
 "Vor fi deschise fișiere cu o mărime totală de %s MB. Încărcarea poate dura "
 "ceva timp"
 
-#: src/mapView.js:718 src/preferencesDownloads.js:210
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/mapView.js:750
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este acceptat"
 
-#: src/mapView.js:789
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
-#: src/mapView.js:1309
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Mărește pentru a adăuga locul"
 
-#: src/mapView.js:1327
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "Locul a fost adăugat în OpenStreetMap"
 
-#: src/motis.js:397 src/transit/utils.js:35 src/transit/utils.js:87
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Plecare"
 
-#: src/motis.js:416 src/transit/utils.js:43 src/transit/utils.js:73
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Sosire"
 
-#: src/motis.js:478
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Urcă scările până la etajul %s"
 
-#: src/motis.js:479
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "Urcă scările"
 
-#: src/motis.js:483
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continuă pe %s"
 
-#: src/motis.js:488
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Virează la stânga pe %s"
 
-#: src/motis.js:489
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "Virează la stânga"
 
-#: src/motis.js:493
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Virează larg la stânga pe %s"
 
-#: src/motis.js:494
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "Virează larg la stânga"
 
-#: src/motis.js:498
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Virează strâns la stânga pe %s"
 
-#: src/motis.js:499
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "Virează strâns la stânga"
 
-#: src/motis.js:503
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Virează la dreapta pe %s"
 
-#: src/motis.js:504
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "Virează la dreapta"
 
-#: src/motis.js:508
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Virează larg la dreapta pe %s"
 
-#: src/motis.js:509
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "Virează larg la dreapta"
 
-#: src/motis.js:513
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Virează strâns la dreapta pe %s"
 
-#: src/motis.js:514
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "Virează strâns la dreapta"
 
-#: src/motis.js:521
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "La sensul giratoriu, virează la ieșirea %s"
 
-#: src/motis.js:524
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "La sensul giratoriu, virează la ieșirea spre %s"
 
-#: src/motis.js:526
+#: src/motis.js:531
 msgid "Take the roundabout"
 msgstr "Intră în sensul giratoriu"
 
-#: src/motis.js:534
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Intră în lift și ieși la %s"
 
-#: src/motis.js:535
+#: src/motis.js:540
 msgid "Take the elevator"
 msgstr "Intră în lift"
 
-#: src/motis.js:539
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Întoarce prin stânga pe %s"
 
-#: src/motis.js:540
+#: src/motis.js:545
 msgid "Make a left u-turn"
 msgstr "Întoarce prin stânga"
 
-#: src/motis.js:544
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Întoarce prin dreapta pe %s"
 
-#: src/motis.js:545
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "Întoarce prin dreapta"
 
@@ -1222,11 +1227,11 @@ msgstr "Orar"
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:635
+#: src/osmEditDialog.js:151 src/placeView.js:639
 msgid "Email"
 msgstr "E-mail"
 
-#: src/osmEditDialog.js:158 src/placeView.js:602
+#: src/osmEditDialog.js:158 src/placeView.js:606
 msgid "Website"
 msgstr "Sit web"
 
@@ -1293,11 +1298,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:836
+#: src/osmEditDialog.js:204 src/placeView.js:840
 msgid "Population"
 msgstr "Populația"
 
-#: src/osmEditDialog.js:209 src/placeView.js:865
+#: src/osmEditDialog.js:209 src/placeView.js:869
 msgid "Altitude"
 msgstr "Altitudinea"
 
@@ -1601,7 +1606,7 @@ msgstr "Nu s-a putut analiza URI-ul Geo"
 msgid "Failed to parse Maps URI"
 msgstr "Nu s-a putut analiza URI-ul Hărți"
 
-#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:588
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:592
 msgid "Coordinates"
 msgstr "Coordonate"
 
@@ -1627,83 +1632,83 @@ msgstr "Informații despre sosire furnizate de Transitous"
 msgid "Departure information provided by Transitous"
 msgstr "Informații despre plecare furnizate de Transitous"
 
-#: src/placeView.js:413
+#: src/placeView.js:417
 msgid "No arrivals found"
 msgstr "Nicio sosire"
 
-#: src/placeView.js:414
+#: src/placeView.js:418
 msgid "No departures found"
 msgstr "Nicio plecare"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for airline flights
 #.
-#: src/placeView.js:444
+#: src/placeView.js:448
 msgid "Flights"
 msgstr "Zboruri"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trains
 #.
-#: src/placeView.js:448
+#: src/placeView.js:452
 msgid "Trains"
 msgstr "Trenuri"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for ferries
 #.
-#: src/placeView.js:452
+#: src/placeView.js:456
 msgid "Ferries"
 msgstr "Feriboturi"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for gondola (also known as aerial trams or telecabins)
 #.
-#: src/placeView.js:456
+#: src/placeView.js:460
 msgid "Gondola"
 msgstr "Telecabină"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for funicular railway trains
 #.
-#: src/placeView.js:460
+#: src/placeView.js:464
 msgid "Funicular"
 msgstr "Funicular"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for subway (also known as metro or underground rail)
 #.
-#: src/placeView.js:464
+#: src/placeView.js:468
 msgid "Subway"
 msgstr "Metrou"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trams
 #.
-#: src/placeView.js:468
+#: src/placeView.js:472
 msgid "Trams"
 msgstr "Tramvaie"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for buses
 #.
-#: src/placeView.js:472
+#: src/placeView.js:476
 msgid "Buses"
 msgstr "Autobuze"
 
 #. Translators: this refers to showing departures or arrivals
 #. * for all available public transit modes in a station/stop
 #.
-#: src/placeView.js:532
+#: src/placeView.js:536
 msgid "All"
 msgstr "Toate"
 
-#: src/placeView.js:594
+#: src/placeView.js:598
 msgid "Accuracy"
 msgstr "Acuratețe"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:597
+#: src/placeView.js:601
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Acuratețe: %s"
@@ -1714,7 +1719,7 @@ msgstr "Acuratețe: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:616
+#: src/placeView.js:620
 msgid "Phone number"
 msgstr "Număr de telefon"
 
@@ -1725,16 +1730,16 @@ msgstr "Număr de telefon"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:650 src/placeView.js:689
+#: src/placeView.js:654 src/placeView.js:693
 msgid "Floor"
 msgstr "Etajul"
 
-#: src/placeView.js:652
+#: src/placeView.js:656
 #, javascript-format
 msgid "Floor %s"
 msgstr "Etajul %s"
 
-#: src/placeView.js:664
+#: src/placeView.js:668
 msgid "At ground level"
 msgstr "La nivelul solului"
 
@@ -1743,7 +1748,7 @@ msgstr "La nivelul solului"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:673
+#: src/placeView.js:677
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1756,7 +1761,7 @@ msgstr[2] "%s de etaje deasupra nivelului solului"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:684
+#: src/placeView.js:688
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1768,7 +1773,7 @@ msgstr[2] "%s de etaje sub nivelul solului"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:702
+#: src/placeView.js:706
 msgid "Offers takeout"
 msgstr "Oferă mâncare la pachet"
 
@@ -1776,7 +1781,7 @@ msgstr "Oferă mâncare la pachet"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:710
+#: src/placeView.js:714
 msgid "Does not offer takeout"
 msgstr "Nu oferă mâncare la pachet"
 
@@ -1785,18 +1790,18 @@ msgstr "Nu oferă mâncare la pachet"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:719
+#: src/placeView.js:723
 msgid "Only offers takeout"
 msgstr "Oferă doar mâncare la pachet"
 
-#: src/placeView.js:726
+#: src/placeView.js:730
 msgid "Opening hours"
 msgstr "Orar"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:736
+#: src/placeView.js:740
 msgid "Public internet access"
 msgstr "Acces la internet public"
 
@@ -1804,50 +1809,50 @@ msgstr "Acces la internet public"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:745
+#: src/placeView.js:749
 msgid "No internet access"
 msgstr "Nu există acces la internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:753
+#: src/placeView.js:757
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi public"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:761
+#: src/placeView.js:765
 msgid "Wired internet access"
 msgstr "Acces la internet prin cablu"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:769
+#: src/placeView.js:773
 msgid "Computers available for use"
 msgstr "Calculatoare disponibile pentru utilizare"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:777
+#: src/placeView.js:781
 msgid "Internet assistance available"
 msgstr "Asistență internet disponibilă"
 
-#: src/placeView.js:783
+#: src/placeView.js:787
 msgid "No toilets available"
 msgstr "Nu există toalete disponibile"
 
-#: src/placeView.js:786
+#: src/placeView.js:790
 msgid "Toilets available"
 msgstr "Toalete disponibile"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:795
+#: src/placeView.js:799
 msgid "Wheelchair accessible"
 msgstr "Accesibil pentru scaunul cu rotile"
 
@@ -1856,7 +1861,7 @@ msgstr "Accesibil pentru scaunul cu rotile"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:805
+#: src/placeView.js:809
 msgid "Limited wheelchair accessibility"
 msgstr "Accesibilitate limitată pentru scaunul cu rotile"
 
@@ -1864,7 +1869,7 @@ msgstr "Accesibilitate limitată pentru scaunul cu rotile"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:814
+#: src/placeView.js:818
 msgid "Not wheelchair accessible"
 msgstr "Inaccesibil pentru scaunul cu rotile"
 
@@ -1873,7 +1878,7 @@ msgstr "Inaccesibil pentru scaunul cu rotile"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:824
+#: src/placeView.js:828
 msgid "Designated for wheelchair users"
 msgstr "Desemnat pentru utilizatorii în scaun cu rotile"
 
@@ -1882,7 +1887,7 @@ msgstr "Desemnat pentru utilizatorii în scaun cu rotile"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:855
+#: src/placeView.js:859
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s sub nivelul mării"
@@ -1891,16 +1896,16 @@ msgstr "%s sub nivelul mării"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:862
+#: src/placeView.js:866
 msgid "At sea level"
 msgstr "La nivelul mării"
 
-#: src/placeView.js:874
+#: src/placeView.js:878
 msgid "Religion:"
 msgstr "Religie:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:879
+#: src/placeView.js:883
 #, javascript-format
 msgid "Exit %s"
 msgstr "Ieșire %s"
