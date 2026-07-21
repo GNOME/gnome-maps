@@ -19,8 +19,9 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import {GraphHopper} from './graphHopper.js';
+import {Application} from './application.js';
 import {Transitous} from './transitous.js';
+import {Valhalla} from './valhalla.js';
 import {Plan} from './transit/plan.js';
 import { Route } from './route.js';
 import { StoredRoute } from './storedRoute.js';
@@ -33,15 +34,17 @@ export class RoutingDelegator {
         this._plan = new Plan();
 
         this._transitRouting = false;
-        this._graphHopper = new GraphHopper({ query: this._query, route: this._route });
+
+        this._router = new Valhalla({ query: this._query,
+                                      route: this._route });
         this._transitous = new Transitous({ query: this._query, plan: this._plan });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
         this._ignoreNextQueryChange = false;
         this._lastUsedRouter = null;
     }
 
-    get graphHopper() {
-        return this._graphHopper;
+    get router() {
+        return this._router;
     }
 
     get transitous() {
@@ -89,9 +92,9 @@ export class RoutingDelegator {
                 this._lastUsedRouter = this._transitous;
                 this._transitous.fetchFirstResults();
             } else {
-                this._lastUsedRouter = this._graphHopper;
-                this._graphHopper.fetchRoute(this._query.filledPoints,
-                                             this._query.transportation);
+                this._lastUsedRouter = this._router;
+                this._router.fetchRoute(this._query.filledPoints,
+                                        this._query.transportation);
             }
         }
     }

@@ -95,12 +95,16 @@ export class TurnPoint {
         STAIRS:           18,
     }
 
-    constructor({ coordinate, type, distance, instruction, turnAngle }) {
+    constructor({ coordinate, type, distance, instruction, turnAngle,
+                  verbalAlert, verbalPre, verbalPost }) {
         this.coordinate = coordinate;
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
         this.iconName = this._getIconName(turnAngle);
+        this.verbalAlert = verbalAlert ?? null;
+        this.verbalPre = verbalPre ?? null;
+        this.verbalPost = verbalPost ?? null;
     }
 
     get type() {

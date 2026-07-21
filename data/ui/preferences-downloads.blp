@@ -9,7 +9,7 @@ template $Gjs_PreferencesDownloads: Adw.PreferencesPage {
   );
 
   banner: Adw.Banner {
-    title: bind $pauseReasonsText(template.downloads as <$Gjs_DownloadManager>.pause-reasons);
+    title: "";
     button-label: _("Resume");
     revealed: bind template.downloads as <$Gjs_DownloadManager>.paused;
     button-clicked => $downloadAnyway();
@@ -51,9 +51,7 @@ template $Gjs_PreferencesDownloads: Adw.PreferencesPage {
     }
 
     Stack {
-      visible-child-name: bind $visibleChild(
-        template.downloads as <$Gjs_DownloadManager>.areas as <Gio.ListStore>.n-items
-        );
+      visible-child-name: "downloads";
       vhomogeneous: false;
 
       StackPage {

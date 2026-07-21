@@ -14,6 +14,7 @@
         "--socket=wayland",
         "--device=dri",
         "--share=network",
+        "--socket=pulseaudio",
         "--metadata=X-DConf=migrate-path=/org/gnome/Maps",
         "--env=G_ENABLE_DIAGNOSTIC=1",
         "--env=MAPS_DEBUG=1"
@@ -164,6 +165,17 @@
                     "type" : "git",
                     "url" : "https://github.com/flatpak/libportal.git",
                     "branch" : "main"
+                }
+            ]
+        },
+        {
+            "name" : "espeak-ng",
+            "buildsystem" : "autotools",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/espeak-ng/espeak-ng.git",
+                    "tag" : "1.52.0"
                 }
             ]
         },

@@ -67,9 +67,46 @@ export class RouteView extends Gtk.Box {
         this._initTransportationToggles();
 
         this._initQuerySignals();
+        this._initNavigationButton();
         this._query.addPoint(0);
         this._query.addPoint(1);
         this._switchRoutingMode(Application.routeQuery.transportation);
+    }
+
+    _initNavigationButton() {
+        const navigator = Application.navigator;
+
+        this._startNavigationButton =
+            new Gtk.Button({ label: _("Start Navigation"),
+                             halign: Gtk.Align.CENTER,
+                             margin_top: 12,
+                             margin_bottom: 12,
+                             visible: false,
+                             action_name: 'win.toggle-navigation' });
+        this._startNavigationButton.add_css_class('pill');
+        this._startNavigationButton.add_css_class('suggested-action');
+        this.insert_child_after(this._startNavigationButton,
+                                this._entryList.get_next_sibling());
+
+        navigator.connect('started', () => {
+            this._startNavigationButton.label = _("Stop Navigation");
+            this._startNavigationButton.remove_css_class('suggested-action');
+            this._startNavigationButton.add_css_class('destructive-action');
+        });
+        navigator.connect('stopped', () => {
+            this._startNavigationButton.label = _("Start Navigation");
+            this._startNavigationButton.remove_css_class('destructive-action');
+            this._startNavigationButton.add_css_class('suggested-action');
+        });
+    }
+
+    _updateNavigationButton() {
+        const route = Application.routingDelegator.route;
+        const transportation = this._query.transportation;
+
+        this._startNavigationButton.visible =
+            route.turnPoints?.length > 0 &&
+            transportation !== RouteQuery.Transportation.TRANSIT;
     }
 
     focusStartEntry() {
@@ -249,6 +286,7 @@ export class RouteView extends Gtk.Box {
 
         route.connect('reset', () => {
             this._clearInstructions();
+            this._startNavigationButton.visible = false;
 
             let length = 0;
 
@@ -340,6 +378,7 @@ export class RouteView extends Gtk.Box {
             /* Translators: %s is a time expression with the format "%f h" or "%f min" */
             this._timeInfo.label = _("Estimated time: %s").format(Utils.prettyTime(route.time));
             this._distanceInfo.label = Utils.prettyDistance(route.distance);
+            this._updateNavigationButton();
         });
 
         this._instructionList.connect('row-selected', (listbox, row) => {
