@@ -237,6 +237,11 @@ export class PlacePopover extends SearchPopover {
     showResult() {
         this._stack.visible_child = this._scrolledWindow;
 
+        const mapView = this._entry?.mapView;
+        if (mapView) {
+            this._scrolledWindow.max_content_height = mapView.get_height();
+        }
+
         let row = this.list.get_row_at_index(0);
         if (row)
             this.list.select_row(row);
