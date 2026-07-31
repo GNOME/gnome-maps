@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-14 19:51+0000\n"
-"PO-Revision-Date: 2026-07-30 13:01+0200\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-07-31 21:18+0200\n"
 "Last-Translator: Patrik Sivek <sivekpatrik@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Mapy"
 
@@ -317,16 +317,8 @@ msgstr "Vrstvy"
 msgid "Starred Places"
 msgstr "Oblíbená místa"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Zobrazovat měřítko"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Zobrazit značku polohy"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Otevřít uživatelskou vrstvu…"
 
@@ -338,54 +330,34 @@ msgstr "Na_stavit účet na OpenStreetMap…"
 msgid "_Export as Image…"
 msgstr "_Exportovat jako obrázek…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Měrné jednotky"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "Výchozí na_stavení systému"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Metrické"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Imperiální"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "O _aplikaci Mapy"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Zobrazit informace o místu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Tisk trasy"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Zavřít boční panel"
 
@@ -810,6 +782,45 @@ msgstr "Informace"
 msgid "Back to Main Categories"
 msgstr "Zpět na hlavní kategorie"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Obecné"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Zobrazení mapy"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Zobrazovat měřítko"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Zobrazit značku polohy"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Jednotky"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Jednotky délky"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Výchozí nastavení systému"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Metrické"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Imperiální"
+
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
 msgstr "Vybrat oblast ke stažení"
@@ -1220,10 +1231,6 @@ msgstr "Objekt byl smazán"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Cesta nebo vztah odkazuje na neexistujícího potomka"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Obecné"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
