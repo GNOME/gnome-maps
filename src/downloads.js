@@ -188,6 +188,15 @@ export class DownloadManager extends GObject.Object {
     /** @private */
     get downloadStore() {
         if (this._downloadStore === null) {
+            // ensure data directory exists
+            const mapsDir =
+                Gio.File.new_for_path(GLib.build_filenamev([
+                    GLib.get_user_data_dir(),
+                    GNOME_MAPS_DIR]));
+
+            if (!mapsDir.query_exists(null))
+                mapsDir.make_directory_with_parents(null);
+
             this._downloadStore = GnomeMaps.DownloadStore.new();
             this._downloadStore.open(
                 GLib.build_filenamev([
