@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-14 19:51+0000\n"
-"PO-Revision-Date: 2026-07-30 22:34+0300\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-07-31 20:59+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -27,7 +27,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Карти"
 
@@ -235,7 +235,6 @@ msgid "maps"
 msgstr "карти"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:698
-#| msgid "Location Type"
 msgid "location finder"
 msgstr "засіб пошуку місця"
 
@@ -244,7 +243,6 @@ msgid "place search"
 msgstr "пошук місць"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:700
-#| msgid "Load later alternatives"
 msgid "google maps alternative"
 msgstr "альтернатива картам google"
 
@@ -301,7 +299,6 @@ msgstr "Немає вибраних місць"
 
 #. Translators: This referres to the action of "starring" places
 #: data/ui/favorites-popover.blp:12
-#| msgid "Add places to your favorites to get them listed here"
 msgid "Star places to get them listed here"
 msgstr "Додайте місця до позначених зірками, щоб побачити їх у цьому списку"
 
@@ -317,20 +314,11 @@ msgstr "Шари"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.blp:18
-#| msgid "Search for places"
 msgid "Starred Places"
 msgstr "Вибрані місця"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Показувати шкалу"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Показувати позначку місця перебування"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Відкрити шар форм…"
 
@@ -342,54 +330,34 @@ msgstr "_Налаштувати обліковий запис у OpenStreetMap�
 msgid "_Export as Image…"
 msgstr "_Експортувати як зображення…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Одиниці виміру"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_Типове для системи"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Метричні"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Імперські"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "Налаштування"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_Про «Карти»"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Головне меню"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Переглянути дані щодо місця"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Надрукувати маршрут"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Закрити бічну панель"
 
@@ -709,7 +677,6 @@ msgid "Toggle location marker"
 msgstr "Увімкнути або вимкнути позначку місця перебування"
 
 #: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
-#| msgid "More Information"
 msgid "Show information"
 msgstr "Показати відомості"
 
@@ -804,18 +771,62 @@ msgid "Departures"
 msgstr "Відправлення"
 
 #: data/ui/place-view.blp:151
-#| msgid "Arrive"
 msgid "Arrivals"
 msgstr "Прибуття"
 
 #: data/ui/place-view.blp:155
-#| msgid "More Information"
 msgid "Information"
 msgstr "Відомості"
 
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Повернутися до основних категорій"
+
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Загальне"
+
+#: data/ui/preferences.blp:15
+#| msgctxt "shortcut window"
+#| msgid "Map View"
+msgid "Map View"
+msgstr "Перегляд карти"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Показувати шкалу"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Показувати позначку місця перебування"
+
+#: data/ui/preferences.blp:29
+#| msgid "Measurement Units"
+msgid "Measurements"
+msgstr "Вимірювання"
+
+#: data/ui/preferences.blp:32
+#| msgid "Measurement Units"
+msgid "Measurement system"
+msgstr "Система вимірювання"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+#| msgid "_System Default"
+msgid "System Default"
+msgstr "Типова для системи"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+#| msgid "_Metric"
+msgid "Metric"
+msgstr "Метрична"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+#| msgid "_Imperial"
+msgid "Imperial"
+msgstr "Імперська"
 
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
@@ -862,8 +873,9 @@ msgid ""
 msgstr ""
 "Отримати карти для автономного використання.\n"
 "\n"
-"Отримані області можна буде переглядати без доступного з'єднання з інтернетом"
-". В автономному режимі ви не зможете скористатися усіма можливостями."
+"Отримані області можна буде переглядати без доступного з'єднання з "
+"інтернетом. В автономному режимі ви не зможете скористатися усіма "
+"можливостями."
 
 #: data/ui/preferences-downloads.blp:13
 msgid "Resume"
@@ -874,7 +886,6 @@ msgid "Downloaded Areas"
 msgstr "Отримані області"
 
 #: data/ui/preferences-downloads.blp:48
-#| msgid "Address"
 msgid "Add"
 msgstr "Додати"
 
@@ -1225,10 +1236,6 @@ msgstr "Об'єкт вилучено"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Спосіб або відношення не стосується чогось явного"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Загальне"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
@@ -1648,22 +1655,18 @@ msgid "< %s"
 msgstr "< %s"
 
 #: src/placeView.js:370
-#| msgid "Itineraries provided by Transitous"
 msgid "Arrival information provided by Transitous"
 msgstr "Відомості щодо прибуття надано Transitous"
 
 #: src/placeView.js:371
-#| msgid "Itineraries provided by Transitous"
 msgid "Departure information provided by Transitous"
 msgstr "Відомості щодо відправлення надано Transitous"
 
 #: src/placeView.js:417
-#| msgid "No results found"
 msgid "No arrivals found"
 msgstr "Не знайдено прибуття"
 
 #: src/placeView.js:418
-#| msgid "No route found."
 msgid "No departures found"
 msgstr "Не знайдено відправлення"
 
@@ -1678,7 +1681,6 @@ msgstr "Політ"
 #. * arrivals for trains
 #.
 #: src/placeView.js:452
-#| msgid "T_rains"
 msgid "Trains"
 msgstr "Потяги"
 
@@ -1686,7 +1688,6 @@ msgstr "Потяги"
 #. * arrivals for ferries
 #.
 #: src/placeView.js:456
-#| msgid "_Ferries"
 msgid "Ferries"
 msgstr "Пороми"
 
@@ -1701,7 +1702,6 @@ msgstr "Гондола"
 #. * arrivals for funicular railway trains
 #.
 #: src/placeView.js:464
-#| msgid "Funicular station"
 msgid "Funicular"
 msgstr "Фунікулер"
 
@@ -1709,7 +1709,6 @@ msgstr "Фунікулер"
 #. * arrivals for subway (also known as metro or underground rail)
 #.
 #: src/placeView.js:468
-#| msgid "_Subway"
 msgid "Subway"
 msgstr "Метрополітен"
 
@@ -1717,7 +1716,6 @@ msgstr "Метрополітен"
 #. * arrivals for trams
 #.
 #: src/placeView.js:472
-#| msgid "_Trams"
 msgid "Trams"
 msgstr "Трамваї"
 
@@ -1725,7 +1723,6 @@ msgstr "Трамваї"
 #. * arrivals for buses
 #.
 #: src/placeView.js:476
-#| msgid "_Buses"
 msgid "Buses"
 msgstr "Автобуси"
 
@@ -1733,7 +1730,6 @@ msgstr "Автобуси"
 #. * for all available public transit modes in a station/stop
 #.
 #: src/placeView.js:536
-#| msgid "Alcohol"
 msgid "All"
 msgstr "Усі"
 
@@ -2096,7 +2092,6 @@ msgid "Gifts"
 msgstr "Подарунки"
 
 #: src/poiCategories.js:312
-#| msgid "Bicycle Rental"
 msgid "Bicycles"
 msgstr "Велосипеди"
 
@@ -2246,12 +2241,10 @@ msgstr "Поля для гольфу"
 
 #: src/preferencesDownloadNew.js:148
 #, javascript-format
-#| msgid "Estimated time: %s"
 msgid "Estimated size: %s"
 msgstr "Приблизний розмір: %s"
 
 #: src/preferencesDownloadNew.js:154
-#| msgid "failed to load file"
 msgid "Failed to estimate size"
 msgstr "Не вдалося оцінити розмір"
 
@@ -2447,7 +2440,6 @@ msgstr "Відправляється з %s"
 #.
 #: src/transit/utils.js:138
 #, javascript-format
-#| msgid "Walk %s"
 msgid "Track %s"
 msgstr "Маршрут %s"
 
@@ -2501,7 +2493,6 @@ msgid "Departure gate changed"
 msgstr "Змінено термінал відправлення"
 
 #: src/transitJunctureRow.js:78
-#| msgid "More Information"
 msgid "Hide information"
 msgstr "Приховати відомості"
 
