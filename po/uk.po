@@ -1,22 +1,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2013, 2014, 2015, 2016, 2017.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-11 20:45+0000\n"
-"PO-Revision-Date: 2026-02-12 12:29+0200\n"
+"POT-Creation-Date: 2026-07-11 09:06+0000\n"
+"PO-Revision-Date: 2026-07-31 15:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
+"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 25.12.1\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -206,14 +206,11 @@ msgstr ""
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:25
 #: data/org.gnome.Maps.metainfo.xml.in.in:41
-#| msgctxt "shortcut window"
-#| msgid "Map View"
 msgid "Map view"
 msgstr "Перегляд карти"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:29
 #: data/org.gnome.Maps.metainfo.xml.in.in:45
-#| msgid "Hide walking instructions"
 msgid "Pedestrian route instructions"
 msgstr "Настанови щодо пішого маршруту"
 
@@ -224,14 +221,36 @@ msgstr "Відомості щодо позначеного місця"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:37
 #: data/org.gnome.Maps.metainfo.xml.in.in:53
-#| msgid "Public Transit"
 msgid "Public transit itinerary"
 msgstr "Маршрут громадським транспортом"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:689
+#: data/org.gnome.Maps.metainfo.xml.in.in:691
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:710
+msgid "maps"
+msgstr "карти"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:711
+#| msgid "Location Type"
+msgid "location finder"
+msgstr "засіб пошуку місця"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:712
+msgid "place search"
+msgstr "пошук місць"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:713
+#| msgid "Load later alternatives"
+msgid "google maps alternative"
+msgstr "альтернатива картам google"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:714
+msgid "free map app"
+msgstr "вільна програма-карта"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -358,7 +377,7 @@ msgid "Main Menu"
 msgstr "Головне меню"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Переглянути дані щодо місця"
 
@@ -447,7 +466,7 @@ msgstr "Редагувати адресу"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Редагувати наявне місце у OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Продовжуйте"
 
@@ -783,7 +802,7 @@ msgid "Zoom Out"
 msgstr "Зменшити"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Збільшити"
 
@@ -878,40 +897,40 @@ msgstr "Не знайдено жодного маршруту."
 msgid "Start!"
 msgstr "Нумо!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Увімкнути служби місця перебування"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Параметри розташування"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Показати планувальник маршрутів"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2026"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Надавач даних карти"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Надавач блоків карти"
 
@@ -920,37 +939,37 @@ msgstr "Надавач блоків карти"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Надавач пошуку"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Відкрити шари форм"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -959,140 +978,140 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Наблизьтесь, щоб додати місце"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Місце було додано в OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Нумо"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Прибуває"
 
-#: src/motis.js:360
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Перейдіть на рівень %s сходами"
 
-#: src/motis.js:361
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Скористайтеся сходами"
 
-#: src/motis.js:365
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продовжуйте на %s"
 
-#: src/motis.js:370
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверніть ліворуч на %s"
 
-#: src/motis.js:371
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Поверніть ліворуч"
 
-#: src/motis.js:375
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверніть трохи ліворуч на %s"
 
-#: src/motis.js:376
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Поверніть трохи ліворуч"
 
-#: src/motis.js:380
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверніть строго ліворуч на %s"
 
-#: src/motis.js:381
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Різко поверніть ліворуч"
 
-#: src/motis.js:385
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверніть праворуч на %s"
 
-#: src/motis.js:386
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Поверніть праворуч"
 
-#: src/motis.js:390
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверніть трохи праворуч на %s"
 
-#: src/motis.js:391
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Поверніть трохи праворуч"
 
-#: src/motis.js:395
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Різко поверніть праворуч на %s"
 
-#: src/motis.js:396
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Різко поверніть праворуч"
 
-#: src/motis.js:403
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На розвороті виберіть виїзд %s"
 
-#: src/motis.js:406
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На розвороті виберіть виїзд до %s"
 
-#: src/motis.js:408
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "В'їжджайте на розворот"
 
-#: src/motis.js:416
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Увійдіть до ліфта і вийдіть на %s"
 
-#: src/motis.js:417
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Увійдіть до ліфта"
 
-#: src/motis.js:421
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Виконайте лівий розворот на %s"
 
-#: src/motis.js:422
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Виконайте лівий розворот"
 
-#: src/motis.js:426
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Виконайте правий розворот на %s"
 
-#: src/motis.js:427
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
 
@@ -1491,40 +1510,37 @@ msgstr "Туризм"
 msgid "Other"
 msgstr "Інше"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
-#: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Зупинка громадського транспорту"
-
-#: src/osmTypes.js:217
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Станція фунікулера"
 
-#: src/osmTypes.js:219
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Зупинка легкорейкового транспорту"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Станція монорейкового транспорту"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Залізнична станція"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Станція метро"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Кінець залізничної колії"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Трамвайна зупинка"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Зупинка громадського транспорту"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -2062,7 +2078,7 @@ msgstr "Гімнастичні майданчики"
 msgid "Golf Courses"
 msgstr "Поля для гольфу"
 
-#: src/printLayout.js:222
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "З %s до %s"
@@ -2160,19 +2176,19 @@ msgstr "Прибуває до %s"
 msgid "Start at %s"
 msgstr "Відправляється з %s"
 
-#: src/transitLegHeader.js:93
+#: src/transitLegHeader.js:100
 msgid "Hide intermediate stops and information"
 msgstr "Сховати проміжні зупинки та відомості"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Сховати піші варіанти"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:103
 msgid "Show intermediate stops and information"
 msgstr "Показати проміжні зупинки та відомості"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:104
 msgid "Show walking instructions"
 msgstr "Показати піші варіанти"
 
@@ -2356,19 +2372,19 @@ msgid "Bahá'í"
 msgstr "Бахаїзм"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:253
+#: src/utils.js:262
 msgid "Unknown"
 msgstr "Невідомо"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:265
 msgid "Exact"
 msgstr "Уточнити"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:312
+#: src/utils.js:321
 #, javascript-format
 msgid "%s h"
 msgstr "%s год"
@@ -2377,7 +2393,7 @@ msgstr "%s год"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:318
+#: src/utils.js:327
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2390,7 +2406,7 @@ msgstr[3] "%s год %s хв"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:325
+#: src/utils.js:334
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2403,7 +2419,7 @@ msgstr[3] "%s хв"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:331
+#: src/utils.js:340
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2413,25 +2429,25 @@ msgstr[2] "%s с"
 msgstr[3] "%s с"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:343
+#: src/utils.js:352
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ми"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:346
+#: src/utils.js:355
 #, javascript-format
 msgid "%s ft"
 msgstr "%s фт"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:354
+#: src/utils.js:363
 #, javascript-format
 msgid "%s km"
 msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:357
+#: src/utils.js:366
 #, javascript-format
 msgid "%s m"
 msgstr "%s м"
