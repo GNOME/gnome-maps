@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-14 19:51+0000\n"
-"PO-Revision-Date: 2026-07-31 08:39+0200\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-07-31 22:40+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Zemljevidi"
 
@@ -318,16 +318,8 @@ msgstr "Plasti"
 msgid "Starred Places"
 msgstr "Mesta z zvezdicami"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Prikaži merilo"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Pokaži označevalnik mesta"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Odpri plast oblike …"
 
@@ -339,54 +331,34 @@ msgstr "_Nastavi račun OpenStreetMap …"
 msgid "_Export as Image…"
 msgstr "Izvozi _kot sliko …"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Merske enote"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_sistemsko privzete"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_metrične"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_anglosaške"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "Nastavitve"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_O programu Zemljevidi"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Glavni meni"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Pokaži podatke o mestu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Natisni pot"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Zapri stransko vrstico"
 
@@ -808,6 +780,45 @@ msgstr "Podrobnosti"
 msgid "Back to Main Categories"
 msgstr "Nazaj na glavne kategorije"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Splošno"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Pokaže pogled zemljevida"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Prikaži merilo"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Pokaži označevalnik mesta"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Mere"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Merski sistem"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "sistemsko privzeti"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "metrični"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "anglosaški"
+
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
 msgstr "Izberite območje za prenos"
@@ -1219,10 +1230,6 @@ msgstr "Predmet je izbrisan"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Pot oziroma zveza je sklicana na neobstoječ podrejen predmet"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Splošno"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
