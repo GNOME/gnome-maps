@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-24 21:14+0000\n"
-"PO-Revision-Date: 2026-03-05 12:28+0100\n"
+"POT-Creation-Date: 2026-08-01 11:07+0000\n"
+"PO-Revision-Date: 2026-08-01 19:26+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -228,9 +228,30 @@ msgid "Public transit itinerary"
 msgstr "Itinerari de transpòrt public"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:696
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
 msgid "The GNOME Project"
 msgstr "Lo projècte GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:717
+msgid "maps"
+msgstr "mapas"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:718
+msgid "location finder"
+msgstr "cercador de localizacion"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:719
+msgid "place search"
+msgstr "recèrca de luòc"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:720
+msgid "google maps alternative"
+msgstr "alternativa a google maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:721
+msgid "free map app"
+msgstr "aplicacion gratuita de mapa"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -358,7 +379,7 @@ msgid "Main Menu"
 msgstr "Menú principal"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Veire las informacions del luòc"
 
@@ -450,7 +471,7 @@ msgstr "Modificar l'emplaçament"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Modificar un emplaçament existissent sus OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:369
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Contunhar"
 
@@ -784,7 +805,7 @@ msgid "Zoom Out"
 msgstr "Zoom arrièr"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Zoom avant"
 
@@ -879,43 +900,43 @@ msgstr "Cap d'itinerari pas trobat."
 msgid "Start!"
 msgstr "Es partit !"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Fracàs a la connexion al servici de localizacion"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Activar los servicis de localizacion"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Paramètres de localizacion"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Monstrar lo planificator d'itinerari"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2026 Red Hat, Inc. e los autors de Mapas de GNOME"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
 "Quentin PAGÈS\n"
 "Nicolas Miard"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Donadas cartograficas de %s e contributors"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Provesidor de donadas cartografica"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Fornisseire de teulas de mapas"
 
@@ -924,37 +945,37 @@ msgstr "Fornisseire de teulas de mapas"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Jaces de donadas cartograficas provesidas per %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Provesidor de recèrca"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Recèrca fornida per %s en utilizant %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Totes los fichièrs de jaces"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Dobrir los jaces de forma"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Fracàs de dobertura del jaç"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Volètz contunhar ?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -963,140 +984,140 @@ msgstr ""
 "Sètz a mand de dobrir de fichièrs amb una talha total de %s Mo. Aquòt pòt "
 "trigar a cargar"
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Anullar"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Lo tipe de fichièr es pas pris en charge"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Fracàs de dobertura de la Geo URI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Zoomatz per apondre un emplaçament"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "La localizacion es estada aponduda a OpenStreetMap"
 
-#: src/motis.js:332 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Despart"
 
-#: src/motis.js:351 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Arribada"
 
-#: src/motis.js:363
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Prene los escalièrs cap al nivèl %s"
 
-#: src/motis.js:364
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Prene los escalièrs"
 
-#: src/motis.js:368
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Contunhar sus %s"
 
-#: src/motis.js:373
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Viratz a esquèrra sus %s"
 
-#: src/motis.js:374
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Viratz a esquèrra"
 
-#: src/motis.js:378
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:379
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:383
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Viratz francament a esquèrra sus %s"
 
-#: src/motis.js:384
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Viratz francament a esquèrra"
 
-#: src/motis.js:388
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Viratz a drecha sus %s"
 
-#: src/motis.js:389
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Virar a drecha"
 
-#: src/motis.js:393
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:394
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:398
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:399
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:406
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "A la rotonda, prenetz la sortida %s"
 
-#: src/motis.js:409
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "A la rotonda, prenetz la sortida cap a %s"
 
-#: src/motis.js:411
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "Prenètz la rotonda"
 
-#: src/motis.js:419
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Préner l’ascensor e davalatz a %s"
 
-#: src/motis.js:420
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Préner l’ascensor"
 
-#: src/motis.js:424
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Fasètz mièg-torn a esquèrra sus %s"
 
-#: src/motis.js:425
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Fasètz mièg-torn a esquèrra"
 
-#: src/motis.js:429
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Fasètz mièg-torn a drecha sus %s"
 
-#: src/motis.js:430
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Fasètz mièg-torn a drecha"
 
@@ -1496,35 +1517,35 @@ msgstr "Torisme"
 msgid "Other"
 msgstr "Autras"
 
-#: src/osmTypes.js:210
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Estacion de funiculari"
 
-#: src/osmTypes.js:212
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Arrèst de rail"
 
-#: src/osmTypes.js:214
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Estacion de monorail"
 
-#: src/osmTypes.js:216 src/osmTypes.js:226
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Gara"
 
-#: src/osmTypes.js:218
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Estacion de mètro"
 
-#: src/osmTypes.js:222
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Fin de via ferrada"
 
-#: src/osmTypes.js:224
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Arrèst de tramway"
 
-#: src/osmTypes.js:233 src/osmTypes.js:242
+#: src/osmTypes.js:257 src/osmTypes.js:266
 msgid "Public transportation stop"
 msgstr "Arrèst de transpòrt public"
 
