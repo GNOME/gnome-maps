@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-17 17:03+0000\n"
-"PO-Revision-Date: 2026-02-22 16:41+0100\n"
+"POT-Creation-Date: 2026-07-11 09:06+0000\n"
+"PO-Revision-Date: 2026-07-31 16:22+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -226,9 +226,30 @@ msgid "Public transit itinerary"
 msgstr "Resväg för kollektivtrafik"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:689
+#: data/org.gnome.Maps.metainfo.xml.in.in:691
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:710
+msgid "maps"
+msgstr "kartor"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:711
+msgid "location finder"
+msgstr "platshittare"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:712
+msgid "place search"
+msgstr "platssökning"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:713
+msgid "google maps alternative"
+msgstr "google maps-alternativ"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:714
+msgid "free map app"
+msgstr "fritt kartprogram"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -355,7 +376,7 @@ msgid "Main Menu"
 msgstr "Huvudmeny"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Visa platsinformation"
 
@@ -444,7 +465,7 @@ msgstr "Redigera plats"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Redigera en befintlig plats i OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Fortsätt"
 
@@ -780,7 +801,7 @@ msgid "Zoom Out"
 msgstr "Zooma ut"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Zooma in"
 
@@ -876,28 +897,28 @@ msgstr "Hittade ingen rutt."
 msgid "Start!"
 msgstr "Starta!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Slå på platstjänster"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Platsinställningar"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Visa ruttplanerare"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Copyright © 2011 – 2026 Red Hat, Inc. och upphovsmännen för GNOME Kartor"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
@@ -906,16 +927,16 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartdata från %s och bidragsgivare"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Kartdataleverantör"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Kartruteleverantör"
 
@@ -924,37 +945,37 @@ msgstr "Kartruteleverantör"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartrutor tillhandahållna av %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Sökleverantör"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Sökning tillhandahålls av %s med %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Alla lagerfiler"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Öppna formlager"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Misslyckades med att öppna lager"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Vill du fortsätta?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -963,140 +984,140 @@ msgstr ""
 "Du håller på att öppna filer med en total storlek på %s MB. Dessa kan ta "
 "lite tid att läsa in"
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Filtypen stöds inte"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Misslyckades med att öppna GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Zooma in för att lägga till plats"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Platsen lades till i OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Starta"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Anländ"
 
-#: src/motis.js:360
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Ta trapporna till våning %s"
 
-#: src/motis.js:361
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Ta trapporna"
 
-#: src/motis.js:365
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Fortsätt på %s"
 
-#: src/motis.js:370
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Sväng vänster på %s"
 
-#: src/motis.js:371
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Sväng vänster"
 
-#: src/motis.js:375
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Sväng svagt vänster på %s"
 
-#: src/motis.js:376
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Sväng svagt vänster"
 
-#: src/motis.js:380
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Sväng kraftigt vänster på %s"
 
-#: src/motis.js:381
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Sväng kraftigt vänster"
 
-#: src/motis.js:385
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Sväng höger på %s"
 
-#: src/motis.js:386
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Sväng höger"
 
-#: src/motis.js:390
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Sväng svagt höger på %s"
 
-#: src/motis.js:391
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Sväng svagt höger"
 
-#: src/motis.js:395
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Sväng kraftigt höger på %s"
 
-#: src/motis.js:396
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Sväng kraftigt höger"
 
-#: src/motis.js:403
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Ta avfart %s i rondellen"
 
-#: src/motis.js:406
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Ta avfart till %s i rondellen"
 
-#: src/motis.js:408
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "Ta rondellen"
 
-#: src/motis.js:416
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Ta hissen och stig av på %s"
 
-#: src/motis.js:417
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Ta hissen"
 
-#: src/motis.js:421
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Gör en u-sväng åt vänster in på %s"
 
-#: src/motis.js:422
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Gör en u-sväng åt vänster"
 
-#: src/motis.js:426
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Gör en u-sväng åt höger in på %s"
 
-#: src/motis.js:427
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Gör en u-sväng åt höger"
 
@@ -1495,41 +1516,38 @@ msgstr "Turism"
 msgid "Other"
 msgstr "Annat"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
-#: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Kollektivtrafikstopp"
-
-#: src/osmTypes.js:217
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Bergbanestation"
 
 # https://sv.wikipedia.org/wiki/Light_rail
-#: src/osmTypes.js:219
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Lättbanestopp"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Monorailstation"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Järnvägsstation"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Tunnelbanestation"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Järnvägsstopp"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Spårvagnsstopp"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Kollektivtrafikstopp"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -2164,19 +2182,19 @@ msgstr "Anländ vid %s"
 msgid "Start at %s"
 msgstr "Starta från %s"
 
-#: src/transitLegHeader.js:93
+#: src/transitLegHeader.js:100
 msgid "Hide intermediate stops and information"
 msgstr "Dölj mellanliggande stopp och information"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Dölj gånginstruktioner"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:103
 msgid "Show intermediate stops and information"
 msgstr "Visa mellanliggande stopp och information"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:104
 msgid "Show walking instructions"
 msgstr "Visa gånginstruktioner"
 
