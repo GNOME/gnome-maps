@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-14 19:51+0000\n"
-"PO-Revision-Date: 2026-07-31 05:53+0200\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-08-01 02:30+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -26,7 +26,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "რუკები"
 
@@ -314,16 +314,8 @@ msgstr "ფენები"
 msgid "Starred Places"
 msgstr "ვარსკვლავიანი ადგილები"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "მასშტაბის ჩვენება"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "მდებარეობის მარკერის ჩვენება"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "მოხაზულობის ფენის გახსნა…"
 
@@ -335,54 +327,34 @@ msgstr "OpenStreeMap-ის ანგარიშის მორგება…
 msgid "_Export as Image…"
 msgstr "გამოსახულ_ების სახით გატანა…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "საზომი ერთეულები"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_სისტემის ნაგულისხმევი"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_მეტრული"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_იმპერიული"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "მორგება"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_კლავიატურის მალსახმობები"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "Maps-ის შეს_ახებ"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "ადგილის ინფორმაციის ნახვა"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "გზის დაბეჭდვა"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "გვერდითი ზოლის დახურვა"
 
@@ -809,6 +781,45 @@ msgstr "ინფორმაცია"
 msgid "Back to Main Categories"
 msgstr "მთავარ კატეგორიებზე დაბრუნება"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "ზოგადი"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "რუკის ხედი"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "მასშტაბის ჩვენება"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "მდებარეობის მარკერის ჩვენება"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "გაზომვები"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "საზომი ერთეულები"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "სისტემის ნაგულისხმევი"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "მეტრული"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "იმპერიული"
+
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
 msgstr "აირჩიეთ გადმოწერის არე"
@@ -1217,10 +1228,6 @@ msgstr "ობიექტი წაიშალა"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "ურთიერთობა ან გზა არარსებულ შვილებს მიმართავს"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "ზოგადი"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
