@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-06-12 10:21+0000\n"
-"PO-Revision-Date: 2026-06-21 23:19+0300\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-08-01 13:58+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be_BY\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -25,7 +25,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Карты"
 
@@ -224,8 +224,29 @@ msgstr "Маршруты грамадскага транспарту"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "Праект GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
+msgid "maps"
+msgstr "карты"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
+msgid "location finder"
+msgstr "пошук месцазнаходжання"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
+msgid "place search"
+msgstr "пошук месца"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
+msgid "google maps alternative"
+msgstr "альтэрнатыва «Карты Google»"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
+msgid "free map app"
+msgstr "бясплатная праграма для працы з картамі"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -294,16 +315,8 @@ msgstr "Слаі"
 msgid "Starred Places"
 msgstr "Абраныя месцы"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Паказваць маштаб"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Паказваць маркер месцазнаходжання"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Адкрыць слой фігуры…"
 
@@ -315,54 +328,34 @@ msgstr "_Наладзіць уліковы запіс OpenStreetMap…"
 msgid "_Export as Image…"
 msgstr "_Экспартаваць як відарыс…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Адзінкі вымярэння"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_Сістэмныя"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Метрычныя"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Імперскія"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "Налады"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_Спалучэнні клавіш"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_Аб праграме Карты"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Галоўнае меню"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Прагляд звестак пра месца"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Надрукаваць маршрут"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Закрыць бакавую панэль"
 
@@ -444,7 +437,7 @@ msgstr "Рэдагаваць бягучае месца ў OpenStreetMap"
 
 # Не размежавана. Працягвайце рух, калі openTripPlanner
 # і верагодна Працягнуць для osm-edit-dialog
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:719 src/motis.js:484
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Працягнуць"
 
@@ -592,90 +585,95 @@ msgstr "Агульныя"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Паказаць налады"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Паказаць спалучэнні клавіш"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "Агляд пунктаў інтарэсу (POI)"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Паказаць апошнія вынікі пошуку"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Паказаць планавальнік маршруту"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Друк маршруту"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Выйсці"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Адкрыць галоўнае меню"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Прагляд карты"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Павялічыць"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Паменшыць"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "Павярнуць па ходу гадзіннікавай стрэлкі"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "Павярнуць супраць гадзіннікавай стрэлкі"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "Скасаваць паварот"
 
-#: data/ui/shortcuts-dialog.blp:78
+#: data/ui/shortcuts-dialog.blp:83
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Паказаць або схаваць маштаб"
 
-#: data/ui/shortcuts-dialog.blp:83
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Перайсці да бягучага месцазнаходжання"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Адкрыць слой фігуры"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Уключэнне і выключэнне маркера месцазнаходжання"
@@ -786,6 +784,45 @@ msgstr "Звесткі"
 msgid "Back to Main Categories"
 msgstr "Вярнуцца да асноўных катэгорый"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Агульныя"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Прагляд карты"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Паказваць маштаб"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Паказваць маркер месцазнаходжання"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Адзінкі вымярэння"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Сістэма мер"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Сістэмная"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Метрычная"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Імперская"
+
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
 msgstr "Выбраць вобласць для спампоўвання"
@@ -796,7 +833,7 @@ msgstr "Спампаваць"
 
 #. Translators: This is a tooltip
 #: data/ui/preferences-download-new.blp:64
-#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1310
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
 msgid "Zoom In"
 msgstr "Павялічыць"
 
@@ -1005,15 +1042,15 @@ msgstr "Усе файлы слоя"
 msgid "Open Shape Layers"
 msgstr "Адкрыць слаі фігуры"
 
-#: src/mapView.js:694 src/mapView.js:756
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "Не ўдалося адкрыць слой"
 
-#: src/mapView.js:711
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "Хочаце працягнуць?"
 
-#: src/mapView.js:712
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -1022,140 +1059,140 @@ msgstr ""
 "Вы маеце намер адкрыць файлы агульным памерам %s МБ. На загрузку іх можа "
 "спатрэбіцца некаторы час"
 
-#: src/mapView.js:718 src/preferencesDownloads.js:210
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: src/mapView.js:750
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Тып файла не падтрымліваецца"
 
-#: src/mapView.js:789
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "Не ўдалося адкрыць GeoURI"
 
-#: src/mapView.js:1309
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Павялічце, каб дадаць месцазнаходжанне"
 
-#: src/mapView.js:1327
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "Месца дададзена на OpenStreetMap"
 
-#: src/motis.js:397 src/transit/utils.js:35 src/transit/utils.js:87
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Старт"
 
-#: src/motis.js:416 src/transit/utils.js:43 src/transit/utils.js:73
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Прыбыццё"
 
-#: src/motis.js:478
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Прайдзіце па лесвіцы на %s паверх"
 
-#: src/motis.js:479
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "Скарыстайцеся лесвіцай"
 
-#: src/motis.js:483
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Працягвайце рух на «%s»"
 
-#: src/motis.js:488
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Павярніце налева на «%s»"
 
-#: src/motis.js:489
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "Павярніце налева"
 
-#: src/motis.js:493
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Плаўны паварот налева на «%s»"
 
-#: src/motis.js:494
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "Плаўны паварот налева"
 
-#: src/motis.js:498
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Рэзкі паварот налева на «%s»"
 
-#: src/motis.js:499
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "Рэзкі паварот налева"
 
-#: src/motis.js:503
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Павярніце направа на «%s»"
 
-#: src/motis.js:504
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "Павярніце направа"
 
-#: src/motis.js:508
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Плаўны паварот направа на «%s»"
 
-#: src/motis.js:509
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "Плаўны паварот направа"
 
-#: src/motis.js:513
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Рэзкі паварот направа на «%s»"
 
-#: src/motis.js:514
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "Рэзкі паварот направа"
 
-#: src/motis.js:521
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На кальцавой развязцы павярніце на з'езд %s"
 
-#: src/motis.js:524
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На кальцавой развязцы павярніце на з'езд да «%s»"
 
-#: src/motis.js:526
+#: src/motis.js:531
 msgid "Take the roundabout"
 msgstr "Выязджайце на кальцавую развязку"
 
-#: src/motis.js:534
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Увайдзіце ў ліфт і выйдзіце на «%s»"
 
-#: src/motis.js:535
+#: src/motis.js:540
 msgid "Take the elevator"
 msgstr "Увайдзіце ў ліфт"
 
-#: src/motis.js:539
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Выканайце левы разварот на «%s»"
 
-#: src/motis.js:540
+#: src/motis.js:545
 msgid "Make a left u-turn"
 msgstr "Выканайце левы разварот"
 
-#: src/motis.js:544
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Выканайце правы разварот на «%s»"
 
-#: src/motis.js:545
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "Выканайце правы разварот"
 
@@ -1195,10 +1232,6 @@ msgstr "Аб'ект быў выдалены"
 msgid "Way or relation refers to non-existing children"
 msgstr "Шлях ці сувязь спасылаецца на неіснуючага нашчадка"
 
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Агульныя"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "Тып"
@@ -1219,11 +1252,11 @@ msgstr "Час працы"
 msgid "Phone"
 msgstr "Тэлефон"
 
-#: src/osmEditDialog.js:151 src/placeView.js:635
+#: src/osmEditDialog.js:151 src/placeView.js:639
 msgid "Email"
 msgstr "Электронная пошта"
 
-#: src/osmEditDialog.js:158 src/placeView.js:602
+#: src/osmEditDialog.js:158 src/placeView.js:606
 msgid "Website"
 msgstr "Вэб-сайт"
 
@@ -1290,11 +1323,11 @@ msgstr "Вікіпедыя"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:836
+#: src/osmEditDialog.js:204 src/placeView.js:840
 msgid "Population"
 msgstr "Насельніцтва"
 
-#: src/osmEditDialog.js:209 src/placeView.js:865
+#: src/osmEditDialog.js:209 src/placeView.js:869
 msgid "Altitude"
 msgstr "Вышыня над узроўнем мора"
 
@@ -1599,7 +1632,7 @@ msgstr "Не ўдалося прааналізаваць Geo URI"
 msgid "Failed to parse Maps URI"
 msgstr "Не ўдалося прааналізаваць URI карты"
 
-#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:588
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:592
 msgid "Coordinates"
 msgstr "Каардынаты"
 
@@ -1625,83 +1658,83 @@ msgstr "Звесткі пра прыбыццё пастаўляюцца Transito
 msgid "Departure information provided by Transitous"
 msgstr "Звесткі пра адпраўленне пастаўляюцца Transitous"
 
-#: src/placeView.js:413
+#: src/placeView.js:417
 msgid "No arrivals found"
 msgstr "Звесткі пра прыбыццё не знойдзены"
 
-#: src/placeView.js:414
+#: src/placeView.js:418
 msgid "No departures found"
 msgstr "Звесткі пра адпраўленне не знойдзены"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for airline flights
 #.
-#: src/placeView.js:444
+#: src/placeView.js:448
 msgid "Flights"
 msgstr "Пералёты"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trains
 #.
-#: src/placeView.js:448
+#: src/placeView.js:452
 msgid "Trains"
 msgstr "Цягнікі"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for ferries
 #.
-#: src/placeView.js:452
+#: src/placeView.js:456
 msgid "Ferries"
 msgstr "Паромы"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for gondola (also known as aerial trams or telecabins)
 #.
-#: src/placeView.js:456
+#: src/placeView.js:460
 msgid "Gondola"
 msgstr "Канатка"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for funicular railway trains
 #.
-#: src/placeView.js:460
+#: src/placeView.js:464
 msgid "Funicular"
 msgstr "Фунікулёр"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for subway (also known as metro or underground rail)
 #.
-#: src/placeView.js:464
+#: src/placeView.js:468
 msgid "Subway"
 msgstr "Метро"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trams
 #.
-#: src/placeView.js:468
+#: src/placeView.js:472
 msgid "Trams"
 msgstr "Трамваі"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for buses
 #.
-#: src/placeView.js:472
+#: src/placeView.js:476
 msgid "Buses"
 msgstr "Аўтобусы"
 
 #. Translators: this refers to showing departures or arrivals
 #. * for all available public transit modes in a station/stop
 #.
-#: src/placeView.js:532
+#: src/placeView.js:536
 msgid "All"
 msgstr "Усе"
 
-#: src/placeView.js:594
+#: src/placeView.js:598
 msgid "Accuracy"
 msgstr "Дакладнасць"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:597
+#: src/placeView.js:601
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Дакладнасць: %s"
@@ -1712,7 +1745,7 @@ msgstr "Дакладнасць: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:616
+#: src/placeView.js:620
 msgid "Phone number"
 msgstr "Нумар тэлефона"
 
@@ -1723,16 +1756,16 @@ msgstr "Нумар тэлефона"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:650 src/placeView.js:689
+#: src/placeView.js:654 src/placeView.js:693
 msgid "Floor"
 msgstr "Паверх"
 
-#: src/placeView.js:652
+#: src/placeView.js:656
 #, javascript-format
 msgid "Floor %s"
 msgstr "%s паверх"
 
-#: src/placeView.js:664
+#: src/placeView.js:668
 msgid "At ground level"
 msgstr "На ўзроўні зямлі"
 
@@ -1741,7 +1774,7 @@ msgstr "На ўзроўні зямлі"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:673
+#: src/placeView.js:677
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1754,7 +1787,7 @@ msgstr[2] "%s паверхаў вышэй за ўзровень зямлі"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:684
+#: src/placeView.js:688
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1766,7 +1799,7 @@ msgstr[2] "%s паверхаў ніжэй за ўзровень зямлі"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:702
+#: src/placeView.js:706
 msgid "Offers takeout"
 msgstr "Прапануе ежу на вынас"
 
@@ -1774,7 +1807,7 @@ msgstr "Прапануе ежу на вынас"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:710
+#: src/placeView.js:714
 msgid "Does not offer takeout"
 msgstr "Не прапануе ежу на вынас"
 
@@ -1783,18 +1816,18 @@ msgstr "Не прапануе ежу на вынас"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:719
+#: src/placeView.js:723
 msgid "Only offers takeout"
 msgstr "Прапануе толькі ежу на вынас"
 
-#: src/placeView.js:726
+#: src/placeView.js:730
 msgid "Opening hours"
 msgstr "Час працы"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:736
+#: src/placeView.js:740
 msgid "Public internet access"
 msgstr "Публічны доступ да інтэрнэту"
 
@@ -1802,50 +1835,50 @@ msgstr "Публічны доступ да інтэрнэту"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:745
+#: src/placeView.js:749
 msgid "No internet access"
 msgstr "Няма доступу да інтэрнэту"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:753
+#: src/placeView.js:757
 msgid "Public Wi-Fi"
 msgstr "Агульнадаступны Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:761
+#: src/placeView.js:765
 msgid "Wired internet access"
 msgstr "Правадны доступ да інтэрнэту"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:769
+#: src/placeView.js:773
 msgid "Computers available for use"
 msgstr "Даступна карыстанне камп'ютарам"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:777
+#: src/placeView.js:781
 msgid "Internet assistance available"
 msgstr "Даступна дапамога з інтэрнэтам"
 
-#: src/placeView.js:783
+#: src/placeView.js:787
 msgid "No toilets available"
 msgstr "Туалетаў няма"
 
-#: src/placeView.js:786
+#: src/placeView.js:790
 msgid "Toilets available"
 msgstr "Туалеты ёсць"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:795
+#: src/placeView.js:799
 msgid "Wheelchair accessible"
 msgstr "Даступна для інвалідных калясак"
 
@@ -1854,7 +1887,7 @@ msgstr "Даступна для інвалідных калясак"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:805
+#: src/placeView.js:809
 msgid "Limited wheelchair accessibility"
 msgstr "Абмежаваная даступнасць для інвалідных калясак"
 
@@ -1862,7 +1895,7 @@ msgstr "Абмежаваная даступнасць для інвалідны�
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:814
+#: src/placeView.js:818
 msgid "Not wheelchair accessible"
 msgstr "Недаступна для інвалідных калясак"
 
@@ -1871,7 +1904,7 @@ msgstr "Недаступна для інвалідных калясак"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:824
+#: src/placeView.js:828
 msgid "Designated for wheelchair users"
 msgstr "Прыстасавана для людзей на інваліднай калясцы"
 
@@ -1880,7 +1913,7 @@ msgstr "Прыстасавана для людзей на інваліднай �
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:855
+#: src/placeView.js:859
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s ніжэй за ўзровень мора"
@@ -1889,17 +1922,17 @@ msgstr "%s ніжэй за ўзровень мора"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:862
+#: src/placeView.js:866
 msgid "At sea level"
 msgstr "На ўзроўні мора"
 
-#: src/placeView.js:874
+#: src/placeView.js:878
 msgid "Religion:"
 msgstr "Рэлігія:"
 
 # ?З'езд на %s
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:879
+#: src/placeView.js:883
 #, javascript-format
 msgid "Exit %s"
 msgstr "З'езд %s"
