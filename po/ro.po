@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-14 19:51+0000\n"
-"PO-Revision-Date: 2026-07-31 10:11+0200\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-07-31 18:59+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -36,7 +36,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:66 src/application.js:65 src/mainWindow.js:112
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Hărți"
 
@@ -171,16 +171,16 @@ msgstr ""
 
 #: data/org.gnome.Maps.gschema.xml:85
 msgid "Units to show measurements in"
-msgstr "Unitățile în care să se afișeze măsurătorile"
+msgstr "Unitățile de măsură utilizate"
 
 #: data/org.gnome.Maps.gschema.xml:86
 msgid ""
 "How to show measurements. ('system' uses default for system locale, 'metric' "
 "always show metric units, 'imperial' always show imperial units)."
 msgstr ""
-"Modul de afișare a măsurătorilor. („sistem” folosește valorile sistemului, "
-"„metric” afișează mereu unitățile metrice, „imperial” afișează mereu "
-"unitățile imperiale)."
+"Afișarea unităților de măsură. („sistem” folosește ce a fost stabilit în "
+"sistem, „metric” folosește unitățile metrice, „imperial” folosește unitățile "
+"imperiale)."
 
 #: data/org.gnome.Maps.gschema.xml:90
 msgid "Show location marker"
@@ -216,7 +216,7 @@ msgstr ""
 #: data/org.gnome.Maps.metainfo.xml.in.in:25
 #: data/org.gnome.Maps.metainfo.xml.in.in:41
 msgid "Map view"
-msgstr "Vizualizare hartă"
+msgstr "Harta"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:29
 #: data/org.gnome.Maps.metainfo.xml.in.in:45
@@ -326,16 +326,8 @@ msgstr "Straturi"
 msgid "Starred Places"
 msgstr "Locuri preferate"
 
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Arată scara"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Semnalizează poziția"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Deschide stratul formei…"
 
@@ -347,54 +339,34 @@ msgstr "_Stabilește contul OpenStreetMap…"
 msgid "_Export as Image…"
 msgstr "_Exportă ca imagine…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Unități de măsură"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_Sistem"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Metric"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Imperial"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:19
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: data/ui/main-window.blp:54
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "Scur_tături"
 
-#: data/ui/main-window.blp:60
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_Despre Hărți"
 
-#: data/ui/main-window.blp:130
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Opțiuni"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:174 src/mainWindow.js:643
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Informații despre loc"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:183
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Tipărește traseul"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:193
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Închide panoul lateral"
 
@@ -818,6 +790,45 @@ msgstr "Informații"
 msgid "Back to Main Categories"
 msgstr "Înapoi la categoriile principale"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Generale"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Afișarea hărții"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Arată scara"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Semnalizează poziția"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Unități de măsură"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Sistem de măsură"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Prestabilit"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Metric"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Imperial"
+
 #: data/ui/preferences-download-new.blp:6
 msgid "Select Download Area"
 msgstr "Alege zona de descărcat"
@@ -1229,10 +1240,6 @@ msgstr "Obiectul a fost șters"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Calea sau relația se referă la copii care nu există"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Generale"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
