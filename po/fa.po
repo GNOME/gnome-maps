@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-11 09:06+0000\n"
-"PO-Revision-Date: 2026-08-01 14:10+0330\n"
+"POT-Creation-Date: 2026-07-31 12:02+0000\n"
+"PO-Revision-Date: 2026-08-06 01:20+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-DamnedLies-Scope: partial\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -28,7 +28,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "نقشه‌ها"
 
@@ -221,28 +221,28 @@ msgid "Public transit itinerary"
 msgstr "برنامهٔ حمل‌ونقل عمومی"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:689
-#: data/org.gnome.Maps.metainfo.xml.in.in:691
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:710
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
 msgid "maps"
 msgstr "نقشه‌ها"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:711
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
 msgid "location finder"
 msgstr "مکان‌یاب"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:712
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
 msgid "place search"
 msgstr "جست‌وجوی جا"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:713
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
 msgid "google maps alternative"
 msgstr "جایگزین نقشه‌های گوگل"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:714
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
 msgid "free map app"
 msgstr "کارهٔ نقشهٔ آزاد"
 
@@ -290,43 +290,31 @@ msgid "Remove Favorite"
 msgstr "برداشتن برگزیده"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "بدون برگزیده"
+msgid "No Starred Places"
+msgstr "بدون جاهای ستاره‌دار"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "افزودن نقشه‌ها به برگزیده‌هایتان برای سیاهه شدنشان در این‌جا"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "موقعیت کنونی"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "ستاره زدن جاها برای سیاهه شدنشان در این‌جا"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "برنامه‌ریز مسیر"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "لایه‌ها"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "برگزیده‌ها"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "برنامه‌ریز مسیر"
-
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "نمایش مقیاس"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "نمایش نشانگر موقعیت"
+#: data/ui/headerbar-right.blp:18
+msgid "Starred Places"
+msgstr "جاهای ستاره‌دار"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "گشودن لایهٔ شکل…"
 
@@ -338,50 +326,34 @@ msgstr "_برپاسازی حساب اوپن‌استریت‌مپ…"
 msgid "_Export as Image…"
 msgstr "_برون‌ریزی به شکل تصویر…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "یکاهای اندازه‌گیری"
+#: data/ui/main-window.blp:19
+msgid "Preferences"
+msgstr "ترجیحات"
 
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_پیش‌گزیدهٔ سامانه"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_متریک"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_امپراتوری"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "میان‌برهای _صفحه‌کلید"
 
-#: data/ui/main-window.blp:55
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_دربارهٔ نقشه‌ها"
 
-#: data/ui/main-window.blp:125
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:633
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "دیدن اطّلاعات جا"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "چاپ مسیر"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "بستن نوار کناری"
 
@@ -458,7 +430,7 @@ msgstr "ویرایش مکان"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "ویرایش مکان موجود روی اوپن‌استریت‌مپ"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "ادامه"
 
@@ -504,11 +476,11 @@ msgstr "هیچ‌کدام"
 msgid "Explore Nearby Places"
 msgstr "مرور جاهای نزدیک"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
 msgstr "هیچ نتیجه‌ای پیدا نشد"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
 msgstr "خطایی رخ داد"
 
@@ -602,93 +574,102 @@ msgstr "عمومی"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "نمایش ترجیحات"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "نمایش میان‌برها"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "مرور نقطه‌های علاقه‌مندی"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "نمایش آخرین نتیجه‌ها"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "نمایش برنامه‌ریز مسیر"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "چاپ مسیر"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "خروج"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "گشودن فهرست اصلی"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "نمای نقشه"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "بزرگ‌نمایی به داخل"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "بزرگ‌نمایی به خارج"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "چرخش ساعتگرد"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "چرخش پادساعتگرد"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "بازنشانی چرخش"
 
-#: data/ui/shortcuts-dialog.blp:78
+#: data/ui/shortcuts-dialog.blp:83
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "تغییر وضعیت مقیاس"
 
-#: data/ui/shortcuts-dialog.blp:83
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "رفتن به موقعیت فعلی"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "گشودن لایهٔ شکل"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "تغییر وضعیت نشانگر موقعیت"
+
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+msgid "Show information"
+msgstr "نمایش اطّلاعات"
 
 #. Translators: Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.blp:18
@@ -747,38 +728,152 @@ msgid "_Airplanes"
 msgstr "_هواپیماها"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:12
+#: data/ui/place-buttons.blp:13
 msgid "Add to new route"
 msgstr "افزودن به مسیر جدید"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.blp:17
+#: data/ui/place-buttons.blp:18
 msgid "_Directions"
 msgstr "_مسیرها"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:30
+#: data/ui/place-buttons.blp:33
 msgid "Share Location"
 msgstr "هم‌رسانی مکان"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:39
+#: data/ui/place-buttons.blp:47
 msgid "Mark as Favorite"
 msgstr "علامت‌گذاری به عنوان برگزیده"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:51
+#: data/ui/place-buttons.blp:61
 msgid "Edit on OpenStreetMap"
 msgstr "ویرایش روی اوپن‌استریت‌مپ"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.blp:64
+#: data/ui/place-view.blp:51
 msgid "Share location"
 msgstr "هم‌رسانی موقعیت"
+
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "اعزام‌ها"
+
+#: data/ui/place-view.blp:151
+msgid "Arrivals"
+msgstr "ورودها"
+
+#: data/ui/place-view.blp:155
+msgid "Information"
+msgstr "اطّلاعات"
 
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "بازگشت به دسته‌های اصلی"
+
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "عمومی"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "نمای نقشه"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "نمایش مقیاس"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "نمایش نشانگر موقعیت"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "اندازه‌گیری‌ها"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "سامانهٔ اندازه‌گیری"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "پیش‌گزیدهٔ سامانه"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "متریک"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "امپریال"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "گزینش ناحیهٔ بارگیری"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "بارگیری"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:64 data/ui/zoom-and-rotate-controls.blp:56
+#: src/mapView.js:1326
+msgid "Zoom In"
+msgstr "بزرگ‌نمایی"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74 data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "کوچک‌نمایی"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "ناحیه بیش از حد بزرگ است"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "حذف بارگیری"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "نام"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "بارگیری‌ها"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not all "
+"features are available offline."
+msgstr ""
+"بارگیری نقشه‌ها برای استفادهٔ برون‌خط.\n"
+"\n"
+"ناحیه‌های بار گرفته می‌توانند هنگامی که اتّصال اینرتنتی موجود نیست دیده شوند. همهٔ "
+"ویژگی‌ها به صورت برون‌خط موجود نیستند."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "از سرگیری"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "ناحیه‌های بار گرفته"
+
+#: data/ui/preferences-downloads.blp:48
+msgid "Add"
+msgstr "افزودن"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "بدون بارگیری"
 
 #. Translators: This is a tooltip
 #: data/ui/zoom-and-rotate-controls.blp:19
@@ -786,19 +881,9 @@ msgid "Reset Rotation"
 msgstr "بازنشانی چرخش"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
-msgid "Zoom Out"
-msgstr "کوچک‌نمایی"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
-msgid "Zoom In"
-msgstr "بزرگ‌نمایی"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "شکست در یافتن ساختار کاشی در شاخه"
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "موقعیت کنونی"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
@@ -813,26 +898,18 @@ msgid "Could not find OSM element"
 msgstr "ناتوان در یافتن عنصر OSM"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "مسیری به ساختار شاخهٔ کاشی‌های محلّی"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "اندازهٔ شاخهٔ کاشی‌های محلّی"
-
-#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "نمایش نگارش برنامه"
 
-#: src/application.js:90
+#: src/application.js:80
 msgid "Search for places"
 msgstr "جست‌وجوی مکان"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[FILE…|URI]"
 
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "نقشه‌های نامعتبر: نشانی: %s"
@@ -854,31 +931,33 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "ناتوان در برون‌ریزی نما"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "برگزیده برداشته شد"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "«⁨%s⁩» بی‌ستاره شد"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_برگردان"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "مختصات نامعتبر"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
 msgstr "خطای تجزیه"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "هندسهٔ ناشناخته"
 
-#: src/graphHopper.js:116 src/transitPlan.js:169
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "درخواست مسیر شکست خورد."
 
-#: src/graphHopper.js:123 src/transitPlan.js:165
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "هیچ مسیری پیدا نشد."
 
@@ -886,43 +965,43 @@ msgstr "هیچ مسیری پیدا نشد."
 msgid "Start!"
 msgstr "شروع!"
 
-#: src/mainWindow.js:535
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "شکست در اتّصال به خدمت مکانی"
 
-#: src/mainWindow.js:540
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "روشن کردن خدمات مکانی"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "تنظیمات موقعیت"
 
-#: src/mainWindow.js:652
+#: src/mainWindow.js:662
 msgid "Show Route Planner"
 msgstr "نمایش برنامه‌ریز مسیر"
 
-#: src/mainWindow.js:667
+#: src/mainWindow.js:677
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "حق رونوشت © ۲۰۱۱ – ۲۰۲۶ شرکت ردهت و نگارندگان نقشه‌های گنوم"
 
-#: src/mainWindow.js:668
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>\n"
 "گودرز جعفری <me@goudarzjafari.com>"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "داده‌های نقشه به دست %s و مشارکت‌کنندگان"
 
-#: src/mainWindow.js:676
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
 msgstr "فراهم‌کنندهٔ داده‌های نقشه"
 
-#: src/mainWindow.js:679
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
 msgstr "فراهم‌کنندهٔ کاشی نقشه"
 
@@ -931,177 +1010,177 @@ msgstr "فراهم‌کنندهٔ کاشی نقشه"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:687
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 
-#: src/mainWindow.js:716
+#: src/mainWindow.js:726
 msgid "Search Provider"
 msgstr "فراهم‌کنندهٔ جست‌وجو"
 
-#: src/mainWindow.js:719
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mainWindow.js:728
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "تمام پرونده‌های لایه"
 
-#: src/mainWindow.js:741
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "لایه‌های شکل باز"
 
-#: src/mapView.js:715 src/mapView.js:777
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:732
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:733
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:739
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/mapView.js:771
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:810
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
-#: src/mapView.js:1330
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "بزرگ‌نمایی برای افزودن مکان"
 
-#: src/mapView.js:1348
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "مکان به اوپن استریت مپ افزوده شد"
 
-#: src/motis.js:338 src/transit.js:33 src/transit.js:85
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "شروع"
 
-#: src/motis.js:357 src/transit.js:41 src/transit.js:71
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "رسیدن"
 
-#: src/motis.js:369
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "رفتن با پله به طبقهٔ %s"
 
-#: src/motis.js:370
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "رفتن با پله"
 
-#: src/motis.js:374
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
 msgstr "در %s ادامه دهید"
 
-#: src/motis.js:379
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "در %s به چپ بپیچید"
 
-#: src/motis.js:380
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "به چپ بپیچید"
 
-#: src/motis.js:384
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "در %s آرام به چپ بپیچید"
 
-#: src/motis.js:385
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "آرام به چپ بپیچید"
 
-#: src/motis.js:389
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "در %s تند به چپ بپیچید"
 
-#: src/motis.js:390
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "تند به چپ بپیچید"
 
-#: src/motis.js:394
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "در %s به راست بپیچید"
 
-#: src/motis.js:395
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "به راست بپیچید"
 
-#: src/motis.js:399
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "در %s آرام به راست بپیچید"
 
-#: src/motis.js:400
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "آرام به راست بپیچید"
 
-#: src/motis.js:404
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "در %s تند به راست بپیچید"
 
-#: src/motis.js:405
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "تند به رایت بپیچید"
 
-#: src/motis.js:412
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "در میدان از %s خارج شوید"
 
-#: src/motis.js:415
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "در میدان به %s خارج شوید"
 
-#: src/motis.js:417
+#: src/motis.js:531
 msgid "Take the roundabout"
 msgstr "وارد میدان شوید"
 
-#: src/motis.js:425
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "وارد آسانسور شده و در %s حارج شوید"
 
-#: src/motis.js:426
+#: src/motis.js:540
 msgid "Take the elevator"
 msgstr "وارد آسانسور شوید"
 
-#: src/motis.js:430
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "به %s گردش به چپ کنید"
 
-#: src/motis.js:431
+#: src/motis.js:545
 msgid "Make a left u-turn"
 msgstr "گردش به چپ کنید"
 
-#: src/motis.js:435
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "به %s گردش به راست کنید"
 
-#: src/motis.js:436
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "گردش به راست کنید"
 
@@ -1141,14 +1220,6 @@ msgstr "شی پاک شد"
 msgid "Way or relation refers to non-existing children"
 msgstr "راه یا ارتباط به فرزندی ناموجود اشاره می‌کند"
 
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "عمومی"
-
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "نام"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "گونه"
@@ -1169,11 +1240,11 @@ msgstr "ساعت کاری"
 msgid "Phone"
 msgstr "تلفن"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:639
 msgid "Email"
 msgstr "رایانامه"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:606
 msgid "Website"
 msgstr "پایگاه وب"
 
@@ -1230,7 +1301,7 @@ msgstr "گوناگون"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "ویکی‌پدیا"
 
@@ -1240,11 +1311,11 @@ msgstr "ویکی‌پدیا"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:840
 msgid "Population"
 msgstr "جمعیت"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:869
 msgid "Altitude"
 msgstr "بلندی"
 
@@ -1489,7 +1560,7 @@ msgstr "مغازه"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:90 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "گردشگری"
 
@@ -1548,7 +1619,7 @@ msgstr "شکست در تجزیهٔ نشانی جغرافیایی"
 msgid "Failed to parse Maps URI"
 msgstr "شکست در تجزیهٔ نشانی نقشه‌ها"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:592
 msgid "Coordinates"
 msgstr "مختصات"
 
@@ -1566,12 +1637,91 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:370
+msgid "Arrival information provided by Transitous"
+msgstr "اطّلاعات ورود فراهم شده به دست Transitous"
+
+#: src/placeView.js:371
+msgid "Departure information provided by Transitous"
+msgstr "اطّلاعات اعزام فراهم شده به دست Transitous"
+
+#: src/placeView.js:417
+msgid "No arrivals found"
+msgstr "هیچ ورودی پیدا نشد"
+
+#: src/placeView.js:418
+msgid "No departures found"
+msgstr "هیچ اعزامی پیدا نشد."
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:448
+msgid "Flights"
+msgstr "پروازها"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:452
+msgid "Trains"
+msgstr "قطارها"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:456
+msgid "Ferries"
+msgstr "قایق‌ها"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:460
+msgid "Gondola"
+msgstr "تله‌کابین"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:464
+msgid "Funicular"
+msgstr "قطار کابلی"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:468
+msgid "Subway"
+msgstr "مترو"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:472
+msgid "Trams"
+msgstr "ترامواها"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:476
+msgid "Buses"
+msgstr "اتوبوس‌ها"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:536
+msgid "All"
+msgstr "همه"
+
+#: src/placeView.js:598
 msgid "Accuracy"
 msgstr "دقّت"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:601
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "دقّت: %s"
@@ -1582,7 +1732,7 @@ msgstr "دقّت: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:620
 msgid "Phone number"
 msgstr "شماره تلفن"
 
@@ -1593,16 +1743,16 @@ msgstr "شماره تلفن"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:654 src/placeView.js:693
 msgid "Floor"
 msgstr "طبقه"
 
-#: src/placeView.js:412
+#: src/placeView.js:656
 #, javascript-format
 msgid "Floor %s"
 msgstr "طبقهٔ %s"
 
-#: src/placeView.js:424
+#: src/placeView.js:668
 msgid "At ground level"
 msgstr "در سطح زمین"
 
@@ -1611,7 +1761,7 @@ msgstr "در سطح زمین"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:677
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1622,7 +1772,7 @@ msgstr[0] "%s طبقه بالای سطح"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:688
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1632,7 +1782,7 @@ msgstr[0] "%s طبقه زیر سطح"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:706
 msgid "Offers takeout"
 msgstr "ارائه بیرون بردنی"
 
@@ -1640,7 +1790,7 @@ msgstr "ارائه بیرون بردنی"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:714
 msgid "Does not offer takeout"
 msgstr "بدون ارائه بیرون بردنی"
 
@@ -1649,18 +1799,18 @@ msgstr "بدون ارائه بیرون بردنی"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:723
 msgid "Only offers takeout"
 msgstr "فقط ارائه بیرون‌بردنی"
 
-#: src/placeView.js:486
+#: src/placeView.js:730
 msgid "Opening hours"
 msgstr "ساعت‌های کار"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:740
 msgid "Public internet access"
 msgstr "دسترسی عمومی به اینترنت"
 
@@ -1668,50 +1818,50 @@ msgstr "دسترسی عمومی به اینترنت"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:749
 msgid "No internet access"
 msgstr "بدون دسترسی به اینترنت"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:757
 msgid "Public Wi-Fi"
 msgstr "وای‌فای عمومی"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:765
 msgid "Wired internet access"
 msgstr "دسترسی سیمی به اینترنت"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:773
 msgid "Computers available for use"
 msgstr "رایانه‌های موجود برای استفاده"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:781
 msgid "Internet assistance available"
 msgstr "همیار اینترنت در دسترس"
 
-#: src/placeView.js:543
+#: src/placeView.js:787
 msgid "No toilets available"
 msgstr "دستشویی در دسترس نیست"
 
-#: src/placeView.js:546
+#: src/placeView.js:790
 msgid "Toilets available"
 msgstr "دستشویی در دسترس"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:799
 msgid "Wheelchair accessible"
 msgstr "قابل دسترسی با صندلی چرخ‌دار"
 
@@ -1720,7 +1870,7 @@ msgstr "قابل دسترسی با صندلی چرخ‌دار"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:809
 msgid "Limited wheelchair accessibility"
 msgstr "قابلیت دسترسی محدود با صندلی چرخ‌دار"
 
@@ -1728,7 +1878,7 @@ msgstr "قابلیت دسترسی محدود با صندلی چرخ‌دار"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:818
 msgid "Not wheelchair accessible"
 msgstr "بدون قابلیت دسترسی با صندلی چرخ‌دار"
 
@@ -1737,7 +1887,7 @@ msgstr "بدون قابلیت دسترسی با صندلی چرخ‌دار"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:828
 msgid "Designated for wheelchair users"
 msgstr "مخصوص استفاده‌کنندگان از صندلی چرخ‌دار"
 
@@ -1746,7 +1896,7 @@ msgstr "مخصوص استفاده‌کنندگان از صندلی چرخ‌دا
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:859
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s زیر سطح دریا"
@@ -1755,16 +1905,16 @@ msgstr "%s زیر سطح دریا"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:866
 msgid "At sea level"
 msgstr "در سطح دریا"
 
-#: src/placeView.js:634
+#: src/placeView.js:878
 msgid "Religion:"
 msgstr "دین:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:883
 #, javascript-format
 msgid "Exit %s"
 msgstr "از %s خارج شوید"
@@ -1778,15 +1928,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "‏%s،‏ %s"
 
-#: src/place.js:670
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
 msgstr "مکان در اوپن استریت مپ پیدا نشد"
 
-#: src/place.js:677
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "مختصات نشانی نامعتبر"
 
-#: src/place.js:686
+#: src/place.js:698
 msgid "URL is not supported"
 msgstr "نشانی پشتیبانی نمی‌شود"
 
@@ -1918,149 +2068,189 @@ msgstr "گل‌فروشی‌ها"
 msgid "Gifts"
 msgstr "هدیه‌ها"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+msgid "Bicycles"
+msgstr "دوچرخه‌ها"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "حمل‌ونقل"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "ایستگاه‌های اتوبوس و قطار"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "ایستگاه‌های قطار و قطار شهری"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "بلیت"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "پارکینگ"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "پارکینگ دوچرخه"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "اجارهٔ دوچرخه"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "اجارهٔ ماشین"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "سوخت"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "شارژ خودروی برقی"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "بهداری‌های"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "درمانگاه‌ها"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "بیمارستان‌ها"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "دندان‌پزشکی‌ها"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "اقامتگاه"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "هتل‌ها"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "خوابگاه‌ها"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "تخت و ناشتا"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "کمپ"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "تفریح"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "پارک‌ها"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "زمین‌های بازی"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "ساحل‌ها"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "ذخایر طبیعی"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "شهربازی‌ها"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "تماشاخانه‌ها"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "سالن‌های سینما"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "باشگاه‌های شبانه"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "موزه"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "جاذبه‌ها"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "کارهای هنری"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "اطّلاعات گردشگری"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
 msgstr "ورزشی"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "ورزشگاه‌ها"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "ورزشگاه‌های سرباز"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "زمین‌های گلف"
+
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+msgid "Estimated size: %s"
+msgstr "اندازهٔ تخمینی: %s"
+
+#: src/preferencesDownloadNew.js:154
+msgid "Failed to estimate size"
+msgstr "شکست در تخمین اندازه"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr ""
+"ذخیره ساز نیرو به کار افتاده و شبکهٔ اندازه‌گیری شده — بارگیری‌های خودکار مکث شده‌اند"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "شبکهٔ اندازه‌گیری شده — بارگیری‌های خودکار مکث شده‌اند"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr "ذخیره ساز نیرو به کار افتاده — بارگیری‌های خودکار مکث شده‌اند"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "نقشهٔ ‪#%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "برداشتن بارگیری؟"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "برداشتن"
 
 #: src/printLayout.js:215
 #, javascript-format
@@ -2136,10 +2326,61 @@ msgstr "گشودن با %s"
 msgid "failed to load file"
 msgstr "شکست در بارگیری پرونده"
 
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/itinerary.js:82
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s دقیقه"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s ساعت"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s ساعت"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:193
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:55
+#: src/transit/utils.js:57
 #, javascript-format
 msgid "Walk %s"
 msgstr "%s قدم بزنید"
@@ -2147,7 +2388,7 @@ msgstr "%s قدم بزنید"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:69
+#: src/transit/utils.js:71
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "رسیدن به مقصد در %s"
@@ -2155,24 +2396,98 @@ msgstr "رسیدن به مقصد در %s"
 #. Translators: this a format string indicating departing from the
 #. * destination of journey with the departure address and transit
 #. * stop as the format parameter
-#: src/transit.js:83
+#: src/transit/utils.js:85
 #, javascript-format
 msgid "Start at %s"
 msgstr "شروع در %s"
 
-#: src/transitLegHeader.js:100
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:138
+#, javascript-format
+msgid "Track %s"
+msgstr "مسیر %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:146
+#, javascript-format
+msgid "Quay %s"
+msgstr "اسکلهٔ %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:152
+#, javascript-format
+msgid "Gate %s"
+msgstr "دروازهٔ %s"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:162
+msgid "Departure track changed"
+msgstr "مسیر اعزام تغییر کرد"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that e.g. a bus stop
+#. * "stop position"
+#.
+#: src/transit/utils.js:168
+msgid "Departure stop position changed"
+msgstr "ایستگاه اعزام تغییر کرد"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:174
+msgid "Departure quay changed"
+msgstr "اسکلهٔ اعزام تغییر کرد"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:180
+msgid "Departure gate changed"
+msgstr "دروازهٔ اعزام تغییر کرد"
+
+#: src/transitJunctureRow.js:78
+msgid "Hide information"
+msgstr "نهفتن اطّلاعات"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with distance"
+msgid "%1s, %2s (%3s)"
+msgstr "‏%1s‏، %2s‏ (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "‏%1s‏ (%2s)"
+
+#: src/transitLegHeader.js:125
 msgid "Hide intermediate stops and information"
 msgstr "نهفتن اطّلاعات و توقّف‌های میانی"
 
-#: src/transitLegHeader.js:101
+#: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
 msgstr "نهفتن دستور کار قدم زدن"
 
-#: src/transitLegHeader.js:103
+#: src/transitLegHeader.js:128
 msgid "Show intermediate stops and information"
 msgstr "نمایش اطّلاعات و توقّف‌های میانی"
 
-#: src/transitLegHeader.js:104
+#: src/transitLegHeader.js:129
 msgid "Show walking instructions"
 msgstr "نمایش دستور کار قدم زدن"
 
@@ -2200,57 +2515,6 @@ msgstr "جایگزین‌های جدیدتری پیدا نشدند."
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %Oe"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:241
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:267
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s دقیقه"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:279
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s ساعت"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:287
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s ساعت"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:598
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2347,19 +2611,19 @@ msgid "Bahá'í"
 msgstr "بهایی"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:262
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "ناشناخته"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:265
+#: src/utils.js:266
 msgid "Exact"
 msgstr "دقیقاً"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
 msgstr "%s س"
@@ -2368,7 +2632,7 @@ msgstr "%s س"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2378,7 +2642,7 @@ msgstr[0] "%s س %s د"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2388,35 +2652,53 @@ msgstr[0] "%s د"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s ث"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:352
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ما"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:355
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s پا"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:363
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
 msgstr "%s ک‌م"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:366
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
 msgstr "%s م"
+
+#~ msgid "No Favorites"
+#~ msgstr "بدون برگزیده"
+
+#~ msgid "Favorites"
+#~ msgstr "برگزیده‌ها"
+
+#~ msgid "Failed to find tile structure in directory"
+#~ msgstr "شکست در یافتن ساختار کاشی در شاخه"
+
+#~ msgid "A path to a local tiles directory structure"
+#~ msgstr "مسیری به ساختار شاخهٔ کاشی‌های محلّی"
+
+#~ msgid "Tile size for local tiles directory"
+#~ msgstr "اندازهٔ شاخهٔ کاشی‌های محلّی"
+
+#~ msgid "Favorite removed"
+#~ msgstr "برگزیده برداشته شد"
 
 #~ msgid "No timetable data found for this route."
 #~ msgstr "برای این مسیر هیچ دادهٔ جدول زمانی‌ای پیدا نشد."
@@ -2518,9 +2800,6 @@ msgstr "%s م"
 
 #~ msgid "Next"
 #~ msgstr "بعدی"
-
-#~ msgid "Remove"
-#~ msgstr "برداشتن"
 
 #~ msgid ""
 #~ "The format used should include the language code and the article title like "
