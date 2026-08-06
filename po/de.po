@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-03-13 09:38+0000\n"
-"PO-Revision-Date: 2026-03-15 13:48+0100\n"
+"POT-Creation-Date: 2026-07-11 09:06+0000\n"
+"PO-Revision-Date: 2026-07-31 23:28+0200\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -238,9 +238,30 @@ msgid "Public transit itinerary"
 msgstr "Reiseplan mit öffentlichen Verkersmitteln"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:675
+#: data/org.gnome.Maps.metainfo.xml.in.in:689
+#: data/org.gnome.Maps.metainfo.xml.in.in:691
 msgid "The GNOME Project"
 msgstr "Das GNOME-Projekt"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:710
+msgid "maps"
+msgstr "Karten"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:711
+msgid "location finder"
+msgstr "Ortfinder"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:712
+msgid "place search"
+msgstr "Ortsuche"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:713
+msgid "google maps alternative"
+msgstr "Alternative zu Google Maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:714
+msgid "free map app"
+msgstr "Anwendung für freie Karten"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -367,7 +388,7 @@ msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Informationen zu dem gewählten Ort zeigen"
 
@@ -459,7 +480,7 @@ msgstr "Ort bearbeiten"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Einen bestehenden Ort in OpenStreetMap bearbeiten"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:736 src/motis.js:369
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Fortsetzen"
 
@@ -796,7 +817,7 @@ msgid "Zoom Out"
 msgstr "Verkleinern"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1327
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Vergrößern"
 
@@ -891,27 +912,27 @@ msgstr "Keine Route gefunden."
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Es konnte keine Verbindung zum Ortungsdienst hergestellt werden"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Ortungsdienste aktivieren"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Einstellungen der Ortungsdienste"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Routenplaner zeigen"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2026 Red Hat, Inc. und die Autoren von GNOME Karten"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <Christian.Kirbach@gmail.com>\n"
@@ -924,16 +945,16 @@ msgstr ""
 "Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartendaten bereitgestellt von %s und weiteren Mitwirkenden"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Kartendaten-Anbieter"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Kartenausschnitt-Anbieter"
 
@@ -942,37 +963,37 @@ msgstr "Kartenausschnitt-Anbieter"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartenausschnitte bereitgestellt von %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Suchanbieter"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Suche bereitgestellt von %s unter Verwendung von %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Alle Ebenendateien"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Formebenen öffnen"
 
-#: src/mapView.js:711 src/mapView.js:773
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Ebene konnte nicht geöffnet werden"
 
-#: src/mapView.js:728
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Möchten Sie fortfahren?"
 
-#: src/mapView.js:729
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -981,140 +1002,140 @@ msgstr ""
 "Sie sind dabei, Dateien mit einer Gesamtgröße von %s MB zu öffnen. Das "
 "könnte einige Zeit dauern"
 
-#: src/mapView.js:735
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/mapView.js:767
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Dateityp wird nicht unterstützt"
 
-#: src/mapView.js:806
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Geo-Adresse konnte nicht geöffnet werden"
 
-#: src/mapView.js:1326
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Vergrößern, um einen Ort hinzufügen"
 
-#: src/mapView.js:1344
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "Ort wurde zu OpenStreetMap hinzugefügt"
 
-#: src/motis.js:332 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Abfahrt"
 
-#: src/motis.js:351 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Ankunft"
 
-#: src/motis.js:363
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Die Treppe zur Etage %s nehmen"
 
-#: src/motis.js:364
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Die Treppe nehmen"
 
-#: src/motis.js:368
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Fortsetzen auf %s"
 
-#: src/motis.js:373
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Links abbiegen auf %s"
 
-#: src/motis.js:374
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Links abbiegen"
 
-#: src/motis.js:378
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Halb links abbiegen auf %s"
 
-#: src/motis.js:379
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Halb links abbiegen"
 
-#: src/motis.js:383
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Scharf links abbiegen auf %s"
 
-#: src/motis.js:384
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Scharf links abbiegen"
 
-#: src/motis.js:388
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Rechts abbiegen auf %s"
 
-#: src/motis.js:389
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Rechts abbiegen"
 
-#: src/motis.js:393
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Halb rechts abbiegen auf %s"
 
-#: src/motis.js:394
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Halb rechts abbiegen"
 
-#: src/motis.js:398
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Scharf rechts abbiegen auf %s"
 
-#: src/motis.js:399
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Scharf rechts abbiegen"
 
-#: src/motis.js:406
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Im Kreisverkehr die Ausfahrt %s nehmen"
 
-#: src/motis.js:409
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Im Kreisverkehr die Ausfahrt Richtung %s nehmen"
 
-#: src/motis.js:411
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "In den Kreisverkehr fahren"
 
-#: src/motis.js:419
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Den Aufzug nehmen und bei %s aussteigen"
 
-#: src/motis.js:420
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Den Aufzug nehmen"
 
-#: src/motis.js:424
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Eine Kehrtwende nach links auf %s machen"
 
-#: src/motis.js:425
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Eine Kehrtwende nach links machen"
 
-#: src/motis.js:429
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Eine Kehrtwende nach rechts auf %s machen"
 
-#: src/motis.js:430
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Eine Kehrtwende nach rechts machen"
 
@@ -1515,35 +1536,35 @@ msgstr "Tourismus"
 msgid "Other"
 msgstr "Andere"
 
-#: src/osmTypes.js:210
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Seilbahnstation"
 
-#: src/osmTypes.js:212
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Stadtbahnhaltestelle"
 
-#: src/osmTypes.js:214
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Einschienenbahnstation"
 
-#: src/osmTypes.js:216 src/osmTypes.js:226
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Eisenbahnstation"
 
-#: src/osmTypes.js:218
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "U-Bahn-Haltestelle"
 
-#: src/osmTypes.js:222
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Eisenbahnhalt"
 
-#: src/osmTypes.js:224
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Straßenbahnhaltestelle"
 
-#: src/osmTypes.js:233 src/osmTypes.js:242
+#: src/osmTypes.js:257 src/osmTypes.js:266
 msgid "Public transportation stop"
 msgstr "Haltestelle des öffentlichen Nahverkehrs"
 
