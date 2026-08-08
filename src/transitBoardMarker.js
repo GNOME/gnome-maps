@@ -26,8 +26,8 @@ import {CircleIconMarker} from './circleIconMarker.js';
 export class TransitBoardMarker extends CircleIconMarker {
 
     constructor({leg, ...params}) {
-        super({ color:     leg.color,
-                textColor: leg.textColor,
+        super({ color:     leg.route.color,
+                textColor: leg.route.textColor,
                 iconName:  leg.iconName,
                 place:     leg.from,
                 ...params });
