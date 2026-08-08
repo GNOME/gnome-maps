@@ -58,8 +58,8 @@ const MAX_MATCHING_DISTANCE = 250;
 /**
  * Implements the MOTIS /plan endpoint.
  *
- * Currently using the v5 endpoint version.
- * Requires MOTIS 2.5.0, or later.
+ * Currently using the v6 /plan and /stoptimes endpoint versions.
+ * Requires MOTIS 2.9.0, or later.
  */
 
 export class Motis {
@@ -137,7 +137,7 @@ export class Motis {
 
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
-        const request = Soup.Message.new('GET', this._baseUrl + '/api/v5/plan?' +
+        const request = Soup.Message.new('GET', this._baseUrl + '/api/v6/plan?' +
                                          query.toString());
 
         // if trying to extend trips, and there was no page cursor, show no results
