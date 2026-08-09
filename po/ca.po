@@ -6,20 +6,21 @@
 # Pere Orga <pere@orga.cat>, 2017, 2018.
 # Jordi Serratosa <jordis@softcatala.cat>, 2017.
 # Jordi Mas i Hernàndez <jmas@softcatala.org>, 2022-2024
+# Xavi Ivars <xavi.ivars@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-11 20:45+0000\n"
-"PO-Revision-Date: 2026-02-14 12:37+0100\n"
-"Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
+"POT-Creation-Date: 2026-08-06 19:42+0000\n"
+"PO-Revision-Date: 2026-08-09 15:09+0000\n"
+"Last-Translator: Xavi Ivars <xavi.ivars@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Minairó 1.0.0\n"
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 
@@ -31,7 +32,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Mapes"
 
@@ -230,9 +231,32 @@ msgid "Public transit itinerary"
 msgstr "Itinerari de transport públic"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
+msgid "maps"
+msgstr "mapes"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
+#| msgid "Location Type"
+msgid "location finder"
+msgstr "cercador d'ubicació"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
+msgid "place search"
+msgstr "cerca de llocs"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
+#| msgid "Load later alternatives"
+msgid "google maps alternative"
+msgstr "alternativa a google maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
+msgid "free map app"
+msgstr "aplicació de mapes lliure"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -278,43 +302,33 @@ msgid "Remove Favorite"
 msgstr "Suprimeix preferit"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Cap preferit"
+msgid "No Starred Places"
+msgstr "No hi ha llocs destacats"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Afegeix llocs als favorits perquè es mostrin aquí"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Ubicació actual"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+#| msgid "Add places to your favorites to get them listed here"
+msgid "Star places to get them listed here"
+msgstr "Destaqueu els llocs per aconseguir que apareguin aquí"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Planificador de rutes"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Capes"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "Preferits"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Planificador de rutes"
-
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Mostra l'escala"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Mostra el marcador d'ubicació"
+#: data/ui/headerbar-right.blp:18
+#| msgid "Search for places"
+msgid "Starred Places"
+msgstr "Llocs destacats"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Obre la capa de forma…"
 
@@ -326,50 +340,34 @@ msgstr "_Configura el compte d'OpenStreetMap…"
 msgid "_Export as Image…"
 msgstr "_Exporta com a imatge…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Unitats de mesura"
+#: data/ui/main-window.blp:19
+msgid "Preferences"
+msgstr "Preferències"
 
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "Predeterminat del _sistema"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Mètric"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Imperial"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "Dreceres de _teclat"
 
-#: data/ui/main-window.blp:55
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_Quant al Mapes"
 
-#: data/ui/main-window.blp:125
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Menú principal"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Mostra la informació del lloc"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Imprimeix ruta"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Tanca la barra lateral"
 
@@ -449,7 +447,7 @@ msgstr "Edita la ubicació"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Editeu una ubicació existent a l'OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Continua"
 
@@ -495,11 +493,11 @@ msgstr "Cap"
 msgid "Explore Nearby Places"
 msgstr "Explorar els llocs propers"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
 msgstr "No s'ha trobat cap resultat"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
 msgstr "S'ha produït un error"
 
@@ -593,94 +591,104 @@ msgstr "General"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Mostra les preferències"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostra dreceres"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cerca"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "Explora els punts d'interès"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Mostra els resultats de la darrera cerca"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Mostra el planificador de rutes"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Imprimeix ruta"
 
 # N.T.: Nom de la tecla de sortida
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Surt"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Obre el menú principal"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Visualització de mapa"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Amplia"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Redueix"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "Gira en sentit horari"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "Gira en sentit antihorari"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "Restableix la rotació"
 
-#: data/ui/shortcuts-dialog.blp:78
+#: data/ui/shortcuts-dialog.blp:83
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Commuta l'escala"
 
-#: data/ui/shortcuts-dialog.blp:83
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ves a la ubicació actual"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Obre la capa de forma"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Commuta el marcador d'ubicació"
+
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+#| msgid "More Information"
+msgid "Show information"
+msgstr "Mostra informació"
 
 #. Translators: Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.blp:18
@@ -739,38 +747,163 @@ msgid "_Airplanes"
 msgstr "_Avions"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:12
+#: data/ui/place-buttons.blp:13
 msgid "Add to new route"
 msgstr "Afegeix a la ruta nova"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.blp:17
+#: data/ui/place-buttons.blp:18
 msgid "_Directions"
 msgstr "In_dicacions"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:30
+#: data/ui/place-buttons.blp:33
 msgid "Share Location"
 msgstr "Comparteix la ubicació"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:39
+#: data/ui/place-buttons.blp:47
 msgid "Mark as Favorite"
 msgstr "Marca com a preferit"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:51
+#: data/ui/place-buttons.blp:61
 msgid "Edit on OpenStreetMap"
 msgstr "Editeu a l'OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.blp:64
+#: data/ui/place-view.blp:51
 msgid "Share location"
 msgstr "Comparteix la ubicació"
+
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "Sortides"
+
+#: data/ui/place-view.blp:151
+#| msgid "Arrive"
+msgid "Arrivals"
+msgstr "Arribades"
+
+#: data/ui/place-view.blp:155
+#| msgid "More Information"
+msgid "Information"
+msgstr "Informació"
 
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Torna a les categories principals"
+
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "General"
+
+#: data/ui/preferences.blp:15
+#| msgctxt "shortcut window"
+#| msgid "Map View"
+msgid "Map View"
+msgstr "Vista de mapa"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Mostra l'escala"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Mostra el marcador d'ubicació"
+
+#: data/ui/preferences.blp:29
+#| msgid "Measurement Units"
+msgid "Measurements"
+msgstr "Mesures"
+
+#: data/ui/preferences.blp:32
+#| msgid "Measurement Units"
+msgid "Measurement system"
+msgstr "Sistema de mesura"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+#| msgid "_System Default"
+msgid "System Default"
+msgstr "Valor per defecte del sistema"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+#| msgid "_Metric"
+msgid "Metric"
+msgstr "Mètrica"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+#| msgid "_Imperial"
+msgid "Imperial"
+msgstr "Imperial"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "Selecciona l'àrea de baixada"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "Baixa"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:64
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
+msgid "Zoom In"
+msgstr "Amplia"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74
+#: data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "Allunya"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "L'àrea és massa gran"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "Suprimeix la baixada"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "Nom"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "Baixades"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not "
+"all features are available offline."
+msgstr ""
+"Baixa els mapes per a ús fora de línia.\n"
+"\n"
+"Les àrees descarregades es poden veure quan no hi ha connexió a Internet "
+"disponible. No totes les funcions estan disponibles fora de línia."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "Reprèn"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "Àrees descarregades"
+
+#: data/ui/preferences-downloads.blp:48
+#| msgid "Address"
+msgid "Add"
+msgstr "Afegeix"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "No hi ha descàrregues"
 
 #. Translators: This is a tooltip
 #: data/ui/zoom-and-rotate-controls.blp:19
@@ -778,20 +911,9 @@ msgid "Reset Rotation"
 msgstr "Restableix la rotació"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
-msgid "Zoom Out"
-msgstr "Allunya"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
-msgid "Zoom In"
-msgstr "Amplia"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr ""
-"S'ha produït una errada en trobar l'estructura de caselles al directori"
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Ubicació actual"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
@@ -806,26 +928,18 @@ msgid "Could not find OSM element"
 msgstr "No s'ha trobat l'element OSM"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "Un camí a l'estructura de caselles locals del directori"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Mida de les caselles pel directori de caselles local"
-
-#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "Mostra la versió del programa"
 
-#: src/application.js:90
+#: src/application.js:80
 msgid "Search for places"
 msgstr "Cerqueu llocs"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[FITXER…|URI]"
 
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Mapes invàlids: URI: %s"
@@ -847,31 +961,33 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "No s'ha pogut exportar la vista"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "S'ha suprimit el preferit"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "«%s» desmarcats com a destacat"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_Desfés"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "coordenades invàlides"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
 msgstr "error d'anàlisi"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "geometria desconeguda"
 
-#: src/graphHopper.js:116 src/transitPlan.js:169
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Ha fallat la sol·licitud de cercar la ruta."
 
-#: src/graphHopper.js:123 src/transitPlan.js:165
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "No s'ha trobat cap ruta."
 
@@ -879,27 +995,27 @@ msgstr "No s'ha trobat cap ruta."
 msgid "Start!"
 msgstr "Comença!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "Ha fallat la connexió amb el servei d'ubicació"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "Activa els serveis d'ubicació"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "Paràmetres de la ubicació"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:662
 msgid "Show Route Planner"
 msgstr "Mostra el planificador de rutes"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:677
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2026 Red Hat, Inc. i els autors del Mapes del GNOME"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
@@ -910,16 +1026,16 @@ msgstr ""
 "Joan Mas Lloret <joan.mas.lloret@gmail.com>\n"
 "Victor Dargallo <victordargallo@disroot.org>"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dades del mapa de %s i col·laboradors"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
 msgstr "Proveïdor de dades del mapa"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
 msgstr "Proveïdor de les caselles de mapa"
 
@@ -928,37 +1044,37 @@ msgstr "Proveïdor de les caselles de mapa"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Caselles de mapa proporcionades per %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:726
 msgid "Search Provider"
 msgstr "Proveïdor de cerca"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Cerca proveïda per %s utilitzant %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "Tots els fitxers de capa"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "Obre les capes de forma"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "S'ha produït un error en obrir la capa"
 
-#: src/mapView.js:723
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "Voleu continuar?"
 
-#: src/mapView.js:724
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -967,140 +1083,140 @@ msgstr ""
 "Esteu a punt d'obrir fitxers amb una mida total de %s MB. Això pot trigar "
 "una estona a carregar-se"
 
-#: src/mapView.js:730
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/mapView.js:762
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Aquest tipus de fitxer no està suportat"
 
-#: src/mapView.js:801
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "S'ha produït un error en obrir el fitxer GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Amplia per a afegir ubicació"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "La ubicació s'ha afegit a l'OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Comença"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Arribeu"
 
-#: src/motis.js:360
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Agafeu les escales fins al nivell %s"
 
-#: src/motis.js:361
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "Agafeu les escales"
 
-#: src/motis.js:365
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continueu a %s"
 
-#: src/motis.js:370
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Gireu a l'esquerra a %s"
 
-#: src/motis.js:371
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "Gireu a l'esquerra"
 
-#: src/motis.js:375
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Gireu lleugerament a l'esquerra a %s"
 
-#: src/motis.js:376
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "Gireu lleugerament a l'esquerra"
 
-#: src/motis.js:380
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Gireu pronunciadament a l'esquerra a %s"
 
-#: src/motis.js:381
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "Gireu pronunciadament a l'esquerra"
 
-#: src/motis.js:385
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Gireu a la dreta a %s"
 
-#: src/motis.js:386
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "Gireu a la dreta"
 
-#: src/motis.js:390
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Gireu lleugerament a la dreta a %s"
 
-#: src/motis.js:391
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "Gireu lleugerament a la dreta"
 
-#: src/motis.js:395
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Gireu pronunciadament a la dreta a %s"
 
-#: src/motis.js:396
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "Gireu pronunciadament a la dreta"
 
-#: src/motis.js:403
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "A la rotonda, agafeu la sortida %s"
 
-#: src/motis.js:406
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "A la rotonda, agafeu la sortida a %s"
 
-#: src/motis.js:408
+#: src/motis.js:531
 msgid "Take the roundabout"
 msgstr "Agafeu la rotonda"
 
-#: src/motis.js:416
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Agafeu l'ascensor i sortiu a %s"
 
-#: src/motis.js:417
+#: src/motis.js:540
 msgid "Take the elevator"
 msgstr "Agafeu l'ascensor"
 
-#: src/motis.js:421
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Canvieu de sentit cap a l'esquerra a %s"
 
-#: src/motis.js:422
+#: src/motis.js:545
 msgid "Make a left u-turn"
 msgstr "Canvieu de sentit cap a l'esquerra"
 
-#: src/motis.js:426
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Canvieu de sentit cap a la dreta a %s"
 
-#: src/motis.js:427
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "Canvieu de sentit cap a la dreta"
 
@@ -1140,14 +1256,6 @@ msgstr "L'objecte ha estat suprimit"
 msgid "Way or relation refers to non-existing children"
 msgstr "La via o relació es refereix a un fill que no existeix"
 
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "General"
-
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "Nom"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "Tipus"
@@ -1168,11 +1276,11 @@ msgstr "Hores d'obertura"
 msgid "Phone"
 msgstr "Telèfon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:639
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:606
 msgid "Website"
 msgstr "Lloc web"
 
@@ -1229,7 +1337,7 @@ msgstr "Divers"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "Viquipèdia"
 
@@ -1239,11 +1347,11 @@ msgstr "Viquipèdia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:840
 msgid "Population"
 msgstr "Població"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:869
 msgid "Altitude"
 msgstr "Altitud"
 
@@ -1488,7 +1596,7 @@ msgstr "Botiga"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:90 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "Turisme"
 
@@ -1499,40 +1607,37 @@ msgstr "Turisme"
 msgid "Other"
 msgstr "Altres"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
-#: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Parada de transport públic"
-
-#: src/osmTypes.js:217
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Estació de funicular"
 
-#: src/osmTypes.js:219
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Parada de tren lleuger"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Estació de monorail"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Estació de ferrocarril"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Estació de metro"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Baixador de ferrocarril"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Parada de tramvia"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Parada de transport públic"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -1550,7 +1655,7 @@ msgstr "S'ha produït un error en analitzar l'URI Geo"
 msgid "Failed to parse Maps URI"
 msgstr "S'ha produït un error en analitzar l'URI Maps"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:592
 msgid "Coordinates"
 msgstr "Coordenades"
 
@@ -1568,12 +1673,102 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:370
+#| msgid "Itineraries provided by Transitous"
+msgid "Arrival information provided by Transitous"
+msgstr "Informació d'arribada proporcionada per Transitous"
+
+#: src/placeView.js:371
+#| msgid "Itineraries provided by Transitous"
+msgid "Departure information provided by Transitous"
+msgstr "Informació de sortida proporcionada per Transitous"
+
+#: src/placeView.js:417
+#| msgid "No results found"
+msgid "No arrivals found"
+msgstr "No s'ha trobat cap arribada"
+
+#: src/placeView.js:418
+#| msgid "No route found."
+msgid "No departures found"
+msgstr "No s'ha trobat cap sortida"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:448
+msgid "Flights"
+msgstr "Vols"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:452
+#| msgid "T_rains"
+msgid "Trains"
+msgstr "Trens"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:456
+#| msgid "_Ferries"
+msgid "Ferries"
+msgstr "Ferris"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:460
+msgid "Gondola"
+msgstr "Gondola"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:464
+#| msgid "Funicular station"
+msgid "Funicular"
+msgstr "Funicular"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:468
+#| msgid "_Subway"
+msgid "Subway"
+msgstr "Metro"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:472
+#| msgid "_Trams"
+msgid "Trams"
+msgstr "Tramvies"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:476
+#| msgid "_Buses"
+msgid "Buses"
+msgstr "Autobusos"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:536
+#| msgid "Alcohol"
+msgid "All"
+msgstr "Tots"
+
+#: src/placeView.js:598
 msgid "Accuracy"
 msgstr "Precisió"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:601
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precisió: %s"
@@ -1584,7 +1779,7 @@ msgstr "Precisió: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:620
 msgid "Phone number"
 msgstr "Número de telèfon"
 
@@ -1595,16 +1790,16 @@ msgstr "Número de telèfon"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:654 src/placeView.js:693
 msgid "Floor"
 msgstr "Planta"
 
-#: src/placeView.js:412
+#: src/placeView.js:656
 #, javascript-format
 msgid "Floor %s"
 msgstr "Planta %s"
 
-#: src/placeView.js:424
+#: src/placeView.js:668
 msgid "At ground level"
 msgstr "A nivell de terra"
 
@@ -1613,7 +1808,7 @@ msgstr "A nivell de terra"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:677
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1625,7 +1820,7 @@ msgstr[1] "%s pisos sobre el nivell del terra"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:688
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1636,7 +1831,7 @@ msgstr[1] "%s pisos per sota del nivell del terra"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:706
 msgid "Offers takeout"
 msgstr "Ofereix menjar per a emportar"
 
@@ -1644,7 +1839,7 @@ msgstr "Ofereix menjar per a emportar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:714
 msgid "Does not offer takeout"
 msgstr "No ofereix menjar per a emportar"
 
@@ -1653,18 +1848,18 @@ msgstr "No ofereix menjar per a emportar"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:723
 msgid "Only offers takeout"
 msgstr "Només ofereix menjar per a emportar"
 
-#: src/placeView.js:486
+#: src/placeView.js:730
 msgid "Opening hours"
 msgstr "Hores d'obertura"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:740
 msgid "Public internet access"
 msgstr "Accés públic a Internet"
 
@@ -1672,50 +1867,50 @@ msgstr "Accés públic a Internet"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:749
 msgid "No internet access"
 msgstr "Sense accés a Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:757
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi públic"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:765
 msgid "Wired internet access"
 msgstr "Accés cablejat a Internet"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:773
 msgid "Computers available for use"
 msgstr "Ordinadors disponibles per al seu ús"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:781
 msgid "Internet assistance available"
 msgstr "Assistència d'Internet disponible"
 
-#: src/placeView.js:543
+#: src/placeView.js:787
 msgid "No toilets available"
 msgstr "Sense lavabos disponibles"
 
-#: src/placeView.js:546
+#: src/placeView.js:790
 msgid "Toilets available"
 msgstr "Lavabos disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:799
 msgid "Wheelchair accessible"
 msgstr "Accessible amb cadira de rodes"
 
@@ -1724,7 +1919,7 @@ msgstr "Accessible amb cadira de rodes"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:809
 msgid "Limited wheelchair accessibility"
 msgstr "Accessibilitat amb cadira de rodes limitada"
 
@@ -1732,7 +1927,7 @@ msgstr "Accessibilitat amb cadira de rodes limitada"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:818
 msgid "Not wheelchair accessible"
 msgstr "No accessible amb cadira de rodes"
 
@@ -1741,7 +1936,7 @@ msgstr "No accessible amb cadira de rodes"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:828
 msgid "Designated for wheelchair users"
 msgstr "Dissenyat per a usuaris en cadira de rodes"
 
@@ -1750,7 +1945,7 @@ msgstr "Dissenyat per a usuaris en cadira de rodes"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:859
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s per sota del nivell del mar"
@@ -1759,16 +1954,16 @@ msgstr "%s per sota del nivell del mar"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:866
 msgid "At sea level"
 msgstr "A nivell del mar"
 
-#: src/placeView.js:634
+#: src/placeView.js:878
 msgid "Religion:"
 msgstr "Religió:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:883
 #, javascript-format
 msgid "Exit %s"
 msgstr "Sortida %s"
@@ -1782,15 +1977,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:670
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
 msgstr "No s'ha trobat el lloc a l'OpenStreetMap"
 
-#: src/place.js:677
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "Les coordenades a l'URL no són vàlides"
 
-#: src/place.js:686
+#: src/place.js:698
 msgid "URL is not supported"
 msgstr "L'URL no és compatible"
 
@@ -1922,151 +2117,196 @@ msgstr "Flors"
 msgid "Gifts"
 msgstr "Regals"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+#| msgid "Bicycle Rental"
+msgid "Bicycles"
+msgstr "Bicicletes"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "Transports"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "Parades d'autobús i tramvia"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "Estacions de tren i metro"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "Tiquets"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "Aparcament"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "Aparcament de bicicletes"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "Lloguer de bicicletes"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "Lloguer de cotxes"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "Benzina"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "Carregador per a vehicle elèctric"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "Salut"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "Clíniques"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "Hospitals"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "Dentistes"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "Allotjament"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "Hotels"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "Albergs"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "Bed & Breakfast"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "Càmpings"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "Esbarjo"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "Parcs"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "Parcs infantils"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "Platges"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "Reserves naturals"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "Parcs temàtics"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "Teatres"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "Cinemes"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "Clubs nocturns"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "Museus"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "Atraccions"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "Obres d'art"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "Informació turística"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
 msgstr "Esports"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "Gimnasos"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "Gimnasos a l'aire lliure"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "Camps de golf"
 
-#: src/printLayout.js:222
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+#| msgid "Estimated time: %s"
+msgid "Estimated size: %s"
+msgstr "Mida estimada: %s"
+
+#: src/preferencesDownloadNew.js:154
+#| msgid "failed to load file"
+msgid "Failed to estimate size"
+msgstr "No s'ha pogut estimar la mida"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr ""
+"S'ha activat l'estalvi d'energia i s'ha mesurat la xarxa — les baixades "
+"automàtiques estan en pausa"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "Xarxa mesurada — baixades automàtiques en pausa"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr ""
+"S'ha activat l'estalvi d'energia — les baixades automàtiques estan en pausa"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "Mapa #%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "Voleu suprimir la baixada?"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "Suprimeix"
+
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Des de %s a %s"
@@ -2140,10 +2380,64 @@ msgstr "Obre amb %s"
 msgid "failed to load file"
 msgstr "s'ha produït un error en carregar el fitxer"
 
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/itinerary.js:82
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minut"
+msgstr[1] "%s minuts"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s hora"
+msgstr[1] "%s hores"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s hora"
+msgstr[1] "%s:%s hores"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:193
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:55
+#: src/transit/utils.js:57
 #, javascript-format
 msgid "Walk %s"
 msgstr "Camineu %s"
@@ -2151,7 +2445,7 @@ msgstr "Camineu %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:69
+#: src/transit/utils.js:71
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Arribeu a %s"
@@ -2159,24 +2453,101 @@ msgstr "Arribeu a %s"
 #. Translators: this a format string indicating departing from the
 #. * destination of journey with the departure address and transit
 #. * stop as the format parameter
-#: src/transit.js:83
+#: src/transit/utils.js:85
 #, javascript-format
 msgid "Start at %s"
 msgstr "Comenceu a %s"
 
-#: src/transitLegHeader.js:93
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:138
+#, javascript-format
+#| msgid "Walk %s"
+msgid "Track %s"
+msgstr "Pista %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:146
+#, javascript-format
+msgid "Quay %s"
+msgstr "Moll %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:152
+#, javascript-format
+msgid "Gate %s"
+msgstr "Porta %s"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:162
+msgid "Departure track changed"
+msgstr "S'ha canviat la pista de sortida"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that e.g. a bus stop
+#. * "stop position"
+#.
+#: src/transit/utils.js:168
+msgid "Departure stop position changed"
+msgstr "S'ha canviat la posició d'aturada de sortida"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:174
+msgid "Departure quay changed"
+msgstr "S'ha canviat el moll de sortida"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:180
+msgid "Departure gate changed"
+msgstr "S'ha canviat la porta de sortida"
+
+#: src/transitJunctureRow.js:78
+#| msgid "More Information"
+msgid "Hide information"
+msgstr "Amaga la informació"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with "
+"distance"
+msgid "%1s, %2s (%3s)"
+msgstr "%1s, %2s (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "%1s (%2s)"
+
+#: src/transitLegHeader.js:125
 msgid "Hide intermediate stops and information"
 msgstr "Oculta les parades intermèdies i informació"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
 msgstr "Oculta les instruccions a peu"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:128
 msgid "Show intermediate stops and information"
 msgstr "Mostra les parades intermèdies i informació"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:129
 msgid "Show walking instructions"
 msgstr "Mostra les instruccions a peu"
 
@@ -2204,60 +2575,6 @@ msgstr "No s'han trobat alternatives posteriors."
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:241
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:267
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s minut"
-msgstr[1] "%s minuts"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:279
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s hora"
-msgstr[1] "%s hores"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:287
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s hora"
-msgstr[1] "%s:%s hores"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:598
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2354,19 +2671,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:253
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "Desconeguda"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:266
 msgid "Exact"
 msgstr "Exacte"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:312
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2375,7 +2692,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:318
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2386,7 +2703,7 @@ msgstr[1] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:325
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2397,7 +2714,7 @@ msgstr[1] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:331
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2405,146 +2722,25 @@ msgstr[0] "%s s"
 msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:343
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:346
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:354
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:357
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
-
-#~ msgid "No timetable data found for this route."
-#~ msgstr "No s'han trobat dades d'horaris per aquesta ruta."
-
-#~ msgid "No provider found for this route."
-#~ msgstr "No s'ha trobat un proveïdor per a aquesta ruta."
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to street view"
-#~ msgstr "Canvia a la vista de carrer"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to aerial view"
-#~ msgstr "Canvia a la vista aèria"
-
-#~ msgid "Pedestrian"
-#~ msgstr "Vianant"
-
-#~ msgid "Bike"
-#~ msgstr "Bicicleta"
-
-#~ msgid "Car"
-#~ msgstr "Cotxe"
-
-#~ msgid "Could not find user element"
-#~ msgstr "No s'ha trobat l'element d'usuari"
-
-#~ msgid "Add Location"
-#~ msgstr "Afegeix la ubicació"
-
-#~ msgid "Postal code"
-#~ msgstr "Codi postal"
-
-#~ msgctxt "dialog title"
-#~ msgid "Edit on OpenStreetMap"
-#~ msgstr "Editeu a l'OpenStreetMap"
-
-#~ msgid "_Add Field"
-#~ msgstr "_Afegeix un camp"
-
-#~ msgid "Comment"
-#~ msgstr "Comentari"
-
-#~ msgid "_Next"
-#~ msgstr "Següe_nt"
-
-#~ msgid "Article"
-#~ msgstr "Article"
-
-#~ msgid "The official name. This is typically what appears on signs."
-#~ msgstr "El nom oficial. Així és com acostuma a aparèixer en els senyals."
-
-#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
-#~ msgstr ""
-#~ "Aquest URL no és vàlid. Assegureu-vos d'incloure-hi http:// o https://."
-
-#~ msgid ""
-#~ "The official website. Try to use the most basic form of a URL i.e. http://"
-#~ "example.com instead of http://example.com/index.html."
-#~ msgstr ""
-#~ "El lloc web oficial. Utilitzeu la forma més bàsica de l'URL, és a dir: "
-#~ "http://example.com en comptes de http://example.com/index.html."
-
-#~ msgid ""
-#~ "Phone number. Use the international format, starting with a + sign. "
-#~ "Beware of local privacy laws, especially for private phone numbers."
-#~ msgstr ""
-#~ "Número de telèfon. Utilitzeu el format internacional, començant amb un "
-#~ "signe +. Compte amb les lleis locals de privacitat, especialment per als "
-#~ "números de telèfon privats."
-
-#~ msgid ""
-#~ "This is not a valid email address. Make sure to not include the mailto: "
-#~ "protocol prefix."
-#~ msgstr ""
-#~ "Aquesta no és una adreça de correu electrònic vàlida. Assegureu-vos de no "
-#~ "incloure el prefix del protocol mailto:."
-
-#~ msgid ""
-#~ "Contact email address for inquiries. Add only email addresses that are "
-#~ "intended to be publicly used."
-#~ msgstr ""
-#~ "Adreça de correu electrònic de contacte per a consultes. Afegeix només "
-#~ "les adreces de correu que voleu que s'usin públicament."
-
-#~ msgid "See the link in the label for help on format."
-#~ msgstr "Mireu l'enllaç a l'etiqueta per ajuda sobre el format."
-
-#~ msgid ""
-#~ "Information used to inform other mappers about non-obvious information "
-#~ "about an element, the author’s intent when creating it, or hints for "
-#~ "further improvement."
-#~ msgstr ""
-#~ "La informació utilitzada per a informar altres creadors de mapes "
-#~ "d'informació no òbvia sobre un element, la intenció de l'autor en crear-"
-#~ "lo, o pistes per a millorar-lo."
-
-#~ msgid "Select Type"
-#~ msgstr "Seleccioneu el tipus"
-
-#~ msgid "_Done"
-#~ msgstr "_Fet"
-
-#~ msgid "Next"
-#~ msgstr "Següent"
-
-#~ msgid "Remove"
-#~ msgstr "Suprimeix"
-
-#~ msgid ""
-#~ "The format used should include the language code and the article title "
-#~ "like “en:Article title”."
-#~ msgstr ""
-#~ "El format utilitzat ha d'incloure el codi de l'idioma i el títol de "
-#~ "l'article com «ca:Títol de l'article»."
-
-#~ msgid ""
-#~ "Use the reload button to load the Wikidata tag for the selected article"
-#~ msgstr ""
-#~ "Utilitzeu el botó de recàrrega per a carregar l'etiqueta Wikidata per a "
-#~ "l'article seleccionat"
