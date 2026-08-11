@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-12-21 08:23+0000\n"
-"PO-Revision-Date: 2026-01-02 10:33+0700\n"
+"POT-Creation-Date: 2026-08-06 19:42+0000\n"
+"PO-Revision-Date: 2026-08-11 17:58+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,7 +27,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.ui:49 src/application.js:62 src/mainWindow.js:118
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Peta"
 
@@ -172,6 +172,14 @@ msgstr ""
 "'metric' selalu menampilkan satuan metrik, 'imperial' selalu menampilkan "
 "satuan imperial)."
 
+#: data/org.gnome.Maps.gschema.xml:90
+msgid "Show location marker"
+msgstr "Tunjukkan penanda lokasi"
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Whether to show the user location marker (when location is known)."
+msgstr "Apakah menunjukkan penanda lokasi pengguna (ketika lokasi diketahui)."
+
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Temukan tempat di seluruh dunia"
@@ -195,239 +203,264 @@ msgstr ""
 "Peta memakai basis data kolaboratif OpenStreetMap, yang dibuat oleh ratusan "
 "ribu orang di seluruh dunia."
 
+#: data/org.gnome.Maps.metainfo.xml.in.in:25
+#: data/org.gnome.Maps.metainfo.xml.in.in:41
+msgid "Map view"
+msgstr "Tilikan peta"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:29
+#: data/org.gnome.Maps.metainfo.xml.in.in:45
+msgid "Pedestrian route instructions"
+msgstr "Instruksi rute pejalan kaki"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:33
+#: data/org.gnome.Maps.metainfo.xml.in.in:49
+msgid "Information on a selected place"
+msgstr "Informasi tentang suatu tempat yang dipilih"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:37
+#: data/org.gnome.Maps.metainfo.xml.in.in:53
+msgid "Public transit itinerary"
+msgstr "Rencana perjalanan transportasi umum"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:645
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
-#: data/ui/context-menu.ui:6
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
+msgid "maps"
+msgstr "peta"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
+msgid "location finder"
+msgstr "pencari lokasi"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
+msgid "place search"
+msgstr "pencarian tempat"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
+msgid "google maps alternative"
+msgstr "alternatif google maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
+msgid "free map app"
+msgstr "aplikasi peta bebas"
+
+#: data/ui/context-menu.blp:6
 msgid "Route from Here"
 msgstr "Rute dari Sini"
 
-#: data/ui/context-menu.ui:10
+#: data/ui/context-menu.blp:11
 msgid "Add Intermediate Destination"
 msgstr "Tambahkan Tujuan Antara"
 
-#: data/ui/context-menu.ui:14
+#: data/ui/context-menu.blp:16
 msgid "Route to Here"
 msgstr "Rute ke Sini"
 
-#: data/ui/context-menu.ui:18
+#: data/ui/context-menu.blp:21
 msgid "Clear Current Route"
 msgstr "Bersihkan Rute Kini"
 
-#: data/ui/context-menu.ui:24
+#: data/ui/context-menu.blp:28
 msgid "Copy Location"
 msgstr "Salin Lokasi"
 
-#: data/ui/context-menu.ui:28
+#: data/ui/context-menu.blp:33
 msgid "Add to OpenStreetMap…"
 msgstr "Tambahkan ke OpenStreetMap…"
 
 #. Translators: This is the title of the dialog for expoting the map view content to an image file
-#: data/ui/export-view-dialog.ui:7
+#: data/ui/export-view-dialog.blp:8
 msgid "Export View"
 msgstr "Ekspor Tilikan"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
-#: data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
+#: data/ui/send-to-dialog.blp:15
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: data/ui/export-view-dialog.ui:26
+#: data/ui/export-view-dialog.blp:29
 msgid "_Export"
 msgstr "_Ekspor"
 
 #. Translators: This is a tooltip
-#: data/ui/favorite-list-row.ui:72
+#: data/ui/favorite-list-row.blp:71
 msgid "Remove Favorite"
 msgstr "Hapus Favorit"
 
-#: data/ui/favorites-popover.ui:11
-msgid "No Favorites"
-msgstr "Tak Ada Favorit"
+#: data/ui/favorites-popover.blp:10
+msgid "No Starred Places"
+msgstr "Tidak Ada Tempat Yang Dibintangi"
 
-#: data/ui/favorites-popover.ui:12
-msgid "Add places to your favorites to get them listed here"
-msgstr "Tambahkan tempat ke favorit Anda agar tercantum di sini"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
-msgid "Current Location"
-msgstr "Lokasi Sekarang"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "Bintangi lokasi agar tercantum di sini"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Perencana Rute"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Lapisan"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:11
+#: data/ui/headerbar-right.blp:18
+msgid "Starred Places"
+msgstr "Tempat Berbintang"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.blp:11
+msgid "Open Shape Layer…"
+msgstr "Buka Layer Shape…"
+
+#: data/ui/main-window.blp:8
+msgid "_Set up OpenStreetMap Account…"
+msgstr "_Siapkan Akun OpenStreetMap…"
+
+#: data/ui/main-window.blp:13
+msgid "_Export as Image…"
+msgstr "_Ekspor sebagai Citra…"
+
+#: data/ui/main-window.blp:19
+msgid "Preferences"
+msgstr "Preferensi"
+
+#: data/ui/main-window.blp:24
+msgid "_Keyboard Shortcuts"
+msgstr "_Tombol Pintas"
+
+#: data/ui/main-window.blp:30
+msgid "_About Maps"
+msgstr "Tent_ang Peta"
+
+#: data/ui/main-window.blp:100
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
+msgid "View Place Information"
+msgstr "Lihat Informasi Tempat"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Cetak Rute"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:21
-msgid "Favorites"
-msgstr "Favorit"
+#: data/ui/main-window.blp:163
+msgid "Close Sidebar"
+msgstr "Tutup Bilah Sisi"
 
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:30
-msgid "Route Planner"
-msgstr "Perencana Rute"
-
-#: data/ui/layers-popover.ui:7
-msgid "Show Scale"
-msgstr "Tampilkan Skala"
-
-#. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:16
-msgid "Open Shape Layer…"
-msgstr "Buka Layer Shape…"
-
-#: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account…"
-msgstr "Menyiapkan Akun OpenStreetMap…"
-
-#: data/ui/main-window.ui:12
-msgid "Export as Image…"
-msgstr "Ekspor sebagai Citra…"
-
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.ui:17
-msgid "Measurement Units"
-msgstr "Satuan Pengukuran"
-
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.ui:20
-msgid "_System Default"
-msgstr "Baku _Sistem"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.ui:25
-msgid "_Metric"
-msgstr "_Metrik"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.ui:30
-msgid "_Imperial"
-msgstr "_Imperial"
-
-#: data/ui/main-window.ui:39
-msgid "_Keyboard Shortcuts"
-msgstr "_Tombol Pintas"
-
-#: data/ui/main-window.ui:44
-msgid "About Maps"
-msgstr "Tentang Peta"
-
-#: data/ui/main-window.ui:70
-msgid "Main Menu"
-msgstr "Menu Utama"
-
-#: data/ui/osm-account-dialog.ui:5
+#: data/ui/osm-account-dialog.blp:5
 msgid "OpenStreetMap Account"
 msgstr "Akun OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:31
+#: data/ui/osm-account-dialog.blp:22
 msgid "Sign In To Edit Maps"
 msgstr "Masuk Untuk Menyunting Peta"
 
-#: data/ui/osm-account-dialog.ui:32
+#: data/ui/osm-account-dialog.blp:23
 msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "Bantulah memperbaiki peta, memakai akun OpenStreetMap."
 
-#: data/ui/osm-account-dialog.ui:36
+#: data/ui/osm-account-dialog.blp:26
 msgid "_Sign In"
 msgstr "Ma_suk"
 
-#: data/ui/osm-account-dialog.ui:60
+#: data/ui/osm-account-dialog.blp:43
 msgid "Verification"
 msgstr "Verifikasi"
 
-#: data/ui/osm-account-dialog.ui:61
+#: data/ui/osm-account-dialog.blp:44
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr ""
 "Salin kode verifikasi yang ditampilkan saat mengotorisasi akses di permaban."
 
-#: data/ui/osm-account-dialog.ui:70
+#: data/ui/osm-account-dialog.blp:51
 msgid "Verification Code"
 msgstr "Kode Verifikasi"
 
-#: data/ui/osm-account-dialog.ui:76
+#: data/ui/osm-account-dialog.blp:55
 msgid "_Verify"
 msgstr "_Verifikasi"
 
-#: data/ui/osm-account-dialog.ui:112
+#: data/ui/osm-account-dialog.blp:81
 msgid "Signed In"
 msgstr "Sudah Masuk"
 
-#: data/ui/osm-account-dialog.ui:113
+#: data/ui/osm-account-dialog.blp:82
 msgid "Your OpenStreetMap account is active."
 msgstr "Akun OpenStreetMap Anda aktif."
 
-#: data/ui/osm-account-dialog.ui:131
+#: data/ui/osm-account-dialog.blp:96
 msgid "_Sign Out"
 msgstr "_Keluar"
 
-#: data/ui/osm-discard-dialog.ui:5
+#: data/ui/osm-discard-dialog.blp:5
 msgid "Discard Changes?"
 msgstr "Buang Perubahan?"
 
-#: data/ui/osm-discard-dialog.ui:6
+#: data/ui/osm-discard-dialog.blp:6
 msgid "Your current changes to the map will be lost"
 msgstr "Perubahan yang Anda lakukan saat ini pada peta akan hilang"
 
-#: data/ui/osm-discard-dialog.ui:13
+#: data/ui/osm-discard-dialog.blp:12
 msgid "_Discard"
 msgstr "_Buang"
 
-#: data/ui/osm-edit-dialog.ui:5
+#: data/ui/osm-edit-dialog.blp:5
 msgctxt "dialog title"
 msgid "Edit Location"
 msgstr "Sunting Lokasi"
 
-#: data/ui/osm-edit-dialog.ui:25
+#: data/ui/osm-edit-dialog.blp:19
 msgid "Loading…"
 msgstr "Memuat…"
 
-#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.blp:26 data/ui/osm-edit-dialog.blp:37
 msgid "Edit Location"
 msgstr "Sunting Lokasi"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.blp:38
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Menyunting lokasi yang sudah ada di OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
-#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
-#: src/transitplugins/openTripPlanner2.js:271
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: data/ui/osm-edit-dialog.ui:89
+#: data/ui/osm-edit-dialog.blp:63
 msgid "Location Type"
 msgstr "Tipe Lokasi"
 
 #. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.ui:236
+#: data/ui/osm-edit-dialog.blp:172
 msgid "Search types"
 msgstr "Jenis pencarian"
 
-#: data/ui/osm-edit-dialog.ui:250
+#: data/ui/osm-edit-dialog.blp:184
 msgid "Recently Used Types"
 msgstr "Jenis yang Baru Digunakan"
 
-#: data/ui/osm-edit-dialog.ui:273
+#: data/ui/osm-edit-dialog.blp:195
 msgid "Edit Map"
 msgstr "Sunting Peta"
 
-#: data/ui/osm-edit-dialog.ui:292
+#: data/ui/osm-edit-dialog.blp:209
 msgid "Almost There!"
 msgstr "Hampir Selesai!"
 
-#: data/ui/osm-edit-dialog.ui:293
+#: data/ui/osm-edit-dialog.blp:211
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
@@ -435,173 +468,65 @@ msgstr ""
 "Jelaskan perubahan peta Anda. Mereka akan terlihat pada semua peta yang "
 "menggunakan data OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:339
+#: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
 msgstr "Kirim"
 
-#: data/ui/osm-edit-dialog.ui:366 src/osmEditDialog.js:238
+#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238
 #: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "Nihil"
 
-#: data/ui/place-popover.ui:25 src/searchBar.js:69
+#: data/ui/place-popover.blp:29 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Jelajahi Tempat Terdekat"
 
-#: data/ui/place-popover.ui:82 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
 msgstr "Hasil tak ditemukan"
 
-#: data/ui/place-popover.ui:92 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
 msgstr "Terjadi suatu kesalahan"
 
 #. Translators: This is a tooltip
-#: data/ui/route-entry.ui:12
+#: data/ui/route-entry.blp:12
 msgid "Change Route Order"
 msgstr "Ubah Urutan Rute"
 
-#: data/ui/send-to-dialog.ui:7
-msgid "Open Location"
-msgstr "Buka Lokasi"
-
-#: data/ui/send-to-dialog.ui:64
-msgid "C_opy"
-msgstr "S_alin"
-
-#: data/ui/send-to-dialog.ui:71
-msgid "_Send To…"
-msgstr "_Kirim Ke…"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:32
-msgid "Toggle visible"
-msgstr "Jungkitkan kenampakan"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:44
-msgid "Remove Shape Layer"
-msgstr "Hapus Layer Shape"
-
-#: data/ui/shortcuts-dialog.ui:6
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Umum"
-
-#: data/ui/shortcuts-dialog.ui:9
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Tampilkan Pintasan"
-
-#: data/ui/shortcuts-dialog.ui:15
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "Cari"
-
-#: data/ui/shortcuts-dialog.ui:21
-msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "Jelajahi tempat menarik"
-
-#: data/ui/shortcuts-dialog.ui:27
-msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "Tampilkan hasil pencarian terakhir"
-
-#: data/ui/shortcuts-dialog.ui:33
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "Jungkitkan perencana rute"
-
-#: data/ui/shortcuts-dialog.ui:39
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "Cetak rute"
-
-#: data/ui/shortcuts-dialog.ui:45
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Keluar"
-
-#: data/ui/shortcuts-dialog.ui:51
-msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "Buka menu utama"
-
-#: data/ui/shortcuts-dialog.ui:59
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "Tilikan Peta"
-
-#: data/ui/shortcuts-dialog.ui:62
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Perbesar"
-
-#: data/ui/shortcuts-dialog.ui:68
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Perkecil"
-
-#: data/ui/shortcuts-dialog.ui:74
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Putar searah jarum jam"
-
-#: data/ui/shortcuts-dialog.ui:80
-msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "Putar berlawanan jarum jam"
-
-#: data/ui/shortcuts-dialog.ui:86
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Setel ulang rotasi"
-
-#: data/ui/shortcuts-dialog.ui:92
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Jungkitkan skala"
-
-#: data/ui/shortcuts-dialog.ui:98
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "Pergi ke lokasi saat ini"
-
-#: data/ui/shortcuts-dialog.ui:104
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "Buka layer shape"
-
 #. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
-#: data/ui/sidebar.ui:29
+#: data/ui/route-view.blp:15
 msgid "Walking"
 msgstr "Berjalan Kaki"
 
 #. Translators: This is the tooltip text for the button selecting the cycling routing mode
-#: data/ui/sidebar.ui:36
+#: data/ui/route-view.blp:22
 msgid "Cycling"
 msgstr "Bersepeda"
 
 #. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
-#: data/ui/sidebar.ui:43
+#: data/ui/route-view.blp:29
 msgid "Driving"
 msgstr "Berkendara"
 
 #. Translators: This is the tooltip text for the button selecting the public transit routing mode
-#: data/ui/sidebar.ui:50
+#: data/ui/route-view.blp:36
 msgid "Public Transit"
 msgstr "Transit Publik"
 
-#: data/ui/sidebar.ui:184
+#: data/ui/route-view.blp:154
 msgid "Route search by GraphHopper"
 msgstr "Pencarian rute oleh GraphHopper"
 
-#: data/ui/sidebar.ui:217
+#: data/ui/route-view.blp:172
+msgid "Itineraries provided by Transitous"
+msgstr "Jadwal perjalanan disediakan oleh Transitous"
+
+#: data/ui/route-view.blp:190
 msgid "More Information"
 msgstr "Informasi Tambahan"
 
-#: data/ui/sidebar.ui:250
+#: data/ui/route-view.blp:221
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -625,121 +550,350 @@ msgstr ""
 "Nama dan merek yang ditampilkan dianggap sebagai merek dagang terdaftar "
 "ketika berlaku."
 
-#: data/ui/sidebar.ui:274
+#: data/ui/route-view.blp:239
 msgid "Back"
 msgstr "Mundur"
 
-#. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:99
-msgid "Hide intermediate stops and information"
-msgstr "Sembunyikan informasi dan perhentian antara"
+#: data/ui/send-to-dialog.blp:5
+msgid "Open Location"
+msgstr "Buka Lokasi"
+
+#: data/ui/send-to-dialog.blp:62
+msgid "C_opy"
+msgstr "S_alin"
+
+#: data/ui/send-to-dialog.blp:68
+msgid "_Send To…"
+msgstr "_Kirim Ke…"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:157
-msgid "Show intermediate stops and information"
-msgstr "Tampilkan berhenti menengah dan informasi"
+#: data/ui/shape-layer-row.blp:33
+msgid "Toggle visible"
+msgstr "Jungkitkan kenampakan"
 
-#. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:17
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.blp:46
+msgid "Remove Shape Layer"
+msgstr "Hapus Layer Shape"
+
+#: data/ui/shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: data/ui/shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Tampilkan Preferensi"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Tampilkan Pintasan"
+
+#: data/ui/shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Cari"
+
+#: data/ui/shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Jelajahi tempat menarik"
+
+#: data/ui/shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Tampilkan hasil pencarian terakhir"
+
+#: data/ui/shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Show route planner"
+msgstr "Tunjukkan perencana rute"
+
+#: data/ui/shortcuts-dialog.blp:39
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Cetak rute"
+
+#: data/ui/shortcuts-dialog.blp:44
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/ui/shortcuts-dialog.blp:49
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Buka menu utama"
+
+#: data/ui/shortcuts-dialog.blp:55
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Tilikan Peta"
+
+#: data/ui/shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Perbesar"
+
+#: data/ui/shortcuts-dialog.blp:63
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Perkecil"
+
+#: data/ui/shortcuts-dialog.blp:68
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Putar searah jarum jam"
+
+#: data/ui/shortcuts-dialog.blp:73
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Putar berlawanan jarum jam"
+
+#: data/ui/shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Setel ulang rotasi"
+
+#: data/ui/shortcuts-dialog.blp:83
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Jungkitkan skala"
+
+#: data/ui/shortcuts-dialog.blp:88
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Pergi ke lokasi saat ini"
+
+#: data/ui/shortcuts-dialog.blp:93
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Buka layer shape"
+
+#: data/ui/shortcuts-dialog.blp:98
+msgctxt "shortcut window"
+msgid "Toggle location marker"
+msgstr "Jungkitkan penanda lokasi"
+
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+msgid "Show information"
+msgstr "Tunjukkan informasi"
+
+#. Translators: Indicates searching for the next available itineraries
+#: data/ui/transit-options-panel.blp:18
 msgid "Leave Now"
 msgstr "Pergi Sekarang"
 
-#. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:18
+#. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
+#: data/ui/transit-options-panel.blp:20
 msgid "Leave By"
 msgstr "Pergi Pada"
 
-#. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:19
+#. Translators: Indicates searching for itineraries arriving no later than the specified time
+#: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
 msgstr "Tiba Pada"
 
-#: data/ui/transit-options-panel.ui:59
+#: data/ui/transit-options-panel.blp:61
 msgid "View More"
 msgstr "Lihat Lebih Banyak"
 
-#. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:91
+#: data/ui/transit-options-panel.blp:123
+msgid "AM"
+msgstr "Siang"
+
+#: data/ui/transit-options-panel.blp:128
+msgid "PM"
+msgstr "Malam"
+
+#. Translators: Header indicating selected modes of transit
+#: data/ui/transit-options-panel.blp:149
 msgid "Show"
 msgstr "Tampilkan"
 
-#: data/ui/transit-options-panel.ui:101
+#: data/ui/transit-options-panel.blp:159
 msgid "_Buses"
 msgstr "_Bis"
 
-#: data/ui/transit-options-panel.ui:108
+#: data/ui/transit-options-panel.blp:165
 msgid "_Trams"
 msgstr "_Trem"
 
-#: data/ui/transit-options-panel.ui:115
+#: data/ui/transit-options-panel.blp:171
 msgid "T_rains"
 msgstr "Ke_reta"
 
-#: data/ui/transit-options-panel.ui:122
+#: data/ui/transit-options-panel.blp:177
 msgid "_Subway"
 msgstr "Kereta _Bawah Tanah"
 
-#: data/ui/transit-options-panel.ui:129
+#: data/ui/transit-options-panel.blp:183
 msgid "_Ferries"
 msgstr "_Feri"
 
-#: data/ui/transit-options-panel.ui:136
+#: data/ui/transit-options-panel.blp:189
 msgid "_Airplanes"
 msgstr "Pes_awat Terbang"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
-msgid "Share Location"
-msgstr "Bagikan Lokasi"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:11
+#: data/ui/place-buttons.blp:13
 msgid "Add to new route"
 msgstr "Tambah ke rute baru"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.ui:15
+#: data/ui/place-buttons.blp:18
 msgid "_Directions"
 msgstr "_Petunjuk Arah"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:37
+#: data/ui/place-buttons.blp:33
+msgid "Share Location"
+msgstr "Bagikan Lokasi"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.blp:47
 msgid "Mark as Favorite"
 msgstr "Tandai sebagai Favorit"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:48
+#: data/ui/place-buttons.blp:61
 msgid "Edit on OpenStreetMap"
 msgstr "Sunting pada OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:66
+#: data/ui/place-view.blp:51
 msgid "Share location"
 msgstr "Bagikan lokasi"
 
-#: data/ui/poi-category-goback-row.ui:22
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "Keberangkatan"
+
+#: data/ui/place-view.blp:151
+msgid "Arrivals"
+msgstr "Kedatangan"
+
+#: data/ui/place-view.blp:155
+msgid "Information"
+msgstr "Informasi"
+
+#: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Kembali ke Kategori Utama"
 
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Umum"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Tilikan Peta"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Tampilkan Skala"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Tunjukkan Penanda Lokasi"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Pengukuran"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Sistem pengukuran"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Baku Sistem"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Metrik"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Imperial"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "Pilih Area Unduh"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "Unduh"
+
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:19
+#: data/ui/preferences-download-new.blp:64
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
+msgid "Zoom In"
+msgstr "Perbesar"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74
+#: data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "Perkecil"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "Area terlalu besar"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "Hapus Unduhan"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "Nama"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "Unduhan"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not "
+"all features are available offline."
+msgstr ""
+"Unduh peta untuk penggunaan luring.\n"
+"\n"
+"Area yang diunduh dapat dilihat ketika tidak tersedia koneksi internet. "
+"Tidak semua fitur tersedia luring."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "Lanjutkan"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "Area Yang Diunduh"
+
+#: data/ui/preferences-downloads.blp:48
+msgid "Add"
+msgstr "Tambah"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "Tidak Ada Unduhan"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.blp:19
 msgid "Reset Rotation"
 msgstr "Setel Ulang Rotasi"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:32
-msgid "Zoom Out"
-msgstr "Perkecil"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1325
-msgid "Zoom In"
-msgstr "Perbesar"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "Gagal menemukan struktur ubin dalam direktori"
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Lokasi Sekarang"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
@@ -754,26 +908,18 @@ msgid "Could not find OSM element"
 msgstr "Tak bisa temukan elemen OSM"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "Suatu path ke sebuah struktur direktori ubin lokal"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Ukuran ubin untuk direktori ubin lokal"
-
-#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "Tampilkan versi program"
 
-#: src/application.js:90
+#: src/application.js:80
 msgid "Search for places"
 msgstr "Cari tempat"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[FILE…|URI]"
 
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Peta tidak valid: URI: %s"
@@ -795,70 +941,76 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "Tak bisa mengekspor tilikan"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Favorit dihapus"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "\"%s\" dihapus bintangnya"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_Tak Jadi"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "koordinat tak valid"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
 msgstr "galat penguraian"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "geometri tak dikenal"
 
-#: src/graphHopper.js:116 src/transitPlan.js:177
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Permintaan rute gagal."
 
-#: src/graphHopper.js:123 src/transitPlan.js:169
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "Rute tak ditemukan."
 
-#: src/graphHopper.js:210 src/transitplugins/openTripPlanner.js:1166
+#: src/graphHopper.js:210
 msgid "Start!"
 msgstr "Mulai!"
 
-#: src/mainWindow.js:476
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
-#: src/mainWindow.js:481
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "Nyalakan layanan lokasi"
 
-#: src/mainWindow.js:482
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "Pengaturan Lokasi"
 
-#: src/mainWindow.js:586
-msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Hak Cipta © 2011 – 2025 Red Hat, Inc. dan para penulis GNOME Peta"
+#: src/mainWindow.js:662
+msgid "Show Route Planner"
+msgstr "Tunjukkan Perencana Rute"
 
-#: src/mainWindow.js:587
+#: src/mainWindow.js:677
+msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Hak Cipta © 2011 – 2026 Red Hat, Inc. dan para penulis GNOME Peta"
+
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr ""
-"Andika Triwidada <andika@gmail.com>, 2013-2016, 2018, 2019, 2023-2025.\n"
+"Andika Triwidada <andika@gmail.com>, 2013-2016, 2018, 2019, 2023-2026.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2024."
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Data peta oleh %s dan kontributor"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
 msgstr "Penyedia Data Peta"
 
-#: src/mainWindow.js:598
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
 msgstr "Penyedia Ubin Peta"
 
@@ -867,37 +1019,37 @@ msgstr "Penyedia Ubin Peta"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:606
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Ubin peta disediakan oleh %s"
 
-#: src/mainWindow.js:635
+#: src/mainWindow.js:726
 msgid "Search Provider"
 msgstr "Penyedia Pencarian"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Pencarian disediakan oleh %s menggunakan %s"
 
-#: src/mainWindow.js:647
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "Buka Layer Bentuk"
 
-#: src/mapView.js:689 src/mapView.js:751
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: src/mapView.js:706
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "Apakah Anda ingin melanjutkan?"
 
-#: src/mapView.js:707
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -906,25 +1058,142 @@ msgstr ""
 "Anda berencana membuka berkas dengan ukuran total %s MB. Ini bisa memakan "
 "waktu untuk memuat"
 
-#: src/mapView.js:713
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/mapView.js:745
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Jenis berkas tak didukung"
 
-#: src/mapView.js:787
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
-#: src/mapView.js:1324
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Perbesar untuk menambah lokasi"
 
-#: src/mapView.js:1342
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "Lokasi ditambahkan pada OpenStreetMap"
+
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
+msgid "Start"
+msgstr "Mulai"
+
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
+msgid "Arrive"
+msgstr "Tiba"
+
+#: src/motis.js:483
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "Naik tangga ke tingkat %s"
+
+#: src/motis.js:484
+msgid "Take the stairs"
+msgstr "Naik tangga"
+
+#: src/motis.js:488
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Lanjutkan pada %s"
+
+#: src/motis.js:493
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Belok kiri di %s"
+
+#: src/motis.js:494
+msgid "Turn left"
+msgstr "Belok kiri"
+
+#: src/motis.js:498
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Belok sedikit ke kiri pada %s"
+
+#: src/motis.js:499
+msgid "Turn slightly left"
+msgstr "Belok sedikit ke kiri"
+
+#: src/motis.js:503
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Belok kiri tajam pada %s"
+
+#: src/motis.js:504
+msgid "Turn sharp left"
+msgstr "Belok kiri tajam"
+
+#: src/motis.js:508
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Belok kanan pada %s"
+
+#: src/motis.js:509
+msgid "Turn right"
+msgstr "Belok kanan"
+
+#: src/motis.js:513
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Belok sedikit ke kanan pada %s"
+
+#: src/motis.js:514
+msgid "Turn slightly right"
+msgstr "Belok sedikit ke kanan"
+
+#: src/motis.js:518
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Belok kanan tajam pada %s"
+
+#: src/motis.js:519
+msgid "Turn sharp right"
+msgstr "Belok kanan tajam"
+
+#: src/motis.js:526
+#, javascript-format
+msgid "At the roundabout, take exit %s"
+msgstr "Di bundaran, ambil jalur keluar %s"
+
+#: src/motis.js:529
+#, javascript-format
+msgid "At the roundabout, take exit to %s"
+msgstr "Di bundaran, ambil jalur ke %s"
+
+#: src/motis.js:531
+msgid "Take the roundabout"
+msgstr "Ambil bundaran"
+
+#: src/motis.js:539
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Naik lift dan turun di %s"
+
+#: src/motis.js:540
+msgid "Take the elevator"
+msgstr "Naik lift"
+
+#: src/motis.js:544
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Putar balik kiri ke %s"
+
+#: src/motis.js:545
+msgid "Make a left u-turn"
+msgstr "Putar balik kiri"
+
+#: src/motis.js:549
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Putar balik kanan ke %s"
+
+#: src/motis.js:550
+msgid "Make a right u-turn"
+msgstr "Putar balik kanan"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
@@ -962,14 +1231,6 @@ msgstr "Objek telah dihapus"
 msgid "Way or relation refers to non-existing children"
 msgstr "Cara atau hubungan mengacu ke anak yang tak ada"
 
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Umum"
-
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "Nama"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "Jenis"
@@ -990,11 +1251,11 @@ msgstr "Jam Buka"
 msgid "Phone"
 msgstr "Telepon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:416
+#: src/osmEditDialog.js:151 src/placeView.js:639
 msgid "Email"
 msgstr "Surel"
 
-#: src/osmEditDialog.js:158 src/placeView.js:383
+#: src/osmEditDialog.js:158 src/placeView.js:606
 msgid "Website"
 msgstr "Situs web"
 
@@ -1051,7 +1312,7 @@ msgstr "Rupa-rupa"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:871
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1061,11 +1322,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:617
+#: src/osmEditDialog.js:204 src/placeView.js:840
 msgid "Population"
 msgstr "Populasi"
 
-#: src/osmEditDialog.js:209 src/placeView.js:646
+#: src/osmEditDialog.js:209 src/placeView.js:869
 msgid "Altitude"
 msgstr "Ketinggian"
 
@@ -1233,139 +1494,143 @@ msgstr "Tidak dapat menemukan tag Wikidata untuk artikel"
 #. Translators: This represents the title for places tagged with the
 #. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
 #.
-#: src/osmTypes.js:45
+#: src/osmTypes.js:46
 msgid "Aerialway"
 msgstr "Jalur Udara"
 
 #. Translators: This represents the title for places tagged with the
 #. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
 #.
-#: src/osmTypes.js:49
+#: src/osmTypes.js:50
 msgid "Aeroway"
 msgstr "Jalur Layang"
 
 #. Translators: This represents the title for places tagged with the
 #. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
 #.
-#: src/osmTypes.js:53
+#: src/osmTypes.js:54
 msgid "Amenity"
 msgstr "Fasilitas"
 
 #. Translators: This represents the title for places tagged with the
 #. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
 #.
-#: src/osmTypes.js:57
+#: src/osmTypes.js:58
 msgid "Barrier"
 msgstr "Penghalang"
 
 #. Translators: This represents the title for places tagged with the
 #. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
 #.
-#: src/osmTypes.js:61
+#: src/osmTypes.js:62
 msgid "Road"
 msgstr "Jalan"
 
 #. Translators: This represents the title for places tagged with the
 #. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
 #.
-#: src/osmTypes.js:65
+#: src/osmTypes.js:66
 msgid "Historic"
 msgstr "Bersejarah"
 
 #. Translators: This represents the title for places tagged with the
 #. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
 #.
-#: src/osmTypes.js:69
+#: src/osmTypes.js:70
 msgid "Leisure"
 msgstr "Santai"
 
 #. Translators: This represents the title for places tagged with the
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
 #.
-#: src/osmTypes.js:73
+#: src/osmTypes.js:74
 msgid "Office"
 msgstr "Perkantoran"
 
 #. Translators: This represents the title for places tagged with the
 #. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
 #.
-#: src/osmTypes.js:77
+#: src/osmTypes.js:78
 msgid "Place"
 msgstr "Tempat"
 
 #. Translators: This represents the title for places tagged with the
 #. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
 #.
-#: src/osmTypes.js:81
+#: src/osmTypes.js:82
 msgid "Railway"
 msgstr "Jalur Kereta"
 
 #. Translators: This represents the title for places tagged with the
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
 #.
-#: src/osmTypes.js:85
+#: src/osmTypes.js:86
 msgid "Shop"
 msgstr "Toko"
 
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "Pariwisata"
 
 #. Translators: "Other" refers to points-of-interest where we don't have
 #. * a known title corresponding to the raw OpenStreetMap tag
 #.
-#: src/osmTypes.js:101
+#: src/osmTypes.js:102
 msgid "Other"
 msgstr "Lainnya"
 
-#: src/osmTypes.js:209
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Stasiun funikular"
 
-#: src/osmTypes.js:211
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Perhentian kereta light rail"
 
-#: src/osmTypes.js:213
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Stasiun monorail"
 
-#: src/osmTypes.js:215 src/osmTypes.js:225
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Stasiun kereta"
 
-#: src/osmTypes.js:217
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Stasiun kereta bawah tanah"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Perhentian kecil kereta"
 
-#: src/osmTypes.js:223
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Perhentian trem"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Perhentian transportasi publik"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
 msgstr "Tempat tanpa nama"
 
-#: src/placeEntry.js:150
+#: src/placeEntry.js:148
 msgid "Clear Entry"
 msgstr "Bersihkan Entri"
 
-#: src/placeEntry.js:321
+#: src/placeEntry.js:319
 msgid "Failed to parse Geo URI"
 msgstr "Gagal mengurai URI Geo"
 
-#: src/placeEntry.js:334
+#: src/placeEntry.js:332
 msgid "Failed to parse Maps URI"
 msgstr "Gagal mengurai Peta URI"
 
-#: src/placeFormatter.js:57 src/placeView.js:243 src/placeView.js:369
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:592
 msgid "Coordinates"
 msgstr "Koordinat"
 
@@ -1383,12 +1648,91 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:375
+#: src/placeView.js:370
+msgid "Arrival information provided by Transitous"
+msgstr "Informasi kedatangan disediakan oleh Transitous"
+
+#: src/placeView.js:371
+msgid "Departure information provided by Transitous"
+msgstr "Informasi keberangkatan disediakan oleh Transitous"
+
+#: src/placeView.js:417
+msgid "No arrivals found"
+msgstr "Tidak ditemukan kedatangan"
+
+#: src/placeView.js:418
+msgid "No departures found"
+msgstr "Tidak ditemukan keberangkatan"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:448
+msgid "Flights"
+msgstr "Penerbangan"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:452
+msgid "Trains"
+msgstr "Kereta"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:456
+msgid "Ferries"
+msgstr "Feri"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:460
+msgid "Gondola"
+msgstr "Gondola"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:464
+msgid "Funicular"
+msgstr "Funikular"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:468
+msgid "Subway"
+msgstr "Kereta Bawah Tanah"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:472
+msgid "Trams"
+msgstr "Trem"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:476
+msgid "Buses"
+msgstr "Bis"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:536
+msgid "All"
+msgstr "Semua"
+
+#: src/placeView.js:598
 msgid "Accuracy"
 msgstr "Akurasi"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:378
+#: src/placeView.js:601
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Akurasi: %s"
@@ -1399,7 +1743,7 @@ msgstr "Akurasi: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:397
+#: src/placeView.js:620
 msgid "Phone number"
 msgstr "Nomor telepon"
 
@@ -1410,16 +1754,16 @@ msgstr "Nomor telepon"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:431 src/placeView.js:470
+#: src/placeView.js:654 src/placeView.js:693
 msgid "Floor"
 msgstr "Lantai"
 
-#: src/placeView.js:433
+#: src/placeView.js:656
 #, javascript-format
 msgid "Floor %s"
 msgstr "Lantai %s"
 
-#: src/placeView.js:445
+#: src/placeView.js:668
 msgid "At ground level"
 msgstr "Di permukaan tanah"
 
@@ -1428,7 +1772,7 @@ msgstr "Di permukaan tanah"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:454
+#: src/placeView.js:677
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1439,7 +1783,7 @@ msgstr[0] "%s lantai di atas permukaan tanah"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:465
+#: src/placeView.js:688
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1449,7 +1793,7 @@ msgstr[0] "%s lantai di bawah permukaan tanah"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:483
+#: src/placeView.js:706
 msgid "Offers takeout"
 msgstr "Menawarkan bawa pulang"
 
@@ -1457,7 +1801,7 @@ msgstr "Menawarkan bawa pulang"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:491
+#: src/placeView.js:714
 msgid "Does not offer takeout"
 msgstr "Tidak menawarkan bawa pulang"
 
@@ -1466,18 +1810,18 @@ msgstr "Tidak menawarkan bawa pulang"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:500
+#: src/placeView.js:723
 msgid "Only offers takeout"
 msgstr "Hanya menawarkan bawa pulang"
 
-#: src/placeView.js:507
+#: src/placeView.js:730
 msgid "Opening hours"
 msgstr "Jam buka"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:517
+#: src/placeView.js:740
 msgid "Public internet access"
 msgstr "Akses internet publik"
 
@@ -1485,50 +1829,50 @@ msgstr "Akses internet publik"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:526
+#: src/placeView.js:749
 msgid "No internet access"
 msgstr "Tidak ada akses internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:534
+#: src/placeView.js:757
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi Publik"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:542
+#: src/placeView.js:765
 msgid "Wired internet access"
 msgstr "Akses internet berkabel"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:550
+#: src/placeView.js:773
 msgid "Computers available for use"
 msgstr "Komputer tersedia untuk digunakan"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:558
+#: src/placeView.js:781
 msgid "Internet assistance available"
 msgstr "Bantuan Internet tersedia"
 
-#: src/placeView.js:564
+#: src/placeView.js:787
 msgid "No toilets available"
 msgstr "Tidak ada toilet yang tersedia"
 
-#: src/placeView.js:567
+#: src/placeView.js:790
 msgid "Toilets available"
 msgstr "Toilet tersedia"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:576
+#: src/placeView.js:799
 msgid "Wheelchair accessible"
 msgstr "Dapat diakses kursi roda"
 
@@ -1537,7 +1881,7 @@ msgstr "Dapat diakses kursi roda"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:586
+#: src/placeView.js:809
 msgid "Limited wheelchair accessibility"
 msgstr "Aksesibilitas kursi roda terbatas"
 
@@ -1545,7 +1889,7 @@ msgstr "Aksesibilitas kursi roda terbatas"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:595
+#: src/placeView.js:818
 msgid "Not wheelchair accessible"
 msgstr "Tidak dapat diakses kursi roda"
 
@@ -1554,7 +1898,7 @@ msgstr "Tidak dapat diakses kursi roda"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:605
+#: src/placeView.js:828
 msgid "Designated for wheelchair users"
 msgstr "Ditunjuk untuk pengguna kursi roda"
 
@@ -1563,7 +1907,7 @@ msgstr "Ditunjuk untuk pengguna kursi roda"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:636
+#: src/placeView.js:859
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s di bawah permukaan laut"
@@ -1572,16 +1916,16 @@ msgstr "%s di bawah permukaan laut"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:643
+#: src/placeView.js:866
 msgid "At sea level"
 msgstr "Di permukaan laut"
 
-#: src/placeView.js:655
+#: src/placeView.js:878
 msgid "Religion:"
 msgstr "Agama:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:660
+#: src/placeView.js:883
 #, javascript-format
 msgid "Exit %s"
 msgstr "Keluar %s"
@@ -1595,15 +1939,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:664
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
 msgstr "Tempat tidak ditemukan pada OpenStreetMap"
 
-#: src/place.js:671
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinat dalam URL tak valid"
 
-#: src/place.js:680
+#: src/place.js:698
 msgid "URL is not supported"
 msgstr "URL tak didukung"
 
@@ -1735,151 +2079,192 @@ msgstr "Bunga-bunga"
 msgid "Gifts"
 msgstr "Hadiah"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+msgid "Bicycles"
+msgstr "Sepeda"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "Transportasi"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "Halte Bus & Trem"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "Stasiun Kereta & Kereta Bawah Tanah"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "Tiket"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "Parkir"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "Bicycle Parking"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "Penyewaan Sepeda"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "Penyewaan Mobil"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "Bahan Bakar"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "Pengisian EV"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "Kesehatan"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "Klinik"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "Rumah Sakit"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "Dokter Gigi"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "Akomodasi"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "Hotel"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "Hostel"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "Tempat Tidur & Sarapan"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "Berkemah"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "Rekreasi"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "Taman"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "Taman Bermain"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "Pantai"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "Cagar Alam"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "Taman Hiburan"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "Teater"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "Bioskop"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "Klub Malam"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "Museum"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "Atraksi"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "Karya Seni"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "Informasi Turis"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
 msgstr "Olah Raga"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "Gym"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "Gym Luar Ruangan"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "Lapangan Golf"
 
-#: src/printLayout.js:222
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+msgid "Estimated size: %s"
+msgstr "Perkiraan ukuran: %s"
+
+#: src/preferencesDownloadNew.js:154
+msgid "Failed to estimate size"
+msgstr "Gagal memperkirakan ukuran"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr ""
+"Penghematan Daya difungsikan dan jaringan berkuota — pengunduhan otomatis "
+"dijeda"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "Jaringan berkuota - pengunduhan otomatis dijeda"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr "Penghematan Daya difungsikan — pengunduhan otomatis dijeda"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "Peta #%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "Buang unduhan?"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "Buang"
+
+#: src/printLayout.js:215
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Dari %s ke %s"
@@ -1923,22 +2308,28 @@ msgstr "Rute sebaliknya"
 msgid "To"
 msgstr "Ke"
 
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: src/routeView.js:341
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Perkiraan waktu: %s"
+
 #: src/searchBar.js:42
 msgid "Search"
 msgstr "Cari"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:89
+#: src/sendToDialog.js:83
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Tambahkan %s ke %s"
 
-#: src/sendToDialog.js:188
+#: src/sendToDialog.js:182
 msgid "Failed to open URI"
 msgstr "Gagal membuka URI"
 
-#: src/sendToDialog.js:253
+#: src/sendToDialog.js:247
 #, javascript-format
 msgid "Open with %s"
 msgstr "Buka dengan %s"
@@ -1947,38 +2338,61 @@ msgstr "Buka dengan %s"
 msgid "failed to load file"
 msgstr "gagal memuat berkas"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:343
-#, javascript-format
-msgid "Estimated time: %s"
-msgstr "Perkiraan waktu: %s"
-
-#: src/sidebar.js:413
-#, javascript-format
-msgid "Itineraries provided by %s"
-msgstr "Jadwal disediakan oleh %s"
-
-#. Translators: this is a format string indicating instructions
-#. * starting a journey at the address given as the parameter
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
 #.
-#: src/transit.js:39
+#: src/transit/itinerary.js:82
 #, javascript-format
-msgid "Start at %s"
-msgstr "Mulai dari %s"
+msgid "%s – %s"
+msgstr "%s – %s"
 
-#. Translators: this indicates starting a journey at a location
-#. * with no set name (such as when the user started routing from
-#. * an arbitrary point on the map)
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:330
-#: src/transitplugins/openTripPlanner2.js:240
-msgid "Start"
-msgstr "Mulai"
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s menit"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s jam"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s jam"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:193
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:63
+#: src/transit/utils.js:57
 #, javascript-format
 msgid "Walk %s"
 msgstr "Berjalan %s"
@@ -1986,24 +2400,109 @@ msgstr "Berjalan %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:77
+#: src/transit/utils.js:71
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Tiba di %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:349
-#: src/transitplugins/openTripPlanner.js:1179
-#: src/transitplugins/openTripPlanner2.js:259
-msgid "Arrive"
-msgstr "Tiba"
+#. Translators: this a format string indicating departing from the
+#. * destination of journey with the departure address and transit
+#. * stop as the format parameter
+#: src/transit/utils.js:85
+#, javascript-format
+msgid "Start at %s"
+msgstr "Mulai dari %s"
 
-#: src/transitLegRow.js:70
-msgid "Show walking instructions"
-msgstr "Tampilkan petunjuk berjalan"
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:138
+#, javascript-format
+msgid "Track %s"
+msgstr "Trek %s"
 
-#: src/transitLegRow.js:71
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:146
+#, javascript-format
+msgid "Quay %s"
+msgstr "Dermaga %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:152
+#, javascript-format
+msgid "Gate %s"
+msgstr "Gerbang %s"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:162
+msgid "Departure track changed"
+msgstr "Trek keberangkatan berubah"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that e.g. a bus stop
+#. * "stop position"
+#.
+#: src/transit/utils.js:168
+msgid "Departure stop position changed"
+msgstr "Posisi henti keberangkatan berubah"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:174
+msgid "Departure quay changed"
+msgstr "Dermaga keberangkatan berubah"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:180
+msgid "Departure gate changed"
+msgstr "Gerbang keberangkatan berubah"
+
+#: src/transitJunctureRow.js:78
+msgid "Hide information"
+msgstr "Sembunyikan informasi"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with "
+"distance"
+msgid "%1s, %2s (%3s)"
+msgstr "%1s, %2s (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "%1s (%2s)"
+
+#: src/transitLegHeader.js:125
+msgid "Hide intermediate stops and information"
+msgstr "Sembunyikan informasi dan perhentian antara"
+
+#: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
 msgstr "Sembunyikan petunjuk berjalan"
+
+#: src/transitLegHeader.js:128
+msgid "Show intermediate stops and information"
+msgstr "Tampilkan berhenti menengah dan informasi"
+
+#: src/transitLegHeader.js:129
+msgid "Show walking instructions"
+msgstr "Tampilkan petunjuk berjalan"
 
 #: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
@@ -2025,69 +2524,10 @@ msgstr "Tidak ada alternatif lain yang ditemukan."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:208
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
-
-#: src/transitPlan.js:173
-msgid "No timetable data found for this route."
-msgstr "Tidak ada data jadwal yang ditemukan untuk rute ini."
-
-#: src/transitPlan.js:181
-msgid "No provider found for this route."
-msgstr "Tidak ada penyedia yang ditemukan untuk rute ini."
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:302
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:337
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s menit"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:349
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s jam"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:357
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s jam"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:758
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2184,19 +2624,19 @@ msgid "Bahá'í"
 msgstr "Bahá’í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:269
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "Tak diketahui"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:272
+#: src/utils.js:266
 msgid "Exact"
 msgstr "Eksak"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:328
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
 msgstr "%s j"
@@ -2205,7 +2645,7 @@ msgstr "%s j"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2215,7 +2655,7 @@ msgstr[0] "%s j %s mnt"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:341
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2225,163 +2665,32 @@ msgstr[0] "%s mnt"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:347
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s dtk"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:359
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mil"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:362
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:370
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:373
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
-
-#: src/transitplugins/motis2.js:361
-#, javascript-format
-msgid "Take the stairs to level %s"
-msgstr "Naik tangga ke tingkat %s"
-
-#: src/transitplugins/motis2.js:362
-msgid "Take the stairs"
-msgstr "Naik tangga"
-
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
-#: src/transitplugins/openTripPlanner2.js:270
-#, javascript-format
-msgid "Continue on %s"
-msgstr "Lanjutkan pada %s"
-
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
-#: src/transitplugins/openTripPlanner2.js:274
-#, javascript-format
-msgid "Turn left on %s"
-msgstr "Belok kiri di %s"
-
-#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
-#: src/transitplugins/openTripPlanner2.js:275
-msgid "Turn left"
-msgstr "Belok kiri"
-
-#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
-#: src/transitplugins/openTripPlanner2.js:279
-#, javascript-format
-msgid "Turn slightly left on %s"
-msgstr "Belok sedikit ke kiri pada %s"
-
-#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
-#: src/transitplugins/openTripPlanner2.js:280
-msgid "Turn slightly left"
-msgstr "Belok sedikit ke kiri"
-
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
-#: src/transitplugins/openTripPlanner2.js:284
-#, javascript-format
-msgid "Turn sharp left on %s"
-msgstr "Belok kiri tajam pada %s"
-
-#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
-#: src/transitplugins/openTripPlanner2.js:285
-msgid "Turn sharp left"
-msgstr "Belok kiri tajam"
-
-#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
-#: src/transitplugins/openTripPlanner2.js:288
-#, javascript-format
-msgid "Turn right on %s"
-msgstr "Belok kanan pada %s"
-
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
-#: src/transitplugins/openTripPlanner2.js:289
-msgid "Turn right"
-msgstr "Belok kanan"
-
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
-#: src/transitplugins/openTripPlanner2.js:293
-#, javascript-format
-msgid "Turn slightly right on %s"
-msgstr "Belok sedikit ke kanan pada %s"
-
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
-#: src/transitplugins/openTripPlanner2.js:294
-msgid "Turn slightly right"
-msgstr "Belok sedikit ke kanan"
-
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
-#: src/transitplugins/openTripPlanner2.js:298
-#, javascript-format
-msgid "Turn sharp right on %s"
-msgstr "Belok kanan tajam pada %s"
-
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
-#: src/transitplugins/openTripPlanner2.js:299
-msgid "Turn sharp right"
-msgstr "Belok kanan tajam"
-
-#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
-#: src/transitplugins/openTripPlanner2.js:306
-#, javascript-format
-msgid "At the roundabout, take exit %s"
-msgstr "Di bundaran, ambil jalur keluar %s"
-
-#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
-#: src/transitplugins/openTripPlanner2.js:309
-#, javascript-format
-msgid "At the roundabout, take exit to %s"
-msgstr "Di bundaran, ambil jalur ke %s"
-
-#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
-#: src/transitplugins/openTripPlanner2.js:311
-msgid "Take the roundabout"
-msgstr "Ambil bundaran"
-
-#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
-#: src/transitplugins/openTripPlanner2.js:319
-#, javascript-format
-msgid "Take the elevator and get off at %s"
-msgstr "Naik lift dan turun di %s"
-
-#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
-#: src/transitplugins/openTripPlanner2.js:320
-msgid "Take the elevator"
-msgstr "Naik lift"
-
-#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
-#: src/transitplugins/openTripPlanner2.js:324
-#, javascript-format
-msgid "Make a left u-turn onto %s"
-msgstr "Putar balik kiri ke %s"
-
-#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
-#: src/transitplugins/openTripPlanner2.js:325
-msgid "Make a left u-turn"
-msgstr "Putar balik kiri"
-
-#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
-#: src/transitplugins/openTripPlanner2.js:329
-#, javascript-format
-msgid "Make a right u-turn onto %s"
-msgstr "Putar balik kanan ke %s"
-
-#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
-#: src/transitplugins/openTripPlanner2.js:330
-msgid "Make a right u-turn"
-msgstr "Putar balik kanan"
