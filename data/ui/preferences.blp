@@ -14,6 +14,21 @@ template $Gjs_PreferencesDialog: Adw.PreferencesDialog {
     Adw.PreferencesGroup {
       title: _("Map View");
 
+      Adw.ComboRow colorSchemeRow {
+        title: _("Color Scheme");
+
+        model: Gtk.StringList {
+          strings [
+            // Translators: This is a menu item for following the system color scheme
+            _("Follow System"),
+            // Translators: This is a menu item for always showing the map in light colors
+            _("Light"),
+            // Translators: This is a menu item for always showing the map in dark colors
+            _("Dark")
+          ]
+        };
+      }
+
       Adw.SwitchRow {
         title: _("Show Scale");
         action-name: "win.show-scale";

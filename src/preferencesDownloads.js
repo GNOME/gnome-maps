@@ -18,6 +18,7 @@
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * Author: James Westman <james@jwestman.net>
+ *         Peter Bittner <peter@painless.software>
  */
 
 import Adw from "gi://Adw";
@@ -31,6 +32,7 @@ import Shumate from "gi://Shumate";
 
 import { Application } from "./application.js";
 import { DownloadManager, DownloadArea } from "./downloads.js";
+import { MapColorScheme } from "./mapColorScheme.js";
 import { PreferencesDownloadNew } from "./preferencesDownloadNew.js";
 import * as MapSource from "./mapSource.js";
 
@@ -56,9 +58,9 @@ export class PreferencesDownloads extends Adw.PreferencesPage {
         });
         this.updateProgress();
 
-        const styleManager = Adw.StyleManager.get_default();
+        const colorScheme = MapColorScheme.getDefault();
 
-        const handlerId = styleManager.connect("notify::dark", () => {
+        const handlerId = colorScheme.connect("notify::dark", () => {
             this._mapSource = null;
             let child = this._downloadsAreasBox.get_first_child();
             while (child !== null) {
@@ -67,7 +69,7 @@ export class PreferencesDownloads extends Adw.PreferencesPage {
             }
         });
         this.connect("destroy", () => {
-            styleManager.disconnect(handlerId);
+            colorScheme.disconnect(handlerId);
         });
 
         this._mapSource = null;

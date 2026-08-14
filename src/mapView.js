@@ -17,6 +17,7 @@
  * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ *         Peter Bittner <peter@painless.software>
  */
 
 import Adw from 'gi://Adw';
@@ -38,6 +39,7 @@ import {KmlShapeLayer} from './kmlShapeLayer.js';
 import {GpxShapeLayer} from './gpxShapeLayer.js';
 import {FitShapeLayer} from './fitShapeLayer.js';
 import {Location} from './location.js';
+import {MapColorScheme} from './mapColorScheme.js';
 import * as MapSource from './mapSource.js';
 import {MapWalker} from './mapWalker.js';
 import {OSMAccountDialog} from './osmAccountDialog.js';
@@ -440,10 +442,10 @@ export class MapView extends Gtk.Overlay {
         if (this._stopListeningForVectorChanges)
             return;
 
-        const styleManager = Adw.StyleManager.get_default();
+        const colorScheme = MapColorScheme.getDefault();
         const settings = this.get_settings();
 
-        const darkNotify = styleManager.connect('notify::dark', () => {
+        const darkNotify = colorScheme.connect('notify::dark', () => {
             this.setMapType(this._mapType, true);
         });
 
@@ -452,7 +454,7 @@ export class MapView extends Gtk.Overlay {
         });
 
         this._stopListeningForVectorChanges = () => {
-            styleManager.disconnect(darkNotify);
+            colorScheme.disconnect(darkNotify);
             settings.disconnect(textSizeNotify);
             this._stopListeningForVectorChanges = null;
         }

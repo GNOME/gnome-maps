@@ -15,6 +15,7 @@
  * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
+ *         Peter Bittner <peter@painless.software>
  */
 
 import Adw from 'gi://Adw';
@@ -24,6 +25,7 @@ import Shumate from 'gi://Shumate';
 import GnomeMaps from 'gi://GnomeMaps';
 
 import {Application} from './application.js';
+import {MapColorScheme} from './mapColorScheme.js';
 import * as Utils from './utils.js';
 import { DEFAULT_TILE_URL_PATTERN, generateMapStyle } from './mapStyle/mapStyle.js';
 import { OfflineDataSource } from "./offlineDataSource.js";
@@ -37,7 +39,7 @@ export var spriteSource = null;
 
 export function createVectorSource() {
     const start = GLib.get_monotonic_time();
-    const colorScheme = Adw.StyleManager.get_default().dark ? 'dark' : 'light';
+    const colorScheme = MapColorScheme.getDefault().dark ? 'dark' : 'light';
     const styleParams =
         {
             colorScheme: colorScheme,

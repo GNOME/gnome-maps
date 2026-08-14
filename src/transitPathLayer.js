@@ -17,15 +17,16 @@
  * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Marcus Lundblad <ml@dfupdate.se>
+ *         Peter Bittner <peter@painless.software>
  */
 
-import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Shumate from 'gi://Shumate';
 
 import * as Color from './color.js';
 import * as Constants from './transit/constants.js';
+import {MapColorScheme} from './mapColorScheme.js';
 
 // line width for route lines
 const LINE_WIDTH = 5;
@@ -48,11 +49,11 @@ export class TransitPathLayer extends Shumate.PathLayer {
         super(params);
 
         this._leg = leg;
-        this._styleManager = Adw.StyleManager.get_default();
+        this._colorScheme = MapColorScheme.getDefault();
     }
 
     vfunc_map() {
-        this._darkId = this._styleManager.connect('notify::dark', () => {
+        this._darkId = this._colorScheme.connect('notify::dark', () => {
             this._updateStyle();
         });
         this._updateStyle();
@@ -61,24 +62,24 @@ export class TransitPathLayer extends Shumate.PathLayer {
     }
 
     vfunc_unmap() {
-        this._styleManager.disconnect(this._darkId);
+        this._colorScheme.disconnect(this._darkId);
 
         super.vfunc_unmap();
     }
 
     _updateStyle() {
         const defaultColor =
-            this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_COLOR :
-                                      Constants.DEFAULT_ROUTE_COLOR;
+            this._colorScheme.dark ? Constants.DEFAULT_DARK_ROUTE_COLOR :
+                                     Constants.DEFAULT_ROUTE_COLOR;
         const defaultTextColor =
-            this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                                      Constants.DEFAULT_ROUTE_TEXT_COLOR;
+            this._colorScheme.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                     Constants.DEFAULT_ROUTE_TEXT_COLOR;
         const color = this._leg.route?.color ?? defaultColor;
         const outlineColor =
             Color.getContrastingForegroundColor(color,
                                                 this._leg.route?.textColor ?? defaultTextColor);
         const luminance = Color.relativeLuminance(color);
-        const hasOutline = this._styleManager.dark ?
+        const hasOutline = this._colorScheme.dark ?
                            luminance < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
                            luminance > OUTLINE_LUMINANCE_THREASHHOLD;
         const lineWidth = LINE_WIDTH + (hasOutline ? 2 : 0);

@@ -10,6 +10,11 @@
     <value value="1" nick="metric"/>
     <value value="2" nick="imperial"/>
   </enum>
+  <enum id="org.gnome.maps.ColorScheme">
+    <value value="0" nick="system"/>
+    <value value="1" nick="light"/>
+    <value value="2" nick="dark"/>
+  </enum>
   <schema id="org.gnome.Maps" path="/org/gnome/maps/">
     <key type="ad" name="last-viewed-location">
       <default>[0.0,0.0]</default>
@@ -89,6 +94,11 @@
       <default>true</default>
       <summary>Show location marker</summary>
       <description>Whether to show the user location marker (when location is known).</description>
+    </key>
+    <key name="color-scheme" enum="org.gnome.maps.ColorScheme">
+      <default>'system'</default>
+      <summary>Map color scheme</summary>
+      <description>Which color scheme to render the map in. ('system' follows the system-wide preference, 'light' always shows the map in light colors, 'dark' always shows the map in dark colors).</description>
     </key>
   </schema>
 </schemalist>

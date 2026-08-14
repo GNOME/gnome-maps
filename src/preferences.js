@@ -18,6 +18,7 @@
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * Author: James Westman <james@jwestman.net>
+ *         Peter Bittner <peter@painless.software>
  */
 
 import GObject from "gi://GObject";
@@ -25,6 +26,9 @@ import Adw from "gi://Adw";
 
 import {Application} from './application.js';
 import "./preferencesDownloads.js";
+
+/* values of the color-scheme setting, in the order listed by colorSchemeRow */
+export const COLOR_SCHEMES = ['system', 'light', 'dark'];
 
 export class PreferencesDialog extends Adw.PreferencesDialog {
 
@@ -36,6 +40,22 @@ export class PreferencesDialog extends Adw.PreferencesDialog {
         this._measurementSystemChanged();
         this._measurementRow.connect('notify::selected',
                                      () => this._onMeasurementSystemSelected());
+
+        Application.settings.connect('changed::color-scheme',
+                                     () => this._colorSchemeChanged());
+        this._colorSchemeChanged();
+        this._colorSchemeRow.connect('notify::selected',
+                                     () => this._onColorSchemeSelected());
+    }
+
+    _colorSchemeChanged() {
+        this._colorSchemeRow.selected =
+            COLOR_SCHEMES.indexOf(Application.settings.get('color-scheme'));
+    }
+
+    _onColorSchemeSelected() {
+        Application.settings.set('color-scheme',
+                                 COLOR_SCHEMES[this._colorSchemeRow.selected]);
     }
 
     _measurementSystemChanged() {
@@ -58,7 +78,7 @@ export class PreferencesDialog extends Adw.PreferencesDialog {
 GObject.registerClass(
     {
         Template: "resource:///org/gnome/Maps/ui/preferences.ui",
-        InternalChildren: [ 'measurementRow' ],
+        InternalChildren: [ 'colorSchemeRow', 'measurementRow' ],
     },
     PreferencesDialog
 );

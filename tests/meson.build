@@ -1,5 +1,6 @@
-tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'downloadsTest', 'epafTest', 'osmNamesTest',
-         'placeIconsTest', 'placeStoreTest', 'placeZoomTest', 'timeTest', 'translationsTest',
+tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'downloadsTest', 'epafTest',
+         'mapColorSchemeTest', 'mapStyleTest', 'osmNamesTest', 'placeIconsTest',
+         'placeStoreTest', 'placeZoomTest', 'timeTest', 'translationsTest',
          'utilsTest', 'urisTest', 'wikipediaTest']
 
 # suffix for source resources (so we get /org/gnome/Maps or
@@ -55,8 +56,12 @@ foreach test : tests
        args: ['tests/@0@'.format(test),
               src_gresource,
               data_gresource,
+              shields_gresource,
               test_gresource],
-       env:  ['LANG=en_US.utf8', 'LC_ALL=en_US.utf8']
+       depends: gschemas_compiled,
+       env:  ['LANG=en_US.utf8', 'LC_ALL=en_US.utf8',
+              'GSETTINGS_SCHEMA_DIR=@0@'.format(
+                  join_paths(meson.project_build_root(), 'data'))]
   )
 endforeach
 

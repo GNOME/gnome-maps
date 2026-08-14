@@ -99,6 +99,12 @@ install_data(
 	install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
+# compiled into the build tree, so that tests can read the schema
+gschemas_compiled = gnome.compile_schemas(
+	build_by_default: true,
+	depend_files: files('org.gnome.Maps.gschema.xml')
+)
+
 service_conf = configuration_data()
 service_conf.set('PACKAGE_NAME', meson.project_name())
 service_conf.set('pkgdatadir', pkgdatadir)

@@ -1,4 +1,4 @@
-gnome.compile_resources(
+shields_gresource = gnome.compile_resources(
 	app_id + '.shields',
 	'org.gnome.Maps.shields.gresource.xml',
 	gresource_bundle: true,

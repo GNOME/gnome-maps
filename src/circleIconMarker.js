@@ -17,9 +17,9 @@
  * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Marcus Lundblad <ml@dfupdate.se>
+ *         Peter Bittner <peter@painless.software>
  */
 
-import Adw from 'gi://Adw';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gsk from 'gi://Gsk';
@@ -28,6 +28,7 @@ import Gtk from 'gi://Gtk';
 import * as Color from './color.js';
 import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
+import {MapColorScheme} from './mapColorScheme.js';
 import {Place} from './place.js';
 import * as Constants from './transit/constants.js';
 import * as Utils from './utils.js';
@@ -55,13 +56,13 @@ export class CircleIconMarker extends IconMarker {
         this._textColor = textColor;
         this._iconName = iconName;
         this._markerSize = markerSize;
-        this._styleManager = Adw.StyleManager.get_default();
+        this._colorScheme = MapColorScheme.getDefault();
         this._image.pixel_size = this._markerSize;
         this._pathBuilder = new Gsk.PathBuilder();
     }
 
     vfunc_map() {
-         this._darkId = this._styleManager.connect('notify::dark', () => {
+         this._darkId = this._colorScheme.connect('notify::dark', () => {
             this._image.paintable = this._createPaintable();
         });
         this._image.paintable = this._createPaintable();
@@ -70,7 +71,7 @@ export class CircleIconMarker extends IconMarker {
     }
 
     vfunc_unmap() {
-        this._styleManager.disconnect(this._darkId);
+        this._colorScheme.disconnect(this._darkId);
 
         super.vfunc_unmap();
     }
@@ -87,17 +88,17 @@ export class CircleIconMarker extends IconMarker {
     _createPaintable() {
         try {
             const bgColor = this._color ??
-                            (this._styleManager.dark ?
+                            (this._colorScheme.dark ?
                              Constants.DEFAULT_DARK_ROUTE_COLOR :
                              Constants.DEFAULT_ROUTE_COLOR);
             const defaultTextColor =
-                this._styleManager.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
-                                          Constants.DEFAULT_ROUTE_TEXT_COLOR;
+                this._colorScheme.dark ? Constants.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                         Constants.DEFAULT_ROUTE_TEXT_COLOR;
             const fgColor =
                 Color.getContrastingForegroundColor(bgColor, this._textColor ??
                                                              defaultTextColor);
             const hasOutline =
-                this._styleManager.dark ?
+                this._colorScheme.dark ?
                 Color.relativeLuminance(bgColor) < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
                 Color.relativeLuminance(bgColor) > OUTLINE_LUMINANCE_THREASHHOLD;
 
