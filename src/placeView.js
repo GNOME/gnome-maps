@@ -312,7 +312,8 @@ export class PlaceView extends Gtk.Box {
              */
             if (this._nativeName.get_layout().get_unknown_glyphs_count() === 0)
                 this._nativeName.visible = true;
-        } else if (place.name === place.nativeName && place.hiraganaName &&
+        } else if (Utils.getLanguage() === 'ja' &&
+                   place.name === place.nativeName && place.hiraganaName &&
                    place.name !== place.hiraganaName) {
             /* if the displayed name and the native name are identical, show
              * a Japanese Hiragana name form when available providing a
