@@ -378,17 +378,21 @@ export class PlaceView extends Gtk.Box {
     }
 
     _getStoptimesSearchRadius() {
-        const tags = this._place.osmTags;
+        const place = this._place;
 
-        if (tags['railway'] === 'tram_stop' || tags['highway'] === 'bus_stop')
+        if (place.osmKey === 'highway' &&
+            (place.osmValue === 'bus_stop' || place.osmValue === 'taxi_rank') ||
+            (place.osmKey === 'railway' && place.osmValue === 'tram_stop')) {
             return 100;
-        else if (tags['aeroway'] === 'aerodrome')
+        } else if (place.osmKey === 'aeroway' && place.osmValue === 'aerodrome') {
             return 1000;
-        else if ((tags['railway'] === 'station' || tags['railway'] === 'halt') &&
-                 tags['station'] === 'funicular')
+        } else if (place.osmKey === 'railway' && (place.osmKey === 'station' ||
+                                                  place.osmKey === 'halt') &&
+                   place.station === 'funicular') {
             return 100;
-        else
+        } else {
             return 300;
+        }
     }
 
     _loadTransitStopTimes(arrivals = false, extendPrevious = false, routeType) {
