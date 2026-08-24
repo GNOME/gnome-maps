@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-17 17:03+0000\n"
-"PO-Revision-Date: 2026-02-22 16:41+0100\n"
+"POT-Creation-Date: 2026-08-23 20:02+0000\n"
+"PO-Revision-Date: 2026-08-24 09:23+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -30,7 +30,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Kartor"
 
@@ -226,9 +226,30 @@ msgid "Public transit itinerary"
 msgstr "Resväg för kollektivtrafik"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
+msgid "maps"
+msgstr "kartor"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
+msgid "location finder"
+msgstr "platsletare"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
+msgid "place search"
+msgstr "platssökning"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
+msgid "google maps alternative"
+msgstr "google maps-alternativ"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
+msgid "free map app"
+msgstr "fritt kartprogram"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -274,43 +295,31 @@ msgid "Remove Favorite"
 msgstr "Ta bort favorit"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Inga favoriter"
+msgid "No Starred Places"
+msgstr "Inga stjärnmärkta platser"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Lägg till platser till dina favoriter för att lista dem här"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Aktuell plats"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "Stjärnmärk platser för att lista dem här"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Ruttplanerare"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Lager"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "Favoriter"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Ruttplanerare"
-
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Visa skala"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Visa platsmarkör"
+#: data/ui/headerbar-right.blp:18
+msgid "Starred Places"
+msgstr "Stjärnmärkta platser"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Öppna formlager…"
 
@@ -322,50 +331,34 @@ msgstr "_Konfigurera OpenStreetMap-konto…"
 msgid "_Export as Image…"
 msgstr "_Exportera som bild…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Måttenheter"
+#: data/ui/main-window.blp:19
+msgid "Preferences"
+msgstr "Inställningar"
 
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "_Systemstandard"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Metriska"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Engelska"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/ui/main-window.blp:55
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_Om Kartor"
 
-#: data/ui/main-window.blp:125
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Visa platsinformation"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Skriv ut rutt"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
 msgstr "Stäng sidopanel"
 
@@ -444,7 +437,7 @@ msgstr "Redigera plats"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Redigera en befintlig plats i OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Fortsätt"
 
@@ -490,11 +483,11 @@ msgstr "Ingen"
 msgid "Explore Nearby Places"
 msgstr "Utforska platser i närheten"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
 msgstr "Inga resultat hittades"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
 msgstr "Ett fel har inträffat"
 
@@ -591,93 +584,102 @@ msgstr "Allmänt"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Visa inställningar"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Visa genvägar"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Sök"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "Utforska intressepunkter"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Visa senaste sökresultat"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Visa ruttplanerare"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Skriv ut rutt"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Öppna huvudmeny"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Kartvy"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Zooma in"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Zooma ut"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "Rotera medurs"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "Rotera moturs"
 
-#: data/ui/shortcuts-dialog.blp:73
+#: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "Återställ rotation"
 
-#: data/ui/shortcuts-dialog.blp:78
+#: data/ui/shortcuts-dialog.blp:83
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Visa/dölj skala"
 
-#: data/ui/shortcuts-dialog.blp:83
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Gå till aktuell plats"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Öppna formlager"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Platsmarkör på/av"
+
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+msgid "Show information"
+msgstr "Visa information"
 
 #. Translators: Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.blp:18
@@ -736,38 +738,153 @@ msgid "_Airplanes"
 msgstr "_Flygplan"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:12
+#: data/ui/place-buttons.blp:13
 msgid "Add to new route"
 msgstr "Lägg till ny rutt"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.blp:17
+#: data/ui/place-buttons.blp:18
 msgid "_Directions"
 msgstr "_Vägbeskrivning"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:30
+#: data/ui/place-buttons.blp:33
 msgid "Share Location"
 msgstr "Dela plats"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:39
+#: data/ui/place-buttons.blp:47
 msgid "Mark as Favorite"
 msgstr "Markera som favorit"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:51
+#: data/ui/place-buttons.blp:61
 msgid "Edit on OpenStreetMap"
 msgstr "Redigera i OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.blp:64
+#: data/ui/place-view.blp:51
 msgid "Share location"
 msgstr "Dela plats"
+
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "Avgångar"
+
+#: data/ui/place-view.blp:151
+msgid "Arrivals"
+msgstr "Ankomster"
+
+#: data/ui/place-view.blp:155
+msgid "Information"
+msgstr "Information"
 
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Tillbaka till huvudkategorier"
+
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Allmänt"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Kartvy"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Visa skala"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Visa platsmarkör"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Mätningar"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Måttsystem"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Systemstandard"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Metriskt"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Engelskt"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "Välj område att hämta"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "Hämta"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:64
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
+msgid "Zoom In"
+msgstr "Zooma in"
+
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74
+#: data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "Zooma ut"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "Området är för stort"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "Ta bort hämtning"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "Namn"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "Hämtningar"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not "
+"all features are available offline."
+msgstr ""
+"Hämta kartor för frånkopplad användning.\n"
+"\n"
+"Hämtade områden kan visas då ingen internetuppkoppling är tillgänglig. Alla "
+"funktioner är inte tillgängliga när frånkopplad."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "Fortsätt"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "Hämtade områden"
+
+#: data/ui/preferences-downloads.blp:48
+msgid "Add"
+msgstr "Lägg till"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "Inga hämtningar"
 
 #. Translators: This is a tooltip
 #: data/ui/zoom-and-rotate-controls.blp:19
@@ -775,19 +892,9 @@ msgid "Reset Rotation"
 msgstr "Återställ rotation"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
-msgid "Zoom Out"
-msgstr "Zooma ut"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
-msgid "Zoom In"
-msgstr "Zooma in"
-
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "Misslyckades med att hitta rutstruktur i katalog"
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Aktuell plats"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
@@ -802,27 +909,19 @@ msgid "Could not find OSM element"
 msgstr "Kunde inte hitta OSM-element"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "En sökväg till en lokal katalogstruktur med kartrutor"
-
-#: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Rutstorlek för lokal katalog med kartrutor"
-
-#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "Visa programmets version"
 
-#: src/application.js:90
+#: src/application.js:80
 msgid "Search for places"
 msgstr "Sök efter platser"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[FIL…|URI]"
 
 # "maps:///" är schemat
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Ogiltig maps:-URI: %s"
@@ -844,31 +943,33 @@ msgstr "PNG"
 msgid "Unable to export view"
 msgstr "Kan ej exportera vy"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Favorit borttagen"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "Tog bort stjärnmärkning för ”%s”"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "Å_ngra"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "ogiltig koordinat"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
 msgstr "tolkningsfel"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "okänd geometri"
 
-#: src/graphHopper.js:116 src/transitPlan.js:169
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Ruttbegäran misslyckades."
 
-#: src/graphHopper.js:123 src/transitPlan.js:165
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "Hittade ingen rutt."
 
@@ -876,28 +977,28 @@ msgstr "Hittade ingen rutt."
 msgid "Start!"
 msgstr "Starta!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "Slå på platstjänster"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "Platsinställningar"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:662
 msgid "Show Route Planner"
 msgstr "Visa ruttplanerare"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:677
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Copyright © 2011 – 2026 Red Hat, Inc. och upphovsmännen för GNOME Kartor"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
@@ -906,16 +1007,16 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartdata från %s och bidragsgivare"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
 msgstr "Kartdataleverantör"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
 msgstr "Kartruteleverantör"
 
@@ -924,37 +1025,37 @@ msgstr "Kartruteleverantör"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartrutor tillhandahållna av %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:726
 msgid "Search Provider"
 msgstr "Sökleverantör"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Sökning tillhandahålls av %s med %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "Alla lagerfiler"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "Öppna formlager"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
 msgstr "Misslyckades med att öppna lager"
 
-#: src/mapView.js:723
+#: src/mapView.js:714
 msgid "Do you want to continue?"
 msgstr "Vill du fortsätta?"
 
-#: src/mapView.js:724
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -963,140 +1064,140 @@ msgstr ""
 "Du håller på att öppna filer med en total storlek på %s MB. Dessa kan ta "
 "lite tid att läsa in"
 
-#: src/mapView.js:730
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/mapView.js:762
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Filtypen stöds inte"
 
-#: src/mapView.js:801
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
 msgstr "Misslyckades med att öppna GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Zooma in för att lägga till plats"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "Platsen lades till i OpenStreetMap"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Starta"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Anländ"
 
-#: src/motis.js:360
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Ta trapporna till våning %s"
 
-#: src/motis.js:361
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "Ta trapporna"
 
-#: src/motis.js:365
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Fortsätt på %s"
 
-#: src/motis.js:370
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Sväng vänster på %s"
 
-#: src/motis.js:371
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "Sväng vänster"
 
-#: src/motis.js:375
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Sväng svagt vänster på %s"
 
-#: src/motis.js:376
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "Sväng svagt vänster"
 
-#: src/motis.js:380
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Sväng kraftigt vänster på %s"
 
-#: src/motis.js:381
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "Sväng kraftigt vänster"
 
-#: src/motis.js:385
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Sväng höger på %s"
 
-#: src/motis.js:386
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "Sväng höger"
 
-#: src/motis.js:390
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Sväng svagt höger på %s"
 
-#: src/motis.js:391
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "Sväng svagt höger"
 
-#: src/motis.js:395
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Sväng kraftigt höger på %s"
 
-#: src/motis.js:396
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "Sväng kraftigt höger"
 
-#: src/motis.js:403
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Ta avfart %s i rondellen"
 
-#: src/motis.js:406
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Ta avfart till %s i rondellen"
 
-#: src/motis.js:408
+#: src/motis.js:531
 msgid "Take the roundabout"
 msgstr "Ta rondellen"
 
-#: src/motis.js:416
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Ta hissen och stig av på %s"
 
-#: src/motis.js:417
+#: src/motis.js:540
 msgid "Take the elevator"
 msgstr "Ta hissen"
 
-#: src/motis.js:421
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Gör en u-sväng åt vänster in på %s"
 
-#: src/motis.js:422
+#: src/motis.js:545
 msgid "Make a left u-turn"
 msgstr "Gör en u-sväng åt vänster"
 
-#: src/motis.js:426
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Gör en u-sväng åt höger in på %s"
 
-#: src/motis.js:427
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "Gör en u-sväng åt höger"
 
@@ -1136,14 +1237,6 @@ msgstr "Objektet har tagits bort"
 msgid "Way or relation refers to non-existing children"
 msgstr "Väg eller relation refererar till obefintliga barn"
 
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Allmänt"
-
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "Namn"
-
 #: src/osmEditDialog.js:118
 msgid "Type"
 msgstr "Typ"
@@ -1164,11 +1257,11 @@ msgstr "Öppettider"
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:644
 msgid "Email"
 msgstr "E-post"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:611
 msgid "Website"
 msgstr "Webbplats"
 
@@ -1225,7 +1318,7 @@ msgstr "Diverse"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1235,11 +1328,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:845
 msgid "Population"
 msgstr "Folkmängd"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:874
 msgid "Altitude"
 msgstr "Höjd över havet"
 
@@ -1484,7 +1577,7 @@ msgstr "Affär"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:90 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "Turism"
 
@@ -1495,41 +1588,38 @@ msgstr "Turism"
 msgid "Other"
 msgstr "Annat"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
-#: src/osmTypes.js:210
-msgid "Public transportation stop"
-msgstr "Kollektivtrafikstopp"
-
-#: src/osmTypes.js:217
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Bergbanestation"
 
 # https://sv.wikipedia.org/wiki/Light_rail
-#: src/osmTypes.js:219
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Lättbanestopp"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Monorailstation"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Järnvägsstation"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Tunnelbanestation"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Järnvägsstopp"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Spårvagnsstopp"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Kollektivtrafikstopp"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -1549,7 +1639,7 @@ msgstr "Misslyckades med att tolka geo-URI"
 msgid "Failed to parse Maps URI"
 msgstr "Misslyckades med att tolka maps-URI"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:597
 msgid "Coordinates"
 msgstr "Koordinater"
 
@@ -1567,12 +1657,91 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:371
+msgid "Arrival information provided by Transitous"
+msgstr "Ankomstinformation tillhandahållen av Transitous"
+
+#: src/placeView.js:372
+msgid "Departure information provided by Transitous"
+msgstr "Avgångsinformation tillhandahållen av Transitous"
+
+#: src/placeView.js:422
+msgid "No arrivals found"
+msgstr "Inga ankomster hittades"
+
+#: src/placeView.js:423
+msgid "No departures found"
+msgstr "Inga avgångar hittades"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:453
+msgid "Flights"
+msgstr "Flyg"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:457
+msgid "Trains"
+msgstr "Tåg"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:461
+msgid "Ferries"
+msgstr "Färjor"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:465
+msgid "Gondola"
+msgstr "Gondolbana"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:469
+msgid "Funicular"
+msgstr "Bergbana"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:473
+msgid "Subway"
+msgstr "Tunnelbana"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:477
+msgid "Trams"
+msgstr "Spårvagnar"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:481
+msgid "Buses"
+msgstr "Bussar"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:541
+msgid "All"
+msgstr "Alla"
+
+#: src/placeView.js:603
 msgid "Accuracy"
 msgstr "Noggrannhet"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:606
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Noggrannhet: %s"
@@ -1583,7 +1752,7 @@ msgstr "Noggrannhet: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:625
 msgid "Phone number"
 msgstr "Telefonnummer"
 
@@ -1594,16 +1763,16 @@ msgstr "Telefonnummer"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:659 src/placeView.js:698
 msgid "Floor"
 msgstr "Våning"
 
-#: src/placeView.js:412
+#: src/placeView.js:661
 #, javascript-format
 msgid "Floor %s"
 msgstr "Våning %s"
 
-#: src/placeView.js:424
+#: src/placeView.js:673
 msgid "At ground level"
 msgstr "På marknivå"
 
@@ -1613,7 +1782,7 @@ msgstr "På marknivå"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:682
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1625,7 +1794,7 @@ msgstr[1] "%s våningar ovanför marknivå"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:693
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1636,7 +1805,7 @@ msgstr[1] "%s våningar under jord"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:711
 msgid "Offers takeout"
 msgstr "Erbjuder hämtmat"
 
@@ -1644,7 +1813,7 @@ msgstr "Erbjuder hämtmat"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:719
 msgid "Does not offer takeout"
 msgstr "Erbjuder inte hämtmat"
 
@@ -1653,18 +1822,18 @@ msgstr "Erbjuder inte hämtmat"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:728
 msgid "Only offers takeout"
 msgstr "Erbjuder endast hämtmat"
 
-#: src/placeView.js:486
+#: src/placeView.js:735
 msgid "Opening hours"
 msgstr "Öppettider"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:745
 msgid "Public internet access"
 msgstr "Öppen internetåtkomst"
 
@@ -1672,50 +1841,50 @@ msgstr "Öppen internetåtkomst"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:754
 msgid "No internet access"
 msgstr "Ingen internetåtkomst"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:762
 msgid "Public Wi-Fi"
 msgstr "Öppet Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:770
 msgid "Wired internet access"
 msgstr "Trådbunden internetåtkomst"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:778
 msgid "Computers available for use"
 msgstr "Datorer tillgängliga för användning"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:786
 msgid "Internet assistance available"
 msgstr "Internethjälp tillgänglig"
 
-#: src/placeView.js:543
+#: src/placeView.js:792
 msgid "No toilets available"
 msgstr "Inga toaletter tillgängliga"
 
-#: src/placeView.js:546
+#: src/placeView.js:795
 msgid "Toilets available"
 msgstr "Toaletter tillgängliga"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:804
 msgid "Wheelchair accessible"
 msgstr "Rullstolsanpassat"
 
@@ -1724,7 +1893,7 @@ msgstr "Rullstolsanpassat"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:814
 msgid "Limited wheelchair accessibility"
 msgstr "Begränsad rullstolsanpassning"
 
@@ -1732,7 +1901,7 @@ msgstr "Begränsad rullstolsanpassning"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:823
 msgid "Not wheelchair accessible"
 msgstr "Inte rullstolsanpassat"
 
@@ -1741,7 +1910,7 @@ msgstr "Inte rullstolsanpassat"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:833
 msgid "Designated for wheelchair users"
 msgstr "Designat för rullstolsburna"
 
@@ -1750,7 +1919,7 @@ msgstr "Designat för rullstolsburna"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:864
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s under havsnivå"
@@ -1759,16 +1928,16 @@ msgstr "%s under havsnivå"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:871
 msgid "At sea level"
 msgstr "Vid havsnivå"
 
-#: src/placeView.js:634
+#: src/placeView.js:883
 msgid "Religion:"
 msgstr "Religion:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:888
 #, javascript-format
 msgid "Exit %s"
 msgstr "Lämna %s"
@@ -1782,15 +1951,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:670
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
 msgstr "Platsen hittades inte i OpenStreetMap"
 
-#: src/place.js:677
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinaterna i URL:en är felaktiga"
 
-#: src/place.js:686
+#: src/place.js:698
 msgid "URL is not supported"
 msgstr "URL:en stöds inte"
 
@@ -1922,149 +2091,190 @@ msgstr "Blommor"
 msgid "Gifts"
 msgstr "Presenter"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+msgid "Bicycles"
+msgstr "Cyklar"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "Transport"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "Buss- och spårvagnsstopp"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "Tåg- och tunnelbanestationer"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "Biljetter"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "Parkering"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "Cykelparkering"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "Cykeluthyrning"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "Biluthyrning"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "Bränsle"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "Laddstolpe"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "Sjukvård"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "Kliniker"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "Sjukhus"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "Tandläkare"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "Inkvartering"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "Hotell"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "Vandrarhem"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "Bed & Breakfast"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "Campingar"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "Rekreation"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "Parker"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "Lekplatser"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "Stränder"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "Naturreservat"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "Temaparker"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "Teatrar"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "Biografer"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "Nattklubbar"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "Museum"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "Attraktioner"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "Konstverk"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "Turistinformation"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
 msgstr "Sport"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "Gym"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "Utegym"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "Golfbanor"
+
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+msgid "Estimated size: %s"
+msgstr "Uppskattad storlek: %s"
+
+#: src/preferencesDownloadNew.js:154
+msgid "Failed to estimate size"
+msgstr "Misslyckades med att uppskatta storlek"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr ""
+"Strömsparläge är aktivt och nätverket har datakvot — automatiska hämtningar "
+"pausade"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "Nätverket har datakvot — automatiska hämtningar pausade"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr "Strömsparläge är aktivt — automatiska hämtningar pausade"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "Karta #%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "Ta bort hämtning?"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "Ta bort"
 
 #: src/printLayout.js:215
 #, javascript-format
@@ -2140,10 +2350,64 @@ msgstr "Öppna med %s"
 msgid "failed to load file"
 msgstr "misslyckades med att läsa in fil"
 
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/itinerary.js:82
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minut"
+msgstr[1] "%s minuter"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s timme"
+msgstr[1] "%s timmar"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s timme"
+msgstr[1] "%s:%s timmar"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:193
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:55
+#: src/transit/utils.js:57
 #, javascript-format
 msgid "Walk %s"
 msgstr "Gå %s"
@@ -2151,7 +2415,7 @@ msgstr "Gå %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:69
+#: src/transit/utils.js:71
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Anländ vid %s"
@@ -2159,24 +2423,99 @@ msgstr "Anländ vid %s"
 #. Translators: this a format string indicating departing from the
 #. * destination of journey with the departure address and transit
 #. * stop as the format parameter
-#: src/transit.js:83
+#: src/transit/utils.js:85
 #, javascript-format
 msgid "Start at %s"
 msgstr "Starta från %s"
 
-#: src/transitLegHeader.js:93
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:138
+#, javascript-format
+msgid "Track %s"
+msgstr "Spår %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:146
+#, javascript-format
+msgid "Quay %s"
+msgstr "Kaj %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:152
+#, javascript-format
+msgid "Gate %s"
+msgstr "Gate %s"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:162
+msgid "Departure track changed"
+msgstr "Avgångspår ändrat"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that e.g. a bus stop
+#. * "stop position"
+#.
+#: src/transit/utils.js:168
+msgid "Departure stop position changed"
+msgstr "Position för avgångsstopp ändrad"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:174
+msgid "Departure quay changed"
+msgstr "Avgångskaj ändrad"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:180
+msgid "Departure gate changed"
+msgstr "Avgångsgate ändrad"
+
+#: src/transitJunctureRow.js:78
+msgid "Hide information"
+msgstr "Dölj information"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with "
+"distance"
+msgid "%1s, %2s (%3s)"
+msgstr "%1s, %2s (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "%1s (%2s)"
+
+#: src/transitLegHeader.js:125
 msgid "Hide intermediate stops and information"
 msgstr "Dölj mellanliggande stopp och information"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
 msgstr "Dölj gånginstruktioner"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:128
 msgid "Show intermediate stops and information"
 msgstr "Visa mellanliggande stopp och information"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:129
 msgid "Show walking instructions"
 msgstr "Visa gånginstruktioner"
 
@@ -2204,60 +2543,6 @@ msgstr "Inga senare alternativ hittades."
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:241
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:267
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s minut"
-msgstr[1] "%s minuter"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:279
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s timme"
-msgstr[1] "%s timmar"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:287
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s timme"
-msgstr[1] "%s:%s timmar"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:598
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2354,19 +2639,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:262
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "Okänd"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:265
+#: src/utils.js:266
 msgid "Exact"
 msgstr "Exakt"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2375,7 +2660,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2386,7 +2671,7 @@ msgstr[1] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2397,7 +2682,7 @@ msgstr[1] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2405,28 +2690,46 @@ msgstr[0] "%s s"
 msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:352
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s miles"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:355
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s fot"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:363
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:366
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
+
+#~ msgid "Failed to find tile structure in directory"
+#~ msgstr "Misslyckades med att hitta rutstruktur i katalog"
+
+#~ msgid "A path to a local tiles directory structure"
+#~ msgstr "En sökväg till en lokal katalogstruktur med kartrutor"
+
+#~ msgid "Tile size for local tiles directory"
+#~ msgstr "Rutstorlek för lokal katalog med kartrutor"
+
+#~ msgid "No Favorites"
+#~ msgstr "Inga favoriter"
+
+#~ msgid "Favorites"
+#~ msgstr "Favoriter"
+
+#~ msgid "Favorite removed"
+#~ msgstr "Favorit borttagen"
 
 #~ msgid "No timetable data found for this route."
 #~ msgstr "Inga tidtabellsdata hittades för denna rutt."
@@ -2534,9 +2837,6 @@ msgstr "%s m"
 
 #~ msgid "Next"
 #~ msgstr "Nästa"
-
-#~ msgid "Remove"
-#~ msgstr "Ta bort"
 
 #~ msgid ""
 #~ "The format used should include the language code and the article title "
