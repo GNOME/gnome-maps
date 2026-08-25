@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-24 21:14+0000\n"
-"PO-Revision-Date: 2026-03-03 14:48+0000\n"
+"POT-Creation-Date: 2026-08-19 19:27+0000\n"
+"PO-Revision-Date: 2026-08-25 18:56+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Language: pt_PT\n"
 "X-Source-Language: C\n"
 "X-Project-Style: gnome\n"
@@ -234,9 +234,30 @@ msgid "Public transit itinerary"
 msgstr "Itinerário de transportes públicos"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:704
+#: data/org.gnome.Maps.metainfo.xml.in.in:706
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:725
+msgid "maps"
+msgstr "mapas"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:726
+msgid "location finder"
+msgstr "localizador"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:727
+msgid "place search"
+msgstr "pesquisa por local"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:728
+msgid "google maps alternative"
+msgstr "alternativa ao Google Maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:729
+msgid "free map app"
+msgstr "aplicação gratuita de mapas"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -363,7 +384,7 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Ver informações sobre o local"
 
@@ -453,7 +474,7 @@ msgstr "Editar Local"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Editar local no OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:369
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Continue"
 
@@ -707,7 +728,6 @@ msgid "View More"
 msgstr "Ver mais"
 
 #: data/ui/transit-options-panel.blp:123
-#| msgid "ATMs"
 msgid "AM"
 msgstr "AM"
 
@@ -789,7 +809,7 @@ msgid "Zoom Out"
 msgstr "Reduzir"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Ampliar"
 
@@ -884,28 +904,28 @@ msgstr "Rota não encontrada."
 msgid "Start!"
 msgstr "Iniciar!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Falha ao ligar-se ao serviço de localização"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Ativar os serviços de localização"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Definições de local"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Mostrar Programador de rotas"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Direitos de autor © 2011 – 2026 Red Hat, Inc. e autores do Mapas do GNOME"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Hugo Carvalho <hugokarvalho@hotmail.com>\n"
@@ -916,16 +936,16 @@ msgstr ""
 "Juliano de Souza Camargo <julianosc@pm.me>\n"
 "João Carvalhinho <joao.carvalhinho@gmail.com>"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dados cartográficos de %s e contribuidores"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Fornecedor de dados do mapa"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Fornecedor de imagens mapa"
 
@@ -934,37 +954,37 @@ msgstr "Fornecedor de imagens mapa"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Telas de mapas fornecida por %s"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Fornecedor de pesquisa"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Procura fornecida por %s utilizando %s"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Todos os ficheiros de camada"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Abrir camadas de mapa"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "Falha ao abrir camada"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Deseja continuar?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -973,140 +993,140 @@ msgstr ""
 "Está prestes a abrir ficheiros com um tamanho total de %s MB. Isto pode "
 "demorar algum tempo a carregar"
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro não suportado"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "Falha ao abrir o GeoURI"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Ampliar para adicionar a localização"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "A localização foi adicionada no OpenStreetMap"
 
-#: src/motis.js:332 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Partir"
 
-#: src/motis.js:351 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Chegar"
 
-#: src/motis.js:363
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Use as escada até ao andar %s"
 
-#: src/motis.js:364
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Use as escadas"
 
-#: src/motis.js:368
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continue em %s"
 
-#: src/motis.js:373
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Vire à esquerda em %s"
 
-#: src/motis.js:374
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Vire à esquerda"
 
-#: src/motis.js:378
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Vire curva ligeira à esquerda em %s"
 
-#: src/motis.js:379
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Vire curva ligeira à esquerda"
 
-#: src/motis.js:383
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Vire curva apertada à esquerda em %s"
 
-#: src/motis.js:384
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Vire curva apertada à esquerda"
 
-#: src/motis.js:388
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Vire à direita em %s"
 
-#: src/motis.js:389
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Vire à direita"
 
-#: src/motis.js:393
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Vire curva ligeira à direita em %s"
 
-#: src/motis.js:394
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Vire curva ligeira à direita"
 
-#: src/motis.js:398
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Vire curva apertada à direita em %s"
 
-#: src/motis.js:399
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Vire curva apertada à direita"
 
-#: src/motis.js:406
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Na rotunda, tome a saída %s"
 
-#: src/motis.js:409
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Na rotunda, tome a saída para %s"
 
-#: src/motis.js:411
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "Tome a rotunda"
 
-#: src/motis.js:419
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Tome o elevador e saia em %s"
 
-#: src/motis.js:420
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Tome o elevador"
 
-#: src/motis.js:424
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Faça uma curva em u à esquerda em %s"
 
-#: src/motis.js:425
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Faça uma curva em u à esquerda"
 
-#: src/motis.js:429
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Faça uma curva em u à direita em %s"
 
-#: src/motis.js:430
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Faça uma curva em u à direita em %s"
 
@@ -1174,11 +1194,11 @@ msgstr "Horário de funcionamento"
 msgid "Phone"
 msgstr "Telefone"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:396
 msgid "Email"
 msgstr "Correio eletrónico"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:363
 msgid "Website"
 msgstr "Página Web"
 
@@ -1245,11 +1265,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:597
 msgid "Population"
 msgstr "População"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:626
 msgid "Altitude"
 msgstr "Altitude"
 
@@ -1505,35 +1525,35 @@ msgstr "Turismo"
 msgid "Other"
 msgstr "Outros"
 
-#: src/osmTypes.js:210
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Estação de funicular"
 
-#: src/osmTypes.js:212
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "Paragem de Comboio ligeira"
 
-#: src/osmTypes.js:214
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Estação monocarril"
 
-#: src/osmTypes.js:216 src/osmTypes.js:226
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Estação de comboios"
 
-#: src/osmTypes.js:218
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Estações de metro"
 
-#: src/osmTypes.js:222
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Paragem de comboios"
 
-#: src/osmTypes.js:224
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Paragem de eléctricos"
 
-#: src/osmTypes.js:233 src/osmTypes.js:242
+#: src/osmTypes.js:257 src/osmTypes.js:266
 msgid "Public transportation stop"
 msgstr "Paragem de transportes públicos"
 
@@ -1553,7 +1573,7 @@ msgstr "Falha ao processar URI Geo"
 msgid "Failed to parse Maps URI"
 msgstr "Falha ao processar URI Mapas"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:349
 msgid "Coordinates"
 msgstr "Coordenadas"
 
@@ -1571,12 +1591,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:355
 msgid "Accuracy"
 msgstr "Precisão"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:358
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precisão: %s"
@@ -1587,7 +1607,7 @@ msgstr "Precisão: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:377
 msgid "Phone number"
 msgstr "Número da telefone"
 
@@ -1598,16 +1618,16 @@ msgstr "Número da telefone"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:411 src/placeView.js:450
 msgid "Floor"
 msgstr "Piso"
 
-#: src/placeView.js:412
+#: src/placeView.js:413
 #, javascript-format
 msgid "Floor %s"
 msgstr "Piso %s"
 
-#: src/placeView.js:424
+#: src/placeView.js:425
 msgid "At ground level"
 msgstr "Ao nível do solo"
 
@@ -1616,7 +1636,7 @@ msgstr "Ao nível do solo"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:434
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1628,7 +1648,7 @@ msgstr[1] "%s pisos acima do nível do solo"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:445
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1639,7 +1659,7 @@ msgstr[1] "%s pisos abaixo do nível do solo"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:463
 msgid "Offers takeout"
 msgstr "Oferece comida para levar"
 
@@ -1647,7 +1667,7 @@ msgstr "Oferece comida para levar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:471
 msgid "Does not offer takeout"
 msgstr "Não oferece comida para levar"
 
@@ -1656,18 +1676,18 @@ msgstr "Não oferece comida para levar"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:480
 msgid "Only offers takeout"
 msgstr "Apenas oferece comida para levar"
 
-#: src/placeView.js:486
+#: src/placeView.js:487
 msgid "Opening hours"
 msgstr "Horário de funcionamento"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:497
 msgid "Public internet access"
 msgstr "Acesso público à Internet"
 
@@ -1675,50 +1695,50 @@ msgstr "Acesso público à Internet"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:506
 msgid "No internet access"
 msgstr "Sem acesso à Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:514
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi público"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:522
 msgid "Wired internet access"
 msgstr "Acesso à Internet por cabo"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:530
 msgid "Computers available for use"
 msgstr "Computadores disponíveis para utilização"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:538
 msgid "Internet assistance available"
 msgstr "Assistência na Internet disponível"
 
-#: src/placeView.js:543
+#: src/placeView.js:544
 msgid "No toilets available"
 msgstr "Sem casas de banho disponíveis"
 
-#: src/placeView.js:546
+#: src/placeView.js:547
 msgid "Toilets available"
 msgstr "Casas de banho disponíveis"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:556
 msgid "Wheelchair accessible"
 msgstr "Acessível a cadeiras de rodas"
 
@@ -1727,7 +1747,7 @@ msgstr "Acessível a cadeiras de rodas"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:566
 msgid "Limited wheelchair accessibility"
 msgstr "Acesso limitado a cadeiras de rodas"
 
@@ -1735,7 +1755,7 @@ msgstr "Acesso limitado a cadeiras de rodas"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:575
 msgid "Not wheelchair accessible"
 msgstr "Não acessível a cadeira de rodas"
 
@@ -1744,7 +1764,7 @@ msgstr "Não acessível a cadeira de rodas"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:585
 msgid "Designated for wheelchair users"
 msgstr "Designado para utilizadores de cadeiras de rodas"
 
@@ -1753,7 +1773,7 @@ msgstr "Designado para utilizadores de cadeiras de rodas"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:616
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s abaixo do nível do mar"
@@ -1762,16 +1782,16 @@ msgstr "%s abaixo do nível do mar"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:623
 msgid "At sea level"
 msgstr "No nível do mar"
 
-#: src/placeView.js:634
+#: src/placeView.js:635
 msgid "Religion:"
 msgstr "Religião:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:640
 #, javascript-format
 msgid "Exit %s"
 msgstr "Saída %s"
