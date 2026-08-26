@@ -2455,7 +2455,7 @@
         "bottom": 4.5
       }
     },
-    "MX:Q.ROO": {
+    "MX:QROO": {
       "spriteBlank": [
         "shield_escutcheon_crossbar_2",
         "shield_escutcheon_crossbar_3"
@@ -2626,6 +2626,19 @@
         "bottom": 8
       }
     },
+    "PA:national": {
+      "spriteBlank": [
+        "shield_badge_crossbar_2",
+        "shield_badge_crossbar_3"
+      ],
+      "textColor": "black",
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 6,
+        "bottom": 4
+      }
+    },
     "US:I": {
       "spriteBlank": [
         "shield_us_interstate_2",
@@ -2776,6 +2789,9 @@
           "ALT",
           "TRK",
           "BUS"
+        ],
+        "US:US:Express": [
+          "EXPR"
         ]
       }
     },
@@ -2823,11 +2839,20 @@
     "US:NHT": {
       "notext": true,
       "overrideByName": {
+        "California National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_cali"
+        },
         "Juan Bautista de Anza National Historic Trail Auto Tour Route": {
           "spriteBlank": "shield_us_nht_juba"
         },
+        "Lewis and Clark National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_lecl"
+        },
         "Mormon Pioneer National Historic Trail Auto Tour Route": {
           "spriteBlank": "shield_us_nht_mopi"
+        },
+        "Nez Perce National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_nez_perce"
         },
         "Oregon National Historic Trail Auto Tour Route": {
           "spriteBlank": "shield_us_nht_oreg"
@@ -2838,10 +2863,17 @@
         "Pony Express National Historic Trail Auto Tour Route": {
           "spriteBlank": "shield_us_nht_poex"
         },
+        "Santa Fe National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_safe"
+        },
         "Selma to Montgomery National Historic Trail": {
           "spriteBlank": "shield_us_nht_semo"
         }
       }
+    },
+    "US:CKC": {
+      "spriteBlank": "shield_us_ckc",
+      "notext": true
     },
     "US:GLST": {
       "noref": {
@@ -5188,6 +5220,9 @@
         ],
         "US:AZ:Business": [
           "BUS"
+        ],
+        "US:AZ:Truck": [
+          "TRK"
         ]
       }
     },
@@ -5442,12 +5477,12 @@
     },
     "US:CO:NW": {
       "spriteBlank": "shield_us_co_nw",
-      "textColor": "black",
+      "textColor": "#003f87",
       "padding": {
         "left": 3,
-        "right": 6,
-        "top": 2,
-        "bottom": 16
+        "right": 3,
+        "top": 12,
+        "bottom": 2
       }
     },
     "US:CO:Arapahoe": {
@@ -6297,6 +6332,11 @@
         "right": 4.5,
         "top": 6,
         "bottom": 4
+      },
+      "bannerMap": {
+        "US:FL:Business": [
+          "BUS"
+        ]
       }
     },
     "US:FL:Toll": {
@@ -6337,6 +6377,9 @@
       },
       "textColor": "#ffcd00",
       "bannerMap": {
+        "US:FL:CR:Alternate": [
+          "ALT"
+        ],
         "US:FL:CR:Truck": [
           "TRK"
         ]
@@ -6469,7 +6512,7 @@
         "shield_us_id_2",
         "shield_us_id_3"
       ],
-      "textColor": "black",
+      "textColor": "white",
       "padding": {
         "left": 5.5,
         "right": 1.5,
@@ -6479,8 +6522,57 @@
       "bannerMap": {
         "US:ID:Business": [
           "BUS"
+        ],
+        "US:ID:Spur": [
+          "SPUR"
         ]
       }
+    },
+    "US:ID:Bonneville": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 3,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "white",
+          "radius1": 2,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 4.277568135664543,
+        "right": 4.277568135664543,
+        "top": 2.5,
+        "bottom": 3
+      },
+      "textColor": "white"
+    },
+    "US:ID:Clark": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 3,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius1": 2,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 4.277568135664543,
+        "right": 4.277568135664543,
+        "top": 2.5,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
     },
     "US:IL": {
       "shapeBlank": {
@@ -6667,6 +6759,29 @@
       "textColor": "#ffcd00"
     },
     "US:IL:Coles": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 3,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius1": 2,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 4.277568135664543,
+        "right": 4.277568135664543,
+        "top": 2.5,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
+    "US:IL:Cook": {
       "shapeBlank": {
         "drawFunc": "pentagon",
         "params": {
@@ -7402,6 +7517,29 @@
       },
       "textColor": "#ffcd00"
     },
+    "US:IL:Will": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 3,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius1": 2,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 4.277568135664543,
+        "right": 4.277568135664543,
+        "top": 2.5,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
     "US:IL:Winnebago": {
       "shapeBlank": {
         "drawFunc": "pentagon",
@@ -7501,25 +7639,17 @@
         "right": 2,
         "top": 2,
         "bottom": 2
-      }
-    },
-    "US:KS:Truck": {
-      "banners": [
-        "TRK"
-      ],
-      "spriteBlank": [
-        "shield_us_ks_2",
-        "shield_us_ks_3"
-      ],
-      "textColor": "black",
-      "textLayout": {
-        "constraintFunc": "ellipse"
       },
-      "padding": {
-        "left": 2,
-        "right": 2,
-        "top": 2,
-        "bottom": 2
+      "bannerMap": {
+        "US:KS:Alternate": [
+          "ALT"
+        ],
+        "US:KS:Spur": [
+          "SPUR"
+        ],
+        "US:KS:Truck": [
+          "TRK"
+        ]
       }
     },
     "US:KS:Turnpike": {
@@ -20184,6 +20314,29 @@
       },
       "textColor": "#ffcd00"
     },
+    "US:SD:Hand": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 3,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius1": 2,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 4.277568135664543,
+        "right": 4.277568135664543,
+        "top": 2.5,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
     "US:SD:Harding": {
       "shapeBlank": {
         "drawFunc": "pentagon",
@@ -20679,6 +20832,29 @@
         "bottom": 3
       },
       "textColor": "#ffcd00"
+    },
+    "US:US:Historic:SD": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#693f23",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
     },
     "US:TN:primary": {
       "spriteBlank": "shield_us_tn_primary",
@@ -26588,6 +26764,98 @@
       },
       "textColor": "white"
     },
+    "MA:A": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
+    },
+    "MA:RN": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#bf2033",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
+    },
+    "MA:RR": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
+    "MA:RP": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "white",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
     "NE:N-roads": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -29481,6 +29749,123 @@
       },
       "textColor": "white"
     },
+    "KR:48:Namhae": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#003f87"
+    },
+    "KR:45:Gochang": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#003f87"
+    },
+    "KR:42:Hongcheon": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#003f87"
+    },
+    "KR:45:Wanju": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "white",
+          "rectWidth": 30,
+          "radius": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 0
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#003f87"
+    },
+    "KR:27:Gunwi": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#ffcd00",
+          "strokeColor": "white",
+          "rectWidth": 30,
+          "radius": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 0
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#003f87"
+    },
     "KR:local": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -29679,6 +30064,29 @@
       }
     },
     "KR:50:expressway": {
+      "spriteBlank": "shield_kr_municipal_motorway",
+      "textColor": "#003f87",
+      "padding": {
+        "left": 4,
+        "right": 4,
+        "top": 4,
+        "bottom": 4
+      }
+    },
+    "KR:41:Gapyeong": {
+      "spriteBlank": [
+        "shield_kr_municipal",
+        "shield_kr_municipal_4"
+      ],
+      "textColor": "#003f87",
+      "padding": {
+        "left": 4,
+        "right": 4,
+        "top": 4,
+        "bottom": 4
+      }
+    },
+    "KR:41:Gapyeong:expressway": {
       "spriteBlank": "shield_kr_municipal_motorway",
       "textColor": "#003f87",
       "padding": {
@@ -31924,6 +32332,28 @@
       },
       "textColor": "white"
     },
+    "AL:A": {
+      "shapeBlank": {
+        "drawFunc": "octagonVertical",
+        "params": {
+          "yOffset": 2,
+          "sideAngle": 0.17453292519943295,
+          "fillColor": "#006747",
+          "strokeColor": "white",
+          "radius": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "ellipse"
+      },
+      "padding": {
+        "left": 2,
+        "right": 2,
+        "top": 2,
+        "bottom": 2
+      },
+      "textColor": "white"
+    },
     "AT:A-road": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -32251,6 +32681,122 @@
       "textColor": "white"
     },
     "ch:national": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
+    },
+    "CY:motorway": {
+      "shapeBlank": {
+        "drawFunc": "hexagonVertical",
+        "params": {
+          "yOffset": 2,
+          "fillColor": "#006747",
+          "strokeColor": "#ffcd00",
+          "radius": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 0
+        }
+      },
+      "padding": {
+        "left": 2,
+        "right": 2,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
+    "CY:F": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
+    "CY:E": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
+    "CY:B": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "#ffcd00",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
+    "CY:national": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
         "params": {
@@ -36233,6 +36779,31 @@
         "bottom": 4
       }
     },
+    "mk:national": {
+      "shapeBlank": {
+        "drawFunc": "hexagonVertical",
+        "params": {
+          "yOffset": 3,
+          "fillColor": "#006747",
+          "strokeColor": "white",
+          "radius": 0,
+          "rectWidth": 34
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 0
+        }
+      },
+      "padding": {
+        "left": 2,
+        "right": 2,
+        "top": 4,
+        "bottom": 4
+      },
+      "textColor": "white"
+    },
     "PL:motorway": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -36394,6 +36965,31 @@
         "right": 3,
         "top": 3,
         "bottom": 3
+      },
+      "textColor": "white"
+    },
+    "RS:motorway": {
+      "shapeBlank": {
+        "drawFunc": "hexagonVertical",
+        "params": {
+          "yOffset": 3,
+          "fillColor": "#006747",
+          "strokeColor": "white",
+          "radius": 0,
+          "rectWidth": 34
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 0
+        }
+      },
+      "padding": {
+        "left": 2,
+        "right": 2,
+        "top": 4,
+        "bottom": 4
       },
       "textColor": "white"
     },
