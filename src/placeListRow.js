@@ -52,11 +52,11 @@ export class PlaceListRow extends Gtk.ListBoxRow {
     constructor({place, searchString, sizeGroup, showSecondaryIcon, ...params}) {
         super(params);
 
-        this.update(place, searchString || '');
+        this._showSecondaryIcon = showSecondaryIcon ?? true;
+        this.update(place, searchString ?? '');
+
         if (sizeGroup)
             sizeGroup.add_widget(this._distanceLabel);
-
-        this._showSecondaryIcon = showSecondaryIcon ?? true;
     }
 
     /**
