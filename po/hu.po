@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-02-17 17:03+0000\n"
-"PO-Revision-Date: 2026-02-22 12:49+0100\n"
+"POT-Creation-Date: 2026-09-01 19:50+0000\n"
+"PO-Revision-Date: 2026-09-01 22:59+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -176,7 +176,6 @@ msgstr ""
 "mértékegységeket jelenít meg)."
 
 #: data/org.gnome.Maps.gschema.xml:90
-#| msgid "Share location"
 msgid "Show location marker"
 msgstr "Helyjelölő megjelenítése"
 
@@ -208,14 +207,11 @@ msgstr ""
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:25
 #: data/org.gnome.Maps.metainfo.xml.in.in:41
-#| msgctxt "shortcut window"
-#| msgid "Map View"
 msgid "Map view"
 msgstr "Térkép nézet"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:29
 #: data/org.gnome.Maps.metainfo.xml.in.in:45
-#| msgid "Hide walking instructions"
 msgid "Pedestrian route instructions"
 msgstr "Gyalogos útvonal utasításai"
 
@@ -226,14 +222,36 @@ msgstr "Egy kiválasztott hely információi"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:37
 #: data/org.gnome.Maps.metainfo.xml.in.in:53
-#| msgid "Public Transit"
 msgid "Public transit itinerary"
 msgstr "Tömegközlekedési útvonal"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:631
+#: data/org.gnome.Maps.metainfo.xml.in.in:704
+#: data/org.gnome.Maps.metainfo.xml.in.in:706
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:725
+msgid "maps"
+msgstr "térképek"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:726
+#| msgid "Location Type"
+msgid "location finder"
+msgstr "helykereső"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:727
+msgid "place search"
+msgstr "helykeresés"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:728
+#| msgid "Load later alternatives"
+msgid "google maps alternative"
+msgstr "Google Térkép alternatíva"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:729
+msgid "free map app"
+msgstr "ingyenes térképalkalmazás"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -311,7 +329,6 @@ msgid "Show Scale"
 msgstr "Méretarány megjelenítése"
 
 #: data/ui/layers-popover.blp:11
-#| msgid "Share Location"
 msgid "Show Location Marker"
 msgstr "Helyjelölő megjelenítése"
 
@@ -321,12 +338,10 @@ msgid "Open Shape Layer…"
 msgstr "Alak réteg megnyitása…"
 
 #: data/ui/main-window.blp:8
-#| msgid "Set up OpenStreetMap Account…"
 msgid "_Set up OpenStreetMap Account…"
 msgstr "OpenStreetMap-fiók _beállítása…"
 
 #: data/ui/main-window.blp:13
-#| msgid "Export as Image…"
 msgid "_Export as Image…"
 msgstr "_Exportálás képként…"
 
@@ -355,7 +370,6 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
 #: data/ui/main-window.blp:55
-#| msgid "About Maps"
 msgid "_About Maps"
 msgstr "A Térképek _névjegye"
 
@@ -364,8 +378,7 @@ msgid "Main Menu"
 msgstr "Főmenü"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:629
-#| msgid "More Information"
+#: data/ui/main-window.blp:169 src/mainWindow.js:633
 msgid "View Place Information"
 msgstr "Helyinformációk megtekintése"
 
@@ -455,7 +468,7 @@ msgstr "Hely szerkesztése"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Az OpenStreetMapen meglévő hely szerkesztése"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
 msgid "Continue"
 msgstr "Folytatás"
 
@@ -539,7 +552,6 @@ msgid "Route search by GraphHopper"
 msgstr "Útvonalkeresés a GraphHopperrel"
 
 #: data/ui/route-view.blp:172
-#| msgid "Itineraries provided by %s"
 msgid "Itineraries provided by Transitous"
 msgstr "Az útvonalakat a Transitous szolgáltatja"
 
@@ -626,8 +638,6 @@ msgid "Show last search results"
 msgstr "Utolsó keresési eredmények megjelenítése"
 
 #: data/ui/shortcuts-dialog.blp:29
-#| msgctxt "shortcut window"
-#| msgid "Toggle route planner"
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Útvonaltervező megjelenítése"
@@ -693,8 +703,6 @@ msgid "Open shape layer"
 msgstr "Alak réteg megnyitása"
 
 #: data/ui/shortcuts-dialog.blp:93
-#| msgctxt "shortcut window"
-#| msgid "Toggle route planner"
 msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Helyjelölő ki- és bekapcsolása"
@@ -719,7 +727,6 @@ msgid "View More"
 msgstr "Továbbiak megtekintése"
 
 #: data/ui/transit-options-panel.blp:123
-#| msgid "ATMs"
 msgid "AM"
 msgstr "de."
 
@@ -801,7 +808,7 @@ msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
 msgid "Zoom In"
 msgstr "Nagyítás"
 
@@ -896,44 +903,42 @@ msgstr "Nem található útvonal."
 msgid "Start!"
 msgstr "Indulás!"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:535
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:540
 msgid "Turn on location services"
 msgstr "Helymeghatározó szolgáltatások bekapcsolása"
 
-#: src/mainWindow.js:537
+#: src/mainWindow.js:541
 msgid "Location Settings"
 msgstr "Helybeállítások"
 
-#: src/mainWindow.js:648
-#| msgid "Route Planner"
+#: src/mainWindow.js:652
 msgid "Show Route Planner"
 msgstr "Útvonaltervező megjelenítése"
 
-#: src/mainWindow.js:663
-#| msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:667
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011-2026 Red Hat, Inc. és a GNOME Térképek szerzői"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:668
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:675
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Térképadatok: %s és közreműködők"
 
-#: src/mainWindow.js:672
+#: src/mainWindow.js:676
 msgid "Map Data Provider"
 msgstr "Térképadatok szolgáltatója"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:679
 msgid "Map Tile Provider"
 msgstr "Térképcsempék szolgáltatója"
 
@@ -942,37 +947,37 @@ msgstr "Térképcsempék szolgáltatója"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:683
+#: src/mainWindow.js:687
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "A térképcsempéket a(z) %s szolgáltatja"
 
-#: src/mainWindow.js:712
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Keresési szolgáltató"
 
-#: src/mainWindow.js:715
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "A keresést a(z) %s biztosította %s használatával"
 
-#: src/mainWindow.js:724
+#: src/mainWindow.js:728
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
 
-#: src/mainWindow.js:737
+#: src/mainWindow.js:741
 msgid "Open Shape Layers"
 msgstr "Alak réteg megnyitása"
 
-#: src/mapView.js:706 src/mapView.js:768
+#: src/mapView.js:715 src/mapView.js:777
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: src/mapView.js:723
+#: src/mapView.js:732
 msgid "Do you want to continue?"
 msgstr "Szeretné folytatni?"
 
-#: src/mapView.js:724
+#: src/mapView.js:733
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -981,140 +986,140 @@ msgstr ""
 "Arra készül, hogy %s MB-nyi összméretű fájlokat nyit meg. A betöltése több "
 "időt vehet igénybe."
 
-#: src/mapView.js:730
+#: src/mapView.js:739
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/mapView.js:762
+#: src/mapView.js:771
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: src/mapView.js:801
+#: src/mapView.js:810
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
-#: src/mapView.js:1321
+#: src/mapView.js:1330
 msgid "Zoom in to add location"
 msgstr "Nagyítson a hely hozzáadásához"
 
-#: src/mapView.js:1339
+#: src/mapView.js:1348
 msgid "Location was added in OpenStreetMap"
 msgstr "A hely hozzá lett adva az OpenStreetMapen"
 
-#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+#: src/motis.js:338 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Indulás"
 
-#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+#: src/motis.js:357 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Érkezés"
 
-#: src/motis.js:360
+#: src/motis.js:369
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Menjen a lépcsőn a(z) %s. szintre"
 
-#: src/motis.js:361
+#: src/motis.js:370
 msgid "Take the stairs"
 msgstr "Menjen a lépcsőn"
 
-#: src/motis.js:365
+#: src/motis.js:374
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Haladjon tovább ezen: %s"
 
-#: src/motis.js:370
+#: src/motis.js:379
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Forduljon balra erre: %s"
 
-#: src/motis.js:371
+#: src/motis.js:380
 msgid "Turn left"
 msgstr "Forduljon balra"
 
-#: src/motis.js:375
+#: src/motis.js:384
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Forduljon enyhén balra erre: %s"
 
-#: src/motis.js:376
+#: src/motis.js:385
 msgid "Turn slightly left"
 msgstr "Forduljon enyhén balra"
 
-#: src/motis.js:380
+#: src/motis.js:389
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Forduljon élesen balra erre: %s"
 
-#: src/motis.js:381
+#: src/motis.js:390
 msgid "Turn sharp left"
 msgstr "Forduljon élesen balra"
 
-#: src/motis.js:385
+#: src/motis.js:394
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Forduljon jobbra erre: %s"
 
-#: src/motis.js:386
+#: src/motis.js:395
 msgid "Turn right"
 msgstr "Forduljon jobbra"
 
-#: src/motis.js:390
+#: src/motis.js:399
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Forduljon enyhén jobbra erre: %s"
 
-#: src/motis.js:391
+#: src/motis.js:400
 msgid "Turn slightly right"
 msgstr "Forduljon enyhén jobbra"
 
-#: src/motis.js:395
+#: src/motis.js:404
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Forduljon élesen jobbra erre: %s"
 
-#: src/motis.js:396
+#: src/motis.js:405
 msgid "Turn sharp right"
 msgstr "Forduljon élesen jobbra"
 
-#: src/motis.js:403
+#: src/motis.js:412
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "A körforgalomban válassza a(z) %s. kijáratot"
 
-#: src/motis.js:406
+#: src/motis.js:415
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "A körforgalomban válassza a(z) %s felé tartó kijáratot"
 
-#: src/motis.js:408
+#: src/motis.js:417
 msgid "Take the roundabout"
 msgstr "Menjen a körforgalomba"
 
-#: src/motis.js:416
+#: src/motis.js:425
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Menjen a lifthez, és szálljon ki itt: %s"
 
-#: src/motis.js:417
+#: src/motis.js:426
 msgid "Take the elevator"
 msgstr "Menjen a lifthez"
 
-#: src/motis.js:421
+#: src/motis.js:430
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Forduljon vissza balra erre: %s"
 
-#: src/motis.js:422
+#: src/motis.js:431
 msgid "Make a left u-turn"
 msgstr "Forduljon vissza balra"
 
-#: src/motis.js:426
+#: src/motis.js:435
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Forduljon vissza jobbra erre: %s"
 
-#: src/motis.js:427
+#: src/motis.js:436
 msgid "Make a right u-turn"
 msgstr "Forduljon vissza jobbra"
 
@@ -1182,11 +1187,11 @@ msgstr "Nyitva tartás"
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:396
 msgid "Email"
 msgstr "E-mail-cím"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:363
 msgid "Website"
 msgstr "Weboldal"
 
@@ -1253,11 +1258,11 @@ msgstr "Wikipédia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:597
 msgid "Population"
 msgstr "Népesség"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:626
 msgid "Altitude"
 msgstr "Magasság"
 
@@ -1513,41 +1518,37 @@ msgstr "Turizmus"
 msgid "Other"
 msgstr "Egyéb"
 
-#. Translators: this is a generic title for public transit stops where
-#. * the mode(s) of transportation is not well-known
-#.
-#: src/osmTypes.js:210
-#| msgid "Transportation"
-msgid "Public transportation stop"
-msgstr "Tömegközlekedési megálló"
-
-#: src/osmTypes.js:217
+#: src/osmTypes.js:234
 msgid "Funicular station"
 msgstr "Siklóállomás"
 
-#: src/osmTypes.js:219
+#: src/osmTypes.js:236
 msgid "Light rail stop"
 msgstr "HÉV-megálló"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:238
 msgid "Monorail station"
 msgstr "Egysínű vasúti állomás"
 
-#: src/osmTypes.js:223 src/osmTypes.js:233
+#: src/osmTypes.js:240 src/osmTypes.js:250
 msgid "Railway station"
 msgstr "Vasútállomás"
 
-#: src/osmTypes.js:225
+#: src/osmTypes.js:242
 msgid "Subway station"
 msgstr "Metróállomás"
 
-#: src/osmTypes.js:229
+#: src/osmTypes.js:246
 msgid "Railway halt"
 msgstr "Vasúti megálló"
 
-#: src/osmTypes.js:231
+#: src/osmTypes.js:248
 msgid "Tram stop"
 msgstr "Villamosmegálló"
+
+#: src/osmTypes.js:257 src/osmTypes.js:266
+msgid "Public transportation stop"
+msgstr "Tömegközlekedési megálló"
 
 #: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
@@ -1565,7 +1566,7 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 msgid "Failed to parse Maps URI"
 msgstr "A térképek URI feldolgozása nem sikerült"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:349
 msgid "Coordinates"
 msgstr "Koordináták"
 
@@ -1583,12 +1584,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:355
 msgid "Accuracy"
 msgstr "Pontosság"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:358
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Pontosság: %s"
@@ -1599,7 +1600,7 @@ msgstr "Pontosság: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:377
 msgid "Phone number"
 msgstr "Telefonszám"
 
@@ -1610,16 +1611,16 @@ msgstr "Telefonszám"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:411 src/placeView.js:450
 msgid "Floor"
 msgstr "Emelet"
 
-#: src/placeView.js:412
+#: src/placeView.js:413
 #, javascript-format
 msgid "Floor %s"
 msgstr "%s. emelet"
 
-#: src/placeView.js:424
+#: src/placeView.js:425
 msgid "At ground level"
 msgstr "Földszinten"
 
@@ -1628,7 +1629,7 @@ msgstr "Földszinten"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:434
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1640,7 +1641,7 @@ msgstr[1] "%s emelettel a földszint fölött"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:445
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1651,7 +1652,7 @@ msgstr[1] "%s emelettel a földszint alatt"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:463
 msgid "Offers takeout"
 msgstr "Elvitelt kínál"
 
@@ -1659,7 +1660,7 @@ msgstr "Elvitelt kínál"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:471
 msgid "Does not offer takeout"
 msgstr "Nem kínál elvitelt"
 
@@ -1668,18 +1669,18 @@ msgstr "Nem kínál elvitelt"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:480
 msgid "Only offers takeout"
 msgstr "Csak elvitelt kínál"
 
-#: src/placeView.js:486
+#: src/placeView.js:487
 msgid "Opening hours"
 msgstr "Nyitva tartás"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:497
 msgid "Public internet access"
 msgstr "Nyilvános internet-hozzáférés"
 
@@ -1687,50 +1688,50 @@ msgstr "Nyilvános internet-hozzáférés"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:506
 msgid "No internet access"
 msgstr "Nincs internet-hozzáférés"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:514
 msgid "Public Wi-Fi"
 msgstr "Nyilvános Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:522
 msgid "Wired internet access"
 msgstr "Vezetékes internet-hozzáférés"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:530
 msgid "Computers available for use"
 msgstr "Használható számítógépek"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:538
 msgid "Internet assistance available"
 msgstr "Internetes segítség érhető el"
 
-#: src/placeView.js:543
+#: src/placeView.js:544
 msgid "No toilets available"
 msgstr "Toalett nem érhető el"
 
-#: src/placeView.js:546
+#: src/placeView.js:547
 msgid "Toilets available"
 msgstr "Toalett elérhető"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:556
 msgid "Wheelchair accessible"
 msgstr "Kerekesszékkel elérhető"
 
@@ -1739,7 +1740,7 @@ msgstr "Kerekesszékkel elérhető"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:566
 msgid "Limited wheelchair accessibility"
 msgstr "Kerekesszékkel korlátozottan érhető el"
 
@@ -1747,7 +1748,7 @@ msgstr "Kerekesszékkel korlátozottan érhető el"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:575
 msgid "Not wheelchair accessible"
 msgstr "Kerekesszékkel nem érhető el"
 
@@ -1756,7 +1757,7 @@ msgstr "Kerekesszékkel nem érhető el"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:585
 msgid "Designated for wheelchair users"
 msgstr "Kerekesszéket használóknak kijelölt"
 
@@ -1765,7 +1766,7 @@ msgstr "Kerekesszéket használóknak kijelölt"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:616
 #, javascript-format
 msgid "%s below sea level"
 msgstr "Ennyivel a tengerszint alatt: %s"
@@ -1774,16 +1775,16 @@ msgstr "Ennyivel a tengerszint alatt: %s"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:623
 msgid "At sea level"
 msgstr "Tengerszinten"
 
-#: src/placeView.js:634
+#: src/placeView.js:635
 msgid "Religion:"
 msgstr "Vallás:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:640
 #, javascript-format
 msgid "Exit %s"
 msgstr "Lehajtó: %s"
@@ -2179,19 +2180,19 @@ msgstr "Érkezés ide: %s"
 msgid "Start at %s"
 msgstr "Indulás innen: %s"
 
-#: src/transitLegHeader.js:93
+#: src/transitLegHeader.js:100
 msgid "Hide intermediate stops and information"
 msgstr "Közbenső megállók és információk elrejtése"
 
-#: src/transitLegHeader.js:94
+#: src/transitLegHeader.js:101
 msgid "Hide walking instructions"
 msgstr "Gyaloglási utasítások elrejtése"
 
-#: src/transitLegHeader.js:96
+#: src/transitLegHeader.js:103
 msgid "Show intermediate stops and information"
 msgstr "Közbenső megállók és információk megjelenítése"
 
-#: src/transitLegHeader.js:97
+#: src/transitLegHeader.js:104
 msgid "Show walking instructions"
 msgstr "Gyaloglási utasítások megjelenítése"
 
