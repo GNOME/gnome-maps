@@ -6,13 +6,14 @@
 # Борисав Живановић <borisavzivanovic@gmail.com>, 2017.
 # facyber <marko.andrejic93@gmail.com>, 2024.
 # Милош Поповић <gpopac@gmail.com>, 2024-2025.
+# Марко Костић <marko.m.kostic@gmail.com>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-08-19 19:27+0000\n"
-"PO-Revision-Date: 2026-08-30 11:34+0200\n"
+"POT-Creation-Date: 2026-08-28 20:00+0000\n"
+"PO-Revision-Date: 2026-08-30 11:43+0200\n"
 "Last-Translator: Марко Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <Serbian <gnome-sr@googlegroups.com>>\n"
 "Language: sr\n"
@@ -33,7 +34,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
+#: data/ui/main-window.blp:36 src/application.js:65 src/mainWindow.js:112
 msgid "Maps"
 msgstr "Карте"
 
@@ -68,11 +69,11 @@ msgstr "Ниво увећања"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "rotation"
-msgstr "ротација"
+msgstr "заокретање"
 
 #: data/org.gnome.Maps.gschema.xml:27
 msgid "Map rotation in radians"
-msgstr "Ротација мапе у радијанима"
+msgstr "Заокретање карте у радијанима"
 
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Map type"
@@ -80,7 +81,7 @@ msgstr "Врста карте"
 
 #: data/org.gnome.Maps.gschema.xml:32
 msgid "The type of map to display (street, aerial, etc.)"
-msgstr "Врста карте за приказ (улица, авионски и сл.)"
+msgstr "Врста карте за приказ (улице, аеро поглед и сл.)"
 
 #: data/org.gnome.Maps.gschema.xml:36
 msgid "Window size"
@@ -96,7 +97,7 @@ msgstr "Положај прозора"
 
 #: data/org.gnome.Maps.gschema.xml:42
 msgid "Window position (X and Y)."
-msgstr "Положај прозора (положено и усправно)."
+msgstr "Положај прозора (икс и ипсилон)."
 
 #: data/org.gnome.Maps.gschema.xml:46
 msgid "Window maximized"
@@ -112,7 +113,7 @@ msgstr "Највећи број резултата претраге"
 
 #: data/org.gnome.Maps.gschema.xml:52
 msgid "Maximum number of search results from geocode search."
-msgstr "Највећи број резултата претраге за претрагу геокода."
+msgstr "Највећи број резултата претраге путем геокодирања."
 
 #: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent places to store"
@@ -132,13 +133,11 @@ msgstr "Број недавно посећених рута за чување."
 
 #: data/org.gnome.Maps.gschema.xml:66
 msgid "OpenStreetMap username or email address"
-msgstr "OpenStreetMap корисничко име или е-адреса"
+msgstr "Опенстритмап корисничко име или е-адреса"
 
 #: data/org.gnome.Maps.gschema.xml:67
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
-"Показује да ли је корисник пријављен да би могао да уређује OpenStreetMap "
-"податке."
+msgstr "Показује да ли је корисник пријављен да би могао да уређује Опенстритмап податке."
 
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Last used transportation type for routing"
@@ -161,10 +160,7 @@ msgid ""
 "The URL pattern for the vector tile source to use. Note that the map style "
 "relies on certain extensions compared to upstream Planetiler OpenMapTiles "
 "Profile"
-msgstr ""
-"Одређује шаблон УРЛ адресе за извор векторских плочица. Треба да знате да "
-"стил карте зависи од одређених проширења, за разлику од изворног Planetiler "
-"OpenMapTiles профила"
+msgstr "Образац УРЛ-адресе за извор векторских плочица који се користи. Напомена: стил карте се ослања на одређена проширења у поређењу са изворним Planetiler OpenMapTiles профилом"
 
 #: data/org.gnome.Maps.gschema.xml:85
 msgid "Units to show measurements in"
@@ -174,10 +170,7 @@ msgstr "Јединице за приказ мера"
 msgid ""
 "How to show measurements. ('system' uses default for system locale, 'metric' "
 "always show metric units, 'imperial' always show imperial units)."
-msgstr ""
-"Одређује како се приказују мере: „system“ користи подразумевано за језик "
-"система, „metric“ увек приказује метричке јединице, „imperial“ увек "
-"приказује империјалне јединице."
+msgstr "Начин приказа мера. ('system' користи подразумевано за локалитет система, 'metric' увек приказује метричке јединице, 'imperial' увек приказује империјалне јединице)."
 
 #: data/org.gnome.Maps.gschema.xml:90
 msgid "Show location marker"
@@ -231,30 +224,30 @@ msgid "Public transit itinerary"
 msgstr "План путовања јавним превозом"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:704
-#: data/org.gnome.Maps.metainfo.xml.in.in:706
+#: data/org.gnome.Maps.metainfo.xml.in.in:676
+#: data/org.gnome.Maps.metainfo.xml.in.in:678
 msgid "The GNOME Project"
 msgstr "Пројекат Гном"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:725
+#: data/org.gnome.Maps.metainfo.xml.in.in:697
 msgid "maps"
 msgstr "карте"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:726
+#: data/org.gnome.Maps.metainfo.xml.in.in:698
 msgid "location finder"
 msgstr "тражилац локација"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:727
+#: data/org.gnome.Maps.metainfo.xml.in.in:699
 msgid "place search"
 msgstr "претрага места"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:728
+#: data/org.gnome.Maps.metainfo.xml.in.in:700
 msgid "google maps alternative"
-msgstr "алтернатива Гугл мапама"
+msgstr "алтернатива Гугл картама"
 
-#: data/org.gnome.Maps.metainfo.xml.in.in:729
+#: data/org.gnome.Maps.metainfo.xml.in.in:701
 msgid "free map app"
-msgstr "бесплатни програм за мапе"
+msgstr "бесплатни програм за карте"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -283,7 +276,7 @@ msgstr "Додај на OpenStreetMap…"
 #. Translators: This is the title of the dialog for expoting the map view content to an image file
 #: data/ui/export-view-dialog.blp:8
 msgid "Export View"
-msgstr "Извези приказ"
+msgstr "Приказ извоза"
 
 #: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
 #: data/ui/send-to-dialog.blp:15
@@ -300,43 +293,31 @@ msgid "Remove Favorite"
 msgstr "Уклони омиљену"
 
 #: data/ui/favorites-popover.blp:10
-msgid "No Favorites"
-msgstr "Нема омиљених"
+msgid "No Starred Places"
+msgstr "Нема места са звездицом"
 
-#: data/ui/favorites-popover.blp:11
-msgid "Add places to your favorites to get them listed here"
-msgstr "Додајте места у омиљене да би се овде појавила"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
-msgid "Current Location"
-msgstr "Тренутна локација"
+#. Translators: This referres to the action of "starring" places
+#: data/ui/favorites-popover.blp:12
+msgid "Star places to get them listed here"
+msgstr "Обележите места звездицом да би се овде појавила"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.blp:19
+#: data/ui/headerbar-left.blp:11
+msgid "Route Planner"
+msgstr "Планирање путање"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.blp:10
 msgid "Layers"
 msgstr "Слојеви"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:10
-msgid "Favorites"
-msgstr "Омиљене"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.blp:19
-msgid "Route Planner"
-msgstr "Планирање путање"
-
-#: data/ui/layers-popover.blp:6
-msgid "Show Scale"
-msgstr "Прикажи размеру"
-
-#: data/ui/layers-popover.blp:11
-msgid "Show Location Marker"
-msgstr "Прикажи обележје места"
+#: data/ui/headerbar-right.blp:18
+msgid "Starred Places"
+msgstr "Места са звездицом"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.blp:23
+#: data/ui/layers-popover.blp:11
 msgid "Open Shape Layer…"
 msgstr "Отвори слој облика…"
 
@@ -348,52 +329,36 @@ msgstr "_Подеси налог Опенстритмапа…"
 msgid "_Export as Image…"
 msgstr "_Извези као слику…"
 
-#. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.blp:20
-msgid "Measurement Units"
-msgstr "Јединице мере"
+#: data/ui/main-window.blp:19
+msgid "Preferences"
+msgstr "Поставке"
 
-#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.blp:25
-msgid "_System Default"
-msgstr "Подразумевано на _систему"
-
-#. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.blp:32
-msgid "_Metric"
-msgstr "_Метрички"
-
-#. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.blp:39
-msgid "_Imperial"
-msgstr "_Империјалне"
-
-#: data/ui/main-window.blp:49
+#: data/ui/main-window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr "Пречице на та_статури"
+msgstr "_Пречице тастатуре"
 
-#: data/ui/main-window.blp:55
+#: data/ui/main-window.blp:30
 msgid "_About Maps"
 msgstr "_О Картама"
 
-#: data/ui/main-window.blp:125
+#: data/ui/main-window.blp:100
 msgid "Main Menu"
 msgstr "Главни мени"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169 src/mainWindow.js:633
+#: data/ui/main-window.blp:144 src/mainWindow.js:643
 msgid "View Place Information"
 msgstr "Прикажи податке о месту"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:178
+#: data/ui/main-window.blp:153
 msgid "Print Route"
 msgstr "Штампај путању"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:188
+#: data/ui/main-window.blp:163
 msgid "Close Sidebar"
-msgstr "Затвори бочну површ"
+msgstr "Затвори бочну траку"
 
 #: data/ui/osm-account-dialog.blp:5
 msgid "OpenStreetMap Account"
@@ -405,11 +370,11 @@ msgstr "Приступите да уређујете карте"
 
 #: data/ui/osm-account-dialog.blp:23
 msgid "Help to improve the map, using an OpenStreetMap account."
-msgstr "Побољшајте карту користећи OpenStreetMap налог."
+msgstr "Помозите у побољшању карте користећи Опенстритмап налог."
 
 #: data/ui/osm-account-dialog.blp:26
 msgid "_Sign In"
-msgstr "_Пријави ме"
+msgstr "_Пријави се"
 
 #: data/ui/osm-account-dialog.blp:43
 msgid "Verification"
@@ -418,8 +383,7 @@ msgstr "Потврда"
 #: data/ui/osm-account-dialog.blp:44
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
-msgstr ""
-"Копирај приказани потврдни код након дозвољавања приступа у прегледачу."
+msgstr "Копирај потврдни код који се прикаже при овлашћивању приступа у прегледачу."
 
 #: data/ui/osm-account-dialog.blp:51
 msgid "Verification Code"
@@ -427,7 +391,7 @@ msgstr "Потврдни код"
 
 #: data/ui/osm-account-dialog.blp:55
 msgid "_Verify"
-msgstr "Про_вери"
+msgstr "_Потврди"
 
 #: data/ui/osm-account-dialog.blp:81
 msgid "Signed In"
@@ -439,15 +403,15 @@ msgstr "Ваш OpenStreetMap налог је активан."
 
 #: data/ui/osm-account-dialog.blp:96
 msgid "_Sign Out"
-msgstr "О_дјави ме"
+msgstr "_Одјави се"
 
 #: data/ui/osm-discard-dialog.blp:5
 msgid "Discard Changes?"
-msgstr "Да ли да занемарим промене?"
+msgstr "Одбацити измене?"
 
 #: data/ui/osm-discard-dialog.blp:6
 msgid "Your current changes to the map will be lost"
-msgstr "Тренутне промене на карти ће бити изгубљене"
+msgstr "Тренутне измене на карти ће бити изгубљене"
 
 #: data/ui/osm-discard-dialog.blp:12
 msgid "_Discard"
@@ -456,7 +420,7 @@ msgstr "_Одбаци"
 #: data/ui/osm-edit-dialog.blp:5
 msgctxt "dialog title"
 msgid "Edit Location"
-msgstr "Уреди локацију"
+msgstr "Уређивање локације"
 
 #: data/ui/osm-edit-dialog.blp:19
 msgid "Loading…"
@@ -464,13 +428,13 @@ msgstr "Учитавам…"
 
 #: data/ui/osm-edit-dialog.blp:26 data/ui/osm-edit-dialog.blp:37
 msgid "Edit Location"
-msgstr "Измени место"
+msgstr "Уреди локацију"
 
 #: data/ui/osm-edit-dialog.blp:38
 msgid "Edit an existing location in OpenStreetMap"
-msgstr "Измени постојеће место на OpenStreetMap-у"
+msgstr "Уреди постојеће место на Опенстритмапу"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:740 src/motis.js:375
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:722 src/motis.js:489
 msgid "Continue"
 msgstr "Настави"
 
@@ -493,15 +457,13 @@ msgstr "Уреди карту"
 
 #: data/ui/osm-edit-dialog.blp:209
 msgid "Almost There!"
-msgstr "Још мало па готово!"
+msgstr "Скоро смо готови!"
 
 #: data/ui/osm-edit-dialog.blp:211
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
-msgstr ""
-"Опишите шта сте променили на карти. Измене ће бити видљиве на свим картама "
-"које користе OpenStreetMap."
+msgstr "Опишите измене на карти. Биће видљиве на свим картама које користе податке Опенстритмапа."
 
 #: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
@@ -516,11 +478,11 @@ msgstr "Ништа"
 msgid "Explore Nearby Places"
 msgstr "Истражите места у близини"
 
-#: data/ui/place-popover.blp:94 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:286
 msgid "No results found"
-msgstr "Нема резултата"
+msgstr "Нису пронађени резултати"
 
-#: data/ui/place-popover.blp:106 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:264
 msgid "An error has occurred"
 msgstr "Дошло је до грешке"
 
@@ -532,7 +494,7 @@ msgstr "Измени редослед путање"
 #. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
 #: data/ui/route-view.blp:15
 msgid "Walking"
-msgstr "Пешака"
+msgstr "Ходање"
 
 #. Translators: This is the tooltip text for the button selecting the cycling routing mode
 #: data/ui/route-view.blp:22
@@ -555,7 +517,7 @@ msgstr "Претрага путање уз GraphHopper"
 
 #: data/ui/route-view.blp:172
 msgid "Itineraries provided by Transitous"
-msgstr "Маршруте омогућава Транзитус"
+msgstr "Руте омогућава Транзитус"
 
 #: data/ui/route-view.blp:190
 msgid "More Information"
@@ -573,15 +535,13 @@ msgid ""
 "miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
-msgstr ""
-"Путање за јавни превоз омогућавају спољне услуге.\n"
+msgstr "Путање за јавни превоз пружају спољне\n"
+"услуге.\n"
 "Гном не може да гарантује тачност приказаних путања и редова вожње.\n"
-"Имајте на уму да неки пружаоци услуга можда неће укључити све доступне "
-"видове превоза,\n"
-"нпр. национални пружалац можда неће укључити авио-превознике, а локални "
-"пружалац може изоставити регионалне возове.\n"
-"Приказани називи и робне марке се сматрају регистрованим жиговима где је то "
-"применљиво."
+"Имајте на уму да неки пружаоци можда неће укључити све доступне видове превоза,\n"
+"нпр. национални пружалац можда неће укључити авио-превознике, а локални пружалац може\n"
+"изоставити регионалне возове.\n"
+"Приказани називи и робне марке се сматрају регистрованим жиговима где је то применљиво."
 
 #: data/ui/route-view.blp:239
 msgid "Back"
@@ -597,7 +557,7 @@ msgstr "_Копирај"
 
 #: data/ui/send-to-dialog.blp:68
 msgid "_Send To…"
-msgstr "Пошаљи _у…"
+msgstr "_Пошаљи у…"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.blp:33
@@ -616,93 +576,102 @@ msgstr "Опште"
 
 #: data/ui/shortcuts-dialog.blp:9
 msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Прикажи поставке"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Прикажи пречице"
 
-#: data/ui/shortcuts-dialog.blp:14
+#: data/ui/shortcuts-dialog.blp:19
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Претрага"
 
-#: data/ui/shortcuts-dialog.blp:19
+#: data/ui/shortcuts-dialog.blp:24
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
 msgstr "Истражите занимљивости"
 
-#: data/ui/shortcuts-dialog.blp:24
+#: data/ui/shortcuts-dialog.blp:29
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Прикажи последње резултате претраге"
 
-#: data/ui/shortcuts-dialog.blp:29
+#: data/ui/shortcuts-dialog.blp:34
 msgctxt "shortcut window"
 msgid "Show route planner"
 msgstr "Прикажи планирање путање"
 
-#: data/ui/shortcuts-dialog.blp:34
+#: data/ui/shortcuts-dialog.blp:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Штампај путању"
 
-#: data/ui/shortcuts-dialog.blp:39
+#: data/ui/shortcuts-dialog.blp:44
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Изађи"
 
-#: data/ui/shortcuts-dialog.blp:44
+#: data/ui/shortcuts-dialog.blp:49
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Отвори главни мени"
 
-#: data/ui/shortcuts-dialog.blp:50
+#: data/ui/shortcuts-dialog.blp:55
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Преглед карте"
 
-#: data/ui/shortcuts-dialog.blp:53
+#: data/ui/shortcuts-dialog.blp:58
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Увећај"
 
-#: data/ui/shortcuts-dialog.blp:58
+#: data/ui/shortcuts-dialog.blp:63
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Умањи"
 
-#: data/ui/shortcuts-dialog.blp:63
+#: data/ui/shortcuts-dialog.blp:68
 msgctxt "shortcut window"
 msgid "Rotate clockwise"
 msgstr "Окрени удесно"
 
-#: data/ui/shortcuts-dialog.blp:68
+#: data/ui/shortcuts-dialog.blp:73
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
 msgstr "Окрени улево"
 
-#: data/ui/shortcuts-dialog.blp:73
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Ресетуј ротацију"
-
 #: data/ui/shortcuts-dialog.blp:78
 msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Подеси размеру"
+msgid "Reset rotation"
+msgstr "Врати заокретање"
 
 #: data/ui/shortcuts-dialog.blp:83
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Окини размеру"
+
+#: data/ui/shortcuts-dialog.blp:88
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Иди на тренутну локацију"
 
-#: data/ui/shortcuts-dialog.blp:88
+#: data/ui/shortcuts-dialog.blp:93
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Отвори слој облика"
 
-#: data/ui/shortcuts-dialog.blp:93
+#: data/ui/shortcuts-dialog.blp:98
 msgctxt "shortcut window"
 msgid "Toggle location marker"
-msgstr "Укључи/искључи обележје места"
+msgstr "Окини обележивач места"
+
+#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+msgid "Show information"
+msgstr "Прикажи податке"
 
 #. Translators: Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.blp:18
@@ -725,11 +694,11 @@ msgstr "Прикажи више"
 
 #: data/ui/transit-options-panel.blp:123
 msgid "AM"
-msgstr "преподне"
+msgstr "Преподне"
 
 #: data/ui/transit-options-panel.blp:128
 msgid "PM"
-msgstr "поподне"
+msgstr "Поподне"
 
 #. Translators: Header indicating selected modes of transit
 #: data/ui/transit-options-panel.blp:149
@@ -754,69 +723,172 @@ msgstr "_Метро"
 
 #: data/ui/transit-options-panel.blp:183
 msgid "_Ferries"
-msgstr "Тра_јекти"
+msgstr "_Трајекти"
 
 #: data/ui/transit-options-panel.blp:189
 msgid "_Airplanes"
-msgstr "Ав_иони"
+msgstr "_Авиони"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:12
+#: data/ui/place-buttons.blp:13
 msgid "Add to new route"
 msgstr "Додај у нову путању"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.blp:17
+#: data/ui/place-buttons.blp:18
 msgid "_Directions"
 msgstr "_Упутства"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:30
+#: data/ui/place-buttons.blp:33
 msgid "Share Location"
 msgstr "Подели локацију"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:39
+#: data/ui/place-buttons.blp:47
 msgid "Mark as Favorite"
 msgstr "Означи као омиљено"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.blp:51
+#: data/ui/place-buttons.blp:61
 msgid "Edit on OpenStreetMap"
 msgstr "Уреди на OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.blp:64
+#: data/ui/place-view.blp:51
 msgid "Share location"
 msgstr "Подели локацију"
+
+#: data/ui/place-view.blp:147
+msgid "Departures"
+msgstr "Поласци"
+
+#: data/ui/place-view.blp:151
+msgid "Arrivals"
+msgstr "Доласци"
+
+#: data/ui/place-view.blp:155
+msgid "Information"
+msgstr "Подаци"
 
 #: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Назад у главне категорије"
 
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:19
-msgid "Reset Rotation"
-msgstr "Ресетуј ротацију"
+#: data/ui/preferences.blp:12 src/osmEditDialog.js:110
+msgid "General"
+msgstr "Опште"
+
+#: data/ui/preferences.blp:15
+msgid "Map View"
+msgstr "Преглед карте"
+
+#: data/ui/preferences.blp:18
+msgid "Show Scale"
+msgstr "Прикажи размеру"
+
+#: data/ui/preferences.blp:23
+msgid "Show Location Marker"
+msgstr "Прикажи обележје места"
+
+#: data/ui/preferences.blp:29
+msgid "Measurements"
+msgstr "Јединице мере"
+
+#: data/ui/preferences.blp:32
+msgid "Measurement system"
+msgstr "Систем мерења"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/preferences.blp:37
+msgid "System Default"
+msgstr "Подразумевано"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/preferences.blp:39
+msgid "Metric"
+msgstr "Метрички"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/preferences.blp:41
+msgid "Imperial"
+msgstr "Империјал"
+
+#: data/ui/preferences-download-new.blp:6
+msgid "Select Download Area"
+msgstr "Изабери област за преузимање"
+
+#: data/ui/preferences-download-new.blp:18
+msgid "Download"
+msgstr "Преузми"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:32
-msgid "Zoom Out"
-msgstr "Умањи"
-
-#. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1331
+#: data/ui/preferences-download-new.blp:64
+#: data/ui/zoom-and-rotate-controls.blp:56 src/mapView.js:1326
 msgid "Zoom In"
 msgstr "Увећај"
 
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
-#: lib/maps-file-data-source.c:418
-msgid "Failed to find tile structure in directory"
-msgstr "Нисам успео да пронађем структуру плочица у директоријуму"
+#. Translators: This is a tooltip
+#: data/ui/preferences-download-new.blp:74
+#: data/ui/zoom-and-rotate-controls.blp:44
+msgid "Zoom Out"
+msgstr "Умањи"
+
+#: data/ui/preferences-download-new.blp:108
+msgid "Area is too large"
+msgstr "Област је превелика"
+
+#: data/ui/preferences-download-row.blp:13
+msgid "Delete Download"
+msgstr "Обриши преузету област"
+
+#: data/ui/preferences-download-row.blp:17 src/osmEditDialog.js:113
+msgid "Name"
+msgstr "Назив"
+
+#: data/ui/preferences-downloads.blp:6
+msgid "Downloads"
+msgstr "Преузимања"
+
+#: data/ui/preferences-downloads.blp:8
+msgid ""
+"Download maps for offline use.\n"
+"\n"
+"Downloaded areas can be viewed when no internet connection is available. Not "
+"all features are available offline."
+msgstr "Преузмите карте за употребу ван мреже.\n"
+"\n"
+"Преузете области могу се видети када интернет веза није доступна. Нису све могућности доступне ван мреже."
+
+#: data/ui/preferences-downloads.blp:13
+msgid "Resume"
+msgstr "Настави"
+
+#: data/ui/preferences-downloads.blp:29
+msgid "Downloaded Areas"
+msgstr "Преузете области"
+
+#: data/ui/preferences-downloads.blp:48
+msgid "Add"
+msgstr "Додај"
+
+#: data/ui/preferences-downloads.blp:63
+msgid "No Downloads"
+msgstr "Ништа није преузето"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.blp:19
+msgid "Reset Rotation"
+msgstr "Врати заокретање"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.blp:32 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Тренутна локација"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
-msgstr "Нисам успео да обрадим XML документ"
+msgstr "Нисам успео да обрадим ИксМЛ документ"
 
 #: lib/maps-osm.c:250 lib/maps-osm.c:403
 msgid "Missing required attributes"
@@ -827,29 +899,21 @@ msgid "Could not find OSM element"
 msgstr "Нисам могао да пронађем OSM елемент"
 
 #: src/application.js:74
-msgid "A path to a local tiles directory structure"
-msgstr "Путања до локалне структуре директоријума са плочицама"
+msgid "Show the version of the program"
+msgstr "Приказује издање програма"
 
 #: src/application.js:80
-msgid "Tile size for local tiles directory"
-msgstr "Величина плочице за локални директоријум са плочицама"
-
-#: src/application.js:84
-msgid "Show the version of the program"
-msgstr "Прикажи издање програма"
-
-#: src/application.js:90
 msgid "Search for places"
 msgstr "Потражи места"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:91 src/application.js:92
 msgid "[FILE…|URI]"
 msgstr "[ДАТОТЕКА…|УРИ]"
 
-#: src/application.js:301
+#: src/application.js:293
 #, javascript-format
 msgid "Invalid maps: URI: %s"
-msgstr "Неисправне карте: Адреса: %s"
+msgstr "Неисправне карте: адреса: %s"
 
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
@@ -858,7 +922,7 @@ msgstr "Неисправне карте: Адреса: %s"
 #: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
-msgstr "Карта на %f, %f.png"
+msgstr "Карте на %f, %f.png"
 
 #: src/exportViewDialog.js:81
 msgid "PNG"
@@ -868,31 +932,33 @@ msgstr "ПНГ"
 msgid "Unable to export view"
 msgstr "Не могу да извезем преглед"
 
-#: src/favoriteListRow.js:42
-msgid "Favorite removed"
-msgstr "Омиљено је уклоњено"
-
+#. Translators: a place has been unstarred and %s is its name
 #: src/favoriteListRow.js:43
+#, javascript-format
+msgid "“%s” unstarred"
+msgstr "„%s“ више нема звездицу"
+
+#: src/favoriteListRow.js:46
 msgid "_Undo"
 msgstr "_Опозови"
 
-#: src/geoJSONSource.js:73
+#: src/geoJSONSource.js:74
 msgid "invalid coordinate"
 msgstr "неисправна координата"
 
-#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
+#: src/geoJSONSource.js:127 src/geoJSONSource.js:167 src/geoJSONSource.js:182
 msgid "parse error"
 msgstr "грешка обраде"
 
-#: src/geoJSONSource.js:160
+#: src/geoJSONSource.js:161
 msgid "unknown geometry"
 msgstr "непозната геометрија"
 
-#: src/graphHopper.js:116 src/transitPlan.js:169
+#: src/graphHopper.js:116 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Захтев за путању није успео."
 
-#: src/graphHopper.js:123 src/transitPlan.js:165
+#: src/graphHopper.js:123 src/transit/plan.js:102
 msgid "No route found."
 msgstr "Нисам пронашао путању."
 
@@ -900,27 +966,27 @@ msgstr "Нисам пронашао путању."
 msgid "Start!"
 msgstr "Крени!"
 
-#: src/mainWindow.js:535
+#: src/mainWindow.js:545
 msgid "Failed to connect to location service"
 msgstr "Нисам успео да се повежем на услугу локације"
 
-#: src/mainWindow.js:540
+#: src/mainWindow.js:550
 msgid "Turn on location services"
 msgstr "Укључи услуге локације"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:551
 msgid "Location Settings"
 msgstr "Подешавања локације"
 
-#: src/mainWindow.js:652
+#: src/mainWindow.js:662
 msgid "Show Route Planner"
 msgstr "Прикажи планирање путање"
 
-#: src/mainWindow.js:667
+#: src/mainWindow.js:677
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Ауторска права © 2011 – 2026 Red Hat, Inc. и аутори Гномових Карти"
+msgstr "Ауторска права © 2011 - 2026 Red Hat, Inc. и аутори Гном Карти"
 
-#: src/mainWindow.js:668
+#: src/mainWindow.js:678
 msgid "translator-credits"
 msgstr ""
 "Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
@@ -928,55 +994,55 @@ msgstr ""
 "Борисав Живановић <borisavzivanovic@gmail.com>\n"
 "Превод на српски језик https://гном.срб"
 
-#: src/mainWindow.js:675
+#: src/mainWindow.js:685
 #, javascript-format
 msgid "Map data by %s and contributors"
-msgstr "Подаци о картама са платформе %s и од доприносилаца"
+msgstr "Подаци о картама %s и доприносилаца"
 
-#: src/mainWindow.js:676
+#: src/mainWindow.js:686
 msgid "Map Data Provider"
-msgstr "Достављач података о картама"
+msgstr "Пружалац података о картама"
 
-#: src/mainWindow.js:679
+#: src/mainWindow.js:689
 msgid "Map Tile Provider"
-msgstr "Достављач плочица карти"
+msgstr "Пружалац плочица карти"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:687
+#: src/mainWindow.js:697
 #, javascript-format
 msgid "Map tiles provided by %s"
-msgstr "Плочице за карту су преузете са %s"
+msgstr "Плочице карти је пружио %s"
 
-#: src/mainWindow.js:716
+#: src/mainWindow.js:726
 msgid "Search Provider"
-msgstr "Достављач претраге"
+msgstr "Пружалац претраге"
 
-#: src/mainWindow.js:719
+#: src/mainWindow.js:729
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Претрагу омогућава %s помоћу %s"
 
-#: src/mainWindow.js:728
+#: src/mainWindow.js:738
 msgid "All Layer Files"
 msgstr "Све датотеке слоја"
 
-#: src/mainWindow.js:741
+#: src/mainWindow.js:751
 msgid "Open Shape Layers"
 msgstr "Отвори слојеве за облике"
 
-#: src/mapView.js:715 src/mapView.js:777
+#: src/mapView.js:697 src/mapView.js:759
 msgid "Failed to open layer"
-msgstr "Нисам успео да отворим слој"
+msgstr "Не могу да отворим слој"
 
-#: src/mapView.js:732
+#: src/mapView.js:714
 msgid "Do you want to continue?"
-msgstr "Да ли желите да наставите?"
+msgstr "Желите ли да наставите?"
 
-#: src/mapView.js:733
+#: src/mapView.js:715
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -985,140 +1051,140 @@ msgstr ""
 "Отварате датотеке са укупном величином од %s MB. Биће потребно неко време за "
 "учитавање"
 
-#: src/mapView.js:739
+#: src/mapView.js:721 src/preferencesDownloads.js:210
 msgid "Cancel"
 msgstr "Откажи"
 
-#: src/mapView.js:771
+#: src/mapView.js:753
 msgid "File type is not supported"
 msgstr "Врста датотеке није подржана"
 
-#: src/mapView.js:810
+#: src/mapView.js:792
 msgid "Failed to open GeoURI"
-msgstr "Нисам успео да отворим Гео-УРИ"
+msgstr "Не могу да отворим Гео-УРИ"
 
-#: src/mapView.js:1330
+#: src/mapView.js:1325
 msgid "Zoom in to add location"
 msgstr "Увећај за додавање локације"
 
-#: src/mapView.js:1348
+#: src/mapView.js:1343
 msgid "Location was added in OpenStreetMap"
 msgstr "Локација је додата у OpenStreetMap"
 
-#: src/motis.js:338 src/transit.js:33 src/transit.js:85
+#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Крени"
 
-#: src/motis.js:357 src/transit.js:41 src/transit.js:71
+#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Долази"
 
-#: src/motis.js:369
+#: src/motis.js:483
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Идите степеницама на ниво %s"
 
-#: src/motis.js:370
+#: src/motis.js:484
 msgid "Take the stairs"
 msgstr "Идите степеницама"
 
-#: src/motis.js:374
+#: src/motis.js:488
 #, javascript-format
 msgid "Continue on %s"
-msgstr "Настави ка %s"
+msgstr "Наставите по %s"
 
-#: src/motis.js:379
+#: src/motis.js:493
 #, javascript-format
 msgid "Turn left on %s"
-msgstr "Скрени лево код %s"
+msgstr "Скрени лево на %s"
 
-#: src/motis.js:380
+#: src/motis.js:494
 msgid "Turn left"
 msgstr "Скрени лево"
 
-#: src/motis.js:384
+#: src/motis.js:498
 #, javascript-format
 msgid "Turn slightly left on %s"
-msgstr "Скрени благо лево код %s"
+msgstr "Скрени благо лево на %s"
 
-#: src/motis.js:385
+#: src/motis.js:499
 msgid "Turn slightly left"
 msgstr "Скрени благо лево"
 
-#: src/motis.js:389
+#: src/motis.js:503
 #, javascript-format
 msgid "Turn sharp left on %s"
-msgstr "Скрени оштро лево код %s"
+msgstr "Скрени оштро лево на %s"
 
-#: src/motis.js:390
+#: src/motis.js:504
 msgid "Turn sharp left"
 msgstr "Скрени оштро лево"
 
-#: src/motis.js:394
+#: src/motis.js:508
 #, javascript-format
 msgid "Turn right on %s"
-msgstr "Скрени десно код %s"
+msgstr "Скрени десно на %s"
 
-#: src/motis.js:395
+#: src/motis.js:509
 msgid "Turn right"
 msgstr "Скрени десно"
 
-#: src/motis.js:399
+#: src/motis.js:513
 #, javascript-format
 msgid "Turn slightly right on %s"
-msgstr "Скрени благо десно код %s"
+msgstr "Скрени благо десно на %s"
 
-#: src/motis.js:400
+#: src/motis.js:514
 msgid "Turn slightly right"
 msgstr "Скрени благо десно"
 
-#: src/motis.js:404
+#: src/motis.js:518
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Скрени оштро десно код %s"
 
-#: src/motis.js:405
+#: src/motis.js:519
 msgid "Turn sharp right"
 msgstr "Скрени оштро десно"
 
-#: src/motis.js:412
+#: src/motis.js:526
 #, javascript-format
 msgid "At the roundabout, take exit %s"
-msgstr "На кружном току, изађите на излаз „%s“"
+msgstr "На кружном току, изађи на излаз „%s“"
 
-#: src/motis.js:415
+#: src/motis.js:529
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
-msgstr "На кружном току, изађите на излаз ка „%s“"
+msgstr "На кружном току, изађи на излаз ка „%s“"
 
-#: src/motis.js:417
+#: src/motis.js:531
 msgid "Take the roundabout"
-msgstr "Идите на кружни ток"
+msgstr "Иди на кружни ток"
 
-#: src/motis.js:425
+#: src/motis.js:539
 #, javascript-format
 msgid "Take the elevator and get off at %s"
-msgstr "Уђите у лифт и изађите на спрату „%s“"
+msgstr "Уђи у лифт и изађи на спрату „%s“"
 
-#: src/motis.js:426
+#: src/motis.js:540
 msgid "Take the elevator"
-msgstr "Уђите у лифт"
+msgstr "Уђи у лифт"
 
-#: src/motis.js:430
+#: src/motis.js:544
 #, javascript-format
 msgid "Make a left u-turn onto %s"
-msgstr "Направите заокрет налево ка %s"
+msgstr "Направи заокрет налево на %s"
 
-#: src/motis.js:431
+#: src/motis.js:545
 msgid "Make a left u-turn"
-msgstr "Направите заокрет налево"
+msgstr "Направи заокрет налево"
 
-#: src/motis.js:435
+#: src/motis.js:549
 #, javascript-format
 msgid "Make a right u-turn onto %s"
-msgstr "Направите заокрет надесно ка %s"
+msgstr "Направи заокрет надесно на %s"
 
-#: src/motis.js:436
+#: src/motis.js:550
 msgid "Make a right u-turn"
 msgstr "Направите заокрет надесно"
 
@@ -1132,7 +1198,7 @@ msgstr "Код за потврду се не подудара, покушајт�
 #. to always give status IO_ERROR
 #: src/osmConnection.js:376
 msgid "Incorrect user name or password"
-msgstr "Неисправно корисничко име или лозинка"
+msgstr "Нетачно корисничко име или лозинка"
 
 #: src/osmConnection.js:378
 msgid "Success"
@@ -1144,7 +1210,7 @@ msgstr "Лош захтев"
 
 #: src/osmConnection.js:382
 msgid "Object not found"
-msgstr "Објекат није нађен"
+msgstr "Нисам нашао објекат"
 
 #: src/osmConnection.js:384
 msgid "Conflict, someone else has just modified the object"
@@ -1157,14 +1223,6 @@ msgstr "Објекат је обрисан"
 #: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Пут или релација се односи на непостојеће подређене елементе"
-
-#: src/osmEditDialog.js:110
-msgid "General"
-msgstr "Опште"
-
-#: src/osmEditDialog.js:113
-msgid "Name"
-msgstr "Назив"
 
 #: src/osmEditDialog.js:118
 msgid "Type"
@@ -1186,11 +1244,11 @@ msgstr "Радно време"
 msgid "Phone"
 msgstr "Телефон"
 
-#: src/osmEditDialog.js:151 src/placeView.js:396
+#: src/osmEditDialog.js:151 src/placeView.js:644
 msgid "Email"
 msgstr "Е-пошта"
 
-#: src/osmEditDialog.js:158 src/placeView.js:363
+#: src/osmEditDialog.js:158 src/placeView.js:611
 msgid "Website"
 msgstr "Веб страница"
 
@@ -1224,11 +1282,11 @@ msgstr "Приступ интернету"
 
 #: src/osmEditDialog.js:183
 msgid "Wi-Fi"
-msgstr "Бежични"
+msgstr "Бежична"
 
 #: src/osmEditDialog.js:184
 msgid "Wired"
-msgstr "Жичани"
+msgstr "Жичана"
 
 #: src/osmEditDialog.js:185
 msgid "Terminal"
@@ -1243,11 +1301,11 @@ msgstr "Услуга"
 #.
 #: src/osmEditDialog.js:194
 msgid "Miscellaneous"
-msgstr "Остало"
+msgstr "Разно"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:74
 msgid "Wikipedia"
 msgstr "Википедија"
 
@@ -1257,18 +1315,18 @@ msgstr "Википедија"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:597
+#: src/osmEditDialog.js:204 src/placeView.js:845
 msgid "Population"
 msgstr "Становништво"
 
-#: src/osmEditDialog.js:209 src/placeView.js:626
+#: src/osmEditDialog.js:209 src/placeView.js:874
 msgid "Altitude"
 msgstr "Висина"
 
 # Ми не морамо да пишемо "(height above sea lever)" јер сама реч „надморска висина“ описује да је у питању висина изнад мора. :)
 #: src/osmEditDialog.js:210
 msgid "Elevation above sea level, in meters"
-msgstr "Надморска висина изнад мора у метрима"
+msgstr "Надморска висина у метрима"
 
 #: src/osmEditDialog.js:216
 msgid "Takeout"
@@ -1405,7 +1463,7 @@ msgstr "Кућни број"
 
 #: src/osmEditDialog.js:772
 msgid "ZIP Code"
-msgstr "ЗИП код"
+msgstr "Поштански број"
 
 #: src/osmEditDialog.js:773
 msgid "City"
@@ -1425,7 +1483,7 @@ msgstr "Учитај Викидата ознаку за име чланка"
 
 #: src/osmEditDialog.js:870
 msgid "Couldn't find Wikidata tag for article"
-msgstr "Нисам могао да пронађем Викидата ознаку за чланак"
+msgstr "Не могу да пронађем Викидата ознаку за чланак"
 
 #. Translators: This represents the title for places tagged with the
 #. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
@@ -1507,7 +1565,7 @@ msgstr "Продавница"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:90 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:480
 msgid "Tourism"
 msgstr "Туризам"
 
@@ -1516,7 +1574,7 @@ msgstr "Туризам"
 #.
 #: src/osmTypes.js:102
 msgid "Other"
-msgstr "Остало"
+msgstr "Друго"
 
 #: src/osmTypes.js:234
 msgid "Funicular station"
@@ -1560,13 +1618,13 @@ msgstr "Очисти унос"
 
 #: src/placeEntry.js:319
 msgid "Failed to parse Geo URI"
-msgstr "Неуспех при обради географског УРИ-ја"
+msgstr "Нисам успео да обрадим географски УРИ"
 
 #: src/placeEntry.js:332
 msgid "Failed to parse Maps URI"
-msgstr "Неуспех при обради УРИ-ја за карте"
+msgstr "Нисам успео да обрадим УРИ за карте"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:349
+#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:597
 msgid "Coordinates"
 msgstr "Координате"
 
@@ -1582,14 +1640,93 @@ msgstr "Координате"
 #, javascript-format
 msgctxt "short distance format string"
 msgid "< %s"
-msgstr "%s"
+msgstr "< %s"
 
-#: src/placeView.js:355
+#: src/placeView.js:371
+msgid "Arrival information provided by Transitous"
+msgstr "Податке о доласцима је доставио Транзитус"
+
+#: src/placeView.js:372
+msgid "Departure information provided by Transitous"
+msgstr "Податке о поласцима је доставио Транзитус"
+
+#: src/placeView.js:422
+msgid "No arrivals found"
+msgstr "Нема пронађених долазака"
+
+#: src/placeView.js:423
+msgid "No departures found"
+msgstr "Нема пронађених полазака"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for airline flights
+#.
+#: src/placeView.js:453
+msgid "Flights"
+msgstr "Летови"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trains
+#.
+#: src/placeView.js:457
+msgid "Trains"
+msgstr "Возови"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for ferries
+#.
+#: src/placeView.js:461
+msgid "Ferries"
+msgstr "Трајекти"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for gondola (also known as aerial trams or telecabins)
+#.
+#: src/placeView.js:465
+msgid "Gondola"
+msgstr "Гондола"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for funicular railway trains
+#.
+#: src/placeView.js:469
+msgid "Funicular"
+msgstr "Успињача"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for subway (also known as metro or underground rail)
+#.
+#: src/placeView.js:473
+msgid "Subway"
+msgstr "Метро"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for trams
+#.
+#: src/placeView.js:477
+msgid "Trams"
+msgstr "Трамваји"
+
+#. Translators: this is a tooltip for a toggle to show departures/
+#. * arrivals for buses
+#.
+#: src/placeView.js:481
+msgid "Buses"
+msgstr "Аутобуси"
+
+#. Translators: this refers to showing departures or arrivals
+#. * for all available public transit modes in a station/stop
+#.
+#: src/placeView.js:541
+msgid "All"
+msgstr "Све"
+
+#: src/placeView.js:603
 msgid "Accuracy"
 msgstr "Тачност"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:358
+#: src/placeView.js:606
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Тачност: %s"
@@ -1600,7 +1737,7 @@ msgstr "Тачност: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:377
+#: src/placeView.js:625
 msgid "Phone number"
 msgstr "Број телефона"
 
@@ -1611,16 +1748,16 @@ msgstr "Број телефона"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:411 src/placeView.js:450
+#: src/placeView.js:659 src/placeView.js:698
 msgid "Floor"
 msgstr "Спрат"
 
-#: src/placeView.js:413
+#: src/placeView.js:661
 #, javascript-format
 msgid "Floor %s"
 msgstr "Спрат %s"
 
-#: src/placeView.js:425
+#: src/placeView.js:673
 msgid "At ground level"
 msgstr "На нивоу земље"
 
@@ -1629,34 +1766,34 @@ msgstr "На нивоу земље"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:434
+#: src/placeView.js:682
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
-msgstr[0] "%s спрата изнад нивоа земље"
-msgstr[1] "%s спратова изнад нивоа земље"
+msgstr[0] "%s спрат изнад нивоа земље"
+msgstr[1] "%s спрата изнад нивоа земље"
 msgstr[2] "%s спратова изнад нивоа земље"
-msgstr[3] "%s спратова изнад нивоа земље"
+msgstr[3] "%s спрат изнад нивоа земље"
 
 #. Translators:
 #. * This is a reference to a number of floors below
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:445
+#: src/placeView.js:693
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
-msgstr[0] "%s спрата испод нивоа земље"
-msgstr[1] "%s спратова испод нивоа земље"
+msgstr[0] "%s спрат испод нивоа земље"
+msgstr[1] "%s спрата испод нивоа земље"
 msgstr[2] "%s спратова испод нивоа земље"
-msgstr[3] "%s спратова испод нивоа земље"
+msgstr[3] "%s спрат испод нивоа земље"
 
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:463
+#: src/placeView.js:711
 msgid "Offers takeout"
 msgstr "Нуди за понети"
 
@@ -1664,7 +1801,7 @@ msgstr "Нуди за понети"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:471
+#: src/placeView.js:719
 msgid "Does not offer takeout"
 msgstr "Не нуди за понети"
 
@@ -1673,18 +1810,18 @@ msgstr "Не нуди за понети"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:480
+#: src/placeView.js:728
 msgid "Only offers takeout"
 msgstr "Нуди само за понети"
 
-#: src/placeView.js:487
+#: src/placeView.js:735
 msgid "Opening hours"
 msgstr "Радно време"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:497
+#: src/placeView.js:745
 msgid "Public internet access"
 msgstr "Јавни приступ интернету"
 
@@ -1692,50 +1829,50 @@ msgstr "Јавни приступ интернету"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:506
+#: src/placeView.js:754
 msgid "No internet access"
 msgstr "Нема приступа интернету"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:514
+#: src/placeView.js:762
 msgid "Public Wi-Fi"
 msgstr "Јавна бежична мрежа"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:522
+#: src/placeView.js:770
 msgid "Wired internet access"
 msgstr "Жичани приступ интернету"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:530
+#: src/placeView.js:778
 msgid "Computers available for use"
 msgstr "Рачунари доступни за коришћење"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:538
+#: src/placeView.js:786
 msgid "Internet assistance available"
 msgstr "Интернет испомоћ је доступна"
 
-#: src/placeView.js:544
+#: src/placeView.js:792
 msgid "No toilets available"
 msgstr "Нема доступних тоалета"
 
-#: src/placeView.js:547
+#: src/placeView.js:795
 msgid "Toilets available"
 msgstr "Тоалети су доступни"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:556
+#: src/placeView.js:804
 msgid "Wheelchair accessible"
 msgstr "Приступно инвалидима"
 
@@ -1744,7 +1881,7 @@ msgstr "Приступно инвалидима"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:566
+#: src/placeView.js:814
 msgid "Limited wheelchair accessibility"
 msgstr "Ограничен приступ инвалидима"
 
@@ -1752,7 +1889,7 @@ msgstr "Ограничен приступ инвалидима"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:575
+#: src/placeView.js:823
 msgid "Not wheelchair accessible"
 msgstr "Без приступа инвалидима"
 
@@ -1761,7 +1898,7 @@ msgstr "Без приступа инвалидима"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:585
+#: src/placeView.js:833
 msgid "Designated for wheelchair users"
 msgstr "Осмишљено за кориснике инвалиде"
 
@@ -1770,7 +1907,7 @@ msgstr "Осмишљено за кориснике инвалиде"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:616
+#: src/placeView.js:864
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s испод нивоа мора"
@@ -1779,16 +1916,16 @@ msgstr "%s испод нивоа мора"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:623
+#: src/placeView.js:871
 msgid "At sea level"
 msgstr "На нивоу мора"
 
-#: src/placeView.js:635
+#: src/placeView.js:883
 msgid "Religion:"
 msgstr "Вероисповест:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:640
+#: src/placeView.js:888
 #, javascript-format
 msgid "Exit %s"
 msgstr "Излаз %s"
@@ -1802,15 +1939,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s; %s"
 
-#: src/place.js:670
+#: src/place.js:682
 msgid "Place not found in OpenStreetMap"
-msgstr "Место није нађено на OpenStreetMap-у"
+msgstr "Место није пронађено на Опенстритмапу"
 
-#: src/place.js:677
+#: src/place.js:689
 msgid "Coordinates in URL are not valid"
 msgstr "Неисправне координате у адреси"
 
-#: src/place.js:686
+#: src/place.js:698
 msgid "URL is not supported"
 msgstr "Адреса није подржана"
 
@@ -1942,149 +2079,188 @@ msgstr "Цвећаре"
 msgid "Gifts"
 msgstr "Поклони"
 
-#: src/poiCategories.js:314
+#: src/poiCategories.js:312
+msgid "Bicycles"
+msgstr "Бицикли"
+
+#: src/poiCategories.js:320
 msgid "Transportation"
 msgstr "Превоз"
 
-#: src/poiCategories.js:318
+#: src/poiCategories.js:324
 msgid "Bus & Tram Stops"
 msgstr "Аутобуска и трамвајска стајалишта"
 
-#: src/poiCategories.js:326
+#: src/poiCategories.js:332
 msgid "Train & Subway Stations"
 msgstr "Железничке и метро станице"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Tickets"
 msgstr "Карте"
 
-#: src/poiCategories.js:342
+#: src/poiCategories.js:348
 msgid "Parking"
 msgstr "Паркинг"
 
-#: src/poiCategories.js:347
+#: src/poiCategories.js:353
 msgid "Bicycle Parking"
 msgstr "Паркинг за бицикле"
 
-#: src/poiCategories.js:352
+#: src/poiCategories.js:358
 msgid "Bicycle Rental"
 msgstr "Изнајмљивање бицикала"
 
-#: src/poiCategories.js:357
+#: src/poiCategories.js:363
 msgid "Car Rental"
 msgstr "Изнајмљивање аутомобила"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Fuel"
 msgstr "Гориво"
 
-#: src/poiCategories.js:367
+#: src/poiCategories.js:373
 msgid "EV Charging"
 msgstr "Пуњење ЕВ"
 
-#: src/poiCategories.js:375
+#: src/poiCategories.js:381
 msgid "Healthcare"
 msgstr "Здравство"
 
-#: src/poiCategories.js:379
+#: src/poiCategories.js:385
 msgid "Clinics"
 msgstr "Клинике"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:391
 msgid "Hospitals"
 msgstr "Болнице"
 
-#: src/poiCategories.js:391
+#: src/poiCategories.js:397
 msgid "Dentists"
 msgstr "Зубари"
 
-#: src/poiCategories.js:399
+#: src/poiCategories.js:405
 msgid "Accommodation"
 msgstr "Смештај"
 
-#: src/poiCategories.js:403
+#: src/poiCategories.js:409
 msgid "Hotels"
 msgstr "Хотели"
 
-#: src/poiCategories.js:408
+#: src/poiCategories.js:414
 msgid "Hostels"
 msgstr "Хостели"
 
-#: src/poiCategories.js:413
+#: src/poiCategories.js:419
 msgid "Bed & Breakfast"
 msgstr "Кревет и доручак"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:424
 msgid "Campings"
 msgstr "Кампови"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:431
 msgid "Recreation"
 msgstr "Рекреација"
 
-#: src/poiCategories.js:429
+#: src/poiCategories.js:435
 msgid "Parks"
 msgstr "Паркови"
 
-#: src/poiCategories.js:434
+#: src/poiCategories.js:440
 msgid "Playgrounds"
 msgstr "Игралишта"
 
-#: src/poiCategories.js:439
+#: src/poiCategories.js:445
 msgid "Beaches"
 msgstr "Плаже"
 
-#: src/poiCategories.js:444
+#: src/poiCategories.js:450
 msgid "Nature Reserves"
 msgstr "Резервати природе"
 
-#: src/poiCategories.js:450
+#: src/poiCategories.js:456
 msgid "Theme Parks"
 msgstr "Тематски паркови"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:461
 msgid "Theaters"
 msgstr "Позоришта"
 
-#: src/poiCategories.js:461
+#: src/poiCategories.js:467
 msgid "Movie Theaters"
 msgstr "Биоскопи"
 
-#: src/poiCategories.js:467
+#: src/poiCategories.js:473
 msgid "Night Clubs"
 msgstr "Ноћни клубови"
 
-#: src/poiCategories.js:478
+#: src/poiCategories.js:484
 msgid "Museums"
 msgstr "Музеји"
 
-#: src/poiCategories.js:484
+#: src/poiCategories.js:490
 msgid "Attractions"
 msgstr "Знаменитости"
 
-#: src/poiCategories.js:489
+#: src/poiCategories.js:495
 msgid "Artworks"
 msgstr "Уметничка дела"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:500
 msgid "Tourist Information"
 msgstr "Туристичке информације"
 
-#: src/poiCategories.js:501
+#: src/poiCategories.js:507
 msgid "Sports"
-msgstr "Спортови"
+msgstr "Спорт"
 
-#: src/poiCategories.js:505
+#: src/poiCategories.js:511
 msgid "Gyms"
 msgstr "Теретане"
 
-#: src/poiCategories.js:511
+#: src/poiCategories.js:517
 msgid "Outdoor Gyms"
 msgstr "Спољашње теретане"
 
-#: src/poiCategories.js:517
+#: src/poiCategories.js:523
 msgid "Golf Courses"
 msgstr "Терени за голф"
+
+#: src/preferencesDownloadNew.js:148
+#, javascript-format
+msgid "Estimated size: %s"
+msgstr "Процењена величина: %s"
+
+#: src/preferencesDownloadNew.js:154
+msgid "Failed to estimate size"
+msgstr "Нисам успео да проценим величину"
+
+#: src/preferencesDownloads.js:100
+msgid "Power Saver enabled and metered network — automatic downloads paused"
+msgstr "Омогућена уштеда енергије и мерена мрежа - самостална преузимања су паузирана"
+
+#: src/preferencesDownloads.js:102
+msgid "Metered network — automatic downloads paused"
+msgstr "Мерена мрежа - самостална преузимања су паузирана"
+
+#: src/preferencesDownloads.js:104
+msgid "Power Saver enabled — automatic downloads paused"
+msgstr "Омогућена уштеда енергије - самостална преузимања су паузирана"
+
+#. Translators: This is the default name of a downloaded area if the user does not provide a name. %s is a number.
+#: src/preferencesDownloads.js:185
+#, javascript-format
+msgid "Map #%s"
+msgstr "Карта #%s"
+
+#: src/preferencesDownloads.js:209
+msgid "Remove download?"
+msgstr "Уклонити преузимање?"
+
+#: src/preferencesDownloads.js:211
+msgid "Remove"
+msgstr "Уклони"
 
 #: src/printLayout.js:215
 #, javascript-format
@@ -2097,7 +2273,7 @@ msgstr "Учитавам плочице карте за штампање"
 
 #: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
-msgstr "Можете прекинути штампање ако ово потраје"
+msgstr "Можете прекинути штампање ако ово потраје предуго"
 
 #: src/printOperation.js:50
 msgid "Abort printing"
@@ -2150,7 +2326,7 @@ msgstr "Додај „%s“ у „%s“"
 
 #: src/sendToDialog.js:182
 msgid "Failed to open URI"
-msgstr "Нисам успео да отворим URI"
+msgstr "Не могу да отворим адресу"
 
 #: src/sendToDialog.js:247
 #, javascript-format
@@ -2159,12 +2335,72 @@ msgstr "Отвори програмом „%s“"
 
 #: src/shapeLayer.js:109
 msgid "failed to load file"
-msgstr "нисам успео да учитам датотеку"
+msgstr "не могу да учитам датотеку"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/itinerary.js:82
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transit/itinerary.js:108
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s минут"
+msgstr[1] "%s минута"
+msgstr[2] "%s минута"
+msgstr[3] "%s минут"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transit/itinerary.js:120
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s сат"
+msgstr[1] "%s сата"
+msgstr[2] "%s сати"
+msgstr[3] "%s сат"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transit/itinerary.js:128
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s сат"
+msgstr[1] "%s:%s сата"
+msgstr[2] "%s:%s сати"
+msgstr[3] "%s:%s сат"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transit/leg.js:193
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:55
+#: src/transit/utils.js:57
 #, javascript-format
 msgid "Walk %s"
 msgstr "Пешачите %s"
@@ -2172,7 +2408,7 @@ msgstr "Пешачите %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:69
+#: src/transit/utils.js:71
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Долазак у %s"
@@ -2180,24 +2416,99 @@ msgstr "Долазак у %s"
 #. Translators: this a format string indicating departing from the
 #. * destination of journey with the departure address and transit
 #. * stop as the format parameter
-#: src/transit.js:83
+#: src/transit/utils.js:85
 #, javascript-format
 msgid "Start at %s"
-msgstr "Полазак у %s"
+msgstr "Полазак из %s"
 
-#: src/transitLegHeader.js:100
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:138
+#, javascript-format
+msgid "Track %s"
+msgstr "Колосек %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:146
+#, javascript-format
+msgid "Quay %s"
+msgstr "Кеј %s"
+
+#. Translators: this is an indication of a departure or arrival
+#. * track for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:152
+#, javascript-format
+msgid "Gate %s"
+msgstr "Капија %s"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is rail-based
+#.
+#: src/transit/utils.js:162
+msgid "Departure track changed"
+msgstr "Колосек поласка је промењен"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that e.g. a bus stop
+#. * "stop position"
+#.
+#: src/transit/utils.js:168
+msgid "Departure stop position changed"
+msgstr "Положај поласка на станици је промењен"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is a ferry
+#. * quay
+#.
+#: src/transit/utils.js:174
+msgid "Departure quay changed"
+msgstr "Кеј поласка је промењен"
+
+#. Translators: this is an indication of a track/stop position
+#. * change for a journey leg of public transit leg that is an airport
+#. * gate
+#.
+#: src/transit/utils.js:180
+msgid "Departure gate changed"
+msgstr "Капија поласка је промењена"
+
+#: src/transitJunctureRow.js:78
+msgid "Hide information"
+msgstr "Сакриј податке"
+
+#: src/transitJunctureRow.js:106
+#, javascript-format
+msgctxt ""
+"Label showing departure/arrival track and adjecent station/stop name with "
+"distance"
+msgid "%1s, %2s (%3s)"
+msgstr "%1s, %2s (%3s)"
+
+#: src/transitJunctureRow.js:114
+#, javascript-format
+msgctxt "Label showing adjecent station/stop name with distance"
+msgid "%1s (%2s)"
+msgstr "%1s (%2s)"
+
+#: src/transitLegHeader.js:125
 msgid "Hide intermediate stops and information"
-msgstr "Сакриј међустанице и информације"
+msgstr "Сакриј међустанице и податке"
 
-#: src/transitLegHeader.js:101
+#: src/transitLegHeader.js:126
 msgid "Hide walking instructions"
 msgstr "Сакриј упутства за пешачење"
 
-#: src/transitLegHeader.js:103
+#: src/transitLegHeader.js:128
 msgid "Show intermediate stops and information"
-msgstr "Прикажи међустанице и информације"
+msgstr "Прикажи међустанице и податке"
 
-#: src/transitLegHeader.js:104
+#: src/transitLegHeader.js:129
 msgid "Show walking instructions"
 msgstr "Прикажи упутства за пешачење"
 
@@ -2207,7 +2518,7 @@ msgstr "Учитај раније алтернативе"
 
 #: src/transitMoreRow.js:39
 msgid "Load later alternatives"
-msgstr "Учитај старије алтернативе"
+msgstr "Учитај касније алтернативе"
 
 #: src/transitMoreRow.js:52
 msgid "No earlier alternatives found."
@@ -2225,66 +2536,6 @@ msgstr "Нису пронађене касније алтернативе."
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time, like:
-#. * "12:00 – 13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:241
-#, javascript-format
-msgid "%s – %s"
-msgstr "%s – %s"
-
-#. translators: this is an indication for a trip duration of
-#. * less than an hour, with only the minutes part, using plural forms
-#. * as appropriate
-#.
-#: src/transitPlan.js:267
-#, javascript-format
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s минут"
-msgstr[1] "%s минута"
-msgstr[2] "%s минута"
-msgstr[3] "%s минут"
-
-#. translators: this is an indication for a trip duration,
-#. * where the duration is an exact number of hours (i.e. no
-#. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:279
-#, javascript-format
-msgid "%s hour"
-msgid_plural "%s hours"
-msgstr[0] "%s сат"
-msgstr[1] "%s сата"
-msgstr[2] "%s сати"
-msgstr[3] "%s сат"
-
-#. translators: this is an indication for a trip duration
-#. * where the duration contains an hour and minute part, it's
-#. * pluralized on the hours part
-#.
-#: src/transitPlan.js:287
-#, javascript-format
-msgid "%s:%s hour"
-msgid_plural "%s:%s hours"
-msgstr[0] "%s:%s сат"
-msgstr[1] "%s:%s сата"
-msgstr[2] "%s:%s сати"
-msgstr[3] "%s:%s сат"
-
-#. Translators: this is a format string for showing a departure and
-#. * arrival time in a more compact manner to show in the instruction
-#. * list for an itinerary, like:
-#. * "12:00–13:03" where the placeholder %s are the actual times,
-#. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:598
-#, javascript-format
-msgid "%s–%s"
-msgstr "%s–%s"
 
 #: src/translations.js:55
 msgid "Around the clock"
@@ -2335,7 +2586,7 @@ msgstr "Сваког дана"
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
-msgstr "%s—%s"
+msgstr "%s - %s"
 
 #: src/translations.js:179
 msgid "Public holidays"
@@ -2374,61 +2625,61 @@ msgstr "није отворено"
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
-msgstr "%s—%s"
+msgstr "%s-%s"
 
 #: src/translations.js:287
 msgid "Bahá'í"
 msgstr "Бахаизам"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:262
+#: src/utils.js:263
 msgid "Unknown"
 msgstr "Непознато"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:265
+#: src/utils.js:266
 msgid "Exact"
 msgstr "Тачно"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:322
 #, javascript-format
 msgid "%s h"
-msgstr "%s ч."
+msgstr "%s ч"
 
 #. Translators: this is a duration with hours and minutes parts
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
-msgstr[0] "%s ч. %s мин."
-msgstr[1] "%s ч. %s мин."
-msgstr[2] "%s ч. %s мин."
-msgstr[3] "%s ч. %s мин."
+msgstr[0] "%s ч %s мин"
+msgstr[1] "%s ч %s мин"
+msgstr[2] "%s ч %s мин"
+msgstr[3] "%s ч %s мин"
 
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:335
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
-msgstr[0] "%s мин."
-msgstr[1] "%s мин."
-msgstr[2] "%s мин."
-msgstr[3] "%s мин."
+msgstr[0] "%s мин"
+msgstr[1] "%s мин"
+msgstr[2] "%s мин"
+msgstr[3] "%s мин"
 
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:341
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2438,25 +2689,25 @@ msgstr[2] "%s с"
 msgstr[3] "%s с"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:352
+#: src/utils.js:353
 #, javascript-format
 msgid "%s mi"
 msgstr "%s миља"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:355
+#: src/utils.js:356
 #, javascript-format
 msgid "%s ft"
 msgstr "%s стопа"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:363
+#: src/utils.js:364
 #, javascript-format
 msgid "%s km"
-msgstr "%s километара"
+msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:366
+#: src/utils.js:367
 #, javascript-format
 msgid "%s m"
-msgstr "%s метара"
+msgstr "%s м"
