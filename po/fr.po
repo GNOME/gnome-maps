@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the gnome-maps package.
 # Ouharzoune Mohammed <karim-ouh@hotmail.fr>, 2013
 # Claude Paroz <claude@2xlibre.net>, 2013-2017, 2020-2022
-# Guillaume Bernard <associations@guillaume-bernard.fr>, 2014-2026
 # Alain Lojewski <allomervan@gmail.com>,2018
 # vanadiae <vanadiae35@gmail.com>, 2020-2021.
 # Charles Monzat <charles.monzat@free.fr>, 2018-2022.
@@ -11,21 +10,22 @@
 # Alexandre Franke <afranke@gnome.org>, 2016-2025.
 # Mathis Joussemet <joussemetmathis@gmail.com>, 2025.
 # Lucien Ouoba <luiz01luciano04@gmail.com>, 2026.
+# Guillaume Bernard <associations@guillaume-bernard.fr>, 2014-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-07-11 09:06+0000\n"
-"PO-Revision-Date: 2026-07-13 11:24+0200\n"
+"POT-Creation-Date: 2026-09-01 19:50+0000\n"
+"PO-Revision-Date: 2026-09-05 09:03+0200\n"
 "Last-Translator: Guillaume Bernard <associations@guillaume-bernard.fr>\n"
-"Language-Team: French <gnomefr@traduc.org>\n"
+"Language-Team: French\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Gtranslator 50.0\n"
 "X-DamnedLies-Scope: partial\n"
 "X-DL-Lang: fr\n"
 "X-DL-Module: gnome-maps\n"
@@ -242,9 +242,30 @@ msgid "Public transit itinerary"
 msgstr "Itinéraire en transports publics"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:689
+#: data/org.gnome.Maps.metainfo.xml.in.in:704
+#: data/org.gnome.Maps.metainfo.xml.in.in:706
 msgid "The GNOME Project"
 msgstr "Le projet GNOME"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:725
+msgid "maps"
+msgstr "cartes"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:726
+msgid "location finder"
+msgstr "découverte d’emplacements"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:727
+msgid "place search"
+msgstr "recherche de lieux"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:728
+msgid "google maps alternative"
+msgstr "alternative à Google Maps"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:729
+msgid "free map app"
+msgstr "application de navigation libre"
 
 #: data/ui/context-menu.blp:6
 msgid "Route from Here"
@@ -1182,11 +1203,11 @@ msgstr "Heures d’ouverture"
 msgid "Phone"
 msgstr "Téléphone"
 
-#: src/osmEditDialog.js:151 src/placeView.js:395
+#: src/osmEditDialog.js:151 src/placeView.js:396
 msgid "Email"
 msgstr "Adresse électronique"
 
-#: src/osmEditDialog.js:158 src/placeView.js:362
+#: src/osmEditDialog.js:158 src/placeView.js:363
 msgid "Website"
 msgstr "Site web"
 
@@ -1253,11 +1274,11 @@ msgstr "Wikipédia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:596
+#: src/osmEditDialog.js:204 src/placeView.js:597
 msgid "Population"
 msgstr "Population"
 
-#: src/osmEditDialog.js:209 src/placeView.js:625
+#: src/osmEditDialog.js:209 src/placeView.js:626
 msgid "Altitude"
 msgstr "Altitude"
 
@@ -1562,7 +1583,7 @@ msgstr "Échec à l’analyse de la Geo URI"
 msgid "Failed to parse Maps URI"
 msgstr "Échec d’analyse de l’URI Maps"
 
-#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:349
 msgid "Coordinates"
 msgstr "Coordonnées"
 
@@ -1580,12 +1601,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:354
+#: src/placeView.js:355
 msgid "Accuracy"
 msgstr "Précision de la position"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:357
+#: src/placeView.js:358
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Précision de la position : %s"
@@ -1596,7 +1617,7 @@ msgstr "Précision de la position : %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:376
+#: src/placeView.js:377
 msgid "Phone number"
 msgstr "Numéro de téléphone"
 
@@ -1607,16 +1628,16 @@ msgstr "Numéro de téléphone"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:410 src/placeView.js:449
+#: src/placeView.js:411 src/placeView.js:450
 msgid "Floor"
 msgstr "Étage"
 
-#: src/placeView.js:412
+#: src/placeView.js:413
 #, javascript-format
 msgid "Floor %s"
 msgstr "Étage %s"
 
-#: src/placeView.js:424
+#: src/placeView.js:425
 msgid "At ground level"
 msgstr "Au niveau du sol"
 
@@ -1625,7 +1646,7 @@ msgstr "Au niveau du sol"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:433
+#: src/placeView.js:434
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1637,7 +1658,7 @@ msgstr[1] "%s étages au-dessus du niveau du sol"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:444
+#: src/placeView.js:445
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1648,7 +1669,7 @@ msgstr[1] "%s étages sous le niveau du sol"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:462
+#: src/placeView.js:463
 msgid "Offers takeout"
 msgstr "Plats à emporter"
 
@@ -1656,7 +1677,7 @@ msgstr "Plats à emporter"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:471
 msgid "Does not offer takeout"
 msgstr "Ne propose pas de plats à emporter"
 
@@ -1665,18 +1686,18 @@ msgstr "Ne propose pas de plats à emporter"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:479
+#: src/placeView.js:480
 msgid "Only offers takeout"
 msgstr "Seulement des plats à emporter"
 
-#: src/placeView.js:486
+#: src/placeView.js:487
 msgid "Opening hours"
 msgstr "Heures d’ouverture"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:497
 msgid "Public internet access"
 msgstr "Accès public à Internet"
 
@@ -1684,50 +1705,50 @@ msgstr "Accès public à Internet"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:505
+#: src/placeView.js:506
 msgid "No internet access"
 msgstr "Aucun accès à Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:513
+#: src/placeView.js:514
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi public"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:521
+#: src/placeView.js:522
 msgid "Wired internet access"
 msgstr "Accès internet filaire"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:529
+#: src/placeView.js:530
 msgid "Computers available for use"
 msgstr "Ordinateurs disponibles pour utilisation"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:537
+#: src/placeView.js:538
 msgid "Internet assistance available"
 msgstr "Assistance internet disponible"
 
-#: src/placeView.js:543
+#: src/placeView.js:544
 msgid "No toilets available"
 msgstr "Toilettes indisponibles"
 
-#: src/placeView.js:546
+#: src/placeView.js:547
 msgid "Toilets available"
 msgstr "Toilettes disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:555
+#: src/placeView.js:556
 msgid "Wheelchair accessible"
 msgstr "Accessible aux fauteuils roulants"
 
@@ -1736,7 +1757,7 @@ msgstr "Accessible aux fauteuils roulants"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:565
+#: src/placeView.js:566
 msgid "Limited wheelchair accessibility"
 msgstr "Accessibilité limitée aux fauteuils roulants"
 
@@ -1744,7 +1765,7 @@ msgstr "Accessibilité limitée aux fauteuils roulants"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:574
+#: src/placeView.js:575
 msgid "Not wheelchair accessible"
 msgstr "Aucune accessibilité aux fauteuils roulants"
 
@@ -1753,7 +1774,7 @@ msgstr "Aucune accessibilité aux fauteuils roulants"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:584
+#: src/placeView.js:585
 msgid "Designated for wheelchair users"
 msgstr "Accès destiné aux utilisateurs de fauteuils roulants"
 
@@ -1762,7 +1783,7 @@ msgstr "Accès destiné aux utilisateurs de fauteuils roulants"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:615
+#: src/placeView.js:616
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s sous le niveau de la mer"
@@ -1771,16 +1792,16 @@ msgstr "%s sous le niveau de la mer"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:622
+#: src/placeView.js:623
 msgid "At sea level"
 msgstr "Au niveau de la mer"
 
-#: src/placeView.js:634
+#: src/placeView.js:635
 msgid "Religion:"
 msgstr "Religion :"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:639
+#: src/placeView.js:640
 #, javascript-format
 msgid "Exit %s"
 msgstr "Sortie %s"
