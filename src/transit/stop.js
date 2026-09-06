@@ -27,7 +27,8 @@ export class Stop extends TransitPlace {
 
     constructor({ arrival, scheduledArrival,
                   departure, scheduledDeparture,
-                  track, scheduledTrack, ...params }) {
+                  track, scheduledTrack, boardingOnly, alightingOnly,
+                  ...params }) {
         super(params);
 
         this._arrival = arrival;
@@ -36,6 +37,8 @@ export class Stop extends TransitPlace {
         this._scheduledDeparture = scheduledDeparture;
         this._track = track;
         this._scheduledTrack = scheduledTrack;
+        this._boardingOnly = boardingOnly;
+        this._alightingOnly = alightingOnly;
     }
 
     get arrival() {
@@ -60,6 +63,14 @@ export class Stop extends TransitPlace {
 
     get scheduledTrack() {
         return this._scheduledTrack;
+    }
+
+    get boardingOnly() {
+        return this._boardingOnly;
+    }
+
+    get alightingOnly() {
+        return this._alightingOnly;
     }
 }
 GObject.registerClass(Stop);
