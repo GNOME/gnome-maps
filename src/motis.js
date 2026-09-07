@@ -382,6 +382,8 @@ export class Motis {
             Time.parseDateTime(stop.scheduledArrival, tz);
         const location = new Location({ latitude: stop.lat,
                                         longitude: stop.lon });
+        const boardingOnly = stop.dropoffType === 'NOT_ALLOWED';
+        const alightingOnly = stop.pickupType === 'NOT_ALLOWED';
 
         return new Stop({ name:                 stop.name,
                           arrival:              arrival,
@@ -392,7 +394,9 @@ export class Motis {
                           id:                   stop.stopId,
                           track:                stop.track,
                           scheduledTrack:       stop.scheduledTrack,
-                          modes:                new Set(stop.modes) });
+                          modes:                new Set(stop.modes),
+                          boaringOnly:          boardingOnly,
+                          alightingOnly:        alightingOnly });
     }
 
     _parseSteps(steps, fromCoordinate, toCoordinate) {
