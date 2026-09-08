@@ -59,6 +59,20 @@ export class TransitStopRow extends Gtk.ListBoxRow {
                 Utils.getTrackIndication(stop.track, routeType);
         }
 
+        if (intermediate && stop.alightingOnly) {
+            this._informationLabel.visible = true;
+            /* Translators: this is a label indicating no passanger boarding is
+             * allowed at a public transit stop.
+             */
+            this._informationLabel.label = _("No entry");
+        } else if (intermediate && stop.boardingOnly) {
+            this._informationLabel.visible = true;
+             /* Translators: this is a label indicating no dropoff passanger is
+             * allowed at a public transit stop.
+             */
+            this._informationLabel.label = _("No exit");
+        }
+
         if (!time.equal(scheduledTime)) {
             this._scheduledTimeLabel.visible = true;
             this._scheduledTimeLabel.label =
@@ -90,5 +104,6 @@ GObject.registerClass({
                         'nameLabel',
                         'trackLabel',
                         'timeLabel',
-                        'scheduledTimeLabel' ]
+                        'scheduledTimeLabel',
+                        'informationLabel' ]
 }, TransitStopRow);
