@@ -32,15 +32,6 @@ export class TransitBoardMarker extends CircleIconMarker {
                 place:     leg.from,
                 ...params });
     }
-
-    vfunc_map() {
-         this._darkId = this._styleManager.connect('notify::dark', () => {
-            this._image.paintable = this._createPaintable();
-        });
-        this._image.paintable = this._createPaintable();
-
-        super.vfunc_map();
-    }
 }
 
 GObject.registerClass(TransitBoardMarker);
