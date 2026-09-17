@@ -50,23 +50,45 @@ const PRESET_TYPES = [ 'aerialway',
 
 const OUTPUT = {};
 
+const REPLACEMENTS = {};
+
 let decoder = new TextDecoder('utf-8');
 
-function parseJson(dirPath, fileName) {
-    let file = Gio.File.new_for_path(dirPath + '/' + fileName);
+function parseJson(basePath, path, keyValueOverride) {
+    let file = Gio.File.new_for_path(`${basePath}/${path}`);
     let [status, buffer] = file.load_contents(null);
     let {tags, name} = JSON.parse(decoder.decode(buffer));
 
-    for (let key in tags) {
-        let value = tags[key];
+    if (keyValueOverride) {
+        OUTPUT[keyValueOverride] = { 'title': { 'C': name } };
+        return;
+    }
 
-        OUTPUT[key + '/' + value] = {'title': {'C': name}};
+    for (let key in tags) {
+        const value = tags[key];
+        const keyValue = `${key}/${value}`;
+
+        /* if name is the form {type/subtype/...} parse the referenced
+         * replacement defintion and store a mapping from the original
+         * key/value pair for referencing when collecting translations
+         */
+        if (name.startsWith('{') && name.endsWith('}')) {
+            const replacement = name.slice(1, -1);
+
+            REPLACEMENTS[keyValue] = replacement;
+
+            // parse replacement defintion with reference to original key/value
+            parseJson(basePath, `${PRESETS_PATH}/${replacement}.json`,
+                      keyValue);
+        } else {
+            OUTPUT[keyValue] = { 'title': { 'C': name } };
+        }
     }
 }
 
 function processType(type, basePath) {
-    let dirPath = [basePath, PRESETS_PATH, type].join('/');
-    let dir = Gio.File.new_for_path(dirPath);
+    let dirPath = [PRESETS_PATH, type].join('/');
+    let dir = Gio.File.new_for_path(`${basePath}/${dirPath}`);
     let enumerator =
         dir.enumerate_children('*',
                                Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
@@ -78,7 +100,7 @@ function processType(type, basePath) {
             break;
 
         if (file.get_name().endsWith('.json'))
-            parseJson(dirPath, file.get_name());
+            parseJson(basePath, `${dirPath}/${file.get_name()}`);
     }
 }
 
@@ -96,9 +118,10 @@ function processLocale(dirPath, fileName) {
 
     for (let type in OUTPUT) {
         let name;
+        const finalType = REPLACEMENTS[type] ?? type;
 
         try {
-            name = object[lang].presets.presets[type].name;
+            name = object[lang].presets.presets[finalType].name;
         } catch (ex) {
             continue;
         }
