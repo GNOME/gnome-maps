@@ -112,8 +112,8 @@ function _sortType(t1, t2) {
  * value for search purposes, given a type mapping value,
  * also cache the title to avoid re-iterating the language map every time,
  * and store the lower-case normalized title in the current locale */
-function _lookupTitle(item, recursed) {
-    let langs = GLib.get_language_names();
+function _lookupTitle(item) {
+    const langs = GLib.get_language_names();
     let title = item.cachedTitle;
 
     if (title)
@@ -124,30 +124,6 @@ function _lookupTitle(item, recursed) {
 
         if (title) {
             const normalizedTitle = title.toLocaleLowerCase();
-
-            /* lookup referenced type when the format is {key/value}
-             * unless this was already a redirect, in that case bail out
-             * and just return the title to avoid potential cycling loop
-             */
-            if (!recursed && title.startsWith('{') && title.endsWith('}')) {
-                const [key, value] =
-                    title.substring(1, title.length - 1).split('/');
-                const recursedTitle = lookupType(key, value, true);
-
-                /* if the referenced type could be resolved, use the current
-                 * one as-is
-                 */
-                if (!recursedTitle)
-                    return [title, normalizedTitle];
-
-                const recursedNormalizedTitle =
-                    recursedTitle.toLocaleLowerCase();
-
-                item.cachedTitle = recursedTitle;
-                item.normalizedTitle = recursedNormalizedTitle;
-
-                return [recursedTitle, recursedNormalizedTitle];
-            }
 
             item.cachedTitle = title;
             item.normalizedTitle = normalizedTitle;
@@ -216,11 +192,11 @@ export function findMatches(prefix, maxMatches, selectedTags) {
 }
 
 /* return the title of a type with a given key/value if it is known by us */
-export function lookupType(key, value, recursed = false) {
+export function lookupType(key, value) {
     let item = OSM_TYPE_MAP[key + '/' + value];
 
     if (item) {
-        let [title, _] = _lookupTitle(item, recursed);
+        let [title, _] = _lookupTitle(item);
         return title;
     } else
         return null;
