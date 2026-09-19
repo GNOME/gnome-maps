@@ -293,7 +293,7 @@ export class RouteView extends Gtk.Box {
 
         this._query.connect('notify', () => {
             if (this._instructionStack.visible_child !== this._instructionSpinner &&
-                this._instructionStack.visible_child !== this._errorLabel) {
+                this._instructionStack.visible_child !== this._errorBox) {
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
@@ -360,12 +360,15 @@ export class RouteView extends Gtk.Box {
 
         // connect error handlers
         route.connect('error', (route, msg) => this._showError(msg));
-        transitPlan.connect('error', (plan, msg) => this._showError(msg));
+        route.connect('noRouteFound', (route, msg) => this._showError(msg, true));
+        transitPlan.connect('error', (plan, msg) => this._showError(msg, true));
+        transitPlan.connect('noRouteFound', (plan, msg) => this._showError(msg));
     }
 
-    _showError(msg) {
-        this._instructionStack.visible_child = this._errorLabel;
+    _showError(msg, enableRetry = false) {
+        this._instructionStack.visible_child = this._errorBox;
         this._errorLabel.label = msg;
+        this._retryButton.visible = enableRetry;
     }
 
     _clearListBox(listBox) {
@@ -593,7 +596,9 @@ GObject.registerClass({
                         'instructionWindow',
                         'instructionSpinner',
                         'instructionStack',
+                        'errorBox',
                         'errorLabel',
+                        'retryButton',
                         'modeChooser',
                         'timeInfo',
                         'linkButtonStack',
