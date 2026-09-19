@@ -120,7 +120,7 @@ export class GraphHopper {
                         this._query.latest.place = null;
                     else
                         this.route.reset();
-                    this.route.noRouteFound(_("No route found."));
+                    this.route.error(_("No route found."));
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
