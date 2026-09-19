@@ -85,10 +85,9 @@ export class GraphHopper {
 
         this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, this._requestCancellable,
                                           (source,res) => {
-            let bytes = this._session.send_and_read_finish(res);
-            let body = bytes ? Utils.getBufferText(bytes.get_data()) : null;
-
             try {
+                let bytes = this._session.send_and_read_finish(res);
+                let body = bytes ? Utils.getBufferText(bytes.get_data()) : null;
                 let result = this._parseMessage({ status_code:   msg.get_status(),
                                                   response_body: body,
                                                   uri:           url });
@@ -97,7 +96,7 @@ export class GraphHopper {
                 else
                     callback(result, null);
             } catch (e) {
-                if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                     callback(null, e);
                 }
             }
@@ -109,10 +108,6 @@ export class GraphHopper {
                                (result, exception) => {
             if (exception) {
                 Utils.debug(exception);
-                if (this._query.latest)
-                    this._query.latest.place = null;
-                else
-                    this.route.reset();
                 this.route.error(_("Route request failed."));
             } else {
                 if (!result) {
@@ -120,7 +115,7 @@ export class GraphHopper {
                         this._query.latest.place = null;
                     else
                         this.route.reset();
-                    this.route.error(_("No route found."));
+                    this.route.noRouteFound(_("No route found."));
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
