@@ -133,23 +133,10 @@ template $Gjs_RouteView: Box {
 
       Adw.Spinner instructionSpinner {}
 
-      Box errorBox {
-        orientation: vertical;
-
-        Label errorLabel {
-          vexpand: true;
-          styles [
-            "dimmed",
-          ]
-        }
-
-        Button retryButton {
-          label: _("Retry");
-          visible: false;
-          styles [
-            "pill",
-          ]
-        }
+      Label errorLabel {
+        styles [
+          "dimmed",
+        ]
       }
 
       layout {
