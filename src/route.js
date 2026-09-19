@@ -54,6 +54,10 @@ export class Route extends GObject.Object {
         this.emit('error', msg);
     }
 
+    noRouteFound(msg) {
+        this.emit('noRouteFound', msg);
+    }
+
     createBBox(coordinates) {
         let bbox = new BoundingBox();
         coordinates.forEach(function({ latitude, longitude }) {
@@ -67,7 +71,8 @@ GObject.registerClass({
     Signals: {
         'update': {},
         'reset': {},
-        'error': { param_types: [GObject.TYPE_STRING] }
+        'error': { param_types: [GObject.TYPE_STRING] },
+        'noRouteFound': { param_types: [GObject.TYPE_STRING] }
     }
 }, Route);
 
