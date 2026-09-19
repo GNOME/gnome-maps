@@ -99,7 +99,7 @@ export class Plan extends GObject.Object {
     }
 
     noRouteFound() {
-        this.emit('noRouteFound', _("No route found."));
+        this.emit('error', _("No route found."));
     }
 
     requestFailed() {
@@ -122,8 +122,7 @@ GObject.registerClass({
         'no-more-results': {},
         'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
         'itinerary-deselected': {},
-        'error': { param_types: [GObject.TYPE_STRING] },
-        'noRouteFound': { param_types: [GObject.TYPE_STRING] }
+        'error': { param_types: [GObject.TYPE_STRING] }
     }
 }, Plan);
 
