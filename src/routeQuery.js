@@ -214,10 +214,6 @@ export class RouteQuery extends GObject.Object {
         this.emit('reset');
     }
 
-    refresh() {
-        this.emit('refresh');
-    }
-
     isValid() {
         if (this.filledPoints.length >= 2 &&
             this.filledPoints.length === this.points.length)
@@ -238,8 +234,7 @@ GObject.registerClass({
         'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
         'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
         'run': { },
-        'cancel': {},
-        'refresh': {}
+        'cancel': {}
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',
