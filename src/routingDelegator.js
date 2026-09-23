@@ -36,6 +36,7 @@ export class RoutingDelegator {
         this._graphHopper = new GraphHopper({ query: this._query, route: this._route });
         this._transitous = new Transitous({ query: this._query, plan: this._plan });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
+        this._query.connect('refresh', this._onQueryChanged.bind(this));
         this._ignoreNextQueryChange = false;
         this._lastUsedRouter = null;
     }
@@ -87,7 +88,11 @@ export class RoutingDelegator {
             this._query.emit('run');
             if (this._transitRouting) {
                 this._lastUsedRouter = this._transitous;
-                this._transitous.fetchFirstResults();
+                // if there's already itineraries "filled in", request more
+                if (this._plan.itineraries.length > 0)
+                    this._transitous.fetchMoreResults();
+                else
+                    this._transitous.fetchFirstResults();
             } else {
                 this._lastUsedRouter = this._graphHopper;
                 this._graphHopper.fetchRoute(this._query.filledPoints,
