@@ -190,10 +190,26 @@ template $Gjs_PlaceView: Box {
               halign: fill;
             }
 
-            Label noDeparturesArrivalsLabel {
-              styles [
-                "dimmed",
-              ]
+            Box departuresArrivalsErrorBox {
+              orientation: vertical;
+              spacing: 6;
+              valign: center;
+
+              Label noDeparturesArrivalsLabel {
+                vexpand: false;
+                styles [
+                  "dimmed",
+                ]
+              }
+
+              Button departuresArrivalsRetryButton {
+                label: _("Retry");
+                visible: false;
+                halign: center;
+                styles [
+                  "pill",
+                ]
+              }
             }
 
             Box info {

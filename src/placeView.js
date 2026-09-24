@@ -152,6 +152,10 @@ export class PlaceView extends Gtk.Box {
         this._departuresArrivals.connect('row-activated', (listBox, row) => {
             this._onJunctureRowActivated(row);
         });
+
+        this._departuresArrivalsRetryButton.connect('clicked', () => {
+            this._onDeparturesArrivalsRetry();
+        });
     }
 
     _getRouteTypeForSelectedToggle() {
@@ -407,7 +411,14 @@ export class PlaceView extends Gtk.Box {
             if (!extendPrevious)
                 this._departuresArrivals.remove_all();
 
-            if (junctures?.length > 0) {
+            if (junctures === null) {
+                this._noDeparturesArrivalsLabel.label =
+                        arrivals ? _("Failed to load arrivals") :
+                                   _("Failed to load departures");
+                this._departuresArrivalsRetryButton.visible = true;
+                this._infoStack.visible_child =
+                        this._departuresArrivalsErrorBox;
+            } else if (junctures?.length > 0) {
                 this._infoStack.visible_child = this._departuresArrivals;
 
                 if (!this._transitModesSet)
@@ -422,10 +433,19 @@ export class PlaceView extends Gtk.Box {
                         arrivals ? _("No arrivals found") :
                                    _("No departures found");
                     this._infoStack.visible_child =
-                        this._noDeparturesArrivalsLabel;
+                        this._departuresArrivalsErrorBox;
                 }
             }
         });
+    }
+
+    _onDeparturesArrivalsRetry() {
+        const routeType = this._getRouteTypeForSelectedToggle();
+        const arrival = this._infoToggles.active_name === 'arrivals';
+        const extendPrevious =
+            this._departuresArrivals.get_row_at_index(0) !== null;
+
+        this._loadTransitStopTimes(arrival, extendPrevious, routeType);
     }
 
     _populateStopTimes(junctures, arrivals, extendPrevious) {
@@ -1169,7 +1189,9 @@ GObject.registerClass({
         'departuresArrivals',
         'info',
         'departuresArrivalsSpinner',
+        'departuresArrivalsErrorBox',
         'noDeparturesArrivalsLabel',
+        'departuresArrivalsRetryButton',
         'transitModeToggles',
         'attributionRevealer',
         'attributionButton'
