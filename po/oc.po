@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-09-14 20:44+0000\n"
-"PO-Revision-Date: 2026-09-17 17:29+0200\n"
+"POT-Creation-Date: 2026-09-21 19:56+0000\n"
+"PO-Revision-Date: 2026-09-27 09:32+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -184,6 +184,20 @@ msgid "Whether to show the user location marker (when location is known)."
 msgstr ""
 "Afichar o non lo marcador de posicion de l'utilizaire (quand la localizacion "
 "es coneguda)."
+
+#: data/org.gnome.Maps.gschema.xml:100
+msgid "Map color scheme"
+msgstr "Jòc de colors de la mapa"
+
+#: data/org.gnome.Maps.gschema.xml:101
+msgid ""
+"Which color scheme to render the map in. ('system' follows the system-wide "
+"preference, 'light' always shows the map in light colors, 'dark' always "
+"shows the map in dark colors)."
+msgstr ""
+"Quin esquèma de colors utilizar per afichar la mapa. (« system » seguís la "
+"preferéncia del sistèma, « light » aficha totjorn la mapa en colors claras e "
+"« dark » l’aficha totjorn en colors escuras)."
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
@@ -444,7 +458,7 @@ msgstr "Modificar l'emplaçament"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Modificar un emplaçament existissent sus OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:724 src/motis.js:489
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:724 src/motis.js:493
 msgid "Continue"
 msgstr "Contunhar"
 
@@ -1104,120 +1118,120 @@ msgstr "Zoomatz per apondre un emplaçament"
 msgid "Location was added in OpenStreetMap"
 msgstr "La localizacion es estada aponduda a OpenStreetMap"
 
-#: src/motis.js:402 src/transit/utils.js:35 src/transit/utils.js:87
+#: src/motis.js:406 src/transit/utils.js:35 src/transit/utils.js:87
 msgid "Start"
 msgstr "Despart"
 
-#: src/motis.js:421 src/transit/utils.js:43 src/transit/utils.js:73
+#: src/motis.js:425 src/transit/utils.js:43 src/transit/utils.js:73
 msgid "Arrive"
 msgstr "Arribada"
 
-#: src/motis.js:483
+#: src/motis.js:487
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Prene los escalièrs cap al nivèl %s"
 
-#: src/motis.js:484
+#: src/motis.js:488
 msgid "Take the stairs"
 msgstr "Prene los escalièrs"
 
-#: src/motis.js:488
+#: src/motis.js:492
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Contunhar sus %s"
 
-#: src/motis.js:493
+#: src/motis.js:497
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Viratz a esquèrra sus %s"
 
-#: src/motis.js:494
+#: src/motis.js:498
 msgid "Turn left"
 msgstr "Viratz a esquèrra"
 
-#: src/motis.js:498
+#: src/motis.js:502
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:499
+#: src/motis.js:503
 msgid "Turn slightly left"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:503
+#: src/motis.js:507
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Viratz francament a esquèrra sus %s"
 
-#: src/motis.js:504
+#: src/motis.js:508
 msgid "Turn sharp left"
 msgstr "Viratz francament a esquèrra"
 
-#: src/motis.js:508
+#: src/motis.js:512
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Viratz a drecha sus %s"
 
-#: src/motis.js:509
+#: src/motis.js:513
 msgid "Turn right"
 msgstr "Virar a drecha"
 
-#: src/motis.js:513
+#: src/motis.js:517
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:514
+#: src/motis.js:518
 msgid "Turn slightly right"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:518
+#: src/motis.js:522
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Viratz leugièrament a esquèrra sus %s"
 
-#: src/motis.js:519
+#: src/motis.js:523
 msgid "Turn sharp right"
 msgstr "Viratz leugièrament a esquèrra"
 
-#: src/motis.js:526
+#: src/motis.js:530
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "A la rotonda, prenetz la sortida %s"
 
-#: src/motis.js:529
+#: src/motis.js:533
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "A la rotonda, prenetz la sortida cap a %s"
 
-#: src/motis.js:531
+#: src/motis.js:535
 msgid "Take the roundabout"
 msgstr "Prenètz la rotonda"
 
-#: src/motis.js:539
+#: src/motis.js:543
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Préner l’ascensor e davalatz a %s"
 
-#: src/motis.js:540
+#: src/motis.js:544
 msgid "Take the elevator"
 msgstr "Préner l’ascensor"
 
-#: src/motis.js:544
+#: src/motis.js:548
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Fasètz mièg-torn a esquèrra sus %s"
 
-#: src/motis.js:545
+#: src/motis.js:549
 msgid "Make a left u-turn"
 msgstr "Fasètz mièg-torn a esquèrra"
 
-#: src/motis.js:549
+#: src/motis.js:553
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Fasètz mièg-torn a drecha sus %s"
 
-#: src/motis.js:550
+#: src/motis.js:554
 msgid "Make a right u-turn"
 msgstr "Fasètz mièg-torn a drecha"
 
@@ -1609,35 +1623,35 @@ msgstr "Torisme"
 msgid "Other"
 msgstr "Autras"
 
-#: src/osmTypes.js:234
+#: src/osmTypes.js:210
 msgid "Funicular station"
 msgstr "Estacion de funiculari"
 
-#: src/osmTypes.js:236
+#: src/osmTypes.js:212
 msgid "Light rail stop"
 msgstr "Arrèst de rail"
 
-#: src/osmTypes.js:238
+#: src/osmTypes.js:214
 msgid "Monorail station"
 msgstr "Estacion de monorail"
 
-#: src/osmTypes.js:240 src/osmTypes.js:250
+#: src/osmTypes.js:216 src/osmTypes.js:226
 msgid "Railway station"
 msgstr "Gara"
 
-#: src/osmTypes.js:242
+#: src/osmTypes.js:218
 msgid "Subway station"
 msgstr "Estacion de mètro"
 
-#: src/osmTypes.js:246
+#: src/osmTypes.js:222
 msgid "Railway halt"
 msgstr "Fin de via ferrada"
 
-#: src/osmTypes.js:248
+#: src/osmTypes.js:224
 msgid "Tram stop"
 msgstr "Arrèst de tramway"
 
-#: src/osmTypes.js:257 src/osmTypes.js:266
+#: src/osmTypes.js:233 src/osmTypes.js:242
 msgid "Public transportation stop"
 msgstr "Arrèst de transpòrt public"
 
