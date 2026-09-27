@@ -322,7 +322,7 @@ export class Motis {
         const route = isTransit ? new Route({ displayName:   leg.displayName,
                                               tripShortName: leg.tripShortName,
                                               routeType:     leg.routeType ??
--                                                            this._getRouteType(leg),
+                                                             this._getRouteType(leg),
                                               agencyName:    leg.agencyName,
                                               agencyUrl:     leg.agencyUrl,
                                               color:         this._parseHexColorString(leg.routeColor),
@@ -437,7 +437,7 @@ export class Motis {
         const route = new Route({ displayName:   stopTime.displayName,
                                   tripShortName: stopTime.tripShortName,
                                   routeType:     stopTime.routeType ??
--                                                this._getRouteType(stopTime),
+                                                 this._getRouteType(stopTime),
                                   agencyName:    stopTime.agencyName,
                                   agencyUrl:     stopTime.agencyUrl,
                                   color:         this._parseHexColorString(stopTime.routeColor),
