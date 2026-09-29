@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import GeocodeGlib from 'gi://GeocodeGlib';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import GWeather from 'gi://GWeather';
@@ -28,13 +29,18 @@ import GLib from 'gi://GLib';
 import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
+import * as Address from './address.js';
+import {AddressPlace} from './addressPlace.js';
+import {Application} from './application.js';
 import {Arrival} from './transit/arrival.js';
+import * as CartoSymbols from './cartoSymbols.js';
 import {Departure} from './transit/departure.js';
 import * as Epaf from './epaf.js';
 import * as HVT from './transit/hvt.js';
 import {Itinerary} from './transit/itinerary.js';
 import {Leg} from './transit/leg.js';
 import {Location} from './location.js';
+import * as OSMTypes from './osmTypes.js';
 import {Place} from './place.js';
 import {Query} from './http.js';
 import {Route} from './transit/route.js';
@@ -55,6 +61,8 @@ const NUM_STOP_TIMES = 10;
  */
 const MAX_MATCHING_DISTANCE = 250;
 
+const PLACE_BIAS = 5;
+
 /**
  * Implements the MOTIS /plan endpoint.
  *
@@ -71,6 +79,7 @@ export class Motis {
         this._session =
             new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._cachedEncodedPolylines = {};
+        this._language = Utils.getLanguages().toString();
 
         if (!this._baseUrl)
             throw new Error('must specify baseUrl as an argument');
@@ -130,6 +139,36 @@ export class Motis {
                 if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                     Utils.debug('Failed to send request: ' + error.msg + ', ' + error.stack);
                     callback(null);
+                }
+            }
+        });
+    }
+
+    search(string, latitude, longitude, cancellable, callback) {
+        const query = this._getGeocodeQuery(string, latitude, longitude);
+        const msg = Soup.Message.new('GET', this._baseUrl +
+                                            '/api/v1/geocode?' +
+                                            query.toString());
+
+        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT,
+                                          cancellable,
+                                          (source, res) => {
+            if (cancellable.is_cancelled())
+                return;
+
+            if (msg.get_status() !== Soup.Status.OK) {
+                callback(null, msg.get_status());
+            } else {
+                try {
+                    const buffer =
+                        this._session.send_and_read_finish(res).get_data();
+                    const result = JSON.parse(Utils.getBufferText(buffer));
+                    Utils.debug('result: ' + JSON.stringify(result, null, 2));
+
+                    callback(this._parseGeocodedPlaces(result), null);
+                } catch (e) {
+                    Utils.debug('Error: ' + e);
+                    callback(null, e);
                 }
             }
         });
@@ -478,6 +517,102 @@ export class Motis {
 
     }
 
+    _parseGeocodedPlaces(result) {
+        return result.map(place => this._parsePlace(place));
+    }
+
+    _parsePlace(place) {
+        const location = new Location({ latitude:  place.lat,
+                                        longitude: place.lon });
+
+        const params = {
+            location:    location,
+            name:        place.name,
+            postalCode:  place.zip,
+            countryCode: place.country,
+            ...this._parseAreas(place.areas)
+        };
+
+        switch (place.type) {
+            case 'PLACE':
+                return this._parseOSMPlace(place, params);
+            case 'ADDRESS':
+                return this._parseAddressPlace(place, params);
+            case 'STOP':
+                return this._parseStopPlace(place, params);
+            default:
+                throw `Unknown place type: ${place.type}`;
+
+        }
+    }
+
+    _parseAreas(areas) {
+        const params = {};
+
+        for (const area of areas) {
+            const adminLevel = area.adminLevel;
+
+            if (adminLevel === 2)
+                params.country = area.name;
+            else if (adminLevel === 3 || adminLevel === 4)
+                params.state = area.name;
+            else if (adminLevel === 5 || adminLevel === 6)
+                params.county = area.name;
+            else if (adminLevel === 7)
+                params.town = area.name;
+            else if (adminLevel === 8)
+                params.area = area.name;
+        }
+
+        return params;
+    }
+
+    _parseOSMPlace(place, { name, ...params }) {
+        const [osmType, osmId] = this._parsePlaceId(place.id);
+        const displayName =
+            name ??
+            OSMTypes.lookupType(properties.osm_key, properties.osm_value) ??
+            _("Unnamed place");
+
+        return new Place({ osmType:  osmType,
+                           osmId:    osmId,
+                           ...CartoSymbols.getPlaceParamsForCategory(place.category),
+                           name:     displayName,
+                           ...params });
+    }
+
+    _parseAddressPlace(place, params) {
+        const streetAddress =
+            place.street && place.houseNumber ?
+            Address.streetAddressForCountryCode(place.street, place.houseNumber,
+                                                place.country) :
+            place.street;
+
+        return new AddressPlace({ streetAddress: streetAddress,
+                                  ...params });
+    }
+
+    _parseStopPlace(place, params) {
+        return new TransitPlace({ id:       place.id,
+                                  modes:    new Set(place.modes),
+                                  ...params });
+    }
+
+    _parsePlaceId(id) {
+        const [typeString, osmId] = id.split('/');
+
+        switch (typeString) {
+            case 'node':
+                return [GeocodeGlib.PlaceOsmType.NODE, osmId];
+            case 'way':
+                return [GeocodeGlib.PlaceOsmType.WAY, osmId];
+            case 'relation':
+                return [GeocodeGlib.PlaceOsmType.RELATION, osmId];
+            default:
+                return [GeocodeGlib.PlaceOsmType.UNKNOWN, osmId];
+        }
+    }
+
     _getTurnpointTypeAndInstruction(step) {
         switch (step.relativeDirection) {
             case 'DEPART':
@@ -619,7 +754,7 @@ export class Motis {
         const params = { fromPlace: this._getPlaceParamFromLocation(from),
                          toPlace:   this._getPlaceParamFromLocation(to),
                          arriveBy:  this._query.arriveBy,
-                         language:  Utils.getLanguages().toString(),
+                         language:  this._language,
                          maxMatchingDistance: MAX_MATCHING_DISTANCE };
 
         if (this._query.time)
@@ -639,7 +774,7 @@ export class Motis {
     _getStoptimesQuery(place, arrival, extendPrevious, radius, routeType) {
         const params = { n:        NUM_STOP_TIMES,
                          radius:   radius,
-                         language: Utils.getLanguages().toString() };
+                         language: this._language };
 
         if (place instanceof TransitPlace)
             params.stopId = place.id;
@@ -665,6 +800,14 @@ export class Motis {
         }
 
         return new Query(params);
+    }
+
+    _getGeocodeQuery(string, latitude, longitude) {
+        return new Query({ text:       string,
+                           place:      `${latitude},${longitude}`,
+                           placeBias:  PLACE_BIAS,
+                           numResults: Application.settings.get('max-search-results'),
+                           language:   this._language });
     }
 
     _getTimeParam() {
