@@ -19,16 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import {GraphHopperGeocode} from './graphHopperGeocode.js';
-
-var _geocoder = null;
+import {Application} from './application.js';
 
 export function getGeocoder() {
-    // for now, always use the GraphHopper geocoder
-    if (!_geocoder)
-        _geocoder = new GraphHopperGeocode();
-
-    return _geocoder;
+    return Application.routingDelegator.transitous;
 }
 
  
