@@ -1,0 +1,79 @@
+using Gtk 4.0;
+
+template $Gjs_NavigationBar: Box {
+  name: "navigation-bar";
+  orientation: vertical;
+  halign: center;
+  valign: end;
+  margin-start: 12;
+  margin-end: 12;
+  margin-bottom: 24;
+
+  styles [
+    "card",
+  ]
+
+  Box {
+    spacing: 12;
+    margin-start: 12;
+    margin-end: 12;
+    margin-top: 12;
+    margin-bottom: 6;
+
+    Image directionImage {
+      accessibility {
+        label: _("Direction Image");
+      }
+      icon-size: large;
+      valign: center;
+    }
+
+    Box {
+      orientation: vertical;
+      valign: center;
+      hexpand: true;
+
+      Label distanceLabel {
+        halign: start;
+        xalign: 0;
+
+        styles [
+          "title-2",
+        ]
+      }
+
+      Label instructionLabel {
+        halign: start;
+        xalign: 0;
+        wrap: true;
+        ellipsize: end;
+        lines: 2;
+        max-width-chars: 36;
+      }
+    }
+
+    Button stopButton {
+      icon-name: "process-stop-symbolic";
+      tooltip-text: _("Stop Navigation");
+      valign: center;
+      action-name: "win.toggle-navigation";
+
+      styles [
+        "circular",
+        "destructive-action",
+      ]
+    }
+  }
+
+  Label statusLabel {
+    halign: center;
+    margin-start: 12;
+    margin-end: 12;
+    margin-bottom: 8;
+
+    styles [
+      "dim-label",
+      "caption",
+    ]
+  }
+}

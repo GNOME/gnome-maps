@@ -37,10 +37,12 @@ import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
 import {MapView} from './mapView.js';
+import {NavigationBar} from './navigationBar.js';
 import {PrintOperation} from './printOperation.js';
 import {SearchBar} from './searchBar.js';
 import {ShapeLayer} from './shapeLayer.js';
 import * as Utils from './utils.js';
+import {RouteQuery} from './routeQuery.js';
 import {ZoomAndRotateControls} from './zoomAndRotateControls.js';
 import {PreferencesDownloads} from './preferencesDownloads.js';
 import {PreferencesDialog} from './preferences.js';
@@ -127,6 +129,116 @@ export class MainWindow extends Adw.ApplicationWindow {
 
     showToast(message) {
         Utils.showToastInOverlay(message, this._overlay);
+    }
+
+    _toggleNavigation() {
+        const navigator = Application.navigator;
+
+        if (navigator.active) {
+            navigator.stop();
+            return;
+        }
+
+        const route = Application.routingDelegator.route;
+        const transportation = Application.routeQuery.transportation;
+
+        if (!route.turnPoints || route.turnPoints.length === 0) {
+            /* In case user presses short cut for navigation, gentle abort */
+            this.showToast(_("No route to navigate, plan a route first"));
+            return;
+        }
+
+        if (transportation === RouteQuery.Transportation.TRANSIT) {
+            /* We can only handle Pedestrian, Bike and Car */
+            this.showToast(_("Navigation is not available for transit routes"));
+            return;
+        }
+
+        Utils.debug('GeoClue check');
+        if (Application.geoclue.state !== Geoclue.State.ON) {
+            Application.geoclue.start(() => {
+                switch(Application.geoclue.state) {
+                case Geoclue.State.FAILED:
+                    Utils.debug('Failed');
+                    this.showToast(_("Failed to connect to location service"));
+                    break;
+
+                case Geoclue.State.DENIED:
+                    Utils.debug('Denied');
+                    let locationServiceToast =
+                        new Adw.Toast({ title: _("Turn on location services"),
+                                        button_label: _("Location Settings") });
+
+                    locationServiceToast.connect('button-clicked', () => {
+                        let privacyInfo =
+                            Gio.DesktopAppInfo.new('gnome-privacy-panel.desktop');
+
+                        try {
+                            let display = Gdk.Display.get_default();
+
+                            privacyInfo.launch([], display.get_app_launch_context());
+                        } catch(e) {
+                            Utils.debug('launching privacy panel failed: ' + e);
+                        }
+                    });
+
+                    this.addToast(locationServiceToast);
+                    break;
+
+                default:
+                    Utils.debug('Started');
+                    this._toggleNavigation();
+                    break;
+                }
+            });
+            return;
+        }
+        Utils.debug('Go on');
+
+        if (!this._navigatorSignalsConnected) {
+            navigator.connect('progress',
+                              this._onNavigationProgress.bind(this));
+            navigator.connect('finished', () => {
+                this.showToast(_("You have arrived at your destination"));
+            });
+            navigator.connect('stopped',
+                              () => {
+                                if (this._navigationBar)
+                                    this._navigationBar.visible = false;
+
+                                if (this._navigationInhibitCookie) {
+                                    this.application.uninhibit(this._navigationInhibitCookie);
+                                    this._navigationInhibitCookie = 0;
+                                }
+                              });
+            this._navigatorSignalsConnected = true;
+        }
+
+        if (navigator.start()) {
+            if (!this._navigationBar) {
+                this._navigationBar =
+                    new NavigationBar({ navigator: Application.navigator });
+                this._mapOverlay.add_overlay(this._navigationBar);
+            }
+
+            this._navigationBar.visible = true;
+
+            /* Keep system awake as long as navigation is active */
+            this._navigationInhibitCookie =
+                this.application.inhibit(this,
+                                         Gtk.ApplicationInhibitFlags.IDLE |
+                                         Gtk.ApplicationInhibitFlags.SUSPEND,
+                                         _("Navigation is active"));
+        }
+    }
+
+    _onNavigationProgress(navigator, nextIndex, distanceToNext,
+                          remainingDistance, remainingTime,
+                          snappedLatitude, snappedLongitude) {
+        this._mapView.map.go_to_full_with_duration(snappedLatitude,
+                                                   snappedLongitude,
+                                                   navigator.params.followZoom,
+                                                   200);
     }
 
     addToast(toast) {
@@ -249,6 +361,10 @@ export class MainWindow extends Adw.ApplicationWindow {
             'show-routing': {
                 accels: ['<Primary>D'],
                 onActivate: () => this._openRoutePlanner()
+            },
+            'toggle-navigation': {
+                accels: ['<Primary>N'],
+                onActivate: () => this._toggleNavigation()
             },
             'zoom-in': {
                 accels: ['<Primary>plus', 'KP_Add', '<Primary>KP_Add', '<Primary>equal'],
