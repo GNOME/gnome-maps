@@ -23,7 +23,6 @@ import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
-import {KEY} from './graphHopper.js';
 import * as HTTP from './http.js';
 import * as PhotonUtils from './photonUtils.js';
 import * as Utils from './utils.js';
@@ -31,6 +30,7 @@ import * as Utils from './utils.js';
 // HTTP session timeout (in seconds)
 const TIMEOUT = 5;
 
+const KEY = 'VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP';
 const BASE_URL = 'https://graphhopper.com';
 const ATTRIBUTION = 'GraphHopper';
 const ATTRIBUTION_URL = 'https://graphhopper.com/';
