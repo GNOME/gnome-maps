@@ -31,6 +31,11 @@ maps_gir_version = '1.0'
 
 desktop_file_validate = find_program('desktop-file-validate', required: false)
 appstreamcli = find_program('appstreamcli', required: false)
+espeak_ng = find_program('espeak-ng', required: false)
+
+if not espeak_ng.found()
+	warning('espeak-ng not found, turn-by-turn spoken instructions will be disabled')
+endif
 
 glib = dependency('glib-2.0', version: '>= 2.66.0')
 gio = dependency('gio-2.0', version: '>= 2.44.0')

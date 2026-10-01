@@ -33,6 +33,7 @@ import {Location} from './location.js';
 import {MainWindow} from './mainWindow.js';
 import {OSMEdit} from './osmEdit.js';
 import {PlaceStore} from './placeStore.js';
+import {Navigator} from './navigator.js';
 import {RoutingDelegator} from './routingDelegator.js';
 import {RouteQuery} from './routeQuery.js';
 import {Settings} from './settings.js';
@@ -54,6 +55,7 @@ export class Application extends Adw.Application {
     static placeStore = null;
     /** @type {RoutingDelegator} */
     static routingDelegator = null;
+    static navigator = null;
     static geoclue = null;
     static osmEdit = null;
     static normalStartup = true;
@@ -162,6 +164,7 @@ export class Application extends Adw.Application {
         Application.settings = Settings.getSettings('org.gnome.Maps');
         Application.routeQuery = new RouteQuery();
         Application.routingDelegator = new RoutingDelegator({ query: Application.routeQuery });
+        Application.navigator = new Navigator();
         Application.geoclue = new Geoclue();
         Application.osmEdit = new OSMEdit();
         Application.downloads = new DownloadManager();
