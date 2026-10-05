@@ -125,9 +125,8 @@ export class TransitPlace extends Place {
             this._osmKey = 'aerialway';
             this._osmValue = 'station';
         } else {
-            /* use a fallback question mark icon in case of some future,
-             * for now unknown mode appears */
-            this._iconName = 'dialog-question-symbolic';
+            // fallback to the default place icon for now unknown mode appears
+            this._iconName = 'map-marker-symbolic';
         }
     }
 
