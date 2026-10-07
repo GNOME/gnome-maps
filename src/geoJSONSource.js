@@ -197,6 +197,9 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
     }
 
     _renderTile(tile) {
+        if (!this._tileIndex)
+            return;
+
         let tileJSON = this._tileIndex.getTile(tile.zoom_level, tile.x, tile.y);
         let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
                                              this.tile_size, this.tile_size);
