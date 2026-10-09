@@ -83,7 +83,7 @@ export class TransitRowTrackSegment extends Gtk.Widget {
         if (orientation === Gtk.Orientation.HORIZONTAL) {
             return [12, 16, -1, -1];
         } else {
-            return [0, -1, -1, -1];
+            return [0, 0, -1, -1];
         }
     }
 
