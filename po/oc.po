@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-09-21 19:56+0000\n"
-"PO-Revision-Date: 2026-09-27 09:32+0200\n"
+"POT-Creation-Date: 2026-10-09 20:53+0000\n"
+"PO-Revision-Date: 2026-10-13 13:21+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -537,19 +537,23 @@ msgstr "En veitura"
 msgid "Public Transit"
 msgstr "Transpòrts publics"
 
-#: data/ui/route-view.blp:154
+#: data/ui/route-view.blp:149 data/ui/place-view.blp:206
+msgid "Retry"
+msgstr "Tornar ensajar"
+
+#: data/ui/route-view.blp:170
 msgid "Route search by GraphHopper"
 msgstr "Recèrca d'itinerari amb GraphHopper"
 
-#: data/ui/route-view.blp:172
+#: data/ui/route-view.blp:188
 msgid "Itineraries provided by Transitous"
 msgstr "Itineraris provesits per %s"
 
-#: data/ui/route-view.blp:190
+#: data/ui/route-view.blp:206
 msgid "More Information"
 msgstr "Mai d'informacions"
 
-#: data/ui/route-view.blp:221
+#: data/ui/route-view.blp:237
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -570,7 +574,7 @@ msgstr ""
 "Los noms e marcas afichats devon èsser considerats coma de marcas "
 "depausadas, se fa mestièr."
 
-#: data/ui/route-view.blp:239
+#: data/ui/route-view.blp:255
 msgid "Back"
 msgstr "Retorn"
 
@@ -1002,15 +1006,15 @@ msgstr "error d'analisi"
 msgid "unknown geometry"
 msgstr "geometria desconeguda"
 
-#: src/graphHopper.js:116 src/transit/plan.js:106
+#: src/graphHopper.js:111 src/transit/plan.js:106
 msgid "Route request failed."
 msgstr "Fracàs de la recèrca d'itinerari."
 
-#: src/graphHopper.js:123 src/transit/plan.js:102
+#: src/graphHopper.js:118 src/transit/plan.js:102
 msgid "No route found."
 msgstr "Cap d'itinerari pas trobat."
 
-#: src/graphHopper.js:210
+#: src/graphHopper.js:205
 msgid "Start!"
 msgstr "Es partit !"
 
@@ -1291,11 +1295,11 @@ msgstr "Oras de dobertura"
 msgid "Phone"
 msgstr "Telefòn"
 
-#: src/osmEditDialog.js:151 src/placeView.js:644
+#: src/osmEditDialog.js:151 src/placeView.js:667
 msgid "Email"
 msgstr "Adreça de corrièr electronic"
 
-#: src/osmEditDialog.js:158 src/placeView.js:611
+#: src/osmEditDialog.js:158 src/placeView.js:634
 msgid "Website"
 msgstr "Site internet"
 
@@ -1362,11 +1366,11 @@ msgstr "Wikipèdia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:845
+#: src/osmEditDialog.js:204 src/placeView.js:868
 msgid "Population"
 msgstr "Populacion"
 
-#: src/osmEditDialog.js:209 src/placeView.js:874
+#: src/osmEditDialog.js:209 src/placeView.js:897
 msgid "Altitude"
 msgstr "Altitud"
 
@@ -1671,7 +1675,7 @@ msgstr "Fracàs a l'analisi de la Geo URI"
 msgid "Failed to parse Maps URI"
 msgstr "Fracàs a l'analisi URI de Mapas"
 
-#: src/placeFormatter.js:57 src/placeView.js:262 src/placeView.js:597
+#: src/placeFormatter.js:57 src/placeView.js:266 src/placeView.js:620
 msgid "Coordinates"
 msgstr "Coordenadas"
 
@@ -1689,91 +1693,99 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:371
+#: src/placeView.js:375
 msgid "Arrival information provided by Transitous"
 msgstr "Informacions d’arribada provesidas per Transitous"
 
-#: src/placeView.js:372
+#: src/placeView.js:376
 msgid "Departure information provided by Transitous"
 msgstr "Informacions de partença provesidas per Transitous"
 
-#: src/placeView.js:422
+#: src/placeView.js:416
+msgid "Failed to load arrivals"
+msgstr "impossible de cargar las arribadas"
+
+#: src/placeView.js:417
+msgid "Failed to load departures"
+msgstr "impossible de cargar las partenças"
+
+#: src/placeView.js:433
 msgid "No arrivals found"
 msgstr "Cap d’arribada pas trobada"
 
-#: src/placeView.js:423
+#: src/placeView.js:434
 msgid "No departures found"
 msgstr "Cap de partença pas trobada"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for airline flights
 #.
-#: src/placeView.js:453
+#: src/placeView.js:476
 msgid "Flights"
 msgstr "Vòls"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trains
 #.
-#: src/placeView.js:457
+#: src/placeView.js:480
 msgid "Trains"
 msgstr "Trens"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for ferries
 #.
-#: src/placeView.js:461
+#: src/placeView.js:484
 msgid "Ferries"
 msgstr "Vaissèls"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for gondola (also known as aerial trams or telecabins)
 #.
-#: src/placeView.js:465
+#: src/placeView.js:488
 msgid "Gondola"
 msgstr "Gondòla"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for funicular railway trains
 #.
-#: src/placeView.js:469
+#: src/placeView.js:492
 msgid "Funicular"
 msgstr "Cuniculari"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for subway (also known as metro or underground rail)
 #.
-#: src/placeView.js:473
+#: src/placeView.js:496
 msgid "Subway"
 msgstr "Mètros"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for trams
 #.
-#: src/placeView.js:477
+#: src/placeView.js:500
 msgid "Trams"
 msgstr "Trams"
 
 #. Translators: this is a tooltip for a toggle to show departures/
 #. * arrivals for buses
 #.
-#: src/placeView.js:481
+#: src/placeView.js:504
 msgid "Buses"
 msgstr "Bus"
 
 #. Translators: this refers to showing departures or arrivals
 #. * for all available public transit modes in a station/stop
 #.
-#: src/placeView.js:541
+#: src/placeView.js:564
 msgid "All"
 msgstr "Tot"
 
-#: src/placeView.js:603
+#: src/placeView.js:626
 msgid "Accuracy"
 msgstr "Precision"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:606
+#: src/placeView.js:629
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precision : %s"
@@ -1784,7 +1796,7 @@ msgstr "Precision : %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:625
+#: src/placeView.js:648
 msgid "Phone number"
 msgstr "Numèro de telefòn"
 
@@ -1795,16 +1807,16 @@ msgstr "Numèro de telefòn"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:659 src/placeView.js:698
+#: src/placeView.js:682 src/placeView.js:721
 msgid "Floor"
 msgstr "Estanci"
 
-#: src/placeView.js:661
+#: src/placeView.js:684
 #, javascript-format
 msgid "Floor %s"
 msgstr "Estanci %s"
 
-#: src/placeView.js:673
+#: src/placeView.js:696
 msgid "At ground level"
 msgstr "Al planpè"
 
@@ -1813,7 +1825,7 @@ msgstr "Al planpè"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:682
+#: src/placeView.js:705
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1825,7 +1837,7 @@ msgstr[1] "TinyURL per çaisús : %s"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:693
+#: src/placeView.js:716
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1836,7 +1848,7 @@ msgstr[1] "%s estanci al dejós del planpè"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:711
+#: src/placeView.js:734
 msgid "Offers takeout"
 msgstr "Prepausa plat a emportar"
 
@@ -1844,7 +1856,7 @@ msgstr "Prepausa plat a emportar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:719
+#: src/placeView.js:742
 msgid "Does not offer takeout"
 msgstr "Prepausa pas per emportar"
 
@@ -1853,18 +1865,18 @@ msgstr "Prepausa pas per emportar"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:728
+#: src/placeView.js:751
 msgid "Only offers takeout"
 msgstr "Prepausa sonque per emportar"
 
-#: src/placeView.js:735
+#: src/placeView.js:758
 msgid "Opening hours"
 msgstr "Oras de dobertura"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:745
+#: src/placeView.js:768
 msgid "Public internet access"
 msgstr "Accès internet public"
 
@@ -1872,50 +1884,50 @@ msgstr "Accès internet public"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:754
+#: src/placeView.js:777
 msgid "No internet access"
 msgstr "Cap d'accès internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:762
+#: src/placeView.js:785
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi public"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:770
+#: src/placeView.js:793
 msgid "Wired internet access"
 msgstr "Accès internet per cable"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:778
+#: src/placeView.js:801
 msgid "Computers available for use"
 msgstr "Ordenadors a disposicion"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:786
+#: src/placeView.js:809
 msgid "Internet assistance available"
 msgstr "Assisténcia Internet disponibla"
 
-#: src/placeView.js:792
+#: src/placeView.js:815
 msgid "No toilets available"
 msgstr "Cap de comun pas disponible"
 
-#: src/placeView.js:795
+#: src/placeView.js:818
 msgid "Toilets available"
 msgstr "Comuns disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:804
+#: src/placeView.js:827
 msgid "Wheelchair accessible"
 msgstr "Accès als fautuèlhs rotlants"
 
@@ -1924,7 +1936,7 @@ msgstr "Accès als fautuèlhs rotlants"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:814
+#: src/placeView.js:837
 msgid "Limited wheelchair accessibility"
 msgstr "Accès als fautuèlhs rotlants limitat"
 
@@ -1932,7 +1944,7 @@ msgstr "Accès als fautuèlhs rotlants limitat"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:823
+#: src/placeView.js:846
 msgid "Not wheelchair accessible"
 msgstr "Cap d'accès als fautuèlhs rotlants"
 
@@ -1941,7 +1953,7 @@ msgstr "Cap d'accès als fautuèlhs rotlants"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:833
+#: src/placeView.js:856
 msgid "Designated for wheelchair users"
 msgstr "Accès als fautuèlhs rotlants"
 
@@ -1950,7 +1962,7 @@ msgstr "Accès als fautuèlhs rotlants"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:864
+#: src/placeView.js:887
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s jol nivèl de la mar"
@@ -1959,16 +1971,16 @@ msgstr "%s jol nivèl de la mar"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:871
+#: src/placeView.js:894
 msgid "At sea level"
 msgstr "Al nivèl de la mar"
 
-#: src/placeView.js:883
+#: src/placeView.js:906
 msgid "Religion:"
 msgstr "Religion :"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:888
+#: src/placeView.js:911
 #, javascript-format
 msgid "Exit %s"
 msgstr "Sortida %s"
@@ -2352,7 +2364,7 @@ msgid "To"
 msgstr "A"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/routeView.js:341
+#: src/routeView.js:345
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Temps estimat : %s"
