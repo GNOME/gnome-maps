@@ -436,7 +436,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         this._headerBar.pack_end(this._headerBarRight);
 
         this._searchBar = this._createSearchBar();
-        this._headerBar.title_widget = this._searchBar;
+        this._clamp.child = this._searchBar;
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -771,6 +771,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
     Children: ['splitView'],
     InternalChildren: [ 'headerBar',
+                        'clamp',
                         'mainMenuButton',
                         'grid',
                         'actionBar',

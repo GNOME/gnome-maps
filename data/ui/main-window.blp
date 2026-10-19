@@ -94,6 +94,10 @@ template $Gjs_MainWindow: Adw.ApplicationWindow {
 
         [top]
         Adw.HeaderBar headerBar {
+          title-widget: Adw.Clamp clamp {
+            orientation: horizontal;
+            maximum-size: 700;
+          };
           [end]
           MenuButton mainMenuButton {
             menu-model: hamburgerMenu;

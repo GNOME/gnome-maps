@@ -36,8 +36,8 @@ const EXPLORE_BUTTON_MIN_ZOOM = 12;
 export class SearchBar extends PlaceEntry {
     constructor({mapView, ...params}) {
         super({ mapView:             mapView,
-                max_width_chars:     50,
                 matchRoute:          true,
+                hexpand:             true,
                 hasPoiBrowser:       true,
                 placeholder_text:    _("Search"),
                 primary_icon_name:   'system-search-symbolic',
