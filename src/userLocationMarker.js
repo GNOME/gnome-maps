@@ -217,12 +217,12 @@ export class UserLocationMarker extends MapMarker {
         this._headingTorch = new HeadingTorch({ place:   this.place,
                                                 mapView: this._mapView });
         this._mapView.map.viewport.connect('notify::zoom-level',
-                     () => this._accuracyMarker.refreshGeometry(this._mapView));
+                     () => this._updateAccuracyCircle());
         this._mapView.connect('notify::default-width',
-                     () => this._accuracyMarker.refreshGeometry(this._mapView));
+                     () => this._updateAccuracyCircle());
         this._mapView.connect('notify::default-height',
-                     () => this._accuracyMarker.refreshGeometry(this._mapView));
-        this._accuracyMarker.refreshGeometry(this._mapView);
+                     () => this._updateAccuracyCircle());
+        this._updateAccuracyCircle();
 
         this.place.connect('notify::location', () => this._updateLocation());
 
