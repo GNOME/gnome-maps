@@ -113,6 +113,16 @@ export class SearchBar extends PlaceEntry {
             this.popover.popdown();
     }
 
+    _onActivate() {
+        /* if there's a previous place filled in, and the results are not
+         * showing, select the previous place on enter
+         */
+        if (!this._popover.visible && this.text.length > 0 && this.place)
+            this._mapView.showPlace(this.place);
+        else
+            super._onActivate();
+    }
+
     _updateExploreButtonSensitivity() {
         this.secondary_icon_sensitive =
             this._mapView.map.viewport.zoom_level >= EXPLORE_BUTTON_MIN_ZOOM;
