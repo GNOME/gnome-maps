@@ -293,3 +293,18 @@ export function parseDateTime(dateTimeString, tz) {
 
     return dateTime.to_timezone(tz);
 }
+
+/**
+ * Get time offset in a given timezone relative the current local time, in
+ * hours.
+ *
+ * @param {GLib.TimeZone} tz timezone to use
+ * @returns {number} offset in hours at the current instance in time
+ */
+export function getCurrentTimezoneOffset(tz) {
+    const nowLocal = GLib.DateTime.new_now_local();
+    const nowTz = GLib.DateTime.new_now(tz);
+
+    return (nowTz.get_utc_offset() - nowLocal.get_utc_offset()) /
+           3600_000_000;
+}
