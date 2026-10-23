@@ -42,6 +42,7 @@ import {PlaceButtons} from './placeButtons.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
 import {RouteType} from './transit/routeType.js';
+import * as Time from './time.js';
 import * as Transit from './transit/utils.js';
 import {TransitJunctureRow} from './transitJunctureRow.js';
 import {TransitMoreRow} from './transitMoreRow.js';
@@ -421,8 +422,14 @@ export class PlaceView extends Gtk.Box {
             } else if (junctures?.length > 0) {
                 this._infoStack.visible_child = this._departuresArrivals;
 
-                if (!this._transitModesSet)
+                if (!this._transitModesSet) {
                     this._initTransitModes(junctures);
+                    // TODO: show timezone offset for stoptimes
+                    const tzOffset =
+                        Time.getCurrentTimezoneOffset(junctures[0].time.get_timezone());
+
+                    log(`time offset: ${tzOffset}`);
+                }
 
                 this._populateStopTimes(junctures, arrivals, extendPrevious);
             } else {
