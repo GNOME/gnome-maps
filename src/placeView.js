@@ -42,6 +42,7 @@ import {PlaceButtons} from './placeButtons.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
 import {RouteType} from './transit/routeType.js';
+import * as Time from './time.js';
 import * as Transit from './transit/utils.js';
 import {TransitJunctureRow} from './transitJunctureRow.js';
 import {TransitMoreRow} from './transitMoreRow.js';
@@ -421,8 +422,31 @@ export class PlaceView extends Gtk.Box {
             } else if (junctures?.length > 0) {
                 this._infoStack.visible_child = this._departuresArrivals;
 
-                if (!this._transitModesSet)
+                if (!this._transitModesSet) {
                     this._initTransitModes(junctures);
+
+                    const time = junctures[0].time;
+                    const tzOffset =
+                        Time.getTimezoneOffset(time, GLib.TimeZone.new_local());
+                    const utcOffsetString = Time.getUTCOffsetString(time);
+                    const timezoneOffsetText =
+                        tzOffset === 0 ? _("Current timezone") :
+                        tzOffset < 0 ?
+                            ngettext("%s hour earlier (%s)",
+                                     "%s hours earlier (%s)",
+                                     Math.ceil(-tzOffset)).format(Time.getTimezoneOffsetString(-tzOffset),
+                                                                  utcOffsetString) :
+                            ngettext("%s hour later (%s)",
+                                     "%s hours later (%s)",
+                                     Math.ceil(tzOffset)).format(Time.getTimezoneOffsetString(tzOffset),
+                                                                 utcOffsetString);
+
+                    const content = { label: _("Timezone"),
+                                      icon:  'globe-symbolic',
+                                      info:  timezoneOffsetText };
+
+                    this._attachContent([content]);
+                }
 
                 this._populateStopTimes(junctures, arrivals, extendPrevious);
             } else {
