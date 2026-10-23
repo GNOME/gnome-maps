@@ -97,7 +97,56 @@ function parseDateTimeTest() {
     JsUnit.assertNull(dateInvalid);
 }
 
+function getTimezoneOffsetTest() {
+    const dateTime =
+        GLib.DateTime.new_from_iso8601('2026-10-25T21:23:00Z', null).to_timezone(GLib.TimeZone.new_identifier('Europe/Stockholm'));
+
+    JsUnit.assertEquals(1,
+                        Time.getTimezoneOffset(dateTime,
+                                               GLib.TimeZone.new_identifier('Europe/London')));
+    JsUnit.assertEquals(5,
+                        Time.getTimezoneOffset(dateTime,
+                                               GLib.TimeZone.new_identifier('America/New_York')));
+    JsUnit.assertEquals(-8,
+                        Time.getTimezoneOffset(dateTime,
+                                               GLib.TimeZone.new_identifier('Asia/Tokyo')));
+}
+
+function getUTCOffsetStringTest() {
+    const tz1 = GLib.TimeZone.new_identifier('Europe/Stockholm');
+    const tz2 = GLib.TimeZone.new_identifier('Europe/London');
+    const tz3 = GLib.TimeZone.new_identifier('America/Los_Angeles');
+
+    JsUnit.assertEquals('UTC+1',
+                        Time.getUTCOffsetString(GLib.DateTime.new_from_iso8601('2026-10-26T22:00:00Z',
+                                                                               null).to_timezone(tz1)));
+    JsUnit.assertEquals('UTC+0',
+                        Time.getUTCOffsetString(GLib.DateTime.new_from_iso8601('2026-10-26T22:00:00Z',
+                                                                               null).to_timezone(tz2)));
+    JsUnit.assertEquals('UTC-7',
+                        Time.getUTCOffsetString(GLib.DateTime.new_from_iso8601('2026-10-26T22:00:00Z',
+                                                                               null).to_timezone(tz3)));
+}
+
+function getTimezoneOffsetStringTest() {
+    JsUnit.assertEquals('2', Time.getTimezoneOffsetString(2));
+    JsUnit.assertEquals('2', Time.getTimezoneOffsetString(2, false));
+    JsUnit.assertEquals('+2', Time.getTimezoneOffsetString(2, true));
+    JsUnit.assertEquals('-2', Time.getTimezoneOffsetString(-2));
+    JsUnit.assertEquals('-2', Time.getTimezoneOffsetString(-2, true));
+    JsUnit.assertEquals('4:30', Time.getTimezoneOffsetString(4.5));
+    JsUnit.assertEquals('-3:30', Time.getTimezoneOffsetString(-3.5));
+    JsUnit.assertEquals('+5:30', Time.getTimezoneOffsetString(5.5, true));
+    JsUnit.assertEquals('2:06', Time.getTimezoneOffsetString(2.1));
+    JsUnit.assertEquals('0:30', Time.getTimezoneOffsetString(0.5));
+    JsUnit.assertEquals('+0:30', Time.getTimezoneOffsetString(0.5, true));
+    JsUnit.assertEquals('-0:30', Time.getTimezoneOffsetString(-0.5));
+}
+
 formatDateTimeTest();
 formatTimeFromHoursAndMinsTest();
 
 parseDateTimeTest();
+getTimezoneOffsetTest();
+getUTCOffsetStringTest();
+getTimezoneOffsetStringTest();

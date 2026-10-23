@@ -22,6 +22,8 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
+import * as Utils from './utils.js';
+
 // allow using :, ., and the ratio symbol to separate hours:mins
 const _DELIMITERS = [':', '.', '\u2236'];
 
@@ -292,4 +294,51 @@ export function parseDateTime(dateTimeString, tz) {
     }
 
     return dateTime.to_timezone(tz);
+}
+
+/**
+ * Get time offset for a given time stamp relative to a timezone, in
+ * hours.
+ *
+ * @param {GLib.DateTime} dateTime
+ * @param {GLib.TimeZone} tz timezone to use
+ * @returns {number} offset in hours at the current instance in time
+ */
+export function getTimezoneOffset(dateTime, tz) {
+    const dateTimeInTz = dateTime.to_timezone(tz);
+
+    return (dateTime.get_utc_offset() - dateTimeInTz.get_utc_offset()) /
+           3600_000_000;
+}
+
+/**
+ * Get string representation of a given time's offset relative to UTC.
+ *
+ * @param {GLib.DateTime} dateTime
+ * @returns {number} offset relative to UTC in hours for given dateTime
+ */
+export function getUTCOffsetString(dateTime) {
+    const offset = dateTime.get_utc_offset() / 3600_000_000;
+
+    return `UTC${offset.toLocaleString(undefined, { signDisplay: 'always' })}`;
+}
+
+/**
+ * Get a time offset representation given an offset in hours as number,
+ * optionally with explicit sign.
+ *
+ * @param {number} offset value in hours
+ * @param {boolean} if true, always include sign (explicit + for positive offsets)
+ */
+export function getTimezoneOffsetString(offset, alwaysShowSign = false) {
+    const hours = Math.trunc(offset);
+    const mins = (Math.abs(offset) * 60) % 60;
+    const hoursString =
+        alwaysShowSign ?
+        hours.toLocaleString(undefined, { signDisplay: 'always' }) :
+        hours.toLocaleString();
+
+    return mins === 0 ?
+           hoursString :
+           `${hoursString}:${Utils.formatLocaleIntegerMinimumTwoDigits(mins)}`;
 }
