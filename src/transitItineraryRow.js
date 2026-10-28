@@ -19,9 +19,12 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import * as Time from './time.js';
+import {TransitItineraryHeader} from './transitItineraryHeader.js';
 import {TransitRouteLabel} from './transitRouteLabel.js';
 import * as Utils from './utils.js';
 
@@ -31,8 +34,9 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
         super(params);
 
         this._itinerary = itinerary;
-        this._timeLabel.label = this._itinerary.prettyPrintTimeInterval();
-        this._durationLabel.label = this._itinerary.prettyPrintDuration();
+
+        this._headerContainer.child =
+            new TransitItineraryHeader({ itinerary: itinerary });
 
         this._populateSummary();
     }
@@ -91,7 +95,6 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
-    InternalChildren: ['timeLabel',
-                       'durationLabel',
+    InternalChildren: ['headerContainer',
                        'summaryBox']
 }, TransitItineraryRow);

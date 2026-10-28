@@ -8,36 +8,13 @@ template $Gjs_TransitItineraryRow: ListBoxRow {
     margin-top: 12;
     margin-bottom: 12;
     column-spacing: 6;
-    row-spacing: 6;
+    row-spacing: 12;
 
-    Label timeLabel {
-      hexpand: false;
-      vexpand: false;
-      halign: start;
-
-      styles [
-        "numeric",
-      ]
-
+    Adw.Bin headerContainer {
       layout {
         row: 0;
         column: 0;
-      }
-    }
-
-    Label durationLabel {
-      hexpand: true;
-      vexpand: true;
-      halign: start;
-
-      styles [
-        "dimmed",
-        "numeric",
-      ]
-
-      layout {
-        row: 0;
-        column: 1;
+        column-span: 2;
       }
     }
 
