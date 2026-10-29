@@ -1,0 +1,54 @@
+using Gtk 4.0;
+
+template $Gjs_TransitItineraryHeader: Box {
+  orientation: horizontal;
+  spacing: 6;
+
+  Label departure {
+    halign: start;
+    hexpand: false;
+  }
+
+  Label departureTz {
+    visible: false;
+    halign: start;
+    hexpand: false;
+
+    styles [
+      "dimmed",
+      "caption",
+    ]
+  }
+
+  Image direction {
+    pixel-size: 16;
+
+    styles [
+      "dimmed",
+    ]
+  }
+
+  Label arrival {
+    halign: start;
+    hexpand: false;
+  }
+
+  Label arrivalTz {
+    visible: false;
+
+    styles [
+      "dimmed",
+      "caption",
+    ]
+  }
+
+  Label duration {
+    halign: start;
+    hexpand: false;
+    margin-start: 12;
+
+    styles [
+      "dimmed",
+    ]
+  }
+}
