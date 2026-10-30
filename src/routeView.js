@@ -34,6 +34,7 @@ import {RouteEntry} from './routeEntry.js';
 import {RouteQuery} from './routeQuery.js';
 import {StoredRoute} from './storedRoute.js';
 import {TransitArrivalDestinationRow} from './transitArrivalDestinationRow.js';
+import {TransitItineraryHeader} from './transitItineraryHeader.js';
 import {TransitItineraryRow} from './transitItineraryRow.js';
 import {TransitLegRow} from './transitLegRow.js';
 import {TransitMoreRow} from './transitMoreRow.js';
@@ -456,10 +457,8 @@ export class RouteView extends Gtk.Box {
         const direct =
             itinerary.legs.length === 1 && !itinerary.legs[0].isTransit;
 
-        this._transitItineraryTimeLabel.label =
-            itinerary.prettyPrintTimeInterval();
-        this._transitItineraryDurationLabel.label =
-            itinerary.prettyPrintDuration();
+        this._transitItineraryContainer.child =
+            new TransitItineraryHeader({ itinerary: itinerary });
 
         this._clearTransitItinerary();
 
@@ -615,6 +614,5 @@ GObject.registerClass({
                         'transitItineraryHeader',
                         'transitItineraryListBox',
                         'transitItineraryBackButton',
-                        'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel']
+                        'transitItineraryContainer']
 }, RouteView);
