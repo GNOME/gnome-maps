@@ -2,9 +2,10 @@ using Gtk 4.0;
 
 template $Gjs_TransitArrivalDestinationRow: ListBoxRow {
   Grid grid {
+    margin-end: 6;
     margin-top: 6;
     margin-bottom: 6;
-    column-spacing: 12;
+    column-spacing: 6;
 
     Image iconImage {
       margin-start: 12;
@@ -34,7 +35,7 @@ template $Gjs_TransitArrivalDestinationRow: ListBoxRow {
 
     Label timeLabel {
       halign: end;
-      margin-end: 12;
+      margin-end: 6;
 
       styles [
         "dimmed",
@@ -44,6 +45,39 @@ template $Gjs_TransitArrivalDestinationRow: ListBoxRow {
       layout {
         column: 2;
         row: 0;
+      }
+    }
+
+    Label timezoneOffsetLabel {
+      halign: end;
+      margin-end: 6;
+      visible: false;
+
+      styles [
+        "dimmed",
+        "caption",
+      ]
+
+      layout {
+        column: 3;
+        row: 0;
+      }
+    }
+
+    Label timezoneLabel {
+      halign: end;
+      margin-end: 6;
+      visible: false;
+
+      styles [
+        "dimmed",
+        "caption",
+      ]
+
+      layout {
+        column: 2;
+        row: 1;
+        row-span: 2;
       }
     }
   }
