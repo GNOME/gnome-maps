@@ -20,15 +20,30 @@
  */
 
 import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import * as Time from './time.js';
 import * as Transit from './transit/utils.js';
 
 export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
 
     constructor({leg, mapView, isArrival, ...params}) {
         super(params);
+
+        const tzOffset =
+            Time.getTimezoneOffset(isArrival ? leg.arrival : leg.departure,
+                                   GLib.TimeZone.new_local());
+
+        if (tzOffset !== 0) {
+            this._timezoneOffsetLabel.visible = true;
+            this._timezoneLabel.visible = true;
+            this._timezoneOffsetLabel.label =
+                Time.getTimezoneOffsetString(tzOffset, true);
+            this._timezoneLabel.label =
+                Time.getUTCOffsetString(isArrival ? leg.arrival : leg.departure);
+        }
 
         if (isArrival) {
             this._iconImage.icon_name = 'maps-point-end-symbolic';
@@ -65,5 +80,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-destination-row.ui',
     InternalChildren: ['iconImage',
                        'nameLabel',
-                       'timeLabel']
+                       'timeLabel',
+                       'timezoneOffsetLabel',
+                       'timezoneLabel']
 }, TransitArrivalDestinationRow);
