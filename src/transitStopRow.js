@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
@@ -38,12 +39,19 @@ export class TransitStopRow extends Gtk.ListBoxRow {
         const time = final ? stop.arrival : stop.departure;
         const scheduledTime =
             final ? stop.scheduledArrival : stop.scheduledDeparture;
+        const tzOffset = Time.getTimezoneOffset(time, GLib.TimeZone.new_local());
 
         super(params);
 
         this.stop = stop;
         this._nameLabel.label = stop.name;
         this._timeLabel.label = Time.formatDateTime(time);
+
+        if (tzOffset !== 0) {
+            this._timezoneOffsetLabel.visible = true;
+            this._timezoneOffsetLabel.label =
+                Time.getTimezoneOffsetString(tzOffset, true);
+        }
 
         if (!intermediate && stop.track) {
             if (stop.track !== stop.scheduledTrack) {
@@ -105,5 +113,6 @@ GObject.registerClass({
                         'trackLabel',
                         'timeLabel',
                         'scheduledTimeLabel',
+                        'timezoneOffsetLabel',
                         'informationLabel' ]
 }, TransitStopRow);
