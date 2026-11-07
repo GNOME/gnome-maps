@@ -111,16 +111,85 @@ export const DEFS = {
     },
     places: [
         {
-            classes: ["continent"],
-            font: "Light",
+            classes: ["isolated_dwelling"],
+            font: "Regular",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            minzoom: 15,
+            sizeStops: [
+                [15, 15],
+            ],
+        },
+        {
+            classes: ["hamlet"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            maxzoom: 15,
+            sizeStops: [
+                [12, 12],
+                [15, 18],
+            ],
+        },
+        {
+            classes: ["neighborhood", "suburb", "quarter"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            maxzoom: 15,
+            textTransform: "uppercase",
+            sizeStops: [
+                [12, 12],
+                [15, 18],
+            ],
+        },
+        {
+            classes: ["town", "village"],
+            font: "Bold",
             color: {
                 dark: "#deddda",
                 light: "#3d3846",
             },
-            maxzoom: 2,
+            maxzoom: 13,
             sizeStops: [
-                [0, 18],
-                [1, 24],
+                [9, 12],
+                [12, 18],
+            ],
+        },
+        {
+            classes: ["city"],
+            font: "Bold",
+            color: {
+                dark: "#deddda",
+                light: "#3d3846",
+            },
+            minzoom: 4,
+            maxzoom: 12,
+            sizeStops: [
+                [4, 10],
+                [6, 16],
+                [12, 24],
+            ],
+        },
+        {
+            classes: ["state", "province"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            minzoom: 4,
+            maxzoom: 8,
+            textTransform: "uppercase",
+            sizeStops: [
+                [4, 14],
+                [6, 20],
             ],
         },
         {
@@ -140,85 +209,16 @@ export const DEFS = {
             ],
         },
         {
-            classes: ["state", "province"],
-            font: "Bold",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            minzoom: 4,
-            maxzoom: 8,
-            textTransform: "uppercase",
-            sizeStops: [
-                [4, 14],
-                [6, 20],
-            ],
-        },
-        {
-            classes: ["city"],
-            font: "Bold",
+            classes: ["continent"],
+            font: "Light",
             color: {
                 dark: "#deddda",
                 light: "#3d3846",
             },
-            minzoom: 4,
-            maxzoom: 12,
+            maxzoom: 2,
             sizeStops: [
-                [4, 10],
-                [6, 16],
-                [12, 24],
-            ],
-        },
-        {
-            classes: ["town", "village"],
-            font: "Bold",
-            color: {
-                dark: "#deddda",
-                light: "#3d3846",
-            },
-            maxzoom: 13,
-            sizeStops: [
-                [9, 12],
-                [12, 18],
-            ],
-        },
-        {
-            classes: ["neighborhood", "suburb", "quarter"],
-            font: "Bold",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            maxzoom: 15,
-            textTransform: "uppercase",
-            sizeStops: [
-                [12, 12],
-                [15, 18],
-            ],
-        },
-        {
-            classes: ["hamlet"],
-            font: "Bold",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            maxzoom: 15,
-            sizeStops: [
-                [12, 12],
-                [15, 18],
-            ],
-        },
-        {
-            classes: ["isolated_dwelling"],
-            font: "Regular",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            minzoom: 15,
-            sizeStops: [
-                [15, 15],
+                [0, 18],
+                [1, 24],
             ],
         },
         {
