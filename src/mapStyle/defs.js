@@ -111,32 +111,55 @@ export const DEFS = {
     },
     places: [
         {
-            classes: ["continent"],
-            font: "Light",
+            classes: ["isolated_dwelling"],
+            font: "Regular",
             color: {
-                dark: "#deddda",
-                light: "#3d3846",
+                dark: "#c0bfbc",
+                light: "#5e5c64",
             },
-            maxzoom: 2,
+            minzoom: 15,
             sizeStops: [
-                [0, 18],
-                [1, 24],
+                [15, 15],
             ],
         },
         {
-            classes: ["country"],
-            font: "Extrabold",
+            classes: ["hamlet"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            maxzoom: 15,
+            sizeStops: [
+                [12, 12],
+                [15, 18],
+            ],
+        },
+        {
+            classes: ["neighborhood", "suburb", "quarter"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            maxzoom: 15,
+            textTransform: "uppercase",
+            sizeStops: [
+                [12, 12],
+                [15, 18],
+            ],
+        },
+        {
+            classes: ["town", "village"],
+            font: "Bold",
             color: {
                 dark: "#deddda",
                 light: "#3d3846",
             },
-            maxzoom: 6,
+            maxzoom: 13,
             sizeStops: [
-                [1, 14],
-                [3, 16],
-                [4, 20],
-                [5, 24],
-                [6, 28],
+                [9, 12],
+                [12, 18],
             ],
         },
         {
@@ -170,55 +193,32 @@ export const DEFS = {
             ],
         },
         {
-            classes: ["town", "village"],
-            font: "Bold",
+            classes: ["country"],
+            font: "Extrabold",
             color: {
                 dark: "#deddda",
                 light: "#3d3846",
             },
-            maxzoom: 13,
+            maxzoom: 6,
             sizeStops: [
-                [9, 12],
-                [12, 18],
+                [1, 14],
+                [3, 16],
+                [4, 20],
+                [5, 24],
+                [6, 28],
             ],
         },
         {
-            classes: ["neighborhood", "suburb", "quarter"],
-            font: "Bold",
+            classes: ["continent"],
+            font: "Light",
             color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
+                dark: "#deddda",
+                light: "#3d3846",
             },
-            maxzoom: 15,
-            textTransform: "uppercase",
+            maxzoom: 2,
             sizeStops: [
-                [12, 12],
-                [15, 18],
-            ],
-        },
-        {
-            classes: ["hamlet"],
-            font: "Bold",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            maxzoom: 15,
-            sizeStops: [
-                [12, 12],
-                [15, 18],
-            ],
-        },
-        {
-            classes: ["isolated_dwelling"],
-            font: "Regular",
-            color: {
-                dark: "#c0bfbc",
-                light: "#5e5c64",
-            },
-            minzoom: 15,
-            sizeStops: [
-                [15, 15],
+                [0, 18],
+                [1, 24],
             ],
         },
         {
