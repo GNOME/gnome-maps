@@ -31,7 +31,6 @@ import * as Utils from './utils.js';
 const _ = gettext.gettext;
 
 const Stage = {
-    NONE:  0,
     ALERT: 1,
     PRE:   2
 };
@@ -65,6 +64,9 @@ const Params = {
 };
 
 const OFF_ROUTE_HYSTERESIS = 3;
+const MAX_MANEUVERS_PER_FIX = 1;
+const MATCH_WINDOW_BEHIND = 50;
+const MATCH_WINDOW_AHEAD = 500;
 const MAX_ACCURACY = 100;
 const ALERT_TIME_GAP = 15;
 const SPEED_SMOOTHING = 0.3;
@@ -165,8 +167,9 @@ export class Navigator extends GObject.Object {
         this._averageSpeed = this._route.time > 0 ?
                              this._route.distance / this._route.time : 0;
         this._nextIndex = 1;
-        this._stage = Stage.NONE;
+        this._spoken = new Set();
         this._segmentHint = 0;
+        this._lastAlong = null;
         this._offRouteCount = 0;
         this._smoothedSpeed = 0;
         this._lastFix = null;
@@ -208,11 +211,17 @@ export class Navigator extends GObject.Object {
             return;
 
         const location = { latitude: latitude, longitude: longitude };
-        const match = NavGeometry.matchToPath(this._path,
-                                              location.latitude,
-                                              location.longitude,
-                                              this._segmentHint,
-                                              this._lastFix ? 30 : Infinity);
+        const match = this._lastAlong === null ?
+            NavGeometry.matchToPath(this._path, location.latitude,
+                                    location.longitude) :
+            NavGeometry.matchToPathScored(this._path, this._cumulative,
+                                          location.latitude,
+                                          location.longitude,
+                                          this._lastAlong,
+                                          this._segmentHint,
+                                          MATCH_WINDOW_BEHIND,
+                                          MATCH_WINDOW_AHEAD,
+                                          this._params.offRouteDistance);
 
         this._updateSpeed(location);
 
@@ -225,10 +234,12 @@ export class Navigator extends GObject.Object {
         }
 
         this._offRouteCount = 0;
-        this._segmentHint = match.segmentIndex;
 
         const along = this._cumulative[match.segmentIndex] +
                       match.alongSegment;
+
+        this._segmentHint = match.segmentIndex;
+        this._lastAlong = along;
 
         this._advanceManeuvers(along);
 
@@ -273,9 +284,14 @@ export class Navigator extends GObject.Object {
     }
 
     _advanceManeuvers(along) {
+        let advanced = 0;
+
         while (this._nextIndex < this._turnPoints.length &&
                along >= this._turnPointDistances[this._nextIndex] -
                         this._params.passedDistance) {
+            if (advanced >= MAX_MANEUVERS_PER_FIX)
+                break;
+
             const passed = this._turnPoints[this._nextIndex];
 
             if (this._nextIndex === this._turnPoints.length - 1) {
@@ -289,7 +305,7 @@ export class Navigator extends GObject.Object {
                 this._speak(passed.verbalPost);
 
             this._nextIndex++;
-            this._stage = Stage.NONE;
+            advanced++;
         }
 
         if (this._nextIndex === this._turnPoints.length - 1 &&
@@ -314,19 +330,26 @@ export class Navigator extends GObject.Object {
                      Math.max(this._params.alertDistance,
                               this._smoothedSpeed * ALERT_TIME_GAP));
 
-        if (this._stage < Stage.PRE &&
-            distanceToNext <= this._params.preDistance) {
-            this._speak(turnPoint.verbalPre ?? turnPoint.instruction);
-            this._stage = Stage.PRE;
-        } else if (this._stage < Stage.ALERT &&
-                   distanceToNext <= alertDistance &&
-                   distanceToNext > this._params.preDistance) {
-            this._speak(turnPoint.verbalAlert ??
-                        _("In %s: %s").format(
-                            Utils.prettyDistance(distanceToNext),
-                            turnPoint.instruction));
-            this._stage = Stage.ALERT;
+        if (distanceToNext <= this._params.preDistance) {
+            this._announceOnce(this._nextIndex, Stage.PRE, () =>
+                turnPoint.verbalPre ?? turnPoint.instruction);
+        } else if (distanceToNext <= alertDistance) {
+            this._announceOnce(this._nextIndex, Stage.ALERT, () =>
+                turnPoint.verbalAlert ??
+                _("In %s: %s").format(
+                    Utils.prettyDistance(distanceToNext),
+                    turnPoint.instruction));
         }
+    }
+
+    _announceOnce(index, stage, textFn) {
+        const key = `${index}:${stage}`;
+
+        if (this._spoken.has(key))
+            return;
+
+        this._spoken.add(key);
+        this._speak(textFn());
     }
 
     _speak(text) {

@@ -52,6 +52,74 @@ export function cumulativeDistances(path) {
     return cumulative;
 }
 
+const FORWARD_JUMP_COST = 0.1;
+const BACKWARD_JUMP_COST = 0.5;
+const OFF_PATH_COST = 1e6;
+
+export function matchToPathScored(path, cumulative, lat, lon, lastAlong,
+                                  hintIndex, windowBehind, windowAhead,
+                                  offPathDistance) {
+    const cosLat = Math.cos(lat * DEG_TO_RAD);
+    const metersPerDegLon = METERS_PER_DEG_LAT * cosLat;
+
+    let first = hintIndex;
+    while (first > 0 && cumulative[first] > lastAlong - windowBehind)
+        first--;
+
+    let last = hintIndex;
+    while (last < path.length - 2 &&
+           cumulative[last + 1] < lastAlong + windowAhead)
+        last++;
+
+    let best = null;
+
+    for (let i = first; i <= last; i++) {
+        const x1 = (path[i].longitude - lon) * metersPerDegLon;
+        const y1 = (path[i].latitude - lat) * METERS_PER_DEG_LAT;
+        const x2 = (path[i + 1].longitude - lon) * metersPerDegLon;
+        const y2 = (path[i + 1].latitude - lat) * METERS_PER_DEG_LAT;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const lengthSquared = dx * dx + dy * dy;
+        const t = lengthSquared === 0 ?
+                  0 : Math.max(0, Math.min(1, -(x1 * dx + y1 * dy) /
+                                              lengthSquared));
+        const px = x1 + t * dx;
+        const py = y1 + t * dy;
+        const distance = Math.sqrt(px * px + py * py);
+        const alongSegment = t * Math.sqrt(lengthSquared);
+        const along = cumulative[i] + alongSegment;
+        const jump = along - lastAlong;
+        const jumpCost = jump >= 0 ?
+                         jump * FORWARD_JUMP_COST :
+                         -jump * BACKWARD_JUMP_COST;
+        const offPathCost = distance > offPathDistance ? OFF_PATH_COST : 0;
+        const score = distance + jumpCost + offPathCost;
+
+        if (!best || score < best.score) {
+            best = { score:        score,
+                     distance:     distance,
+                     segmentIndex: i,
+                     fraction:     t,
+                     alongSegment: alongSegment };
+        }
+    }
+
+    const segment = path[best.segmentIndex];
+    const next = path[best.segmentIndex + 1];
+
+    return {
+        segmentIndex:       best.segmentIndex,
+        fraction:           best.fraction,
+        latitude:           segment.latitude + best.fraction *
+                            (next.latitude - segment.latitude),
+        longitude:          segment.longitude + best.fraction *
+                            (next.longitude - segment.longitude),
+        crossTrackDistance: best.distance,
+        alongSegment:       best.alongSegment
+    };
+}
+
 /* Try to find the best position based on the given path */
 export function matchToPath(path, lat, lon, hintIndex = 0,
                             windowSize = Infinity) {
