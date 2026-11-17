@@ -75,6 +75,7 @@ export class Place extends GObject.Object {
         this._country = params.country;
         this._countryCode = params.countryCode;
         this._continent = params.continent;
+        this._openLocationCode = params.openLocationCode;
         this._originalJson = params.originalJson;
 
         this._isCurrentLocation = params.isCurrentLocation;
@@ -260,6 +261,14 @@ export class Place extends GObject.Object {
 
     set continent(continent) {
         this._continent = continent;
+    }
+
+    get openLocationCode() {
+        return this._openLocationCode;
+    }
+
+    set openLocationCode(openLocationCode) {
+        this._openLocationCode = openLocationCode;
     }
 
     set store(v) {
@@ -523,7 +532,8 @@ export class Place extends GObject.Object {
                  county: this._county,
                  country: this._country,
                  countryCode: this._countryCode,
-                 continent: this._continent };
+                 continent: this._continent,
+                 openLocationCode: this._openLocationCode };
     }
 
     match(searchString) {
