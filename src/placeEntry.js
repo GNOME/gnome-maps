@@ -31,6 +31,7 @@ import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
 import * as GeocodeFactory from './geocode.js';
+import OpenLocationCode from './openlocationcode/openlocationcode.js';
 import {Place} from './place.js';
 import {PlaceStore} from './placeStore.js';
 import {PlacePopover} from './placePopover.js';
@@ -351,6 +352,33 @@ export class PlaceEntry extends Gtk.Entry {
              * operation looking up the OSM object
              */
             return true;
+        }
+
+        if (OpenLocationCode.isValid(this.text)) {
+            try {
+                const viewport = this._mapView.map.viewport;
+                const zoom = viewport.zoom_level;
+                let code = this.text;
+
+                if (OpenLocationCode.isShort(code)) {
+                    code = OpenLocationCode.recoverNearest(code,
+                                                           viewport.latitude,
+                                                           viewport.longitude);
+                }
+
+                const codeArea = OpenLocationCode.decode(code);
+                const location = new GeocodeGlib.Location();
+                location.latitude = codeArea.latitudeCenter;
+                location.longitude = codeArea.longitudeCenter;
+                this.place = new Place({ name:             this.text,
+                                         location:         location,
+                                         store:            false,
+                                         initialZoom:      zoom,
+                                         openLocationCode: code });
+                parsed = true;
+            } catch(e) {
+                this.root.showToast(_("Failed to parse Plus Code"));
+            }
         }
 
         if (parsed && this._cancellable)
