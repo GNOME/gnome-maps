@@ -35,6 +35,7 @@ import {Application} from './application.js';
 import * as Gfx from './gfx.js';
 import * as HVT from './transit/hvt.js';
 import {Overpass} from './overpass.js';
+import OpenLocationCode from './openlocationcode/openlocationcode.js';
 import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
 import {PlaceViewImage} from './placeViewImage.js';
@@ -629,6 +630,14 @@ export class PlaceView extends Gtk.Box {
                                info: _("Accuracy: %s").format(accuracyDescription) });
         }
 
+        content.push({ label: _("Plus Code"),
+                       icon: 'open-location-code-symbolic',
+                       info: OpenLocationCode.isValid(place.openLocationCode)
+                                ? place.openLocationCode
+                                : OpenLocationCode.encode(place.location.latitude,
+                                                          place.location.longitude),
+                       selectable: true });
+
         if (place.website) {
             if (Utils.isValidWebsite(place.website)) {
                 content.push({ label: _("Website"),
@@ -938,7 +947,7 @@ export class PlaceView extends Gtk.Box {
     }
 
     _attachContent(content) {
-        content.forEach(({ type, label, icon, linkUrl, info, grid }) => {
+        content.forEach(({ type, label, icon, linkUrl, info, grid, selectable = false }) => {
             let box = this._addBox();
 
             if (icon) {
@@ -953,6 +962,7 @@ export class PlaceView extends Gtk.Box {
                 box.append(widget);
             } else if (label) {
                 let widget = new Gtk.Label({ label: label.italics(),
+                                             selectable,
                                              use_markup: true,
                                              yalign: 0,
                                              halign: Gtk.Align.END });
@@ -981,6 +991,7 @@ export class PlaceView extends Gtk.Box {
                          */
                         const maxChars = row.length === 1 ? 30 : 15;
                         const label = new Gtk.Label({ label:   row[j],
+                                                      selectable,
                                                       xalign:  0,
                                                       hexpand: true,
                                                       wrap: true,
@@ -1004,6 +1015,7 @@ export class PlaceView extends Gtk.Box {
                 }
             } else {
                 widget = new Gtk.Label({ label: info,
+                                         selectable,
                                          use_markup: true,
                                          max_width_chars: 30,
                                          wrap: true,
