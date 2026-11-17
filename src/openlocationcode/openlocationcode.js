@@ -55,24 +55,14 @@
  *   Recover the full code from a short code:
  *   var code = OpenLocationCode.recoverNearest('9G8F+6X', 47.4, 8.6);
  *   var code = OpenLocationCode.recoverNearest('8F+6X', 47.4, 8.6);
+ *
+ *
+ * MAINTENANCE NOTE: this file was originally downloaded from
+ * https://github.com/google/open-location-code.
+ * In order to make it compatible with ESM imports in GJS,
+ * the UMD wrapper was replaced with export default
  */
-(function(root, factory) {
-  /* global define, module */
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(function() {
-      return (root.returnExportsGlobal = factory());
-    });
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals
-    root.OpenLocationCode = factory();
-  }
-}(this, function() {
+export default (() => {
   var OpenLocationCode = {};
 
   /**
@@ -717,4 +707,4 @@
   CodeArea.fn.Init.prototype = CodeArea.fn;
 
   return OpenLocationCode;
-}));
+})();
