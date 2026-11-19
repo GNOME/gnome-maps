@@ -34,6 +34,7 @@ import Soup from 'gi://Soup';
 import {Settings} from './settings.js';
 
 const _ = gettext.gettext;
+const N_ = (s) => s;
 const ngettext = gettext.ngettext;
 
 //List of locales using imperial system according to glibc locale database

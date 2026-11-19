@@ -652,19 +652,19 @@ export class DownloadManager extends GObject.Object {
     setProgress(job, remaining) {
         const jobText = {
             /* Translators: Progress bar text for estimating the download size */
-            estimating: _("Estimating"),
+            estimating: N_("Estimating"),
             /* Translators: Progress bar text for downloading new offline areas */
-            downloading: _("Downloading"),
+            downloading: N_("Downloading"),
             /* Translators: Progress bar text for updating offline areas */
-            updating: _("Updating"),
+            updating: N_("Updating"),
             /* Translators: Progress bar text for deleting offline areas */
-            deleting: _("Deleting"),
+            deleting: N_("Deleting"),
             /* Translators: Progress bar text for a cleanup step */
-            finishing: _("Finishing"),
+            finishing: N_("Finishing"),
         }[job];
 
         this._progress = {
-            job: jobText,
+            job: _(jobText),
             remaining,
             completed: 0,
         };
