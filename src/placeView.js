@@ -946,29 +946,38 @@ export class PlaceView extends Gtk.Box {
             let widget;
 
             if (grid) {
-                widget = new Gtk.Grid({ column_spacing: 6,
-                                        row_spacing:    6 });
+                widget = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
+                                       spacing:     6,
+                                       hexpand:     true,
+                                       valign:      Gtk.Align.START });
+                const firstColGroup = new Gtk.SizeGroup({ mode: Gtk.SizeGroupMode.HORIZONTAL });
 
                 for (let i = 0; i < grid.length; i++) {
                     let row = grid[i];
+                    const rowBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
+                                                 spacing:     6 });
 
                     for (let j = 0; j < row.length; j++) {
                         /* if there's only one component, e.g. in opening
-                         * hours, allow more space
-                         */
+                        * hours, allow more space
+                        */
                         const maxChars = row.length === 1 ? 30 : 15;
-                        const label = new Gtk.Label({ label:   row[j],
-                                                      xalign:  0,
-                                                      hexpand: true,
-                                                      wrap: true,
-                                                      max_width_chars: maxChars,
-                                                      halign:  Gtk.Align.FILL,
-                                                      valign:  Gtk.Align.START });
+                        const label = new Gtk.Label({ label:            row[j],
+                                                      xalign:           0,
+                                                      hexpand:          j === row.length - 1,
+                                                      wrap:             true,
+                                                      max_width_chars:  maxChars,
+                                                      halign:           Gtk.Align.FILL,
+                                                      valign:           Gtk.Align.START });
+
+                        if (j === 0 && row.length > 1) {
+                            firstColGroup.add_widget(label);
+                        }
 
                         if (j === 1) {
                             /* set tabular digits for the second column to get
-                             * aligned times
-                             */
+                            * aligned times
+                            */
                             let attrList = Pango.AttrList.new();
                             let tnum = Pango.AttrFontFeatures.new('tnum');
 
@@ -976,18 +985,19 @@ export class PlaceView extends Gtk.Box {
                             label.set_attributes(attrList);
                         }
 
-                        widget.attach(label, j, i, 1, 1);
+                        rowBox.append(label);
                     }
+
+                    widget.append(rowBox);
                 }
             } else {
-                widget = new Gtk.Label({ label: info,
-                                         use_markup: true,
-                                         max_width_chars: 30,
-                                         wrap: true,
-                                         xalign: 0,
-                                         hexpand: true,
-                                         halign: Gtk.Align.FILL,
-                                         wrap: true });
+                widget = new Gtk.Label({ label:             info,
+                                         use_markup:        true,
+                                         max_width_chars:   30,
+                                         wrap:              true,
+                                         xalign:            0,
+                                         hexpand:           true,
+                                         halign:            Gtk.Align.FILL });
             }
 
             box.append(widget);
