@@ -29,7 +29,7 @@ import * as Transit from './transit/utils.js';
 
 export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
 
-    constructor({leg, mapView, isArrival, ...params}) {
+    constructor({leg, mapView, isArrival, referenceDateTime, ...params}) {
         super(params);
 
         const tzOffset =
@@ -49,7 +49,7 @@ export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
             this._iconImage.icon_name = 'maps-point-end-symbolic';
             this._location = leg.to.location;
             this._nameLabel.label = Transit.getArrivalLabel(leg);
-            this._timeLabel.label = leg.prettyPrintArrivalTime();
+            this._timeLabel.label = leg.prettyPrintArrivalTime(referenceDateTime);
         }
         else {
             this._iconImage.icon_name = 'maps-point-start-symbolic';

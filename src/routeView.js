@@ -481,6 +481,7 @@ export class RouteView extends Gtk.Box {
         this._transitItineraryListBox.insert(
             new TransitArrivalDestinationRow({ 
                 leg: itinerary.legs[itinerary.legs.length - 1],
+                referenceDateTime: itinerary.departure,
                 mapView: this._mapView, 
                 isArrival: true 
             }), -1);

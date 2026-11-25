@@ -196,10 +196,10 @@ export class Leg {
     }
 
     prettyPrintDepartureTime() {
-        return Time.formatDateTime(this.departure);
+        return Time.formatTransitDateTime(this.departure);
     }
 
-    prettyPrintArrivalTime() {
-        return Time.formatDateTime(this.arrival);
+    prettyPrintArrivalTime(referenceDateTime = this.departure) {
+        return Time.formatTransitDateTime(this.arrival, referenceDateTime);
     }
 }
