@@ -21,6 +21,8 @@
 
 const JsUnit = imports.jsUnit;
 
+pkg.initFormat();
+
 import GLib from 'gi://GLib';
 
 import * as Time from '../src/time.js';
@@ -149,4 +151,92 @@ formatTimeFromHoursAndMinsTest();
 parseDateTimeTest();
 getTimezoneOffsetTest();
 getUTCOffsetStringTest();
+
+
+function getTimetableDayOffsetTest() {
+    const tz = GLib.TimeZone.new_identifier('Europe/Stockholm');
+    // Reference time: Monday 2026-11-23 at 20:00
+    const mon20 = GLib.DateTime.new(tz, 2026, 11, 23, 20, 0, 0);
+
+    // Same day late evening: Monday 23:30 -> offset 0
+    const mon23 = GLib.DateTime.new(tz, 2026, 11, 23, 23, 30, 0);
+    JsUnit.assertEquals(0, Time.getTimetableDayOffset(mon23, mon20));
+
+    // Next calendar day early morning before 04:00: Tuesday 01:30 -> still offset 0
+    const tue01 = GLib.DateTime.new(tz, 2026, 11, 24, 1, 30, 0);
+    JsUnit.assertEquals(0, Time.getTimetableDayOffset(tue01, mon20));
+
+    // Right before 04:00 cutoff: Tuesday 03:59:59 -> offset 0
+    const tue0359 = GLib.DateTime.new(tz, 2026, 11, 24, 3, 59, 59);
+    JsUnit.assertEquals(0, Time.getTimetableDayOffset(tue0359, mon20));
+
+    // Right at 04:00 cutoff: Tuesday 04:00 -> new timetable day -> offset 1
+    const tue04 = GLib.DateTime.new(tz, 2026, 11, 24, 4, 0, 0);
+    JsUnit.assertEquals(1, Time.getTimetableDayOffset(tue04, mon20));
+
+    // Tuesday afternoon 14:00 -> offset 1
+    const tue14 = GLib.DateTime.new(tz, 2026, 11, 24, 14, 0, 0);
+    JsUnit.assertEquals(1, Time.getTimetableDayOffset(tue14, mon20));
+
+    // Wednesday afternoon 14:00 (two days later) -> offset 2
+    const wed14 = GLib.DateTime.new(tz, 2026, 11, 25, 14, 0, 0);
+    JsUnit.assertEquals(2, Time.getTimetableDayOffset(wed14, mon20));
+
+    // Previous day: Sunday 22:00 -> offset -1
+    const sun22 = GLib.DateTime.new(tz, 2026, 11, 22, 22, 0, 0);
+    JsUnit.assertEquals(-1, Time.getTimetableDayOffset(sun22, mon20));
+}
+
+function formatTransitDateTimeTest() {
+    const tz = GLib.TimeZone.new_identifier('Europe/Stockholm');
+    // Mock current time: Monday 2026-11-23 at 20:00
+    const fixedNow = GLib.DateTime.new(tz, 2026, 11, 23, 20, 0, 0);
+    Time._setNowFunction(() => fixedNow);
+
+    // Mock 24-hour format
+    Time._setIs12HourFunction(() => false);
+
+    // Same day departure (Monday 22:15) -> standard time format
+    const mon22 = GLib.DateTime.new(tz, 2026, 11, 23, 22, 15, 0);
+    JsUnit.assertEquals('22:15', Time.formatTransitDateTime(mon22));
+
+    // Late night departure (Tuesday 01:30) -> same timetable day -> standard time format
+    const tue01 = GLib.DateTime.new(tz, 2026, 11, 24, 1, 30, 0);
+    JsUnit.assertEquals('01:30', Time.formatTransitDateTime(tue01));
+
+    // Next day morning departure (Tuesday 06:15) -> Tomorrow indicator
+    const tue06 = GLib.DateTime.new(tz, 2026, 11, 24, 6, 15, 0);
+    JsUnit.assertEquals('06:15 (Tomorrow)', Time.formatTransitDateTime(tue06));
+
+    // Previous day departure (Sunday 21:00) -> Yesterday indicator
+    const sun21 = GLib.DateTime.new(tz, 2026, 11, 22, 21, 0, 0);
+    JsUnit.assertEquals('21:00 (Yesterday)', Time.formatTransitDateTime(sun21));
+
+    // Two days later (Wednesday 10:00) -> Weekday name indicator
+    const wed10 = GLib.DateTime.new(tz, 2026, 11, 25, 10, 0, 0);
+    JsUnit.assertTrue(Time.formatTransitDateTime(wed10).includes('10:00'));
+    JsUnit.assertTrue(Time.formatTransitDateTime(wed10).includes('Wed'));
+
+    // Overnight trip departing today: Monday 22:00 -> Tuesday 06:00
+    const tripArrToday = GLib.DateTime.new(tz, 2026, 11, 24, 6, 0, 0);
+    JsUnit.assertEquals('06:00 (Tomorrow)', Time.formatTransitDateTime(tripArrToday, mon22));
+
+    // Overnight trip departing on Thursday 17:22 arriving Friday 05:08 (from MOTIS reference)
+    const thuDep = GLib.DateTime.new(tz, 2026, 11, 26, 17, 22, 0);
+    const friArr = GLib.DateTime.new(tz, 2026, 11, 27, 5, 8, 0);
+    JsUnit.assertTrue(Time.formatTransitDateTime(thuDep).includes('17:22'));
+    JsUnit.assertTrue(Time.formatTransitDateTime(thuDep).includes('Thu'));
+    JsUnit.assertTrue(Time.formatTransitDateTime(friArr, thuDep).includes('05:08'));
+    JsUnit.assertTrue(Time.formatTransitDateTime(friArr, thuDep).includes('Fri'));
+
+    // Trip departing tomorrow stretching into the day after (e.g. Stockholm -> Hamburg)
+    const tue17 = GLib.DateTime.new(tz, 2026, 11, 24, 17, 30, 0);
+    const wed15 = GLib.DateTime.new(tz, 2026, 11, 25, 15, 37, 0);
+    JsUnit.assertEquals('17:30 (Tomorrow)', Time.formatTransitDateTime(tue17));
+    JsUnit.assertTrue(Time.formatTransitDateTime(wed15, tue17).includes('15:37'));
+    JsUnit.assertTrue(Time.formatTransitDateTime(wed15, tue17).includes('Wed'));
+}
+
 getTimezoneOffsetStringTest();
+getTimetableDayOffsetTest();
+formatTransitDateTimeTest();

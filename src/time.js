@@ -21,8 +21,12 @@
 
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
+import gettext from 'gettext';
 
 import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
+
 
 // allow using :, ., and the ratio symbol to separate hours:mins
 const _DELIMITERS = [':', '.', '\u2236'];
@@ -341,4 +345,105 @@ export function getTimezoneOffsetString(offset, alwaysShowSign = false) {
     return mins === 0 ?
            hoursString :
            `${hoursString}:${Utils.formatLocaleIntegerMinimumTwoDigits(mins)}`;
+}
+
+
+/**
+ * Timetable day cutoff hour. Times before 04:00 are treated as belonging
+ * to the previous day's timetable service.
+ */
+export const TIMETABLE_DAY_CUTOFF_HOURS = 4;
+
+let _getNow = function(tz) {
+    return GLib.DateTime.new_now(tz);
+};
+
+// for use by unit test mocking only
+export function _setNowFunction(f) {
+    _getNow = f;
+}
+
+/**
+ * Returns a UTC GLib.DateTime at midnight representing the timetable day for a given dateTime,
+ * taking into account the 04:00 AM cutoff.
+ *
+ * @param {GLib.DateTime} dateTime
+ * @returns {GLib.DateTime} Midnight UTC date representing the timetable day
+ */
+function _getTimetableDate(dateTime) {
+    const shifted = dateTime.add_hours(-TIMETABLE_DAY_CUTOFF_HOURS);
+    return GLib.DateTime.new_utc(
+        shifted.get_year(),
+        shifted.get_month(),
+        shifted.get_day_of_month(),
+        0, 0, 0
+    );
+}
+
+/**
+ * Calculate the difference in timetable days between a given date and a reference date,
+ * taking into account the 04:00 AM timetable day cutoff.
+ *
+ * @param {GLib.DateTime} dateTime date time instance
+ * @param {GLib.DateTime} [referenceDateTime] reference date time (defaults to current time)
+ * @returns {number} offset in timetable days (0 for same day, 1 for next day, -1 for previous day, etc.)
+ */
+export function getTimetableDayOffset(dateTime, referenceDateTime = null) {
+    const ref = referenceDateTime ?? _getNow(dateTime.get_timezone());
+    const dEvent = _getTimetableDate(dateTime);
+    const dRef = _getTimetableDate(ref.to_timezone(dateTime.get_timezone()));
+
+    const diffMicroseconds = dEvent.difference(dRef);
+    return Math.round(diffMicroseconds / GLib.TIME_SPAN_DAY);
+}
+
+/**
+ * Format a transit departure or arrival time, indicating whether the time
+ * occurs on a different day (e.g., Tomorrow, Yesterday, or an abbreviated weekday name).
+ *
+ * @param {GLib.DateTime} dateTime date time instance to format
+ * @param {GLib.DateTime} [referenceDateTime] reference date time (e.g. query time or trip departure time)
+ * @returns {string} formatted time string with day indication if applicable
+ */
+export function formatTransitDateTime(dateTime, referenceDateTime = null) {
+    const formattedTime = formatDateTime(dateTime);
+    const offset = getTimetableDayOffset(dateTime, referenceDateTime);
+
+    if (offset === 0)
+        return formattedTime;
+
+    const ref = referenceDateTime ?? _getNow(dateTime.get_timezone());
+    const now = _getNow(dateTime.get_timezone());
+    const refOffsetFromNow = getTimetableDayOffset(ref, now);
+    const isRefToday = refOffsetFromNow === 0;
+
+    if (offset === 1 && isRefToday) {
+        /* Translators: this is a format string for showing a transit time that
+         * occurs on the next day, like "05:08 (Tomorrow)".
+         * The %s is the formatted time string.
+         */
+        return _("%s (Tomorrow)").format(formattedTime);
+    }
+
+    if (offset === -1 && isRefToday) {
+        /* Translators: this is a format string for showing a transit time that
+         * occurred on the previous day, like "23:15 (Yesterday)".
+         * The %s is the formatted time string.
+         */
+        return _("%s (Yesterday)").format(formattedTime);
+    }
+
+    const tzIdentifier = dateTime.get_timezone().get_identifier();
+    const dayFormat = new Intl.DateTimeFormat([], {
+        weekday: 'short',
+        timeZone: tzIdentifier
+    });
+    const date = new Date(dateTime.to_unix() * 1000);
+    const dayString = dayFormat.format(date);
+
+    /* Translators: this is a format string for showing a transit time that
+     * occurs on another day of the week, like "09:54 (Sat)" or "05:08 (Fri)".
+     * The first %s is the formatted time string, the second %s is the abbreviated day name.
+     */
+    return _("%s (%s)").format(formattedTime, dayString);
 }
