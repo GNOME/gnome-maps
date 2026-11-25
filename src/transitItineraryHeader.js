@@ -29,8 +29,10 @@ export class TransitItineraryHeader extends Gtk.Box {
     constructor({ itinerary, ...params }) {
         super(params);
 
-        this._departure.label = Time.formatDateTime(itinerary.departure);
-        this._arrival.label = Time.formatDateTime(itinerary.arrival);
+        this._departure.label =
+            Time.formatTransitDateTime(itinerary.departure);
+        this._arrival.label =
+            Time.formatTransitDateTime(itinerary.arrival, itinerary.departure);
 
         const departureTzOffset =
             Time.getTimezoneOffset(itinerary.departure,

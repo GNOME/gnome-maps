@@ -84,11 +84,11 @@ export class Itinerary extends GObject.Object {
     }
 
     _getDepartureTime() {
-        return Time.formatDateTime(this.departure);
+        return Time.formatTransitDateTime(this.departure);
     }
 
     _getArrivalTime() {
-        return Time.formatDateTime(this.arrival);
+        return Time.formatTransitDateTime(this.arrival, this.departure);
     }
 
     prettyPrintDuration() {
