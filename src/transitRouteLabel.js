@@ -60,16 +60,30 @@ export class TransitRouteLabel extends Gtk.Box {
         super(params);
 
         this._route = route;
+        if (this._route.displayName)
+            this.tooltip_text = this._route.displayName;
+
+        this.set_layout_manager(null);
         this._styleManager = Adw.StyleManager.get_default();
         this._settings = this.get_settings();
         this._createLayout();
         this._pathBuilder = new Gsk.PathBuilder();
 
+        const [, textHeight] = this._layout.get_pixel_size();
+        this.set_size_request(-1, textHeight + 2 * MARGIN_V);
+    }
+
+    vfunc_measure(orientation, forSize) {
         const [textWidth, textHeight] = this._layout.get_pixel_size();
 
-        // make the label at least as wide the height
-        this.set_size_request(Math.max(textWidth, textHeight) + 2 * MARGIN_H,
-                              textHeight + 2 * MARGIN_V);
+        if (orientation === Gtk.Orientation.HORIZONTAL) {
+            const minWidth = textHeight + 2 * MARGIN_H;
+            const natWidth = Math.max(textWidth, textHeight) + 2 * MARGIN_H;
+            return [minWidth, natWidth, -1, -1];
+        } else {
+            const height = textHeight + 2 * MARGIN_V;
+            return [height, height, -1, -1];
+        }
     }
 
     vfunc_map() {
@@ -161,6 +175,7 @@ export class TransitRouteLabel extends Gtk.Box {
                                    textColor);
         }
 
+        this._layout.set_width(Pango.units_from_double(Math.max(0, width - 2 * MARGIN_H)));
         const [textWidth, textHeight] = this._layout.get_pixel_size();
         const textOrigin = new Graphene.Point({ x: (width - textWidth) / 2,
                                                 y: (height - textHeight) / 2 });
