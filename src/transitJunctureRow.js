@@ -142,12 +142,12 @@ export class TransitJunctureRow extends Gtk.ListBoxRow {
     }
 
     _setTimeLabels() {
-        this._timeLabel.label = Time.formatDateTime(this._juncture.time);
+        this._timeLabel.label = Time.formatTransitDateTime(this._juncture.time);
 
         if (!this._juncture.time.equal(this._juncture.scheduledTime)) {
             this._scheduledTimeLabel.visible = true;
             this._scheduledTimeLabel.label =
-                `<s>${Time.formatDateTime(this._juncture.scheduledTime)}</s>`;
+                `<s>${Time.formatTransitDateTime(this._juncture.scheduledTime)}</s>`;
         }
     }
 
