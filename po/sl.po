@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-11-21 13:02+0000\n"
-"PO-Revision-Date: 2026-11-24 08:24+0100\n"
+"POT-Creation-Date: 2026-11-27 21:31+0000\n"
+"PO-Revision-Date: 2026-11-28 13:20+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -692,7 +692,7 @@ msgctxt "shortcut window"
 msgid "Toggle location marker"
 msgstr "Preklopni označevalnik mesta"
 
-#: data/ui/transit-juncture-row.blp:127 src/transitJunctureRow.js:78
+#: data/ui/transit-juncture-row.blp:130 src/transitJunctureRow.js:78
 msgid "Show information"
 msgstr "Pokaži podatke"
 
@@ -2455,6 +2455,33 @@ msgstr "Odpri s programom %s"
 #: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "nalaganje datoteke je spodletelo"
+
+#. Translators: this is a format string for showing a transit time that
+#. * occurs on the next day, like "05:08 (Tomorrow)".
+#. * The %s is the formatted time string.
+#.
+#: src/time.js:425
+#, javascript-format
+msgid "%s (Tomorrow)"
+msgstr "%s (jutri)"
+
+#. Translators: this is a format string for showing a transit time that
+#. * occurred on the previous day, like "23:15 (Yesterday)".
+#. * The %s is the formatted time string.
+#.
+#: src/time.js:433
+#, javascript-format
+msgid "%s (Yesterday)"
+msgstr "%s (včeraj)"
+
+#. Translators: this is a format string for showing a transit time that
+#. * occurs on another day of the week, like "09:54 (Sat)" or "05:08 (Fri)".
+#. * The first %s is the formatted time string, the second %s is the abbreviated day name.
+#.
+#: src/time.js:448
+#, javascript-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
